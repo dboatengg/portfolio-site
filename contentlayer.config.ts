@@ -1,11 +1,10 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
 import remarkGfm from "remark-gfm"
-import rehypeSlug from "rehype-slug"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypePrettyCode from "rehype-pretty-code"
 
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
-  filePathPattern: `blog/*.mdx`,
+  filePathPattern: `**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -14,18 +13,32 @@ export const Blog = defineDocumentType(() => ({
     tags: { type: "list", of: { type: "string" } },
   },
   computedFields: {
-    slug: { type: "string", resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "") },
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+    },
+
+    // Reading time field
+    readingTime: {
+      type: "json",
+      resolve: (doc) => {
+        const text = doc.body.raw ?? ""
+        const words = text.split(/\s+/).length
+        const minutes = Math.ceil(words / 200)
+        return {
+          minutes,
+          text: `${minutes} min read`,
+        }
+      },
+    },
   },
 }))
 
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Blog],
-  mdx: {
+  markdown: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: "wrap" }],
-    ],
+    rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
   },
 })

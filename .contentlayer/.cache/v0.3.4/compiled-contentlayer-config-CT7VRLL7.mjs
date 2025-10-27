@@ -1,11 +1,10 @@
 // contentlayer.config.ts
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
 var Blog = defineDocumentType(() => ({
   name: "Blog",
-  filePathPattern: `blog/*.mdx`,
+  filePathPattern: `blog/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -14,22 +13,34 @@ var Blog = defineDocumentType(() => ({
     tags: { type: "list", of: { type: "string" } }
   },
   computedFields: {
-    slug: { type: "string", resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "") }
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "")
+    },
+    readingTime: {
+      type: "json",
+      resolve: (doc) => {
+        const text = doc.body.raw;
+        const words = text.split(/\s+/).length;
+        const minutes = Math.ceil(words / 200);
+        return {
+          minutes,
+          text: `${minutes} min read`
+        };
+      }
+    }
   }
 }));
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
   documentTypes: [Blog],
-  mdx: {
+  markdown: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: "wrap" }]
-    ]
+    rehypePlugins: [rehypePrettyCode]
   }
 });
 export {
   Blog,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-SL6CTA3V.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-CT7VRLL7.mjs.map

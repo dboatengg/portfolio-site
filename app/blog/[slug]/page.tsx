@@ -1,12 +1,17 @@
 import { allBlogs } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 import MDXContent from "@/components/MDXContent"
+import { formatDate } from "@/utils/formatDate" 
 
 export async function generateStaticParams() {
   return allBlogs.map((post) => ({ slug: post.slug }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
   const post = allBlogs.find((p) => p.slug === slug)
   if (!post) return {}
@@ -17,7 +22,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
 
   const post = allBlogs.find((p) => p.slug === slug)
@@ -25,18 +34,25 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="max-w-3xl mx-auto px-6 py-12">
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+      <header className="mb-10">
+
+        <h1 className="text-4xl font-bold leading-tight mb-3">{post.title}</h1>
+
         <p className="text-gray-400 text-sm">
-          {new Date(post.date).toLocaleDateString()}
+          {formatDate(post.date)}{" "}
+          {post.readingTime?.text && (
+            <>
+              • <span>{post.readingTime.text}</span>
+            </>
+          )}
         </p>
 
         {post.tags?.length ? (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs bg-neutral-800 text-gray-300 px-2 py-1 rounded"
+                className="text-xs bg-neutral-800 text-gray-300 px-2 py-1 rounded-md"
               >
                 {tag}
               </span>
@@ -45,7 +61,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         ) : null}
       </header>
 
-      <MDXContent code={post.body.code} />
+      <div className="prose prose-invert max-w-none">
+        <MDXContent code={post.body.code} />
+      </div>
     </article>
   )
 }

@@ -20,6 +20,7 @@ export type Blog = {
   /** MDX file body */
   body: MDX
   slug: string
+  readingTime: json
 }  
 
 /** Nested types */
