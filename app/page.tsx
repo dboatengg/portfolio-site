@@ -1,10 +1,17 @@
+import Intro from "@/components/Intro"
+import BlogList from "@/components/BlogList"
+
+export const metadata = {
+  title: "Dickson Boateng — Web Developer & Designer",
+  description:
+    "Building delightful, high-performing web experiences using React, Next.js, and Tailwind CSS.",
+}
+
 export default function HomePage() {
   return (
-    <section>
-      <h1 className="text-3xl font-bold mb-6">Welcome to My Portfolio</h1>
-      <p className="text-lg">
-        Hi, I'm Dickson Boateng, a software developer passionate about building web applications and sharing knowledge through blogging.
-      </p>
-    </section>
+    <main className="max-w-3xl mx-auto px-6 py-16 text-gray-200">
+      <Intro />
+       <BlogList/>
+    </main>
   )
 }

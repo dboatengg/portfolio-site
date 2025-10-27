@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer"
+
 import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import "./globals.css"
@@ -29,6 +31,7 @@ export default function RootLayout({
       >
         <div className="min-h-screen flex flex-col items-center">
           <main className="w-full max-w-3xl px-6 py-10">{children}</main>
+          <Footer/>
         </div>
       </body>
     </html>
