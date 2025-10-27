@@ -2,7 +2,7 @@ import Intro from "@/components/Intro"
 import BlogList from "@/components/BlogList"
 
 export const metadata = {
-  title: "Dickson Boateng — Web Developer & Designer",
+  title: "Dickson Boateng - Full-Stack Developer",
   description:
     "Building delightful, high-performing web experiences using React, Next.js, and Tailwind CSS.",
 }

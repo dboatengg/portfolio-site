@@ -33,7 +33,7 @@ export default async function BlogPost({
   if (!post) notFound()
 
   return (
-    <article className="max-w-3xl mx-auto px-6 py-12">
+    <article className="max-w-3xl mx-auto px-2 py-12">
       <header className="mb-10">
 
         <h1 className="text-4xl font-bold leading-tight mb-3">{post.title}</h1>
@@ -61,7 +61,7 @@ export default async function BlogPost({
         ) : null}
       </header>
 
-      <div className="prose prose-invert max-w-none">
+      <div className="prose prose-invert prose-neutral max-w-none leading-relaxed">
         <MDXContent code={post.body.code} />
       </div>
     </article>

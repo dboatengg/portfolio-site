@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Dickson Boateng | Portfolio & Blog",
-  description: "Thoughts on software development, creativity, and code.",
+  description: "Thoughts on software development, personal experience, and code.",
 }
 
 export default function RootLayout({
