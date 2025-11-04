@@ -17,7 +17,6 @@ var Blog = defineDocumentType(() => ({
       type: "string",
       resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "")
     },
-    // Reading time field
     readingTime: {
       type: "json",
       resolve: (doc) => {
@@ -29,19 +28,46 @@ var Blog = defineDocumentType(() => ({
           text: `${minutes} min read`
         };
       }
+    },
+    formattedDate: {
+      type: "string",
+      resolve: (doc) => new Date(doc.date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      })
     }
   }
 }));
+var rehypeOptions = {
+  theme: {
+    dark: "one-dark-pro",
+    light: "github-light"
+  },
+  keepBackground: false,
+  defaultLang: "js",
+  onVisitLine(node) {
+    if (node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }];
+    }
+  },
+  onVisitHighlightedLine(node) {
+    node.properties.className.push("highlighted");
+  },
+  onVisitHighlightedWord(node) {
+    node.properties.className = ["word-highlight"];
+  }
+};
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
   documentTypes: [Blog],
   markdown: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]]
+    rehypePlugins: [[rehypePrettyCode, rehypeOptions]]
   }
 });
 export {
   Blog,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-J6SJONUX.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-RS4LWTXS.mjs.map

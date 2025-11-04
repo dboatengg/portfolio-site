@@ -1,19 +1,19 @@
 import { allBlogs } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 import MDXContent from "@/components/MDXContent"
-import { formatDate } from "@/utils/formatDate" 
 
 export async function generateStaticParams() {
-  return allBlogs.map((post) => ({ slug: post.slug }))
+  return allBlogs.map((post) => ({
+    slug: post.slug,
+  }))
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
-  const { slug } = await params
-  const post = allBlogs.find((p) => p.slug === slug)
+  const post = allBlogs.find((p) => p.slug === params.slug)
   if (!post) return {}
 
   return {
@@ -22,24 +22,19 @@ export async function generateMetadata({
   }
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = await params
-
-  const post = allBlogs.find((p) => p.slug === slug)
+export default function BlogPost({ params }: { params: { slug: string } }) {
+  const post = allBlogs.find((p) => p.slug === params.slug)
   if (!post) notFound()
 
   return (
     <article className="max-w-3xl mx-auto px-2 py-12">
       <header className="mb-10">
-
-        <h1 className="text-4xl font-bold leading-tight mb-3">{post.title}</h1>
+        <h1 className="text-4xl font-bold leading-tight mb-3">
+          {post.title}
+        </h1>
 
         <p className="text-gray-400 text-sm">
-          {formatDate(post.date)}{" "}
+          {post.formattedDate}{" "}
           {post.readingTime?.text && (
             <>
               • <span>{post.readingTime.text}</span>

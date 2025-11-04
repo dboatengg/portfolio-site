@@ -81,8 +81,8 @@ code, pre {
 }
 
 /* --- Code Blocks --- */
-.prose pre {
-  background-color: #111827; /* gray-900 */
+/* .prose pre {
+  background-color: #111827; 
   color: #f3f4f6;
   font-family: "Fira Code", monospace;
   font-size: 0.95rem;
@@ -91,31 +91,97 @@ code, pre {
   overflow-x: auto;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  border: 1px solid #1f2937; /* gray-800 */
-}
+  border: 1px solid #1f2937; 
+} */
 
 /* Syntax highlighting (for dark mode) */
-.prose pre code {
+/* .prose pre code {
   color: #f3f4f6;
-}
+} */
 
-.prose code {
+/* .prose code {
   background-color: rgba(255, 255, 255, 0.05);
-  color: #fcd34d; /* amber-300 */
+  color: #fcd34d; 
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
   font-family: "Fira Code", monospace;
   font-size: 0.9rem;
-}
+} */
 
 /* --- Syntax Highlighting Colors --- */
-.prose code[class*="language-"] .token.comment { color: #9ca3af; }
+/* .prose code[class*="language-"] .token.comment { color: #9ca3af; }
 .prose code[class*="language-"] .token.keyword { color: #60a5fa; }
 .prose code[class*="language-"] .token.string { color: #34d399; }
 .prose code[class*="language-"] .token.number { color: #f87171; }
 .prose code[class*="language-"] .token.function { color: #a78bfa; }
 .prose code[class*="language-"] .token.operator { color: #fbbf24; }
-.prose code[class*="language-"] .token.punctuation { color: #9ca3af; }
+.prose code[class*="language-"] .token.punctuation { color: #9ca3af; } */
+
+
+/* === SHIKI / REHYPE-PRETTY-CODE === */
+
+/* Base code block container */
+.prose pre {
+  background-color: #0d1117; /* GitHub dark background */
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 1.25rem;
+  border: 1px solid #1e293b;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Inline code */
+.prose code:not(pre code) {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  color: #fbbf24; /* amber-400 */
+  font-family: "Fira Code", monospace;
+  font-size: 0.95rem;
+}
+
+/* Shiki line and token structure */
+pre > code {
+  display: grid;
+}
+
+/* Shiki line numbering support (optional) */
+pre > code > span {
+  display: block;
+  padding-left: 0.75rem;
+}
+
+/* Highlighted line (from rehype-pretty-code) */
+.highlighted {
+  background-color: rgba(255, 255, 255, 0.08);
+  display: block;
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+  border-left: 3px solid #3b82f6; /* Tailwind blue-500 */
+}
+
+/* Word highlight support */
+.word-highlight {
+  background-color: rgba(59, 130, 246, 0.25);
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.25rem;
+}
+
+/* Optional: subtle scrollbar for long code blocks */
+.prose pre::-webkit-scrollbar {
+  height: 8px;
+}
+.prose pre::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+.prose pre::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
+
 
 /* --- Lists --- */
 .prose ul,
@@ -157,3 +223,18 @@ code, pre {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin: 2rem 0;
 }
+
+/* Highlighted line background */
+/* .highlighted {
+  background-color: rgba(255, 255, 255, 0.05);
+  display: block;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+} */
+
+/* Highlighted word */
+/* .word-highlight {
+  background-color: rgba(59, 130, 246, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.25rem;
+} */

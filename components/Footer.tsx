@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="w-full overflow-hidden bg-neutral-950">
       <div className="w-full border-t border-neutral-800 pt-8 pb-6 text-sm text-gray-400">
-        <div className="max-w-3xl mx-auto px-6 flex flex-wrap justify-center gap-4 text-sm">
+        <div className="max-w-3xl mx-auto px-6 flex flex-wrap justify-center gap-8 text-sm ">
           <Link
             href="https://twitter.com/"
             target="_blank"

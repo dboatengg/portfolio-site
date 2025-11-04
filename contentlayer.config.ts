@@ -2,6 +2,7 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files"
 import remarkGfm from "remark-gfm"
 import rehypePrettyCode from "rehype-pretty-code"
 
+//  Define Blog document type
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: `**/*.mdx`,
@@ -18,7 +19,6 @@ export const Blog = defineDocumentType(() => ({
       resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
     },
 
-    // Reading time field
     readingTime: {
       type: "json",
       resolve: (doc) => {
@@ -31,14 +31,45 @@ export const Blog = defineDocumentType(() => ({
         }
       },
     },
+
+    formattedDate: {
+      type: "string",
+      resolve: (doc) =>
+        new Date(doc.date).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        }),
+    },
   },
 }))
+
+// rehype-pretty-code config
+const rehypeOptions = {
+  theme: {
+    dark: "one-dark-pro",
+    light: "github-light",
+  },
+  keepBackground: false,
+  defaultLang: "js",
+  onVisitLine(node: any) {
+    if (node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }]
+    }
+  },
+  onVisitHighlightedLine(node: any) {
+    node.properties.className.push("highlighted")
+  },
+  onVisitHighlightedWord(node: any) {
+    node.properties.className = ["word-highlight"]
+  },
+}
 
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Blog],
   markdown: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
+    rehypePlugins: [[rehypePrettyCode, rehypeOptions]],
   },
 })
