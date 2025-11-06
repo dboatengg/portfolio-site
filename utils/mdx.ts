@@ -18,7 +18,28 @@ export async function getPostBySlug(slug: string) {
   return { source }
 }
 
-export const rehypePlugins: Pluggable[] = [
+// export const rehypePlugins: Pluggable[] = [
+//   [
+//     rehypePrettyCode,
+//     {
+//       theme: "github-dark",
+//       keepBackground: false,
+//       onVisitLine(node: any) {
+//         if (node.children.length === 0) {
+//           node.children = [{ type: "text", value: " " }]
+//         }
+//       },
+//       onVisitHighlightedLine(node: any) {
+//         node.properties.className.push("highlighted")
+//       },
+//       onVisitHighlightedWord(node: any) {
+//         node.properties.className = ["word-highlight"]
+//       },
+//     },
+//   ],
+// ]
+
+export const rehypePlugins = [
   [
     rehypePrettyCode,
     {
@@ -37,4 +58,4 @@ export const rehypePlugins: Pluggable[] = [
       },
     },
   ],
-]
+] as any 

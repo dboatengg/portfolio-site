@@ -35,7 +35,6 @@ export default async function BlogPost({
         <h1 className="text-4xl font-bold mb-3">{frontmatter.title}</h1>
         {frontmatter.date && (
           <p className="text-gray-400 text-sm">
-            {/* {new Date(frontmatter.date).toDateString()} */}
             {new Date(frontmatter.date).toISOString().split("T")[0]}
 
           </p>

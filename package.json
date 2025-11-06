@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npx contentlayer build && npx next dev",
-    "build": "npx contentlayer build && npx next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
