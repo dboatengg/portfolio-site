@@ -1,12 +1,25 @@
-"use client"
+// "use client"
 
-import { useMDXComponent } from "next-contentlayer/hooks"
+// import { useMDXComponent } from "contentlayer/react"
+
+// export default function MDXContent({ code }: { code: string }) {
+//   const Component = useMDXComponent(code)
+
+//   return (
+//     <div className="prose prose-invert prose-headings:scroll-mt-24 max-w-none">
+//       <Component />
+//     </div>
+//   )
+// }
+
+// "use client"
+
+import { MDXRemote } from "next-mdx-remote/rsc"
 
 export default function MDXContent({ code }: { code: string }) {
-  const Component = useMDXComponent(code)
   return (
     <div className="prose prose-invert prose-headings:scroll-mt-24 max-w-none">
-      <Component />
+      <MDXRemote source={code} />
     </div>
   )
 }

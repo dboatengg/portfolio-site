@@ -1,64 +1,36 @@
-import { allBlogs } from "contentlayer/generated"
-import { notFound } from "next/navigation"
-import MDXContent from "@/components/MDXContent"
+import { getAllSlugs, getPostBySlug } from "@/utils/mdx"
 
 export async function generateStaticParams() {
-  return allBlogs.map((post) => ({
-    slug: post.slug,
-  }))
+  return getAllSlugs().map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  const post = allBlogs.find((p) => p.slug === params.slug)
-  if (!post) return {}
+// ✅ `params` is a Promise — unwrap it here
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const { frontmatter } = await getPostBySlug(slug)
 
   return {
-    title: `${post.title} | Dickson Boateng`,
-    description: post.summary,
+    title: `${frontmatter.title} | Dickson Boateng`,
+    description: frontmatter.description || frontmatter.summary,
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = allBlogs.find((p) => p.slug === params.slug)
-  if (!post) notFound()
+// ✅ Same fix here
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params                     // ← 👈 critical line
+  const { content, frontmatter } = await getPostBySlug(slug)
 
   return (
-    <article className="max-w-3xl mx-auto px-2 py-12">
+    <article className="max-w-3xl mx-auto px-2 py-12 prose prose-invert">
       <header className="mb-10">
-        <h1 className="text-4xl font-bold leading-tight mb-3">
-          {post.title}
-        </h1>
-
-        <p className="text-gray-400 text-sm">
-          {post.formattedDate}{" "}
-          {post.readingTime?.text && (
-            <>
-              • <span>{post.readingTime.text}</span>
-            </>
-          )}
-        </p>
-
-        {post.tags?.length ? (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs bg-neutral-800 text-gray-300 px-2 py-1 rounded-md"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        ) : null}
+        <h1 className="text-4xl font-bold mb-3">{frontmatter.title}</h1>
+        {frontmatter.date && (
+          <p className="text-gray-400 text-sm">
+            {new Date(frontmatter.date).toDateString()}
+          </p>
+        )}
       </header>
-
-      <div className="prose prose-invert prose-neutral max-w-none leading-relaxed">
-        <MDXContent code={post.body.code} />
-      </div>
+      {content}
     </article>
   )
 }
