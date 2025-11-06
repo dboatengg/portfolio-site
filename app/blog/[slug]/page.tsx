@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-// ✅ Same fix here
+// Same fix here
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params                     // ← 👈 critical line
   const { content, frontmatter } = await getPostBySlug(slug)
