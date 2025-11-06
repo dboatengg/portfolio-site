@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer"
 
 import type { Metadata } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { Inter, Sora } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
@@ -10,8 +10,8 @@ const inter = Inter({
   display: "swap",
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-mono",
+const sora = Sora({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 })
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} bg-neutral-950 text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white`}
+        className={`${sora.variable} ${inter.variable} bg-neutral-900 text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white`}
       >
         <div className="min-h-screen flex flex-col items-center">
           <main className="w-full max-w-3xl px-3 py-10">{children}</main>

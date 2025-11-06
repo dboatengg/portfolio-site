@@ -8,7 +8,6 @@
 }
 body {
   font-family: var(--font-sans);
-  background-color: #0a0a0a; 
   color: #e5e5e5; 
 }
 
@@ -106,6 +105,7 @@ code, pre {
 /* Shiki line and token structure */
 pre > code {
   display: grid;
+    counter-reset: line;
 }
 
 /* Shiki line numbering support (optional) */
@@ -183,3 +183,77 @@ pre > code > span {
   margin: 2rem 0;
 }
 
+/* === Shiki Token Colors === */
+pre code .line {
+  color: #c9d1d9;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.token.keyword {
+  color: #ff7b72;
+}
+
+.token.string,
+.token.char {
+  color: #a5d6ff;
+}
+
+.token.function {
+  color: #d2a8ff;
+}
+
+.token.parameter {
+  color: #ffa657;
+}
+
+.token.number {
+  color: #79c0ff;
+}
+
+.token.boolean {
+  color: #ff7b72;
+}
+
+.token.operator {
+  color: #c9d1d9;
+}
+
+.token.property {
+  color: #7ee787;
+}
+
+.token.punctuation {
+  color: #c9d1d9;
+}
+/* Language badge */
+pre[data-language] {
+  position: relative;
+}
+
+pre[data-language]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #93c5fd;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+pre [data-highlighted-line] {
+  background-color: rgba(255, 255, 255, 0.08);
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+  border-left: 3px solid #3b82f6;
+}

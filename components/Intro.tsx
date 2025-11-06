@@ -1,4 +1,3 @@
-// app/components/Intro.tsx
 export default function Intro() {
   return (
     <section className="mb-16">

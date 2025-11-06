@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="w-full overflow-hidden bg-neutral-950">
+    <footer className="w-full overflow-hidden">
       <div className="w-full border-t border-neutral-800 pt-8 pb-6 text-sm text-gray-400">
         <div className="max-w-3xl mx-auto px-6 flex flex-wrap justify-center gap-8 text-sm ">
           <Link

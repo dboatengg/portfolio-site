@@ -1,49 +1,40 @@
-// lib/mdx.ts
 import fs from "fs"
 import path from "path"
-import { compileMDX } from "next-mdx-remote/rsc"
+import rehypePrettyCode from "rehype-pretty-code"
+import type { Pluggable } from "unified"
 
-
-export type BlogFrontmatter = {
-    title: string
-    description?: string
-    summary?: string
-    date?: string
-    tags?: string[]
-}
-
-const BLOG_PATH = path.join(process.cwd(), "content", "blog")
-
-export async function getPostBySlug(slug: string) {
-  const filePath = path.join(BLOG_PATH, `${slug}.mdx`)
-  const source = fs.readFileSync(filePath, "utf8")
-
-  const { content, frontmatter } = await compileMDX<BlogFrontmatter>({
-    source,
-    options: { parseFrontmatter: true },
-  })
-
-  return { content, frontmatter }
-}
-
-
-// export async function getPostBySlug(slug: string) {
-//   const filePath = path.join(BLOG_PATH, `${slug}.mdx`)
-//   const source = fs.readFileSync(filePath, "utf8")
-
-//   const { content, frontmatter } = await compileMDX({
-//     source,
-//     options: { parseFrontmatter: true },
-//   })
-
-//   return { content, frontmatter }
-// }
+const postsDir = path.join(process.cwd(), "content", "blog")
 
 export function getAllSlugs() {
   return fs
-    .readdirSync(BLOG_PATH)
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => f.replace(/\.mdx$/, ""))
+    .readdirSync(postsDir)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => file.replace(/\.mdx$/, ""))
 }
 
+export async function getPostBySlug(slug: string) {
+  const filePath = path.join(postsDir, `${slug}.mdx`)
+  const source = fs.readFileSync(filePath, "utf8")
+  return { source }
+}
 
+export const rehypePlugins: Pluggable[] = [
+  [
+    rehypePrettyCode,
+    {
+      theme: "github-dark",
+      keepBackground: false,
+      onVisitLine(node: any) {
+        if (node.children.length === 0) {
+          node.children = [{ type: "text", value: " " }]
+        }
+      },
+      onVisitHighlightedLine(node: any) {
+        node.properties.className.push("highlighted")
+      },
+      onVisitHighlightedWord(node: any) {
+        node.properties.className = ["word-highlight"]
+      },
+    },
+  ],
+]

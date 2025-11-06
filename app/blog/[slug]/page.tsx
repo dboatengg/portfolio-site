@@ -1,25 +1,36 @@
-import { getAllSlugs, getPostBySlug } from "@/utils/mdx"
+import { compileMDX } from "next-mdx-remote/rsc"
+import { getAllSlugs, getPostBySlug, rehypePlugins } from "@/utils/mdx"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  // 👇 Unwrap params (Next.js 15+/React 19)
   const { slug } = await params
-  const { frontmatter } = await getPostBySlug(slug)
 
-  return {
-    title: `${frontmatter.title} | Dickson Boateng`,
-    description: frontmatter.description || frontmatter.summary,
-  }
-}
+  console.log("🧩 BlogPost params:", slug)
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params                     
-  const { content, frontmatter } = await getPostBySlug(slug)
+  const { source } = await getPostBySlug(slug)
+
+  const { content, frontmatter } = await compileMDX<{
+    title: string
+    description?: string
+    date?: string
+  }>({
+    source,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: { remarkPlugins: [], rehypePlugins },
+    },
+  })
 
   return (
-    <article className="max-w-3xl mx-auto py-8 prose prose-invert">
+    <article className="prose prose-invert max-w-3xl mx-auto py-8">
       <header className="mb-10">
         <h1 className="text-4xl font-bold mb-3">{frontmatter.title}</h1>
         {frontmatter.date && (
