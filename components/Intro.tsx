@@ -2,7 +2,7 @@
 export default function Intro() {
   return (
     <section className="mb-16">
-      <h1 className="text-3xl font-semibold text-white mb-1">
+      <h1 className="text-4xl font-semibold text-white mb-1">
         Dickson Boateng
       </h1>
       <p className="text-gray-400 mb-4">Full-Stact Developer </p>

@@ -12,6 +12,8 @@ body {
   color: #e5e5e5; 
 }
 
+
+/* === SHIKI / REHYPE-PRETTY-CODE === */
 code, pre {
   font-family: var(--font-mono);
 }
@@ -19,7 +21,6 @@ code, pre {
 .prose {
   max-width: 70ch;
   margin: 0 auto;
-  /* padding: 2rem 1rem; */
   color: #e5e7eb; 
   line-height: 1.8;
   font-size: 1rem;
@@ -56,7 +57,7 @@ code, pre {
 .prose p {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: #d1d5db; /* gray-300 */
+  color: #d1d5db;
 }
 
 .prose strong {
@@ -80,45 +81,6 @@ code, pre {
   color: #60a5fa; /* blue-400 */
 }
 
-/* --- Code Blocks --- */
-/* .prose pre {
-  background-color: #111827; 
-  color: #f3f4f6;
-  font-family: "Fira Code", monospace;
-  font-size: 0.95rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #1f2937; 
-} */
-
-/* Syntax highlighting (for dark mode) */
-/* .prose pre code {
-  color: #f3f4f6;
-} */
-
-/* .prose code {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #fcd34d; 
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.25rem;
-  font-family: "Fira Code", monospace;
-  font-size: 0.9rem;
-} */
-
-/* --- Syntax Highlighting Colors --- */
-/* .prose code[class*="language-"] .token.comment { color: #9ca3af; }
-.prose code[class*="language-"] .token.keyword { color: #60a5fa; }
-.prose code[class*="language-"] .token.string { color: #34d399; }
-.prose code[class*="language-"] .token.number { color: #f87171; }
-.prose code[class*="language-"] .token.function { color: #a78bfa; }
-.prose code[class*="language-"] .token.operator { color: #fbbf24; }
-.prose code[class*="language-"] .token.punctuation { color: #9ca3af; } */
-
-
-/* === SHIKI / REHYPE-PRETTY-CODE === */
 
 /* Base code block container */
 .prose pre {
@@ -168,7 +130,7 @@ pre > code > span {
   padding: 0.1rem 0.25rem;
 }
 
-/* Optional: subtle scrollbar for long code blocks */
+/* Subtle scrollbar for long code blocks */
 .prose pre::-webkit-scrollbar {
   height: 8px;
 }
@@ -179,9 +141,6 @@ pre > code > span {
 .prose pre::-webkit-scrollbar-track {
   background-color: transparent;
 }
-
-
-
 
 /* --- Lists --- */
 .prose ul,
@@ -224,17 +183,3 @@ pre > code > span {
   margin: 2rem 0;
 }
 
-/* Highlighted line background */
-/* .highlighted {
-  background-color: rgba(255, 255, 255, 0.05);
-  display: block;
-  margin: 0 -1rem;
-  padding: 0 1rem;
-} */
-
-/* Highlighted word */
-/* .word-highlight {
-  background-color: rgba(59, 130, 246, 0.2);
-  border-radius: 0.25rem;
-  padding: 0.1rem 0.25rem;
-} */

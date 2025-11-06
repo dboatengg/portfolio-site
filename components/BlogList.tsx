@@ -9,7 +9,7 @@ export default function BlogList() {
 
   return (
     <section>
-      <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+      <h2 className="text-3xl font-semibold mb-4 flex items-center gap-2">
         <span className="text-neutral-400">✍</span> Writing
       </h2>
 

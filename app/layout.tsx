@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} bg-neutral-950 text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white`}
       >
         <div className="min-h-screen flex flex-col items-center">
-          <main className="w-full max-w-3xl px-6 py-10">{children}</main>
+          <main className="w-full max-w-3xl px-3 py-10">{children}</main>
           <Footer/>
         </div>
       </body>
