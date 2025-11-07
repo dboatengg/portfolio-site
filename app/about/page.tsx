@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="max-w-3xl mx-auto space-y-8">
+    <section className="max-w-3xl mx-auto py-10 space-y-8">
       <header>
         <h1 className="text-3xl font-bold mb-3">About</h1>
         <p className="text-gray-600 dark:text-gray-400">

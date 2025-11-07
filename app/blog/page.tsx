@@ -11,7 +11,7 @@ export default function BlogPage() {
   const posts = allBlogs.sort((a, b) => +new Date(b.date) - +new Date(a.date))
 
   return (
-    <section>
+    <section className="py-10">
       <h1 className="text-3xl font-bold mb-6">Blog</h1>
       <ul>
         {posts.map((post, index) => (
