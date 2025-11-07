@@ -36,8 +36,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-4">What I'm doing now</h2>
         <p className="text-gray-600 dark:text-gray-400">List one</p>
         <p className="text-gray-600 dark:text-gray-400">List two</p>
-        <p className="text-gray-600 dark:text-gray-400">List three</p>
-        
+        <p className="text-gray-600 dark:text-gray-400">List three</p>        
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">Fun Facts about me</h2>
@@ -47,9 +46,13 @@ export default function AboutPage() {
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">Publications</h2>
-        <Link href="#">Publication one</Link><br />
-        <Link href="#">Publication two</Link><br />
-        <Link href="#">Publication three</Link>
+        <p className="text-blue-500 underline"><Link href="#">Publication one</Link></p>
+        <p className="text-blue-500 underline"><Link href="#">Publication two</Link></p>
+        <p className="text-blue-500 underline"><Link href="#">Publication three</Link></p>
+      </div>
+            <div>
+        <h2 className="text-xl font-semibold mb-4">Miscellaneous</h2>
+            <p className="text-blue-500 underline"><Link href="#">Resume</Link></p>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">Let’s connect</h2>
