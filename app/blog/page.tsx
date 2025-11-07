@@ -14,12 +14,17 @@ export default function BlogPage() {
     <section>
       <h1 className="text-3xl font-bold mb-6">Blog</h1>
       <ul>
-        {posts.map((post) => (
+        {posts.map((post, index) => (
           <li
             key={post._id}
-            className="py-4 border-b border-neutral-800 flex justify-between"
+            className={`py-4 flex justify-between ${
+              index !== posts.length - 1 ? "border-b border-neutral-800" : ""
+            }`}
           >
-            <Link href={`/blog/${post.slug}`} className="text-lg hover:underline">
+            <Link
+              href={`/blog/${post.slug}`}
+              className="text-lg hover:underline text-white"
+            >
               {post.title}
             </Link>
             <time className="text-gray-400 text-sm">
