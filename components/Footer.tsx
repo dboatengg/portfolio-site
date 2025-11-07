@@ -44,17 +44,17 @@ export default function Footer() {
         <div className="max-w-3xl mx-auto px-6 flex flex-wrap justify-center gap-8 text-sm">
           
           <Link
-            href="https://twitter.com/"
+            href="mailto:dicksonboateng@proton.me"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:underline hover:text-gray-200 transition-colors"
           >
-            <span>follow me on twitter</span>
+            <span>slide into my inbox</span>
             <ArrowUpRight size={14} strokeWidth={1.5} />
           </Link>
 
           <Link
-            href="https://github.com/"
+            href="https://github.com/dboatengg"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:underline hover:text-gray-200 transition-colors"
@@ -64,7 +64,8 @@ export default function Footer() {
           </Link>
 
           <Link
-            href="/contact"
+            href="https://cal.com/dicksonboateng/30min" 
+            target="_blank"
             className="flex items-center gap-1 hover:underline hover:text-gray-200 transition-colors"
           >
             <span>love to talk?</span>
