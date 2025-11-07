@@ -32,7 +32,7 @@ export default async function BlogPost({
   return (
     <article className="prose prose-invert max-w-3xl mx-auto py-8">
       <header className="mb-10">
-        <h1 className="text-4xl font-bold mb-3">{frontmatter.title}</h1>
+        <h1 className="!text-2xl sm:!text-3xl md:!text-4xl font-bold mb-3">{frontmatter.title}</h1>
         {frontmatter.date && (
           <p className="text-gray-400 text-sm">
             {new Date(frontmatter.date).toISOString().split("T")[0]}

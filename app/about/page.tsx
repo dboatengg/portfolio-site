@@ -52,9 +52,11 @@ export default function AboutPage() {
 
       <div>
         <h2 className="text-xl font-semibold mb-4">Publications</h2>
-        <p className="text-blue-500 underline"><Link href="#">Publication one</Link></p>
-        <p className="text-blue-500 underline"><Link href="#">Publication two</Link></p>
-        <p className="text-blue-500 underline"><Link href="#">Publication three</Link></p>
+        <ul className="space-y-2 list-disc list-outside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+            <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/" target="_blank">Asynchronous Programming in JavaScript – Guide for Beginners</Link></li>
+            <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/context-api-in-react/" target="_blank">How to Use the React Context API in Your Projects</Link></li>
+            <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/javascript-dom/" target="_blank">How the Document Object Model Works in JavaScript</Link></li>
+        </ul>
       </div>
             <div>
         <h2 className="text-xl font-semibold mb-4">Miscellaneous</h2>
