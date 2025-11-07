@@ -1,5 +1,5 @@
 import Intro from "@/components/Intro"
-import BlogList from "@/components/BlogList"
+import Writing from "@/components/Writing"
 
 export const metadata = {
   title: "Dickson Boateng - Full-Stack Developer",
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main className="max-w-3xl mx-auto py-5 text-gray-200">
       <Intro />
-       <BlogList/>
+      <Writing/>
     </main>
   )
 }
