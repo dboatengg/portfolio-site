@@ -14,36 +14,42 @@ export default function AboutPage() {
         <h1 className="text-3xl font-bold mb-3">About</h1>
         <p className="text-gray-600 dark:text-gray-400">
           Hey there, I’m <span className="font-semibold">Dickson Boateng</span>,
-          a software developer and writer passionate about creating clean and
+          a software developer passionate about creating clean and
           accessible digital experiences. I love building things
-          for the web, sharing knowledge, and exploring new ideas in technology.
+          for the web, sharing my knowledge, and exploring new technologies.
         </p>
       </header>
 
       <div>
         <h2 className="text-xl font-semibold mb-4">Background</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-2">
-          I started my journey in web development several years ago, driven by a
-          curiosity for how websites and applications work. Over time, I honed my
-            skills in front-end technologies, focusing on creating
-            user-friendly and performant web applications.</p>
+          I started my journey in programming/web development in October 2019, solely driven by a
+          curiosity for how mobile applications and websites work. Over time, I honed my
+          skills in front-end development, focusing on creating user-friendly and performant web applications.
+        </p>
         <p className="text-gray-600 dark:text-gray-400">
           When I’m not coding, I enjoy writing articles about web development and personal growth. Sharing my experiences and
-            insights is something I find incredibly rewarding.
+            insights is something I find <span className="text-blue-500 underline"><Link href="#">incredibly rewarding</Link></span>.
         </p>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">What I'm doing now</h2>
-        <p className="text-gray-600 dark:text-gray-400">List one</p>
-        <p className="text-gray-600 dark:text-gray-400">List two</p>
-        <p className="text-gray-600 dark:text-gray-400">List three</p>        
+        <ul className="space-y-2 list-disc list-outside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+            <li>Working as a full-time remote web developer</li>        
+            <li>Working on occasional freelance projects </li>        
+            <li>Building personal projects with NextJS</li>
+            <li>Learning Nodejs</li>
+        </ul>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">Fun Facts about me</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-2">Fact one</p>
-        <p className="text-gray-600 dark:text-gray-400 mb-2">Fact two</p>
-        <p className="text-gray-600 dark:text-gray-400">Fact three</p>
-      </div>
+        <ul className="space-y-2 list-disc list-outside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+            <li>I have never used or been on TikTok or Snapchat.</li>
+            <li>I’ve never missed an episode of Darknet Diaries, What Now with Trevor Noah, or The Lex Fridman Podcast.</li>
+            <li>I’ve watched every season of Black Mirror twice!</li>
+        </ul>
+    </div>
+
       <div>
         <h2 className="text-xl font-semibold mb-4">Publications</h2>
         <p className="text-blue-500 underline"><Link href="#">Publication one</Link></p>

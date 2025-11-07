@@ -12,7 +12,11 @@ export default function BlogPage() {
 
   return (
     <section className="py-10">
-      <h1 className="text-3xl font-bold mb-6">Blog</h1>
+      <header className="max-w-3xl mx-auto mb-10 space-y-8">
+        <h1 className="text-3xl font-bold mb-3">Blog</h1>
+        <p className="text-gray-600 dark:text-gray-400">Sharing technical guides, personal stories and experiences.</p>
+
+      </header>
       <ul>
         {posts.map((post, index) => (
           <li
