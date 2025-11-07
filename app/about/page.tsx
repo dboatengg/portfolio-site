@@ -34,7 +34,7 @@ export default function AboutPage() {
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">What I'm doing now</h2>
-        <ul className="space-y-2 list-disc list-outside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+        <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
             <li>Working as a full-time remote web developer</li>        
             <li>Working on occasional freelance projects </li>        
             <li>Building personal projects with NextJS</li>
@@ -43,7 +43,7 @@ export default function AboutPage() {
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">Fun Facts about me</h2>
-        <ul className="space-y-2 list-disc list-outside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+        <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
             <li>I have never used or been on TikTok or Snapchat.</li>
             <li>I’ve never missed an episode of Darknet Diaries, What Now with Trevor Noah, or The Lex Fridman Podcast.</li>
             <li>I’ve watched every season of Black Mirror twice!</li>
@@ -52,7 +52,7 @@ export default function AboutPage() {
 
       <div>
         <h2 className="text-xl font-semibold mb-4">Publications</h2>
-        <ul className="space-y-2 list-disc list-outside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+        <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/" target="_blank">Asynchronous Programming in JavaScript – Guide for Beginners</Link></li>
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/context-api-in-react/" target="_blank">How to Use the React Context API in Your Projects</Link></li>
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/javascript-dom/" target="_blank">How the Document Object Model Works in JavaScript</Link></li>
