@@ -42,8 +42,7 @@ export default function ProjectsPage() {
       <header>
         <h1 className="text-3xl font-bold mb-3">Projects</h1>
         <p className="text-gray-600 dark:text-gray-400">
-          A few things I’ve worked on recently — each one teaching me something
-          new about design, performance, or simplicity.
+          A few things I’ve worked on recently.
         </p>
       </header>
 
