@@ -29,7 +29,7 @@ export default function AboutPage() {
         </p>
         <p className="text-gray-600 dark:text-gray-400">
           When I’m not coding, I enjoy writing articles about web development and personal growth. Sharing my experiences and
-            insights with the <span className="text-blue-500 underline"><Link href="https://x.com/search?q=alege_dev&src=typed_query">tech community</Link></span> is something I find incredibly rewarding.
+            insights with the <span className="text-blue-500 underline"><Link href="https://x.com/search?q=alege_dev&src=typed_query" target="_blank">tech community</Link></span> is something I find incredibly rewarding.
         </p>
       </div>
       <div>
