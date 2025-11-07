@@ -1,42 +1,31 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
-import { Moon, Sun } from "lucide-react"
-import Logo from "./Logo"
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+import { Sun, Moon } from "lucide-react"
 
 export default function Header() {
+  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const [theme, setTheme] = useState<"light" | "dark">("dark")
 
-  useEffect(() => {
-    setMounted(true)
-    if (
-      window.matchMedia("(prefers-color-scheme: light)").matches &&
-      !localStorage.getItem("theme")
-    ) {
-      setTheme("light")
-      document.documentElement.classList.remove("dark")
-    }
-  }, [])
+//   console.log("theme:", theme)
 
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light"
-    setTheme(newTheme)
-    document.documentElement.classList.toggle("dark", newTheme === "dark")
-    localStorage.setItem("theme", newTheme)
-  }
+
+  useEffect(() => setMounted(true), [])
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-neutral-900/70 border-b border-neutral-800">
       <nav className="max-w-4xl mx-auto flex items-center justify-between px-4 py-3">
-        <Link href="/"><Logo /></Link>
+        <Link
+          href="/"
+          className="text-lg font-semibold tracking-tight text-gray-100 hover:text-white transition-colors"
+        >
+          Dickson Boateng
+        </Link>
 
         <div className="flex items-center gap-6 text-sm font-medium text-gray-400">
-          <Link
-            href="/#writing"
-            className="hover:text-white transition-colors"
-          >
+          <Link href="/#writing" className="hover:text-white transition-colors">
             Writing
           </Link>
           <Link href="/projects" className="hover:text-white transition-colors">
@@ -45,13 +34,12 @@ export default function Header() {
           <Link href="/about" className="hover:text-white transition-colors">
             About
           </Link>
-          {/* <Link href="/contact" className="hover:text-white transition-colors">
-            Contact
-          </Link> */}
 
-          {mounted && (
+          {/* {mounted && (
             <button
-              onClick={toggleTheme}
+              onClick={() =>
+                setTheme(theme === "dark" ? "light" : "dark")
+              }
               className="ml-2 text-gray-400 hover:text-white transition-colors"
               aria-label="Toggle theme"
             >
@@ -61,7 +49,7 @@ export default function Header() {
                 <Moon size={18} strokeWidth={1.75} />
               )}
             </button>
-          )}
+          )} */}
         </div>
       </nav>
     </header>
