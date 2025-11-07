@@ -5,6 +5,10 @@ import { formatDate } from "@/utils/formatDate"
 export const metadata = {
   title: "Blog | Dickson Boateng",
   description: "Articles and thoughts on software development and personal life.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function BlogPage() {
