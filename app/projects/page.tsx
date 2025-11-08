@@ -122,7 +122,7 @@ export default function ProjectsPage() {
       <header>
         <h1 className="text-3xl font-bold mb-3">Projects</h1>
         <p className="text-gray-600 dark:text-gray-400">
-          A few things I’ve worked on — and a few more in the works.
+          A few things I’ve worked on and a few more in the works.
         </p>
       </header>
 
