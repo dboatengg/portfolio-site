@@ -67,7 +67,7 @@ export default function AboutPage() {
       <div>
         <h2 className="text-xl font-semibold mb-4">Let’s connect</h2>
         <div className="flex flex-wrap gap-4">
-          <Link
+          {/* <Link
             href="https://twitter.com/owura_dev"
             target="_blank"
             rel="noopener noreferrer"
@@ -75,7 +75,7 @@ export default function AboutPage() {
           >
             <Twitter size={18} />
             <span>Twitter</span>
-          </Link>
+          </Link> */}
 
           <Link
             href="https://github.com/dboatengg"
