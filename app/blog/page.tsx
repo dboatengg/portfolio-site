@@ -4,7 +4,7 @@ import { formatDate } from "@/utils/formatDate"
 
 export const metadata = {
   title: "Blog | Dickson Boateng",
-  description: "Articles and thoughts on software development and personal life.",
+  description: "Sharing technical guides, personal stories and experiences.",
 
 }
 

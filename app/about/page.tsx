@@ -4,7 +4,7 @@ import Link from "next/link"
 export const metadata = {
   title: "About | Dickson Boateng",
   description:
-    "Learn more about Dickson Boateng — developer, writer, and creative technologist.",
+    "Learn more about my background, skills, and interests as a software developer.",
 }
 
 export default function AboutPage() {

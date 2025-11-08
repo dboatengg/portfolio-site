@@ -17,19 +17,19 @@ const sora = Sora({
 })
 
 export const metadata: Metadata = {
-  title: "Dickson Boateng | Portfolio & Blog",
+  title: "Dickson Boateng",
   description:
-    "I'm Dickson Boateng, a web developer passionate about creating clean and performant web experiences.",
+    "I'm Dickson Boateng, a software developer passionate about creating clean and performant web experiences.",
   metadataBase: new URL("https://dicksonboateng.com"),
   openGraph: {
-    title: "Dickson Boateng | Portfolio & Blog",
+    title: "Dickson Boateng ",
     description:
-      "Insights on modern web development, React, and JavaScript — by Dickson Boateng.",
+      "I'm Dickson Boateng, a software developer passionate about creating clean and performant web experiences.",
     url: "https://dicksonboateng.com",
     siteName: "Dickson Boateng",
     images: [
       {
-        url: "/og-image.jpg", // ← You can generate one later
+        url: "/og-image.jpg", 
         width: 1200,
         height: 630,
         alt: "Dickson Boateng Portfolio",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dickson Boateng | Portfolio & Blog",
+    title: "Dickson Boateng ",
     description:
-      "Insights on web development, JavaScript, and personal projects.",
+      "I'm Dickson Boateng, a software developer passionate about creating clean and performant web experiences.",
     images: ["/og-image.jpg"],
   },
     icons: {

@@ -4,7 +4,7 @@ import Link from "next/link"
 export const metadata = {
   title: "Projects | Dickson Boateng",
   description:
-    "A selection of projects I've built — from creative experiments to production-ready applications.",
+    "A selection of projects I've worked on.",
     
 }
 
