@@ -5,10 +5,7 @@ export const metadata = {
   title: "Projects | Dickson Boateng",
   description:
     "A selection of projects I've built — from creative experiments to production-ready applications.",
-    robots: {
-        index: false,
-        follow: false,
-  },
+    
 }
 
 const projects = [
