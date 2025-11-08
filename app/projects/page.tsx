@@ -1,7 +1,8 @@
 import { ExternalLink, Github } from "lucide-react"
+import { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata = {
+export const metadata:Metadata = {
   title: "Projects | Dickson Boateng",
   description:
     "A selection of projects I've worked on.",
