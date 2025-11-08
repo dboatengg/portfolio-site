@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Mail } from "lucide-react"
+import { Github, Twitter, Linkedin, Mail, MessageCircle } from "lucide-react"
 import Link from "next/link"
 
 export const metadata = {
@@ -104,6 +104,25 @@ export default function AboutPage() {
             <Mail size={18} />
             <span>Email</span>
           </Link>
+              {/* WhatsApp */}
+    <Link
+      href="https://wa.me/233532683209"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 text-gray-600 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-400 transition-colors"
+    >
+      <MessageCircle  size={18} />
+      <span>WhatsApp</span>
+    </Link>
+
+    {/* iMessage */}
+    <Link
+      href="sms:+233532683209"
+      className="flex items-center gap-2 text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+    >
+      <MessageCircle size={18} />
+      <span>iMessage</span>
+    </Link>
         </div>
       </div>
     </section>
