@@ -68,7 +68,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-4">Let’s connect</h2>
         <div className="flex flex-wrap gap-4">
           <Link
-            href="https://twitter.com/dboatengg"
+            href="https://twitter.com/owura_dev"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
@@ -88,7 +88,7 @@ export default function AboutPage() {
           </Link>
 
           <Link
-            href="https://linkedin.com/dboatengg"
+            href="https://www.linkedin.com/in/dboatengx/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500 transition-colors"
