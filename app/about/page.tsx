@@ -44,9 +44,10 @@ export default function AboutPage() {
       <div>
         <h2 className="text-xl font-semibold mb-4">Fun Facts about me</h2>
         <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
-            <li>I have never used or been on TikTok or Snapchat.</li>
-            <li>I’ve never missed an episode of Darknet Diaries, What Now with Trevor Noah, or The Lex Fridman Podcast.</li>
+            <li>I have never missed an episode of these podcasts: Darknet Diaries, What Now with Trevor Noah, and The Lex Fridman Podcast.</li>
             <li>I’ve watched every season of Black Mirror twice!</li>
+            <li>I consider Pavel Durov (Telegram Founder & CEO) a mentor from afar. His discipline and philosophy deeply inspire me.</li>
+            <li>I have never used TikTok or Snapchat.</li>
         </ul>
     </div>
 
@@ -56,11 +57,12 @@ export default function AboutPage() {
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/" target="_blank">Asynchronous Programming in JavaScript – Guide for Beginners</Link></li>
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/context-api-in-react/" target="_blank">How to Use the React Context API in Your Projects</Link></li>
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/javascript-dom/" target="_blank">How the Document Object Model Works in JavaScript</Link></li>
+            <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/redux-and-redux-toolkit-for-beginners/" target="_blank">How to Use Redux and Redux Toolkit – Tutorial for Beginners</Link></li>
         </ul>
       </div>
             <div>
         <h2 className="text-xl font-semibold mb-4">Miscellaneous</h2>
-            <p className="text-blue-500 underline"><Link href="#">Resume</Link></p>
+            <p className="text-blue-500 underline"><Link href="/DicksonBoatengCV.pdf">Resume</Link></p>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">Let’s connect</h2>
