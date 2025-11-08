@@ -1,7 +1,8 @@
 import Intro from "@/components/Intro"
 import BlogList from "@/components/BlogList"
+import { Metadata } from "next"
 
-export const metadata = {
+export const metadata:Metadata = {
   title: "Dickson Boateng",
   description:
     "I'm Dickson Boateng, a frontend developer passionate about creating clean and performant web experiences.",

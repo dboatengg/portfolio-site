@@ -1,8 +1,9 @@
 import { allBlogs } from "contentlayer/generated"
 import Link from "next/link"
 import { formatDate } from "@/utils/formatDate" 
+import { Metadata } from "next"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog | Dickson Boateng",
   description: "Sharing technical guides, personal stories and experiences.",
 

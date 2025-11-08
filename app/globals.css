@@ -232,32 +232,6 @@ pre code .line {
   color: #c9d1d9;
 }
 /* Language badge */
-/* pre[data-language] {
-  position: relative;
-}
-
-pre[data-language]::before {
-  content: attr(data-language);
-  position: absolute;
-  top: 0.5rem;
-  right: 0.75rem;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #93c5fd;
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 0.25rem;
-  font-family: var(--font-mono);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-pre [data-highlighted-line] {
-  background-color: rgba(255, 255, 255, 0.08);
-  margin: 0 -1.25rem;
-  padding: 0 1.25rem;
-  border-left: 3px solid #3b82f6;
-} */
-
 figure[data-rehype-pretty-code-figure] {
   position: relative;
 }
@@ -281,14 +255,12 @@ figure[data-rehype-pretty-code-figure] pre[data-language]::before {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Scrollable code area with space for badge */
 figure[data-rehype-pretty-code-figure] pre {
   overflow-x: auto;
-  padding-right: 4rem; /* Space so code never overlaps badge */
+  padding-right: 4rem; 
   background: transparent;
 }
 
-/* Highlighted line styling */
 pre [data-highlighted-line] {
   background-color: rgba(255, 255, 255, 0.08);
   margin: 0 -1.25rem;

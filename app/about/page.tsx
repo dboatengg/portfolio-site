@@ -1,7 +1,8 @@
 import { Github, Twitter, Linkedin, Mail, MessageCircle } from "lucide-react"
+import { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata = {
+export const metadata:Metadata = {
   title: "About | Dickson Boateng",
   description:
     "Learn more about my background, skills, and interests as a software developer.",
@@ -104,7 +105,6 @@ export default function AboutPage() {
             <Mail size={18} />
             <span>Email</span>
           </Link>
-              {/* WhatsApp */}
     <Link
       href="https://wa.me/233532683209"
       target="_blank"
@@ -115,7 +115,7 @@ export default function AboutPage() {
       <span>WhatsApp</span>
     </Link>
 
-    {/* iMessage */}
+  
     <Link
       href="sms:+233532683209"
       className="flex items-center gap-2 text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
