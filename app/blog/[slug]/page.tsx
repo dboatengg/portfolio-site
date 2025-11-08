@@ -10,7 +10,6 @@ export default async function BlogPost({
 }: {
   params: Promise<{ slug: string }>
 }) {
-  // 👇 Unwrap params (Next.js 15+/React 19)
   const { slug } = await params
 
   console.log("🧩 BlogPost params:", slug)
