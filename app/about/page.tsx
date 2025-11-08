@@ -121,7 +121,7 @@ export default function AboutPage() {
       className="flex items-center gap-2 text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
     >
       <MessageCircle size={18} />
-      <span>iMessage</span>
+      <span>Message</span>
     </Link>
         </div>
       </div>
