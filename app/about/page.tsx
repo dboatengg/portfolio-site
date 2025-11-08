@@ -36,6 +36,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-4">What I'm doing now</h2>
         <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
             <li>Working as a full-time remote web developer</li>        
+            <li>I run a clothing brand/store [at] <span className="text-blue-500 underline"><Link href="https://www.boldpixelsgh.com">boldpixelsgh.com</Link></span>.</li>
             <li>Working on occasional freelance projects </li>        
             <li>Building personal projects with NextJS</li>
             <li>Learning Nodejs</li>
@@ -47,7 +48,6 @@ export default function AboutPage() {
             <li>I have never missed an episode of these podcasts: Darknet Diaries, What Now with Trevor Noah, and The Lex Fridman Podcast.</li>
             <li>I’ve watched every season of Black Mirror twice!</li>
             <li>I consider Pavel Durov (Telegram Founder & CEO) a mentor from afar. His discipline and philosophy deeply inspire me.</li>
-            <li>I have never used TikTok or Snapchat.</li>
         </ul>
     </div>
 
