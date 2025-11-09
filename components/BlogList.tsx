@@ -11,7 +11,7 @@ export default function BlogList() {
   return (
     <section>
       <h2 className="text-3xl font-semibold mb-4 flex items-center gap-2">
-        <span className="text-neutral-400">✍</span> Recent Writing
+         Recent Writing
       </h2>
 
       <ul className="space-y-5">
