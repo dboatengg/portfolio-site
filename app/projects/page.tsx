@@ -21,16 +21,16 @@ const projects = [
     },
   },
   {
-    title: "Async Mastery",
+    title: "FocusNote",
     description:
-      "Work in Progress: a deep-dive tutorial series on mastering asynchronous JavaScript patterns with modern techniques and examples.",
+      "Coming Soon: A web-based notes app built for developers.",
     status: "in progress",
     links: {},
   },
   {
-    title: "UI Motion Kit",
+    title: "Getting Started with Next.js",
     description:
-      "Coming Soon: a lightweight component library for building fluid micro-interactions using Framer Motion and Tailwind.",
+      "Work in Progress: A practical deep dive into the core concepts of Next.js.",
     status: "in progress",
     links: {},
   },
