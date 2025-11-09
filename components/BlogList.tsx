@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { allBlogs } from "contentlayer/generated"
-import { formatDate } from "@/utils/formatDate"
+import { formatShortDate } from "@/utils/formatShortDate"
 
 export default function BlogList() {
   // Sort by date (descending)
@@ -33,7 +33,7 @@ export default function BlogList() {
             </div>
 
             <time className="text-sm text-gray-500 whitespace-nowrap">
-              {formatDate(post.date)}
+              {formatShortDate(post.date)}
             </time>
           </li>
         ))}

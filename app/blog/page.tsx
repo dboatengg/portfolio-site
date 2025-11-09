@@ -1,6 +1,6 @@
 import { allBlogs } from "contentlayer/generated"
 import Link from "next/link"
-import { formatDate } from "@/utils/formatDate" 
+import { formatShortDate } from "@/utils/formatShortDate" 
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function BlogPage() {
               {post.title}
             </Link>
             <time className="text-gray-400 text-sm">
-              {formatDate(post.date)} 
+              {formatShortDate(post.date)} 
             </time>
           </li>
         ))}
