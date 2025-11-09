@@ -13,12 +13,12 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:underline hover:text-gray-200 transition-colors"
           >
-            <span>slide into my inbox</span>
+            <span>buy me a coffee</span>
             <ArrowUpRight size={14} strokeWidth={1.5} />
           </Link>
 
           <Link
-            href="https://github.com/dboatengg"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:underline hover:text-gray-200 transition-colors"
