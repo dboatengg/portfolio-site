@@ -1,3 +1,4 @@
+import GiscusComments from "@/components/GiscusComments"
 import { compileMDX } from "next-mdx-remote/rsc"
 import { getAllSlugs, getPostBySlug, rehypePlugins } from "@/utils/mdx"
 
@@ -40,6 +41,7 @@ export default async function BlogPost({
         )}
       </header>
       {content}
+      <GiscusComments />
     </article>
   )
 }
