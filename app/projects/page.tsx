@@ -28,7 +28,7 @@ const projects = [
     links: {},
   },
   {
-    title: "Getting Started with Next.js",
+    title: "Next.js Tutorial",
     description:
       "Work in Progress: A practical deep dive into the core concepts of Next.js.",
     status: "in progress",
