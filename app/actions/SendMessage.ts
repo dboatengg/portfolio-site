@@ -15,7 +15,7 @@ export async function sendMessage(formData: FormData) {
 
   try {
     await resend.emails.send({
-        from: 'Dickson Boateng <hello@dicksonboateng.com>',
+        from: 'Portfolio Site xx <hello@dicksonboateng.com>',
       // from: 'Portfolio Contact <onboarding@resend.dev>',
       to: 'dicksonboateng@proton.me', 
       subject: `New message from ${name}`,
