@@ -1,6 +1,7 @@
 import Intro from "@/components/Intro"
 import BlogList from "@/components/BlogList"
 import { Metadata } from "next"
+import Projects from "@/components/Projects"
 
 export const metadata:Metadata = {
   title: "Dickson Boateng",
@@ -32,7 +33,8 @@ export default function HomePage() {
   return (
     <main className="max-w-3xl mx-auto py-10 text-gray-200">
       <Intro />
-      <BlogList/>
+      {/* <BlogList/> */}
+      <Projects/>
     </main>
   )
 }
