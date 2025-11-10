@@ -19,7 +19,7 @@ export default function Intro() {
 
         </p>
         <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
-          Computers are not very common in Ghanaian homes, so you can imagine how excited we were. 
+          Computers are not very common in most Ghanaian homes, so you can imagine how excited we were. 
         </p>
         <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
           At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.
