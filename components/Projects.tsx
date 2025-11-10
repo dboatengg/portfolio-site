@@ -106,7 +106,7 @@ const projects = [
   {
     title: 'Stride',
     description:
-      'A fully functional e-commerce store built to explore the complexity and features of modern online stores without relying on CMS tools.',
+      'A fully functional e-commerce store I built to explore the complexity and features of modern online stores without relying on CMS tools like WordPress.',
     image: '/images/featured-project-img.webp',
     href: '/projects/stride-ecommerce',
   },
