@@ -3,6 +3,7 @@ import BlogList from "@/components/BlogList"
 import { Metadata } from "next"
 import Projects from "@/components/Projects"
 import Contact from "@/components/Contact"
+import Skills from "@/components/Skills"
 
 export const metadata:Metadata = {
   title: "Dickson Boateng",
@@ -34,6 +35,7 @@ export default function HomePage() {
   return (
     <main className="max-w-3xl mx-auto py-10 text-gray-200">
       <Intro />
+      <Skills/>
       {/* <BlogList/> */}
       <Projects/>
       <Contact/>
