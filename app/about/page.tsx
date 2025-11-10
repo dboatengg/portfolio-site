@@ -13,29 +13,29 @@ export default function AboutPage() {
     <section className="max-w-3xl mx-auto py-10 space-y-8">
       <header>
         <h1 className="text-3xl font-bold mb-3">About</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Hey there, I’m <span className="font-semibold">Dickson Boateng</span>,
-          a software developer passionate about creating clean and
-          accessible digital experiences. I love building things
-          for the web, sharing my knowledge, and exploring new technologies.
-        </p>
       </header>
 
       <div>
-        <h2 className="text-xl font-semibold mb-4">Background</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-2">
-          I started my journey in programming/web development in October 2019, solely driven by a
-          curiosity for how mobile applications and websites work. Over time, I honed my
-          skills in front-end development, focusing on creating user-friendly and performant web applications.
+        <h2 className="text-xl font-semibold mb-2">Background</h2>
+        <p className="text-gray-300 dark:text-gray-400 mb-4">
+          Growing up with a personal computer at home sparked my curiosity about how computers work and what they can do. In high school, I chose General Science because I hoped to study Computer Science at university.
+          However, when it was time to choose university courses, I was offered Occupational Therapy instead. I decided to pursue it, even though it was not my first choice.
         </p>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-gray-300 dark:text-gray-400 mb-2">
+          My passion for computers never faded, so I eventually became a web developer instead of an occupational therapist. Even though my studies took me in another direction, I found my way back to working with computers. 
+        </p>
+        <p className="text-gray-300 dark:text-gray-400 mb-4">
+
+          I am grateful that I get to do what I love. I have collaborated with many developers and designers throughout my career to create websites and web applications that people use in their everyday lives.
+        </p>
+        <p className="text-gray-300 dark:text-gray-400">
           When I’m not coding, I enjoy writing articles about web development and personal growth. Sharing my experiences and
             insights with the <span className="text-blue-500 underline"><Link href="https://x.com/search?q=alege_dev&src=typed_query" target="_blank">tech community</Link></span> is something I find incredibly rewarding.
         </p>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">What I'm doing now</h2>
-        <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+        <ul className="space-y-2 list-disc list-inside text-gray-300 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
             <li>Working as a full-time remote web developer</li>        
             <li>I run a clothing brand/store [at] <span className="text-blue-500 underline"><Link href="https://www.boldpixelsgh.com">boldpixelsgh.com</Link></span>.</li>
             <li>Working on occasional freelance projects </li>        
@@ -45,8 +45,8 @@ export default function AboutPage() {
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-4">Fun Facts about me</h2>
-        <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
-            <li>I have never missed an episode of these podcasts: Darknet Diaries, What Now with Trevor Noah, and The Lex Fridman Podcast.</li>
+        <ul className="space-y-2 list-disc list-inside text-gray-300 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+            <li>I have never missed an episode of these podcasts: Darknet Diaries and What Now with Trevor Noah.</li>
             <li>I’ve watched every season of Black Mirror twice!</li>
             <li>I consider Pavel Durov (Telegram Founder & CEO) a mentor from afar. His discipline and philosophy deeply inspire me.</li>
         </ul>
@@ -54,7 +54,7 @@ export default function AboutPage() {
 
       <div>
         <h2 className="text-xl font-semibold mb-4">Publications</h2>
-        <ul className="space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
+        <ul className="space-y-2 list-disc list-inside text-gray-300 dark:text-gray-400 marker:text-neutral-500 dark:marker:text-neutral-400">
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/" target="_blank">Asynchronous Programming in JavaScript – Guide for Beginners</Link></li>
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/context-api-in-react/" target="_blank">How to Use the React Context API in Your Projects</Link></li>
             <li className="text-blue-500 underline"><Link href="https://www.freecodecamp.org/news/javascript-dom/" target="_blank">How the Document Object Model Works in JavaScript</Link></li>
