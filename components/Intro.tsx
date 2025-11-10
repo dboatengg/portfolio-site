@@ -15,7 +15,7 @@ export default function Intro() {
         <p className="text-gray-300 leading-relaxed max-w-2xl mb-6">
         
           Hi, I'm Dickson—a frontend developer from Ghana. 
-          My journey began in 2012, back when I was in JHS 2 and my father surprised my younger brother and me with our first computer. 
+          My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. 
 
         </p>
         <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
