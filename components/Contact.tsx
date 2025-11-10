@@ -1,128 +1,8 @@
-// 'use client';
-
-// import { useState } from 'react';
-// import { Github, Linkedin, Twitter } from 'lucide-react';
-
-// export default function Contact() {
-//   const [form, setForm] = useState({ name: '', email: '', message: '' });
-//   const [submitted, setSubmitted] = useState(false);
-
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-//     setForm({ ...form, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     // For now, just simulate submission
-//     setSubmitted(true);
-//     setForm({ name: '', email: '', message: '' });
-//   };
-
-//   return (
-//     <section id="contact" className="mb-24 w-full max-w-2xl mx-auto text-center">
-//       <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">Let’s Connect</h2>
-//       <p className="text-gray-400 mb-10">
-//         Have a project in mind or just want to say hi? I’d love to hear from you.
-//       </p>
-
-//       {!submitted ? (
-//         <form
-//           onSubmit={handleSubmit}
-//           className="flex flex-col gap-5 text-left bg-gray-900/40 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-lg"
-//         >
-//           <div>
-//             <label htmlFor="name" className="block text-sm text-gray-400 mb-1">
-//               Name
-//             </label>
-//             <input
-//               id="name"
-//               name="name"
-//               type="text"
-//               required
-//               value={form.name}
-//               onChange={handleChange}
-//               className="w-full p-3 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-500/30 outline-none transition"
-//             />
-//           </div>
-
-//           <div>
-//             <label htmlFor="email" className="block text-sm text-gray-400 mb-1">
-//               Email
-//             </label>
-//             <input
-//               id="email"
-//               name="email"
-//               type="email"
-//               required
-//               value={form.email}
-//               onChange={handleChange}
-//               className="w-full p-3 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-500/30 outline-none transition"
-//             />
-//           </div>
-
-//           <div>
-//             <label htmlFor="message" className="block text-sm text-gray-400 mb-1">
-//               Message
-//             </label>
-//             <textarea
-//               id="message"
-//               name="message"
-//               required
-//               rows={5}
-//               value={form.message}
-//               onChange={handleChange}
-//               className="w-full p-3 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-500/30 outline-none transition resize-none"
-//             />
-//           </div>
-
-//           <button
-//             type="submit"
-//             className="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-full transition-colors duration-300"
-//           >
-//             Send Message →
-//           </button>
-//         </form>
-//       ) : (
-//         <p className="text-green-400 text-lg mt-8">Thanks for reaching out! I’ll get back to you soon.</p>
-//       )}
-
-//       {/* Social Links */}
-//       <div className="flex justify-center gap-6 mt-10">
-//         <a
-//           href="https://github.com/yourusername"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="text-gray-400 hover:text-white transition"
-//         >
-//           <Github className="w-6 h-6" />
-//         </a>
-//         <a
-//           href="https://linkedin.com/in/yourusername"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="text-gray-400 hover:text-white transition"
-//         >
-//           <Linkedin className="w-6 h-6" />
-//         </a>
-//         <a
-//           href="https://twitter.com/yourusername"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="text-gray-400 hover:text-white transition"
-//         >
-//           <Twitter className="w-6 h-6" />
-//         </a>
-//       </div>
-//     </section>
-//   );
-// }
-
-
 'use client';
 
 import { useState, useTransition } from 'react';
 import { sendMessage } from '../app/actions/SendMessage';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Twitter, MessageCircle } from 'lucide-react';
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -153,7 +33,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="mb-24 w-full max-w-2xl mx-auto text-center">
+    <section id="contact" className="mb-12 w-full max-w-2xl mx-auto text-center">
       <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">Let’s Connect</h2>
       <p className="text-gray-400 mb-10">
         Have a project in mind or just want to say hi? I’d love to hear from you.
@@ -228,7 +108,7 @@ export default function Contact() {
       {/* Social Links */}
       <div className="flex justify-center gap-6 mt-10">
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/dboatengg"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-white transition"
@@ -236,7 +116,7 @@ export default function Contact() {
           <Github className="w-6 h-6" />
         </a>
         <a
-          href="https://linkedin.com/in/yourusername"
+          href="https://linkedin.com/in/dboatengx"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-white transition"
@@ -244,12 +124,12 @@ export default function Contact() {
           <Linkedin className="w-6 h-6" />
         </a>
         <a
-          href="https://twitter.com/yourusername"
+          href="https://wa.me/233532683209"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-white transition"
         >
-          <Twitter className="w-6 h-6" />
+          <MessageCircle className="w-6 h-6" />
         </a>
       </div>
     </section>
