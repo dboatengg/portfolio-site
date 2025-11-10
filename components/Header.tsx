@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Moon, Sun } from "lucide-react"
+// import { Moon, Sun } from "lucide-react"
 import Logo from "./Logo"
 
 export default function Header() {
@@ -20,12 +20,12 @@ export default function Header() {
     }
   }, [])
 
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light"
-    setTheme(newTheme)
-    document.documentElement.classList.toggle("dark", newTheme === "dark")
-    localStorage.setItem("theme", newTheme)
-  }
+  // const toggleTheme = () => {
+  //   const newTheme = theme === "light" ? "dark" : "light"
+  //   setTheme(newTheme)
+  //   document.documentElement.classList.toggle("dark", newTheme === "dark")
+  //   localStorage.setItem("theme", newTheme)
+  // }
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-neutral-900/70 border-b border-neutral-800">
@@ -39,9 +39,9 @@ export default function Header() {
           >
             Blog
           </Link>
-          <Link href="/projects" className="hover:text-white transition-colors">
+          {/* <Link href="/projects" className="hover:text-white transition-colors">
             Projects
-          </Link>
+          </Link> */}
           <Link href="/about" className="hover:text-white transition-colors">
             About
           </Link>
