@@ -60,7 +60,7 @@ export default function Intro() {
       </div> */}
       {/* Right Section - Profile Image */}
       <div className="flex-shrink-0">
-        <div className="relative group mx-auto md:mx-0 flex-shrink-0 w-fit">
+        <div className="relative mx-auto md:mx-0 flex-shrink-0 w-fit">
           <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 rounded-sm md:rounded-full overflow-hidden border border-gray-700 shadow-lg shadow-black/30">
             <Image
               src="/images/profile-img.webp"
@@ -71,8 +71,8 @@ export default function Intro() {
               priority
             />
           </div>
-          <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-xs text-gray-200 bg-gray-900/90 border border-gray-700 rounded-md px-3 py-1 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
-            AI-enhanced image
+          <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-gray-200 bg-gray-900/90 border border-gray-700 rounded-md px-3 py-1 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
+            Image has been enhanced with AI
           </span>
         </div>
       </div>
