@@ -113,7 +113,7 @@ const projects = [
   {
     title: 'Landing Page Collection',
     description:
-      'I wanted to test how far I could push myself by recreating some of the stunning websites I have seen on SaaS Landing Pages — all with code.',
+      'I wanted to test how far I could push myself by recreating some of the stunning websites I have seen on SaaS Landing Pages with code.',
     image: '/images/featured-project-img.webp',
     href: '/projects/landing-page-collection',
   },

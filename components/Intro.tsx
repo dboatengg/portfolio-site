@@ -13,13 +13,19 @@ export default function Intro() {
         <p className="text-gray-400 text-lg mb-4">Frontend Developer</p>
 
         <p className="text-gray-300 leading-relaxed max-w-2xl mb-6">
-          Hey there — I’m Dickson, a frontend developer passionate about building
-          fast, delightful, and accessible web experiences. I enjoy crafting
-          elegant interfaces that blend solid engineering with great user
-          experience.
+        
+          Hi, I'm Dickson—a frontend developer from Ghana. 
+          My journey began in 2012, back when I was in JHS 2 and my father surprised my younger brother and me with our first computer. 
+
+        </p>
+        <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
+          Computers are not very common in Ghanaian homes, so you can imagine how excited we were. 
+        </p>
+        <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
+          At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.
         </p>
 
-        <p className="text-gray-300 leading-relaxed max-w-2xl">
+        {/* <p className="text-gray-300 leading-relaxed max-w-2xl">
           I build with:
           <span className="text-gray-100 font-medium">
             {' '}
@@ -27,7 +33,7 @@ export default function Intro() {
             Git/GitHub • Advanced WordPress Development
           </span>
           .
-        </p>
+        </p> */}
                 {/* Learn More Button */}
         <div className="mt-6">
           <a
