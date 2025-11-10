@@ -47,7 +47,7 @@ export default function Intro() {
 
       {/* Right Section - Profile Image */}
       <div className="flex-shrink-0">
-        <div className="relative w-80 h-100 md:w-50 md:h-85 rounded-sm md:rounded-full overflow-hidden border border-gray-700 shadow-lg shadow-black/30">
+        {/* <div className="relative w-80 h-100 md:w-50 md:h-85 rounded-sm md:rounded-full overflow-hidden border border-gray-700 shadow-lg shadow-black/30">
           <Image
             src="/images/profile-img.webp" 
             alt="Dickson Boateng"
@@ -56,7 +56,18 @@ export default function Intro() {
             sizes="(max-width: 768px) 224px, (max-width: 1024px) 256px, 400px"
             priority
           />
-        </div>
+        </div> */}
+        <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 lg:w-50 lg:h-96 rounded-sm md:rounded-full overflow-hidden border border-gray-700 shadow-lg shadow-black/30 mx-auto md:mx-0">
+          <Image
+            src="/images/profile-img.webp"
+            alt="Dickson Boateng"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+            priority
+          />
+      </div>
+
       </div>
     </section>
   );
