@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Intro() {
   return (
-    <section className="mb-24 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+    <section className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10">
       {/* Left Section - Text */}
       <div className="flex-1">
         <h1 className="text-4xl md:text-5xl font-semibold text-white mb-2">
