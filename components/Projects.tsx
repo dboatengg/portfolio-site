@@ -10,7 +10,7 @@ const projects = [
     title: 'Portfolio Website',
     description:
       'I built this portfolio site from the ground up to showcase my work, explore some blog ideas, and experiment with Next.js, React 19, and Tailwind CSS.',
-    image: '/images/featured-project01.jpg',
+    image: '/images/featured-project01.webp',
     href: '/projects/portfolio-website',
   },
   {
