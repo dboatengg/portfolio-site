@@ -37,7 +37,7 @@ export const projects: Project[] = [
     title: "Portfolio Website",
     description:
       "I built this portfolio site to showcase major projects I've worked on and to serve as a playground for trying new tools and blog ideas.",
-    image: "/images/featured-project01.jpg",
+    image: "/images/featured-project01.webp",
     liveUrl: "https://dicksonboateng.com",
     githubUrl: "https://github.com/dboatengg/portfolio-site",
     intro:
