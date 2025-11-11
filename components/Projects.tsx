@@ -100,7 +100,7 @@ const projects = [
     title: 'Personal Portfolio Website',
     description:
       'I designed and built this portfolio from the ground up to showcase my work, share my journey, and experiment with Next.js, React 19, and Tailwind CSS.',
-    image: '/images/featured-project01.webp',
+    image: '/images/featured-project01.jpg',
     href: '/projects/portfolio-website',
   },
   {
