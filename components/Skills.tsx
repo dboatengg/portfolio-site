@@ -29,7 +29,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="mb-24">
-      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
+      <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6">
         Skills & Tools
       </h2>
 

@@ -34,7 +34,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mb-12 w-full max-w-2xl mx-auto text-center">
-      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">Let’s Connect</h2>
+      <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Let’s Connect</h2>
       <p className="text-gray-400 mb-10">
         Have a project in mind or just want to say hi? I’d love to hear from you.
       </p>

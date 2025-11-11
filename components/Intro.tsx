@@ -7,7 +7,7 @@ export default function Intro() {
     <section className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10">
       {/* Left Section - Text */}
       <div className="flex-1">
-        <h1 className="text-4xl md:text-5xl font-semibold text-white mb-2">
+        <h1 className="text-3xl md:text-4xl font-semibold text-white mb-2">
           Dickson Boateng
         </h1>
         <p className="text-gray-400 text-lg mb-4">Frontend Developer</p>
@@ -45,19 +45,6 @@ export default function Intro() {
         </div>
       </div>
 
-      {/* Right Section - Profile Image */}
-      {/* <div className="flex-shrink-0">
-        <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 lg:w-50 lg:h-96 rounded-sm md:rounded-full overflow-hidden border border-gray-700 shadow-lg shadow-black/30 mx-auto md:mx-0">
-          <Image
-            src="/images/profile-img.webp"
-            alt="Dickson Boateng"
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
-            priority
-          />
-      </div>
-      </div> */}
       {/* Right Section - Profile Image */}
       <div className="flex-shrink-0">
         <div className="relative mx-auto md:mx-0 flex-shrink-0 w-fit">

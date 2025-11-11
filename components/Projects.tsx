@@ -122,7 +122,7 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" className="mb-24">
-      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8">
+      <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8">
         Featured Projects
       </h2>
 
