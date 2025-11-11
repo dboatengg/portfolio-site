@@ -19,8 +19,8 @@ export const projects: Project[] = [
     description:
       "A custom-built online shoe store focused on modern design, dynamic product handling, and smooth checkout flow.",
     image: "/images/featured-project02.webp",
-    liveUrl: "https://stride.dicksonboateng.com",
-    githubUrl: "https://github.com/dicksonboateng/stride",
+    liveUrl: "#",
+    githubUrl: "#",
     intro:
       "Stride was born from my curiosity about what it takes to build a complete e-commerce platform from scratch — without relying on WordPress or prebuilt systems.",
     purpose:
