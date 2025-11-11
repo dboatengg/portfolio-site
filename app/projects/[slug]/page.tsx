@@ -39,11 +39,28 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         </div>
       </header>
 
-      {/* Introduction */}
-      <section>
-        <h2 className="text-2xl font-semibold text-white mb-3">Introduction</h2>
-        <p className="text-gray-300 leading-relaxed">{project.intro}</p>
-      </section>
+              {/* Tech Stack */}
+        {project.techStack && project.techStack.length > 0 && (
+        <section>
+            <h2 className="text-2xl font-semibold text-white mb-3">Tech Stack</h2>
+            <ul className="flex flex-wrap gap-3">
+            {project.techStack.map((tech) => (
+                <li
+                key={tech}
+                className="px-3 py-1 text-sm border border-gray-700 text-gray-300 rounded-md bg-gray-800/40"
+                >
+                {tech}
+                </li>
+            ))}
+            </ul>
+        </section>
+        )}
+
+            {/* Introduction */}
+            <section>
+              <h2 className="text-2xl font-semibold text-white mb-3">Introduction</h2>
+              <p className="text-gray-300 leading-relaxed">{project.intro}</p>
+            </section>
 
       {/* Purpose & Goal */}
       <section>
@@ -62,6 +79,8 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         <h2 className="text-2xl font-semibold text-white mb-3">Lessons Learned</h2>
         <p className="text-gray-300 leading-relaxed">{project.lessons}</p>
       </section>
+
+      
 
       {/* Links */}
       <section className="flex flex-wrap gap-4 pt-6 border-t border-gray-800">

@@ -34,7 +34,7 @@ export default function Skills() {
       </h2>
 
       <p className="text-gray-400 mb-10 max-w-2xl">
-        A selection of the technologies and tools I use to build.
+        A selection of the technologies and tools I use to build applications.
       </p>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
