@@ -100,21 +100,21 @@ const projects = [
     title: 'Personal Portfolio Website',
     description:
       'I designed and built this portfolio from the ground up to showcase my work, share my journey, and experiment with Next.js, React 19, and Tailwind CSS.',
-    image: '/images/featured-project-img.webp',
+    image: '/images/featured-project01.webp',
     href: '/projects/portfolio-website',
   },
   {
     title: 'Stride',
     description:
       'A fully functional e-commerce store I built to explore the complexity and features of modern online stores without relying on CMS tools like WordPress.',
-    image: '/images/featured-project-img.webp',
+    image: '/images/featured-project02.webp',
     href: '/projects/stride-ecommerce',
   },
   {
     title: 'Landing Page Collection',
     description:
       'I wanted to test how far I could push myself by recreating some of the stunning websites I have seen on SaaS Landing Pages with code.',
-    image: '/images/featured-project-img.webp',
+    image: '/images/featured-project03.webp',
     href: '/projects/landing-page-collection',
   },
 ];
