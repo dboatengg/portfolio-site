@@ -17,18 +17,18 @@ export const projects: Project[] = [
     slug: "stride-ecommerce",
     title: "Stride - E-Commerce Platform",
     description:
-      "A custom-built online shoe store focused on modern design, dynamic product handling, and smooth checkout flow.",
+      "A online shoe ecommerce store focused on modern design, dynamic product handling, and smooth checkout flow.",
     image: "/images/featured-project02.webp",
     liveUrl: "#",
     githubUrl: "#",
     intro:
-      "Stride was born from my curiosity about what it takes to build a complete e-commerce platform from scratch — without relying on WordPress or prebuilt systems.",
+      "I built Stride out of curiosity to find out how complex it would be build a fully functional E-commerce platform without relying on WordPress or prebuilt systems.",
     purpose:
-      "The main goal was to challenge myself to build a robust and scalable online store entirely with code. I wanted to understand the architecture behind real-world e-commerce systems — cart state, checkout logic, product data, and API communication.",
+      "The main goal was to challenge myself to build a robust and scalable online store entirely with code. I wanted to understand the architecture behind real-world e-commerce systems, things like: cart state, checkout logic, product data, and API communication.",
     spotlight:
-      "The standout feature is the custom shopping cart system, which maintains persistent cart state across sessions and syncs seamlessly with the checkout flow. It’s fast, intuitive, and written with reusable React hooks.",
+      "The standout feature is the custom shopping cart system, which maintains persistent cart state across sessions and syncs seamlessly with the checkout flow.",
     lessons:
-      "This project taught me a great deal about managing state effectively in larger applications, handling asynchronous operations, and creating a UX that feels effortless. It also reinforced the importance of balancing design, performance, and maintainability.",
+      "This project taught me a great deal about managing state effectively in larger applications, handling asynchronous operations, and creating a UX that feels effortless.",
         techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
 
   },
