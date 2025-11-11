@@ -97,7 +97,7 @@ import Link from 'next/link';
 
 const projects = [
   {
-    title: 'Personal Portfolio Website',
+    title: 'Portfolio Website',
     description:
       'I designed and built this portfolio from the ground up to showcase my work, share my journey, and experiment with Next.js, React 19, and Tailwind CSS.',
     image: '/images/featured-project01.jpg',
@@ -110,13 +110,13 @@ const projects = [
     image: '/images/featured-project02.webp',
     href: '/projects/stride-ecommerce',
   },
-  {
-    title: 'Landing Page Collection',
-    description:
-      'I wanted to test how far I could push myself by recreating some of the stunning websites I have seen on SaaS Landing Pages with code.',
-    image: '/images/featured-project03.webp',
-    href: '/projects/landing-page-collection',
-  },
+  // {
+  //   title: 'Landing Page Collection',
+  //   description:
+  //     'I wanted to test how far I could push myself by recreating some of the stunning websites I have seen on SaaS Landing Pages with code.',
+  //   image: '/images/featured-project03.webp',
+  //   href: '/projects/landing-page-collection',
+  // },
 ];
 
 export default function Projects() {
@@ -159,8 +159,8 @@ export default function Projects() {
               {/* Learn More Button */}
               <Link
                 href={project.href}
-                className="inline-block mt-auto px-4 py-2 text-sm font-medium text-white border border-gray-700 rounded-full hover:bg-gray-800 hover:border-gray-600 transition-colors duration-300 self-start opacity-70 cursor-not-allowed"
-                onClick={(e) => e.preventDefault()} // disables navigation for now
+                className="inline-block mt-auto px-4 py-2 text-sm font-medium text-white border border-gray-700 rounded-full hover:bg-gray-800 hover:border-gray-600 transition-colors duration-300 self-start "
+                // onClick={(e) => e.preventDefault()} 
               >
                 Learn more →
               </Link>
