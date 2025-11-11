@@ -1,10 +1,17 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Intro() {
   return (
-    <section className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10">
+  <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"
+    >
+    {/* <section className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"> */}
       {/* Left Section - Text */}
       <div className="flex-1">
         <h1 className="text-3xl md:text-4xl font-semibold text-white mb-2">
@@ -64,6 +71,6 @@ export default function Intro() {
         </div>
       </div>
 
-    </section>
+    </motion.section>
   );
 }

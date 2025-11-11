@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react';
 import { sendMessage } from '../app/actions/SendMessage';
 import { Github, Linkedin, Twitter, MessageCircle } from 'lucide-react';
+import {motion} from 'framer-motion';
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -33,7 +34,17 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="mb-12 w-full max-w-2xl mx-auto text-center">
+    // <section id="contact" className="mb-12 w-full max-w-2xl mx-auto text-center">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true }}
+      id="contact"
+      className="mb-12 w-full max-w-2xl mx-auto text-center"
+    >
+  {/* Contact form JSX */}
+
       <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Let’s Connect</h2>
       <p className="text-gray-400 mb-10">
         Have a project in mind or just want to say hi? I’d love to hear from you.
@@ -132,6 +143,6 @@ export default function Contact() {
           <MessageCircle className="w-6 h-6" />
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 }
