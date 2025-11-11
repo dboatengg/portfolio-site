@@ -133,9 +133,9 @@ export default function Projects() {
             className="group relative border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-700 hover:bg-gray-900/50 transition-all duration-300 flex flex-col"
           >
             {/* Coming Soon Badge */}
-            <span className="absolute top-3 right-3 bg-yellow-500 text-black text-xs font-semibold px-3 py-1 rounded-full z-10">
+            {/* <span className="absolute top-3 right-3 bg-yellow-500 text-black text-xs font-semibold px-3 py-1 rounded-full z-10">
               Coming Soon
-            </span>
+            </span> */}
 
             {/* Project Image */}
             <div className="relative w-full h-56 md:h-64 overflow-hidden">
