@@ -29,7 +29,7 @@ export const projects: Project[] = [
       "The standout feature is the custom shopping cart system, which maintains persistent cart state across sessions and syncs seamlessly with the checkout flow.",
     lessons:
       "This project taught me a great deal about managing state effectively in larger applications, handling asynchronous operations, and creating a UX that feels effortless.",
-        techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
 
   },
     {
