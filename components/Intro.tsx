@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link  from 'next/link';
 
 export default function Intro() {
   return (
@@ -26,10 +27,10 @@ export default function Intro() {
 
         </p>
         <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
-          Computers are not very common in most Ghanaian homes, so you can imagine how excited we were. 
+          At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.
         </p>
         <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
-          At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.
+          Today, I specialize in building responsive and user-friendly web applications using modern technologies like Next.js, React, and TypeScript.
         </p>
 
         {/* <p className="text-gray-300 leading-relaxed max-w-2xl">
@@ -42,13 +43,16 @@ export default function Intro() {
           .
         </p> */}
                 {/* Learn More Button */}
-        <div className="mt-6">
-          <a
+        <div className="mt-6 flex flex-wrap gap-4">
+          <Link
             href="/about" 
             className="inline-block px-6 py-3 text-sm font-medium text-white border border-gray-700 rounded-full hover:bg-gray-800 hover:border-gray-600 transition-colors duration-300"
           >
-            Learn more about me →
-          </a>
+            Learn more →
+          </Link>
+            <a href="#projects" className="inline-block px-6 py-3 text-sm font-medium text-white border border-gray-700 rounded-full hover:bg-gray-800 hover:border-gray-600 transition-colors duration-300">
+            View my work →
+            </a>
         </div>
       </div>
 
