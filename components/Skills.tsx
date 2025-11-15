@@ -21,13 +21,11 @@ export default function Skills() {
     { name: 'TypeScript', icon: FileCode2 },
     { name: 'JavaScript', icon: Braces },
     { name: 'Tailwind CSS', icon: Palette },
-    { name: 'PHP', icon: Code2 },
     { name: 'PostgreSQL', icon: DatabaseBackup },
     { name: 'Prisma', icon: LoaderPinwheel },
     { name: 'WordPress', icon: Database },
-    // { name: 'Git', icon: GitBranch },
+    { name: 'PHP', icon: Code2 },
     { name: 'Git/GitHub', icon: Github },
-    // { name: 'Terminal', icon: Terminal },
   ];
 
   

@@ -30,19 +30,10 @@ export default function Intro() {
           At first, we just used it to play various computer games, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.
         </p>
         <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
-          Today, I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, TypeScript, etc.        
+          Today, I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, PostgreSQL, and Prisma.        
         </p>
 
-        {/* <p className="text-gray-300 leading-relaxed max-w-2xl">
-          I build with:
-          <span className="text-gray-100 font-medium">
-            {' '}
-            Next.js • React.js • JavaScript • TypeScript • Tailwind CSS • PHP •
-            Git/GitHub • Advanced WordPress Development
-          </span>
-          .
-        </p> */}
-                {/* Learn More Button */}
+
         <div className="mt-6 flex flex-wrap gap-4">
           <Link
             href="/about" 
