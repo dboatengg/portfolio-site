@@ -52,7 +52,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog | Dickson Boateng",
   description:
-    "Hi, I'm Dickson—a frontend developer from Ghana. My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. Computers are not very common in Ghanaian homes, so you can imagine how excited we were. At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.",
+    "Hi, I'm Dickson—a Software Developer from Ghana. My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. Computers are not very common in Ghanaian homes, so you can imagine how excited we were. At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.",
 };
 
 export default function BlogPage() {

@@ -18,11 +18,11 @@ export default function Intro() {
         <h1 className="text-3xl md:text-4xl font-semibold text-white mb-2">
           Dickson Boateng
         </h1>
-        <p className="text-gray-400 text-lg mb-4">Frontend Developer</p>
+        <p className="text-gray-400 text-lg mb-4">Software Developer</p>
 
         <p className="text-gray-300 leading-relaxed max-w-2xl mb-6">
         
-          Hi, I'm Dickson—a frontend developer from Ghana. 
+          Hi, I'm Dickson—a Software Developer from Ghana. 
           My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. 
 
         </p>

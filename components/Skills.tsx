@@ -9,8 +9,9 @@ import {
   GitBranch,
   Github,
   Palette,
-  Terminal,
+  LoaderPinwheel,
   Globe,
+  DatabaseBackup
 } from 'lucide-react';
 
 export default function Skills() {
@@ -21,11 +22,15 @@ export default function Skills() {
     { name: 'JavaScript', icon: Braces },
     { name: 'Tailwind CSS', icon: Palette },
     { name: 'PHP', icon: Code2 },
+    { name: 'PostgreSQL', icon: DatabaseBackup },
+    { name: 'Prisma', icon: LoaderPinwheel },
     { name: 'WordPress', icon: Database },
     // { name: 'Git', icon: GitBranch },
     { name: 'Git/GitHub', icon: Github },
     // { name: 'Terminal', icon: Terminal },
   ];
+
+  
 
   return (
     <section id="skills" className="mb-24">
