@@ -18,16 +18,14 @@ export default function AboutPage() {
       <div>
         <h2 className="text-xl font-semibold mb-2">Background</h2>
         <p className="text-gray-300 dark:text-gray-400 mb-4">
-          Growing up with a personal computer at home sparked my curiosity about how computers work and what they can do. In high school, I chose General Science because I hoped to study Computer Science at university.
-          However, when it was time to choose university courses, I was offered Occupational Therapy instead. I decided to pursue it, even though it was not my first choice.
-        </p>
+          Growing up with a personal computer at home sparked my curiosity about how computers work and what they can do. In high school, I did the General Science course hoping it would lead me to study Computer Science at university.</p>
+          <p className="text-gray-300 dark:text-gray-400 mb-4">However, when it came time for university admissions, I was offered a place in Occupational Therapy at the University of Ghana, a field quite different from what I had hoped for. Although it wasn't my first choice, I decided to embrace the opportunity and see where it would lead me. </p>
+        
         <p className="text-gray-300 dark:text-gray-400 mb-2">
-          My passion for computers never faded, so I eventually became a web developer instead of an occupational therapist. Even though my studies took me in another direction, I found my way back to working with computers. 
-        </p>
+          Still, my passion for computers never faded. While I was doing the degree, I kept learning about technology on my own, taking online courses, building small projects, and staying connected to the tech world. Even though my formal studies led me down a different path, my curiosity and persistence helped me find my way back to working with computers again.        </p>
         <p className="text-gray-300 dark:text-gray-400 mb-4">
-
-          I am grateful that I get to do what I love. I have collaborated with many developers and designers throughout my career to create websites and web applications that people use in their everyday lives.
-        </p>
+          Looking back, I’m glad I never gave up on my interest in technology. Today, I’m grateful to do what I love. I’ve had the chance to collaborate with developers and designers from different backgrounds. My journey wasn’t straightforward, but the skills and experiences I gained along the way have made me a better problem-solver and teammate in the tech world.
+          </p>
         <p className="text-gray-300 dark:text-gray-400">
           When I’m not coding, I enjoy writing articles about web development and personal growth. Sharing my experiences and
             insights with the <span className="text-blue-500 underline"><Link href="https://x.com/search?q=alege_dev&src=typed_query" target="_blank">tech community</Link></span> is something I find incredibly rewarding.
@@ -65,66 +63,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-4">Miscellaneous</h2>
             <p className="text-blue-500 underline"><Link href="/DicksonBoatengCV.pdf">Resume</Link></p>
       </div>
-      {/* <div>
-        <h2 className="text-xl font-semibold mb-4">Let’s connect</h2>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            href="https://twitter.com/owura_dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
-          >
-            <Twitter size={18} />
-            <span>Twitter</span>
-          </Link>
 
-          <Link
-            href="https://github.com/dboatengg"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
-          >
-            <Github size={18} />
-            <span>GitHub</span>
-          </Link>
-
-          <Link
-            href="https://www.linkedin.com/in/dboatengx/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-600 hover:text-blue-700 dark:text-gray-400 dark:hover:text-blue-500 transition-colors"
-          >
-            <Linkedin size={18} />
-            <span>LinkedIn</span>
-          </Link>
-
-          <Link
-            href="mailto:dicksonboateng@proton.me"
-            className="flex items-center gap-2 text-gray-600 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors"
-          >
-            <Mail size={18} />
-            <span>Email</span>
-          </Link>
-    <Link
-      href="https://wa.me/233532683209"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 text-gray-600 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-400 transition-colors"
-    >
-      <MessageCircle  size={18} />
-      <span>WhatsApp</span>
-    </Link>
-
-  
-    <Link
-      href="sms:+233532683209"
-      className="flex items-center gap-2 text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
-    >
-      <MessageCircle size={18} />
-      <span>Message</span>
-    </Link>
-        </div>
-      </div> */}
     </section>
   )
 }
