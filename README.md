@@ -1,6 +1,6 @@
 # Portfolio Site
 
-A portfolio and technical blog built with **Next.js 16**, **Tailwind CSS**, and **Contentlayer**.   It showcases my projects, thoughts, and writings software development & productivity.
+My portfolio and blog site built with **Next.js 16**, **Tailwind CSS**, and **Contentlayer**.   It showcases my key projects, my thoughts, and my writings on software development & productivity.
 
 ---
 
@@ -18,10 +18,10 @@ A portfolio and technical blog built with **Next.js 16**, **Tailwind CSS**, and 
 
 ## Tech Stack
 
-- Next.js 16 (Framework and routing)
-- React 19 (Component rendering)
-- Tailwind CSS (Styling and responsiveness)
-- Contentlayer (MDX content management )
+- Next.js 16
+- React 19
+- Tailwind CSS 
+- Contentlayer
 - Rehype Pretty Code
 - TypeScript
 
