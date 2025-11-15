@@ -22,4 +22,4 @@ $ npm run dev
 
 ## Cloning / Forking
 
-Please review the [license](/LICENSE) and remove all of my personal information (resume, blog posts, images, etc.).
+Please review the [license](/LICENSE.md) and remove all of my personal information (resume, blog posts, images, etc.).
