@@ -30,7 +30,7 @@ export default function Intro() {
           At first, we just used it to play various computer games, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.
         </p>
         <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
-          Today, I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, and TypeScript.        
+          Today, I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, TypeScript, etc.        
         </p>
 
         {/* <p className="text-gray-300 leading-relaxed max-w-2xl">
