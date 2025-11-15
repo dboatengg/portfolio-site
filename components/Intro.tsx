@@ -69,9 +69,9 @@ export default function Intro() {
               priority
             />
           </div>
-          <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-gray-200 bg-gray-900/90 border border-gray-700 rounded-md px-3 py-1 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
+          {/* <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-gray-200 bg-gray-900/90 border border-gray-700 rounded-md px-3 py-1 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
             Image has been enhanced with AI
-          </span>
+          </span> */}
         </div>
       </div>
 
