@@ -58,14 +58,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" >
+    <html lang="en" className="dark">
       <head>
         <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
         <link rel="icon" type="image/png" href="/icon-512.png" sizes="512x512" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
-        className={`${sora.variable} ${inter.variable} bg-neutral-50 text-gray-900 dark:bg-neutral-900 dark:text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300`}
+        className={`${sora.variable} ${inter.variable} dark:bg-neutral-900 dark:text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300`}
       >
           <div className="min-h-screen flex flex-col items-center">
             <Header />
