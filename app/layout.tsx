@@ -19,7 +19,7 @@ const sora = Sora({
 export const metadata: Metadata = {
   title: "Dickson Boateng",
   description:
-    "I'm Dickson Boateng, a software developer passionate about creating clean and performant web experiences.",
+    "I’m Dickson Boateng, a software developer from Ghana who enjoys building clean, responsive, and practical web interfaces with modern JavaScript tools.",
   metadataBase: new URL("https://dicksonboateng.com"),
   openGraph: {
     title: "Dickson Boateng ",
