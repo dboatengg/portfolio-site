@@ -38,9 +38,9 @@ export default function AboutPage() {
         <ul className="space-y-2 list-disc list-inside text-gray-300 dark:text-gray-300 marker:text-neutral-500 dark:marker:text-neutral-400">
             <li>Working as a full-time remote web developer</li>        
             <li>I run a clothing brand/store [at] <span className="text-blue-500 underline"><Link href="https://www.boldpixelsgh.com">boldpixelsgh.com</Link></span>.</li>
-            <li>Working on occasional freelance projects </li>        
+            {/* <li>Working on occasional freelance projects </li>         */}
             <li>Building production-ready side projects with NextJS</li>
-            <li>Learning Nodejs</li>
+            {/* <li>Learning Nodejs</li> */}
         </ul>
       </div>
       <div>
