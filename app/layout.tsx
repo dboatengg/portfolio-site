@@ -65,7 +65,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
-        className={`${sora.variable} ${inter.variable} dark:bg-neutral-900 dark:text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300`}
+        className={`${sora.variable} ${inter.variable} bg-neutral-900 dark:bg-neutral-900 text-gray-100 dark:text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300`}
       >
           <div className="min-h-screen flex flex-col items-center">
             <Header />
