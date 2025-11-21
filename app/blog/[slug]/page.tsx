@@ -131,6 +131,12 @@ export default async function BlogPost({
     },
   })
 
+  // --- Reading time (computed locally) ---
+  const plainText = source.replace(/<[^>]+>/g, "")
+  const wordCount = plainText.split(/\s+/).length
+  const readingMinutes = Math.ceil(wordCount / 200)
+  const readingTime = `${readingMinutes} min read`
+
   const date = frontmatter.date
     ? new Date(frontmatter.date).toISOString().split("T")[0]
     : undefined
@@ -156,8 +162,33 @@ export default async function BlogPost({
         <h1 className="!text-2xl sm:!text-3xl md:!text-4xl font-bold mb-3">
           {frontmatter.title}
         </h1>
-        {date && (
+        {/* {date && (
           <p className="text-[rgb(var(--muted-text))] text-sm">{formatDate(date)}</p>
+        )} */}
+
+        {/* Date + Reading time */}
+        <div className="flex items-center gap-3 text-[rgb(var(--muted-text))] text-sm">
+          {date && <span>{formatDate(date)}</span>}
+          <span>•</span>
+          <span>{readingTime}</span>
+        </div>
+
+
+
+        {/* TAGS */}
+        {frontmatter.tags && (
+          <div className="flex flex-wrap gap-2 mt-3">
+            {frontmatter.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 text-xs font-medium rounded-full 
+                bg-[rgb(var(--surface-solid))] text-[rgb(var(--muted-text))] 
+                dark:bg-zinc-800 dark:text-zinc-300"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
         )}
       </header>
       {content}
