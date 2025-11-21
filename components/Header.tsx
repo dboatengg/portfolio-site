@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 // import { Moon, Sun } from "lucide-react"
 import Logo from "./Logo"
+import ThemeToggle from "./ThemeToggle"
 
 export default function Header() {
   const [mounted, setMounted] = useState(false)
@@ -20,49 +21,30 @@ export default function Header() {
     }
   }, [])
 
-  // const toggleTheme = () => {
-  //   const newTheme = theme === "light" ? "dark" : "light"
-  //   setTheme(newTheme)
-  //   document.documentElement.classList.toggle("dark", newTheme === "dark")
-  //   localStorage.setItem("theme", newTheme)
-  // }
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-neutral-900/70 border-b border-neutral-800">
+    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[rgb(var(--bg)/0.7)] border-b border-[rgb(var(--border)/1)]">
       <nav className="max-w-4xl mx-auto flex items-center justify-between px-4 py-3">
+        
         <Link href="/"><Logo /></Link>
 
-        <div className="flex items-center gap-6 text-sm font-medium text-gray-400">
+        <div className="flex items-center gap-6 text-sm font-medium text-text">
           <Link
             href="/blog"
-            className="hover:text-white transition-colors"
+            className="hover:text-accent transition-colors "
           >
             Blog
           </Link>
-          {/* <Link href="/projects" className="hover:text-white transition-colors">
-            Projects
-          </Link> */}
-          <Link href="/about" className="hover:text-white transition-colors">
+
+          <Link
+            href="/about"
+            className="hover:text-accent transition-colors"
+          >
             About
           </Link>
-          {/* <Link href="/contact" className="hover:text-white transition-colors">
-            Contact
-          </Link> */}
-
-          {/* {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="ml-2 text-gray-400 hover:text-white transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun size={18} strokeWidth={1.75} />
-              ) : (
-                <Moon size={18} strokeWidth={1.75} />
-              )}
-            </button>
-          )} */}
+          <ThemeToggle/>
         </div>
+
       </nav>
     </header>
   )

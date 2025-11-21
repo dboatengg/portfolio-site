@@ -45,18 +45,18 @@ export default function Contact() {
     >
   {/* Contact form JSX */}
 
-      <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Let’s Connect</h2>
-      <p className="text-gray-400 mb-10">
+      <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-4">Let’s Connect</h2>
+      <p className="text-[rgb(var(--text))] mb-10">
         Have a project in mind or just want to say hi? I’d love to hear from you.
       </p>
 
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 text-left bg-gray-900/40 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-lg"
+          className="flex flex-col gap-5 text-left bg-[rgb(var(--surface-overlay))] border border-[rgb(var(--border))] rounded-2xl p-6 md:p-8 shadow-lg"
         >
           <div>
-            <label htmlFor="name" className="block text-sm text-gray-400 mb-1">
+            <label htmlFor="name" className="block text-sm text-[rgb(var(--text))] mb-1">
               Name
             </label>
             <input
@@ -66,12 +66,12 @@ export default function Contact() {
               required
               value={formState.name}
               onChange={handleChange}
-              className="w-full p-3 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-500/30 outline-none transition"
+              className="w-full p-3 bg-[rgb(var(--card))] text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm text-gray-400 mb-1">
+            <label htmlFor="email" className="block text-sm text-[rgb(var(--text))] mb-1">
               Email
             </label>
             <input
@@ -81,12 +81,12 @@ export default function Contact() {
               required
               value={formState.email}
               onChange={handleChange}
-              className="w-full p-3 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-500/30 outline-none transition"
+              className="w-full p-3 bg-[rgb(var(--card))] text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm text-gray-400 mb-1">
+            <label htmlFor="message" className="block text-sm text-[rgb(var(--text))] mb-1">
               Message
             </label>
             <textarea
@@ -96,7 +96,7 @@ export default function Contact() {
               rows={5}
               value={formState.message}
               onChange={handleChange}
-              className="w-full p-3 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-500/30 outline-none transition resize-none"
+              className="w-full p-3 bg-[rgb(var(--card))] text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
             />
           </div>
 
@@ -105,7 +105,7 @@ export default function Contact() {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full py-3 font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-full transition-colors duration-300 disabled:opacity-60"
+            className="w-full py-3 font-medium text-[rgb(var(--accent-foreground))] bg-[rgb(var(--accent))] hover:bg-[rgb(var(--bg)/0.5)] rounded-full transition-colors duration-300 disabled:opacity-60"
           >
             {isPending ? 'Sending...' : 'Send Message →'}
           </button>
@@ -117,12 +117,12 @@ export default function Contact() {
       )}
 
       {/* Social Links */}
-      <div className="flex justify-center gap-6 mt-10">
+      <div className="flex justify-center gap-6 mt-10 text-[rgb(var(--text))]">
         <a
           href="https://github.com/dboatengg"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 hover:text-white transition"
+          className="text-[rgb(var(--text))] hover:text-[rgb(var(--text)/0.5)] transition"
         >
           <Github className="w-6 h-6" />
         </a>
@@ -130,7 +130,7 @@ export default function Contact() {
           href="https://linkedin.com/in/dboatengx"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 hover:text-white transition"
+          className="text-[rgb(var(--text))] hover:text-[rgb(var(--text)/0.5)] transition"
         >
           <Linkedin className="w-6 h-6" />
         </a>
@@ -138,7 +138,7 @@ export default function Contact() {
           href="https://wa.me/233532683209"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 hover:text-white transition"
+          className="text-[rgb(var(--text))] hover:text-[rgb(var(--text)/0.5)] transition"
         >
           <MessageCircle className="w-6 h-6" />
         </a>

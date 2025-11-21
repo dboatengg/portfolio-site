@@ -1,31 +1,384 @@
 @import "tailwindcss";
 
-:root {
-  --font-sans: Inter, system-ui, sans-serif;
-  --font-mono: Geist Mono, monospace; 
+/* Dark mode selector for next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  font-family: var(--font-sans);
+/* ----- Light Mode (default) ----- */
+:root {
+  --font-inter: Inter, system-ui, sans-serif;
+  --font-mono: Geist Mono, monospace;
+
+  --bg: 247 247 247;
+  --card: 250 250 250;  
+  --text: 55 65 81;
+  --body-text: 75 85 99;    
+  --card: 250 250 250; 
+  --card-text: 31 41 55;
+  --border: 229 231 235;
+  --accent: 37 99 235;
+  --accent-foreground: 255 255 255;
+  --muted: 243 244 246;
+  --muted-text: 107 114 128;
+  --divide: 229 231 235; 
+
+
+  --surface-overlay: 255 255 255 / 0.6;
+  --surface-solid: 229 231 235; 
+
+
+
 }
+
+/* ----- Dark Mode ----- */
+.dark {
+  --bg: 23 23 23;
+  --card: 38 38 38; 
+  --text: 209 213 219;
+  --body-text: 209 213 219;   
+  --card: 38 38 38;
+  --card-text: 245 245 245;
+  --border: 38 38 38; 
+  --accent: 59 130 246;
+  --accent-foreground: 255 255 255;
+  --muted: 39 39 42;
+  --muted-text: 161 161 170;
+  --divide: 31 41 55; 
+  
+  --surface-overlay: 0 0 0 / 0.05; 
+  --surface-solid: 31 41 55;
+}
+
+::selection {
+  background: rgb(var(--accent));
+  color: rgb(var(--accent-foreground));
+}
+
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 body {
-  font-family: var(--font-sans);
-  color: #e5e5e5; 
+  font-family: var(--font-inter);
+  color: rgb(var(--text));
+  background: rgb(var(--bg));
+  transition: background 0.3s, color 0.3s;
+}
+
+  /* Selection colors */
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--accent-foreground));
+  }
+
+  /* Base styles */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* body {
+    font-family: var(--font-inter);
+    color: rgb(var(--text));
+    background: rgb(var(--bg));
+    transition: background 0.3s, color 0.3s;
+  } */
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sora, var(--font-inter));
+  }
+/* }    */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.12s ease-out;
 }
 
 
 /* === SHIKI / REHYPE-PRETTY-CODE === */
-code, pre {
+.dark code,
+.dark pre {
+  font-family: var(--font-mono);
+}
+
+.dark .prose {
+  max-width: 70ch;
+  margin: 0 auto;
+  color: #e5e7eb; 
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+/* --- Headings --- */
+.dark .prose h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.dark .prose h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.25rem;
+}
+
+.dark .prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #f3f4f6;
+}
+
+/* --- Paragraphs & Text --- */
+.dark .prose p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #d1d5db;
+}
+
+.dark .prose strong {
+  color: #f9fafb;
+  font-weight: 600;
+}
+
+.dark .prose em {
+  font-style: italic;
+  color: #d1d5db;
+}
+
+/* --- Links --- */
+.dark .prose a {
+  color: #3b82f6; /* blue-500 */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.dark .prose a:hover {
+  color: #60a5fa; /* blue-400 */
+}
+
+/* Base code block container */
+.dark .prose pre {
+  background-color: #0d1117; /* GitHub dark background */
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 1.25rem;
+  border: 1px solid #1e293b;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Inline code */
+.dark .prose code:not(pre code) {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  color: #fbbf24; /* amber-400 */
+  font-family: "Fira Code", monospace;
+  font-size: 0.95rem;
+}
+
+/* Shiki line and token structure */
+.dark pre > code {
+  display: grid;
+  counter-reset: line;
+}
+
+/* Shiki line numbering support (optional) */
+.dark pre > code > span {
+  display: block;
+  padding-left: 0.75rem;
+}
+
+/* Highlighted line (from rehype-pretty-code) */
+.dark .highlighted {
+  background-color: rgba(255, 255, 255, 0.08);
+  display: block;
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+  border-left: 3px solid #3b82f6; /* Tailwind blue-500 */
+}
+
+/* Word highlight support */
+.dark .word-highlight {
+  background-color: rgba(59, 130, 246, 0.25);
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.25rem;
+}
+
+/* Subtle scrollbar for long code blocks */
+.dark .prose pre::-webkit-scrollbar {
+  height: 8px;
+}
+.dark .prose pre::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+.dark .prose pre::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* --- Lists --- */
+.dark .prose ul,
+.dark .prose ol {
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dark .prose li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dark .prose ul {
+  list-style-type: disc;
+}
+
+.dark .prose ol {
+  list-style-type: decimal;
+}
+
+.dark .prose ul li::marker,
+.dark .prose ol li::marker {
+  color: var(--tw-prose-bullets, #9ca3af); 
+}
+
+/* --- Blockquotes --- */
+.dark .prose blockquote {
+  border-left: 4px solid #3b82f6;
+  padding: 1rem 1.25rem;
+  color: #9ca3af;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.25rem;
+  margin: 1.5rem 0;
+  line-height: 1.6;
+}
+
+/* --- Images --- */
+.dark .prose img {
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Horizontal Rule --- */
+.dark .prose hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+/* === Shiki Token Colors === */
+.dark pre code .line {
+  color: #c9d1d9;
+}
+
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.cdata {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.dark .token.keyword {
+  color: #ff7b72;
+}
+
+.dark .token.string,
+.dark .token.char {
+  color: #a5d6ff;
+}
+
+.dark .token.function {
+  color: #d2a8ff;
+}
+
+.dark .token.parameter {
+  color: #ffa657;
+}
+
+.dark .token.number {
+  color: #79c0ff;
+}
+
+.dark .token.boolean {
+  color: #ff7b72;
+}
+
+.dark .token.operator {
+  color: #c9d1d9;
+}
+
+.dark .token.property {
+  color: #7ee787;
+}
+
+.dark .token.punctuation {
+  color: #c9d1d9;
+}
+
+/* Language badge */
+.dark figure[data-rehype-pretty-code-figure] {
+  position: relative;
+}
+
+/* Use pre[data-language] for the text */
+.dark figure[data-rehype-pretty-code-figure] pre[data-language]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  z-index: 2;
+
+  /* Badge styling */
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #93c5fd;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dark figure[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+  padding-right: 4rem; 
+  background: transparent;
+}
+
+.dark pre [data-highlighted-line] {
+  background-color: rgba(255, 255, 255, 0.08);
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+  border-left: 3px solid #3b82f6;
+}
+
+/* ===========================
+LIGHT MODE 
+================================= */
+code,
+pre {
   font-family: var(--font-mono);
 }
 
 .prose {
   max-width: 70ch;
   margin: 0 auto;
-  color: #e5e7eb; 
+  color: rgb(var(--body-text));
   line-height: 1.8;
   font-size: 1rem;
 }
@@ -37,6 +390,7 @@ code, pre {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   line-height: 1.3;
+  color: rgb(var(--text));
 }
 
 .prose h2 {
@@ -45,8 +399,9 @@ code, pre {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   line-height: 1.4;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 0.25rem;
+  color: rgb(var(--text));
 }
 
 .prose h3 {
@@ -54,55 +409,56 @@ code, pre {
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #f3f4f6;
+  color: rgb(var(--text));
 }
 
 /* --- Paragraphs & Text --- */
 .prose p {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: #d1d5db;
+  color: rgb(var(--body-text));
 }
 
 .prose strong {
-  color: #f9fafb;
+  color: rgb(var(--text));
   font-weight: 600;
 }
 
 .prose em {
   font-style: italic;
-  color: #d1d5db;
+  color: rgb(var(--body-text));
 }
 
 /* --- Links --- */
 .prose a {
-  color: #3b82f6; /* blue-500 */
+  color: rgb(var(--accent)); /* your blue-600 accent */
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
 }
-.prose a:hover {
-  color: #60a5fa; /* blue-400 */
-}
 
+.prose a:hover {
+  color: color-mix(in srgb, rgb(var(--accent)) 80%, black);
+}
 
 /* Base code block container */
 .prose pre {
-  background-color: #0d1117; /* GitHub dark background */
+  background-color: #f3f4f6; /* gray-100 */
   border-radius: 0.5rem;
   overflow-x: auto;
   padding: 1rem 1.25rem;
-  border: 1px solid #1e293b;
+  border: 1px solid #e5e7eb; /* gray-200 */
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  color: #111827; /* gray-900 text */
 }
 
 /* Inline code */
 .prose code:not(pre code) {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.08);
   padding: 0.15rem 0.35rem;
   border-radius: 0.25rem;
-  color: #fbbf24; /* amber-400 */
+  color: #b45309; /* amber-700 */
   font-family: "Fira Code", monospace;
   font-size: 0.95rem;
 }
@@ -110,39 +466,42 @@ code, pre {
 /* Shiki line and token structure */
 pre > code {
   display: grid;
-    counter-reset: line;
+  counter-reset: line;
 }
 
-/* Shiki line numbering support (optional) */
+/* Shiki line numbering support */
 pre > code > span {
   display: block;
   padding-left: 0.75rem;
+  color: rgb(var(--body-text));
 }
 
-/* Highlighted line (from rehype-pretty-code) */
+/* Highlighted line */
 .highlighted {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.06);
   display: block;
   margin: 0 -1.25rem;
   padding: 0 1.25rem;
-  border-left: 3px solid #3b82f6; /* Tailwind blue-500 */
+  border-left: 3px solid rgb(var(--accent));
 }
 
-/* Word highlight support */
+/* Word highlight */
 .word-highlight {
-  background-color: rgba(59, 130, 246, 0.25);
+  background-color: rgba(37, 99, 235, 0.25); /* same blue accent but lighter */
   border-radius: 0.25rem;
   padding: 0.1rem 0.25rem;
 }
 
-/* Subtle scrollbar for long code blocks */
+/* Scrollbar */
 .prose pre::-webkit-scrollbar {
   height: 8px;
 }
+
 .prose pre::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
 }
+
 .prose pre::-webkit-scrollbar-track {
   background-color: transparent;
 }
@@ -159,6 +518,7 @@ pre > code > span {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
 .prose ul {
   list-style-type: disc;
 }
@@ -169,17 +529,15 @@ pre > code > span {
 
 .prose ul li::marker,
 .prose ol li::marker {
-  color: var(--tw-prose-bullets, #9ca3af); 
+  color: rgba(0, 0, 0, 0.45); /* readable marker color */
 }
 
 /* --- Blockquotes --- */
 .prose blockquote {
-  border-left: 4px solid #3b82f6;
-  /* padding: 1rem; */
+  border-left: 4px solid rgb(var(--accent));
   padding: 1rem 1.25rem;
-  color: #9ca3af;
-  /* font-style: italic; */
-  background-color: rgba(255, 255, 255, 0.05);
+  color: rgb(var(--body-text));
+  background-color: rgba(0, 0, 0, 0.04);
   border-radius: 0.25rem;
   margin: 1.5rem 0;
   line-height: 1.6;
@@ -198,64 +556,64 @@ pre > code > span {
 /* --- Horizontal Rule --- */
 .prose hr {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin: 2rem 0;
 }
 
-/* === Shiki Token Colors === */
+/* === Shiki Token Colors (LIGHT) === */
 pre code .line {
-  color: #c9d1d9;
+  color: #1f2937; /* gray-800 */
 }
 
 .token.comment,
 .token.prolog,
 .token.cdata {
-  color: #8b949e;
+  color: #6b7280; /* gray-500 */
   font-style: italic;
 }
 
 .token.keyword {
-  color: #ff7b72;
+  color: #b91c1c; /* red-700 */
 }
 
 .token.string,
 .token.char {
-  color: #a5d6ff;
+  color: #0369a1; /* sky-700 */
 }
 
 .token.function {
-  color: #d2a8ff;
+  color: #7c3aed; /* violet-600 */
 }
 
 .token.parameter {
-  color: #ffa657;
+  color: #92400e; /* amber-700 */
 }
 
 .token.number {
-  color: #79c0ff;
+  color: #1d4ed8; /* blue-700 */
 }
 
 .token.boolean {
-  color: #ff7b72;
+  color: #b91c1c; /* red-700 */
 }
 
 .token.operator {
-  color: #c9d1d9;
+  color: #374151; /* gray-700 */
 }
 
 .token.property {
-  color: #7ee787;
+  color: #15803d; /* green-700 */
 }
 
 .token.punctuation {
-  color: #c9d1d9;
+  color: #374151; /* gray-700 */
 }
+
 /* Language badge */
 figure[data-rehype-pretty-code-figure] {
   position: relative;
 }
 
-/* Use pre[data-language] for the text */
 figure[data-rehype-pretty-code-figure] pre[data-language]::before {
   content: attr(data-language);
   position: absolute;
@@ -267,11 +625,11 @@ figure[data-rehype-pretty-code-figure] pre[data-language]::before {
   padding: 0.15rem 0.5rem;
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: #93c5fd;
-  background-color: rgba(255, 255, 255, 0.08);
+  color: #1e40af; /* blue-800 */
+  background-color: rgba(0, 0, 0, 0.06);
   border-radius: 0.25rem;
   font-family: var(--font-mono);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 figure[data-rehype-pretty-code-figure] pre {
@@ -281,8 +639,8 @@ figure[data-rehype-pretty-code-figure] pre {
 }
 
 pre [data-highlighted-line] {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.06);
   margin: 0 -1.25rem;
   padding: 0 1.25rem;
-  border-left: 3px solid #3b82f6;
+  border-left: 3px solid rgb(var(--accent));
 }

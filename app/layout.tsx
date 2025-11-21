@@ -1,3 +1,4 @@
+import { ThemeProvider } from "next-themes"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import type { Metadata } from "next"
@@ -5,13 +6,13 @@ import { Inter, Sora } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 })
 
 const sora = Sora({
-  variable: "--font-sans",
+  variable: "--font-sora",
   subsets: ["latin"],
   display: "swap",
 })
@@ -58,20 +59,22 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" >
       <head>
         <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
         <link rel="icon" type="image/png" href="/icon-512.png" sizes="512x512" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
-        className={`${sora.variable} ${inter.variable} bg-neutral-900 dark:bg-neutral-900 text-gray-100 dark:text-gray-100 antialiased font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300`}
+        className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
       >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="min-h-screen flex flex-col items-center">
             <Header />
             <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8">{children}</main>
             <Footer />
           </div>
+        </ThemeProvider>
       </body>
     </html>
   )

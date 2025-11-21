@@ -12,36 +12,35 @@ export default function Intro() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"
     >
-    {/* <section className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"> */}
-      {/* Left Section - Text */}
+
       <div className="flex-1">
-        <h1 className="text-3xl md:text-4xl font-semibold text-white mb-2">
+        <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))] mb-2">
           Dickson Boateng
         </h1>
-        <p className="text-gray-400 text-lg mb-4">Software Developer</p>
+        <p className="text-[rgb(var(--muted-text))] text-lg mb-4">Software Developer</p>
 
-        <p className="text-gray-300 leading-relaxed max-w-2xl mb-6">
+        <p className="text-[rgb(var(--body-text))] leading-relaxed max-w-2xl mb-6">
         
           Hi, I'm Dickson—a Software Developer from Ghana. 
           My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. 
 
         </p>
-        <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
+        <p className='text-[rgb(var(--body-text))] leading-relaxed max-w-2xl mb-6'>
           At first, we just used it to play various computer games, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.
         </p>
-        <p className='text-gray-300 leading-relaxed max-w-2xl mb-6'>
+        <p className='text-[rgb(var(--body-text))] leading-relaxed max-w-2xl mb-6'>
           Today, I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, PostgreSQL, and Prisma.        
         </p>
 
 
-        <div className="mt-6 flex flex-wrap gap-4">
+        <div className="mt-6 flex flex-wrap gap-4 ">
           <Link
             href="/about" 
-            className="inline-block px-6 py-3 text-sm font-medium text-white border border-gray-700 rounded-full hover:bg-gray-800 hover:border-gray-600 transition-colors duration-300"
+            className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--border))] hover:bg-muted rounded-full transition-colors duration-300"
           >
             Learn more →
           </Link>
-            <a href="#projects" className="inline-block px-6 py-3 text-sm font-medium text-white border border-gray-700 rounded-full hover:bg-gray-800 hover:border-gray-600 transition-colors duration-300">
+            <a href="#projects" className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--border))] hover:bg-muted rounded-full transition-colors duration-300">
             View my work →
             </a>
         </div>
@@ -50,7 +49,7 @@ export default function Intro() {
       {/* Right Section - Profile Image */}
       <div className="flex-shrink-0">
         <div className="relative mx-auto md:mx-0 flex-shrink-0 w-fit">
-          <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 rounded-sm md:rounded-full overflow-hidden border border-gray-700 shadow-lg shadow-black/30">
+          <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 rounded-sm md:rounded-full overflow-hidden border border-[rgb(var(--border))] shadow-lg shadow-black/30">
             <Image
               src="/images/profile-img.webp"
               alt="Dickson Boateng"
@@ -60,9 +59,6 @@ export default function Intro() {
               priority
             />
           </div>
-          {/* <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-gray-200 bg-gray-900/90 border border-gray-700 rounded-md px-3 py-1 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
-            Image has been enhanced with AI
-          </span> */}
         </div>
       </div>
 

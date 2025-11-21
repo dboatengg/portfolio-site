@@ -73,7 +73,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="max-w-3xl mx-auto py-10 text-gray-200">
+    <main>
       <Intro />
       <Skills/>
       {/* <BlogList/> */}

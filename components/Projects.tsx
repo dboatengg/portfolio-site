@@ -32,7 +32,7 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" className="mb-24">
-      <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8">
+      <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-8">
         Featured Projects
       </h2>
 
@@ -44,7 +44,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
-            className="group relative border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-700 hover:bg-gray-900/50 transition-all duration-300 flex flex-col"
+            className="group relative border border-[rgb(var(--border))] rounded-2xl overflow-hidden hover:border-[rgb(var(--border)/0.8)] bg-[rgb(var(--surface-overlay))] shadow-lg transition-all duration-300 flex flex-col"
           >
             {/* Coming Soon Badge */}
             {/* <span className="absolute top-3 right-3 bg-yellow-500 text-black text-xs font-semibold px-3 py-1 rounded-full z-10">
@@ -63,17 +63,17 @@ export default function Projects() {
 
             {/* Project Details */}
             <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
+              <h3 className="text-xl font-semibold text-[rgb(var(--text))] mb-2 group-hover:text-[rgb(var(--text)/0.5)] transition-colors">
                 {project.title}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-[rgb(var(--text))] text-sm leading-relaxed mb-4 flex-1">
                 {project.description}
               </p>
 
               {/* Learn More Button */}
               <Link
                 href={project.href}
-                className="inline-block mt-auto px-4 py-2 text-sm font-medium text-white border border-gray-700 rounded-full hover:bg-gray-800 hover:border-gray-600 transition-colors duration-300 self-start "
+                className="inline-block mt-auto px-4 py-2 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--border))] rounded-full transition-colors duration-300 self-start "
                 // onClick={(e) => e.preventDefault()} 
               >
                 Learn more →

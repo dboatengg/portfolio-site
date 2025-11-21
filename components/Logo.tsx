@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import React from "react"
 
 export default function Logo() {
   return (
@@ -10,14 +9,31 @@ export default function Logo() {
         viewBox="0 0 100 100"
         width="32"
         height="32"
-        className="stroke-[5] stroke-gray-100 fill-none hover:stroke-white transition-all duration-300"
+        className="
+          stroke-[5]
+          fill-none
+          transition-all duration-300
+          
+          /* Light mode */
+          stroke-gray-900 
+          
+          /* Dark mode */
+          dark:stroke-gray-100
+          hover:stroke-black dark:hover:stroke-white
+        "
       >
-        {/* Outer balanced circle */}
+        {/* Outer circle */}
         <circle
           cx="50"
           cy="50"
           r="46"
-          className="stroke-neutral-700 transition-colors"
+          className="
+            /* Light mode */
+            stroke-gray-700 
+            
+            /* Dark mode */
+            dark:stroke-neutral-700
+          "
         />
 
         {/* Stylized “D” curve */}
@@ -28,7 +44,7 @@ export default function Logo() {
           strokeLinejoin="round"
         />
 
-        {/* “B” pulse (developer heartbeat line) */}
+        {/* “B” heartbeat line */}
         <path
           d="M65 40 h5 l3 5 l3 -10 l3 15"
           className="stroke-current"
@@ -37,9 +53,20 @@ export default function Logo() {
         />
       </svg>
 
-      <span className="text-xl font-semibold tracking-tight text-gray-100 hover:text-white transition-colors duration-300">
+      <span
+        className="
+          text-xl font-semibold tracking-tight
+          transition-colors duration-300 
+        
+          /* Light Mode */
+          text-gray-900 hover:text-black
+        
+          /* Dark Mode */
+          dark:text-gray-100 dark:hover:text-white
+        "
+      >
         Dickson
       </span>
     </div>
-  )
+  );
 }

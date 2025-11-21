@@ -157,7 +157,7 @@ export default async function BlogPost({
           {frontmatter.title}
         </h1>
         {date && (
-          <p className="text-gray-400 text-sm">{formatDate(date)}</p>
+          <p className="text-[rgb(var(--muted-text))] text-sm">{formatDate(date)}</p>
         )}
       </header>
       {content}
