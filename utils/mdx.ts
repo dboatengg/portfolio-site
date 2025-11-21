@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 import rehypePrettyCode from "rehype-pretty-code"
-// import type { Pluggable } from "unified"
+
 
 const postsDir = path.join(process.cwd(), "content", "blog")
 
