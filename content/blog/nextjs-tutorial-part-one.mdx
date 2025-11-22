@@ -9,7 +9,6 @@ tags:
   - JavaScript
   - Tutorials
   - Programming
-
 ---
 React is excellent for building user interfaces, but it doesn’t include many of the tools needed to build a full web application. 
 Out of the box, React doesn’t handle routing, server-side rendering, SEO optimization, API endpoints, or performance optimizations.
@@ -400,7 +399,7 @@ This is already the foundation of every real-world Next.js project.
 
 Now that your project has multiple pages, navigation, and a layout, it’s time to fetch real data. This is a crucial skill because our movie application project will rely heavily on fetching data from external APIs.
 
-In Next.js, data fetching works differently from plain React. Most data is fetched **on the server**, not in the browser. This gives you:
+In Next.js, data fetching works differently from plain React. Most data is fetched on the server, not in the browser. This gives you:
 
 - faster pages
 - quicker load times and smoother transitions
@@ -412,7 +411,7 @@ The key rule is:
 
 Let’s see how this works.
 
-### **Fetching Data in a Server Component**
+### Fetching Data in a Server Component
 
 Create a new route called `/posts`:
 
@@ -465,7 +464,7 @@ export default async function PostsPage() {
 
 Now, visit:
 
-**[http://localhost:3000/posts]()**
+[http://localhost:3000/posts]()
 
 You’ll see the posts list instantly. Next.js fetches the data on the server, builds the HTML, and sends a complete page to the browser.
 
@@ -477,7 +476,7 @@ But what if your data *does* change?
 
 Next.js gives you two simple ways to control how often your data should be updated.
 
-### **1. Update the data every X seconds**
+### 1. Update the data every X seconds
 
 If you want the page to update from time to time, add this at the top of your data fetching component or file:
 
@@ -493,7 +492,7 @@ Next.js will:
 
 This is great for pages that change occasionally, like “Latest Movies,” “Top Rated,” or any list that updates from time to time.
 
-### **2. Always fetch fresh data**
+### 2. Always fetch fresh data
 
 If your data changes constantly, or depends on the user (like notifications, dashboards, or live activity), you can disable caching completely:
 
@@ -514,7 +513,7 @@ These three rules are all you need to control how your application updates its d
 
 ## Dynamic Routes
 
-In the previous section, you learned how to fetch and display data using the JSONPlaceholder API. But what if you want users to click a post and see its full details on a separate page? This is where **dynamic routes** come in.
+In the previous section, you learned how to fetch and display data using the JSONPlaceholder API. But what if you want users to click a post and see its full details on a separate page? This is where dynamic routes come in.
 
 A dynamic route lets you generate pages like this:
 
@@ -529,7 +528,7 @@ A dynamic route lets you generate pages like this:
 
 Let’s see how this works.
 
-### **1. Create a Dynamic Folder:**
+### 1. Create a Dynamic Folder:
 
 In your `app` directory, create a new folder named `[id]` inside your `posts` folder like this:
 
@@ -670,7 +669,7 @@ export default function Error({ error, reset }: ErrorProps) {
 
 #### A few things to notice:
 
-- `error.js` **must** be a Client Component, so it needs `"use client"`.
+- `error.js` must be a Client Component, so it needs `"use client"`.
 - If something goes wrong in `page.tsx`, like a failed fetch, a bug in your code, or a network problem, Next.js will automatically show this error message to the user.
 - `reset()` lets the user retry the page, triggering a new data fetch.
 
@@ -704,7 +703,7 @@ In Next.js:
 
 This keeps your code clean and free of repetitive boilerplate, especially as pages grow more complex.
 
-## **Styling With Tailwind CSS**
+## Styling With Tailwind CSS
 
 Up to this point, we’ve added small inline styles here and there just to keep things readable. Now it’s time to introduce a better way to style your application.
 
@@ -812,22 +811,22 @@ Next.js comes with a built-in `<Image />` component for displaying images. It re
 
 Let’s walk through it step by step.
 
-### **1. Add an Image to Your Project**
+### 1. Add an Image to Your Project
 
-Place an image inside the `**public/**` folder at the root of your project. Anything inside `public/` can be used directly in your components.
+Place an image inside the `public/` folder at the root of your project. Anything inside `public/` can be used directly in your components.
 
 Example:
 
 ```lua
 public/
- └─ laptop.png
+ └─ test-image.png
 ```
 
-### **2. Use the Image in a Page**
+### 2. Use the Image in a Page
 
-Let’s display the image on the **About** page.
+Let’s display the image on the About page.
 
-Open `**app/about/page.tsx**` and update it:
+Open `app/about/page.tsx` and update it:
 
 ```jsx
 import Link from "next/link";
@@ -860,7 +859,7 @@ export default function About() {
 
 Now, when you visit the about page, you will see the image displayed there.
 
-**How It Works**
+How It Works
 
 - The image file sits inside the `public/` folder.
 - You reference it with `src="/laptop.png"`
