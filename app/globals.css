@@ -20,13 +20,13 @@
   --muted: 243 244 246;
   --muted-text: 107 114 128;
   --divide: 229 231 235; 
+  /* --ctrl-border: 209 213 219; */
+  --ctrl-border: 156 163 175; 
 
 
   --surface-overlay: 255 255 255 / 0.6;
-  --surface-solid: 229 231 235; 
-
-
-
+  /* --surface-solid: 229 231 235;  */
+  --surface-solid: 245 245 245; 
 }
 
 /* ----- Dark Mode ----- */
@@ -35,7 +35,8 @@
   --card: 38 38 38; 
   --text: 209 213 219;
   --body-text: 209 213 219;   
-  --card: 38 38 38;
+  /* --card: 38 38 38; */
+  --card: 38 38 38; /* neutral-800 */
   --card-text: 245 245 245;
   --border: 38 38 38; 
   --accent: 59 130 246;
@@ -43,7 +44,10 @@
   --muted: 39 39 42;
   --muted-text: 161 161 170;
   --divide: 31 41 55; 
-  
+  /* --ctrl-border: 209 213 219;  */
+  --ctrl-border: 82 82 82; /* neutral-600 */
+
+
   --surface-overlay: 0 0 0 / 0.05; 
   --surface-solid: 31 41 55;
 }
@@ -58,7 +62,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sora);
+  font-family: var(--font-inter);
   color: rgb(var(--text));
   background: rgb(var(--bg));
   transition: background 0.3s, color 0.3s;
@@ -75,12 +79,6 @@ body {
     scroll-behavior: smooth;
   }
 
-  /* body {
-    font-family: var(--font-inter);
-    color: rgb(var(--text));
-    background: rgb(var(--bg));
-    transition: background 0.3s, color 0.3s;
-  } */
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sora, var(--font-inter));

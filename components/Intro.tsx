@@ -36,11 +36,11 @@ export default function Intro() {
         <div className="mt-6 flex flex-wrap gap-4 ">
           <Link
             href="/about" 
-            className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--border))] hover:bg-muted rounded-full transition-colors duration-300"
+            className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] hover:bg-muted rounded-full transition-colors duration-300"
           >
             Learn more →
           </Link>
-            <a href="#projects" className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--border))] hover:bg-muted rounded-full transition-colors duration-300">
+            <a href="#projects" className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] hover:bg-muted rounded-full transition-colors duration-300">
             View my work →
             </a>
         </div>

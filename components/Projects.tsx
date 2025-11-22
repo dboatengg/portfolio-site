@@ -73,7 +73,7 @@ export default function Projects() {
               {/* Learn More Button */}
               <Link
                 href={project.href}
-                className="inline-block mt-auto px-4 py-2 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--border))] rounded-full transition-colors duration-300 self-start "
+                className="inline-block mt-auto px-4 py-2 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full transition-colors duration-300 self-start "
                 // onClick={(e) => e.preventDefault()} 
               >
                 Learn more →

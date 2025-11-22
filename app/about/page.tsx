@@ -16,8 +16,8 @@ export default function AboutPage() {
       </header>
 
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">Background</h2>
-        <p className="text-[rgb(var(--body-text))] dark:text-gray-300 mb-4 leading-relaxed">
+        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">Background</h2>
+        <p className="text-[rgb(var(--body-text))] mb-4 leading-relaxed">
           I didn’t start my career in a traditional Computer Science program. I began my university journey studying Occupational Therapy at the University of Ghana, an unexpected detour from my original plan to pursue tech. 
           </p>
           <p className="text-[rgb(var(--body-text))] mb-4 leading-relaxed">But even while studying that degree, I kept learning about technology on my own, taking online courses, building small projects, and staying connected to the tech communities on Twitter and Reddit.</p>
@@ -34,7 +34,7 @@ export default function AboutPage() {
         </p>
       </div>
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">What I'm doing now</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">What I'm doing now</h2>
         <ul className="space-y-2 list-disc list-inside text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
             <li>Working as a full-time remote web developer</li>        
             <li>I run a clothing brand/store [at] <span className="text-[rgb(var(--accent))] underline"><Link href="https://www.boldpixelsgh.com">boldpixelsgh.com</Link></span>.</li>
@@ -44,7 +44,7 @@ export default function AboutPage() {
         </ul>
       </div>
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">Fun Facts about me</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">Fun Facts about me</h2>
         <ul className="space-y-2 list-disc list-inside text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
             <li>I have never missed an episode from these podcasts: Darknet Diaries and What Now with Trevor Noah.</li>
             <li>I’ve watched every season of Black Mirror twice!</li>
@@ -53,7 +53,7 @@ export default function AboutPage() {
     </div>
 
       <div>
-        <h2 className="text-xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">Publications</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">Publications</h2>
         <ul className="space-y-2 list-disc list-inside text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
             <li className="text-[rgb(var(--accent))] underline"><Link href="https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/" target="_blank">Asynchronous Programming in JavaScript – Guide for Beginners</Link></li>
             <li className="text-[rgb(var(--accent))] underline"><Link href="https://www.freecodecamp.org/news/context-api-in-react/" target="_blank">How to Use the React Context API in Your Projects</Link></li>
@@ -62,7 +62,7 @@ export default function AboutPage() {
         </ul>
       </div>
             <div>
-        <h2 className="text-xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">Miscellaneous</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">Miscellaneous</h2>
             <p className="text-[rgb(var(--accent))] underline"><Link href="/DicksonBoatengCV.pdf">Resume</Link></p>
       </div>
 
