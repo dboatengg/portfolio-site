@@ -3,6 +3,7 @@ import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import type { Metadata } from "next"
 import { Inter, Sora } from "next/font/google"
+import CopyCode from "@/components/CopyCode"
 import "./globals.css"
 
 const inter = Inter({
@@ -71,7 +72,10 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="min-h-screen flex flex-col items-center">
             <Header />
-            <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8">{children}</main>
+            <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8">
+              <CopyCode/>
+              {children}
+              </main>
             <Footer />
           </div>
         </ThemeProvider>
