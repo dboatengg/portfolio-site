@@ -43,13 +43,13 @@ You can explore the full project here:
 Before we dive into it, let’s clarify a few important technical terms you’ll see throughout this tutorial. Understanding these will help you follow along more easily:
 
 - <b>Routing:</b> The process by which your application determines the page or content to display when a user visits a specific URL. In Next.js, routing is mostly file-based; you create folders and files, and each one automatically becomes a route in your app.
-- <b>Route</b>: A route is simply a specific URL path in your application, like /about, /contact, or /movies. URL paths such as /products/shoes are also routes. Each route represents a different page that a user can visit.
-- <b>App Router</b>: This refers to the setup in a Next.js application that controls how pages are created and connected within your project. Next.js reads the folders and files inside the app/ directory and automatically turns them into URLs. Each folder represents a segment of a route, and special files like page.tsx, layout.js, and loading.js tell Next.js how that part of the app should behave.
-- <b>Segment</b>: A segment is a single part of a route, and in the App Router, each segment is represented by a folder inside the app/ directory. For example, in the route /products/shoes, the segments are products and shoes.
+- <b>Route</b>: A route is simply a specific URL path in your application, like `/about`, `/contact`, or `/movies`. URL paths such as `/products/shoes` are also routes. Each route represents a different page that a user can visit.
+- <b>App Router</b>: This refers to the setup in a Next.js application that controls how pages are created and connected within your project. Next.js reads the folders and files inside the `app/` directory and automatically turns them into URLs. Each folder represents a segment of a route, and special files like `page.tsx`, `layout.tsx`, and `loading.tsx` tell Next.js how that part of the app should behave.
+- <b>Segment</b>: A segment is a single part of a route, and in the App Router, each segment is represented by a folder inside the `app/` directory. For example, in the route `/products/shoes`, the segments are <b>"products"</b> and <b>"shoes"</b>.
 
 ## What We’ll be Building
 
-In this tutorial, we’ll build a Movie  Browsing Application that has:
+In this tutorial, we’ll build a Movie  Browsing application that has:
 
 - A homepage
 - About page

@@ -48,7 +48,7 @@ export const Blog = defineDocumentType(() => ({
 const rehypeOptions = {
   theme: {
     dark: "one-dark-pro",
-    light: "github-light",
+    light: "min-light",
   },
   keepBackground: false,
   defaultLang: "js",

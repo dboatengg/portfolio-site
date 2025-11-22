@@ -35,7 +35,6 @@
   --card: 38 38 38; 
   --text: 209 213 219;
   --body-text: 209 213 219;   
-  /* --card: 38 38 38; */
   --card: 38 38 38; /* neutral-800 */
   --card-text: 245 245 245;
   --border: 38 38 38; 
@@ -44,9 +43,7 @@
   --muted: 39 39 42;
   --muted-text: 161 161 170;
   --divide: 31 41 55; 
-  /* --ctrl-border: 209 213 219;  */
-  --ctrl-border: 82 82 82; /* neutral-600 */
-
+  --ctrl-border: 82 82 82; 
 
   --surface-overlay: 0 0 0 / 0.05; 
   --surface-solid: 31 41 55;
@@ -187,18 +184,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* Shiki line and token structure */
-.dark pre > code {
-  display: grid;
-  counter-reset: line;
-}
-
-/* Shiki line numbering support (optional) */
-.dark pre > code > span {
-  display: block;
-  padding-left: 0.75rem;
-}
-
 /* Highlighted line (from rehype-pretty-code) */
 .dark .highlighted {
   background-color: rgba(255, 255, 255, 0.08);
@@ -281,55 +266,6 @@ body {
   margin: 2rem 0;
 }
 
-/* === Shiki Token Colors === */
-.dark pre code .line {
-  color: #c9d1d9;
-}
-
-.dark .token.comment,
-.dark .token.prolog,
-.dark .token.cdata {
-  color: #8b949e;
-  font-style: italic;
-}
-
-.dark .token.keyword {
-  color: #ff7b72;
-}
-
-.dark .token.string,
-.dark .token.char {
-  color: #a5d6ff;
-}
-
-.dark .token.function {
-  color: #d2a8ff;
-}
-
-.dark .token.parameter {
-  color: #ffa657;
-}
-
-.dark .token.number {
-  color: #79c0ff;
-}
-
-.dark .token.boolean {
-  color: #ff7b72;
-}
-
-.dark .token.operator {
-  color: #c9d1d9;
-}
-
-.dark .token.property {
-  /* color: #7ee787; */
-  color: #7ee787;
-}
-
-.dark .token.punctuation {
-  color: #c9d1d9;
-}
 
 /* DARK MODE – Copy button replaces language badge */
 .dark figure[data-rehype-pretty-code-figure] {
@@ -337,30 +273,40 @@ body {
 }
 
 /* Copy button (dark mode) */
+
+/* Copy button (ALWAYS VISIBLE) */
 .dark .copy-button {
   position: absolute;
   top: 0.5rem;
   right: 0.75rem;
-  z-index: 10;
-
-  padding: 0.25rem 0.45rem;
-  font-size: 0.75rem;
-
-  border-radius: 0.25rem;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
-  opacity: 0;
-
   background: rgb(var(--surface-solid) / 0.6);
   color: rgb(var(--accent-foreground));
   border: 1px solid rgb(var(--ctrl-border) / 0.3);
-
-  transition: opacity 0.2s ease, background 0.2s ease;
   backdrop-filter: blur(4px);
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
-.dark figure[data-rehype-pretty-code-figure]:hover .copy-button {
-  opacity: 1;
+/* Copy button icon sizing */
+.dark .copy-button svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  display: block;
 }
+
+/* Press state */
+.dark .copy-button:active { transform: translateY(1px); }
 
 .dark figure[data-rehype-pretty-code-figure] pre {
   overflow-x: auto;
@@ -378,7 +324,7 @@ body {
 /* ============================================================================
 LIGHT MODE 
 ===================================================================== */
-code,
+/* code,
 pre {
   font-family: var(--font-mono);
 }
@@ -389,7 +335,9 @@ pre {
   color: rgb(var(--body-text));
   line-height: 1.8;
   font-size: 1rem;
-}
+} */
+
+
 
 /* --- Headings --- */
 .prose h1 {
@@ -450,16 +398,20 @@ pre {
 }
 
 /* Base code block container */
-.prose pre {
-  background-color: #f3f4f6; /* gray-100 */
+.prose pre { 
   border-radius: 0.5rem;
   overflow-x: auto;
   padding: 1rem 1.25rem;
-  border: 1px solid #e5e7eb; /* gray-200 */
+  border: 1px solid #e5e7eb; 
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  color: #111827; /* gray-900 text */
 }
+
+
+.prose code:not(pre code) {
+  color: #b45309;
+}
+
 
 /* Inline code */
 .prose code:not(pre code) {
@@ -469,19 +421,6 @@ pre {
   color: #b45309; /* amber-700 */
   font-family: "Fira Code", monospace;
   font-size: 0.95rem;
-}
-
-/* Shiki line and token structure */
-pre > code {
-  display: grid;
-  counter-reset: line;
-}
-
-/* Shiki line numbering support */
-pre > code > span {
-  display: block;
-  padding-left: 0.75rem;
-  color: rgb(var(--body-text));
 }
 
 /* Highlighted line */
@@ -568,91 +507,45 @@ pre > code > span {
   margin: 2rem 0;
 }
 
-/* === Shiki Token Colors (LIGHT) === */
-pre code .line {
-  color: #1f2937; /* gray-800 */
-}
-
-.token.comment,
-.token.prolog,
-.token.cdata {
-  color: #6b7280; /* gray-500 */
-  font-style: italic;
-}
-
-.token.keyword {
-  color: #b91c1c; /* red-700 */
-}
-
-.token.string,
-.token.char {
-  color: #0369a1; /* sky-700 */
-}
-
-.token.function {
-  color: #7c3aed; /* violet-600 */
-}
-
-.token.parameter {
-  color: #92400e; /* amber-700 */
-}
-
-.token.number {
-  color: #1d4ed8; /* blue-700 */
-}
-
-.token.boolean {
-  color: #b91c1c; /* red-700 */
-}
-
-.token.operator {
-  color: #374151; /* gray-700 */
-}
-
-.token.property {
-  color: #15803d; /* green-700 */
-}
-
-.token.punctuation {
-  color: #374151; /* gray-700 */
-}
-
 /* Container styling */
 figure[data-rehype-pretty-code-figure] {
   position: relative;
 }
 
-/* Copy button */
+
+/* Copy button (ALWAYS VISIBLE) */
 .copy-button {
   position: absolute;
   top: 0.5rem;
   right: 0.75rem;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.4rem;
-  font-size: 0.75rem;
-  color: white;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
+  background: rgb(var(--accent));
   border: 1px solid rgba(255,255,255,0.15);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  color: rgb(var(--accent-foreground));
+  backdrop-filter: blur(4px);
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
-figure[data-rehype-pretty-code-figure]:hover .copy-button {
-  opacity: 1;
+/* Copy button icon sizing */
+.copy-button svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  display: block;
 }
 
-/* Light mode override */
-:root .copy-button {
-  /* background: rgba(0,0,0,0.05);
-  color: #111;
-  border: 1px solid rgba(0,0,0,0.1); */
-    background: rgb(var(--surface-solid) );
-  color: rgb(var(--accent));
-  border: 1px solid rgb(var(--ctrl-border) / 0.3);
-}
+/* Press state */
+.copy-button:active { transform: translateY(1px); }
 
 
 figure[data-rehype-pretty-code-figure] pre {
