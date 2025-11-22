@@ -38,29 +38,26 @@ export default async function ProjectPage({ params }: { params: { slug: string }
           />
         </div>
       </header>
-
-              {/* Tech Stack */}
+      
+      {/* Tech Stack */}
         {project.techStack && project.techStack.length > 0 && (
         <section>
             <h2 className="text-2xl font-semibold text-[rgb(var(--text))] mb-3">Tech Stack</h2>
             <ul className="flex flex-wrap gap-3">
             {project.techStack.map((tech) => (
-                <li
-                key={tech}
-                className="px-3 py-1 text-sm border border-[rgb(var(--border))] text-[rgb(var(--body-text))] rounded-md bg-[rgb(var(--surface-solid))]"
-                >
+              <li key={tech}
+                className="px-3 py-1 text-sm border border-[rgb(var(--border))] text-[rgb(var(--body-text))] rounded-md bg-[rgb(var(--surface-overlay))]">
                 {tech}
-                </li>
+              </li>
             ))}
             </ul>
         </section>
         )}
-
-            {/* Introduction */}
-            <section>
-              <h2 className="text-2xl font-semibold text-[rgb(var(--text)/0.9)] mb-3">Introduction</h2>
-              <p className="text-[rgb(var(--body-text))] leading-relaxed">{project.intro}</p>
-            </section>
+        {/* Introduction */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[rgb(var(--text)/0.9)] mb-3">Introduction</h2>
+          <p className="text-[rgb(var(--body-text))] leading-relaxed">{project.intro}</p>
+        </section>
 
       {/* Purpose & Goal */}
       <section>
@@ -87,7 +84,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         {project.liveUrl && (
           <Link
             href={project.liveUrl}
-            className="flex items-center gap-2 px-5 py-2 rounded-full border border-[rgb(var(--border))] text-sm text-[rgb(var(--text))] hover:bg-[rgb(var(--bg)/0.6)] transition"
+            className="flex items-center gap-2 px-5 py-2 rounded-full border border-[rgb(var(--ctrl-border))] text-sm text-[rgb(var(--text))] hover:bg-[rgb(var(--bg)/0.6)] transition"
             target="_blank"
           >
             <ExternalLink size={16}/> <span>View Live Site</span>
@@ -96,18 +93,12 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         {project.githubUrl && (
           <Link
             href={project.githubUrl}
-            className="flex items-center gap-2 px-5 py-2 rounded-full border border-[rgb(var(--border))] text-sm text-[rgb(var(--text))] hover:bg-[rgb(var(--bg)/0.6)] transition"
+            className="flex items-center gap-2 px-5 py-2 rounded-full border border-[rgb(var(--ctrl-border))] text-sm text-[rgb(var(--text))] hover:bg-[rgb(var(--bg)/0.6)] transition"
             target="_blank"
           >
-            <Github size={16}/> <span>View Source</span>
+            <Github size={16}/> <span>View Source Code</span>
           </Link>
         )}
-        {/* <Link
-          href="/#projects"
-          className="px-5 py-2 rounded-full border border-gray-700 text-sm text-gray-400 hover:text-white transition"
-        >
-          ← Back to Projects
-        </Link> */}
       </section>
     </article>
   );

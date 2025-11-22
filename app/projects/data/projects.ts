@@ -16,11 +16,13 @@ export const projects: Project[] = [
   {
     slug: "stride-ecommerce",
     title: "Stride - E-Commerce Platform",
+    // description:
+    //   "A online shoe ecommerce store focused on modern design, dynamic product handling, and smooth checkout flow.",
     description:
-      "A online shoe ecommerce store focused on modern design, dynamic product handling, and smooth checkout flow.",
+      "A online shoe ecommerce store - Kindly note that I'm not done working on this project.",
     image: "/images/featured-project02.webp",
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/dboatengg/stride-ecommerce-platform",
     intro:
       "I built Stride out of curiosity to find out how complex it would be build a fully functional E-commerce platform without relying on WordPress or prebuilt systems.",
     purpose:
@@ -29,7 +31,7 @@ export const projects: Project[] = [
       "The standout feature is the custom shopping cart system, which maintains persistent cart state across sessions and syncs seamlessly with the checkout flow.",
     lessons:
       "This project taught me a great deal about managing state effectively in larger applications, handling asynchronous operations, and creating a UX that feels effortless.",
-        techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
 
   },
     {
@@ -49,7 +51,5 @@ export const projects: Project[] = [
     lessons:
       "Through this project, I learned how to work with MDX files to create rich, flexible blog content, and how to automate communication workflows, such as sending contact form responses using Resend. ",
     techStack: ["Next.js","React","TypeScript","Tailwind CSS","Contentlayer","MDX","Shiki","Resend","Giscus","Framer Motion"],
-
-
   },
 ];
