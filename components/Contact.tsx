@@ -53,7 +53,7 @@ export default function Contact() {
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 text-left bg-[rgb(var(--surface-overlay))] border border-[rgb(var(--border))] rounded-2xl p-6 md:p-8 shadow-lg"
+          className="flex flex-col gap-5 text-left dark:bg-gray-900/70 border border-[rgb(var(--border))] rounded-2xl p-6 md:p-8 shadow-lg"
         >
           <div>
             <label htmlFor="name" className="block text-sm text-[rgb(var(--text))] mb-1">
@@ -66,7 +66,7 @@ export default function Contact() {
               required
               value={formState.name}
               onChange={handleChange}
-              className="w-full p-3 bg-[rgb(var(--card))] text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--ctrl-border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
+              className="w-full p-3 dark:bg-gray-700/40 text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--ctrl-border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
             />
           </div>
 
@@ -81,7 +81,7 @@ export default function Contact() {
               required
               value={formState.email}
               onChange={handleChange}
-              className="w-full p-3 bg-[rgb(var(--card))] text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--ctrl-border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
+              className="w-full p-3 dark:bg-gray-700/40 text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--ctrl-border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
             />
           </div>
 
@@ -96,7 +96,7 @@ export default function Contact() {
               rows={5}
               value={formState.message}
               onChange={handleChange}
-              className="w-full p-3 bg-[rgb(var(--card))] text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--ctrl-border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
+              className="w-full p-3 dark:bg-gray-700/40 text-[rgb(var(--text))] rounded-lg border border-[rgb(var(--ctrl-border))] focus:border-[rgb(var(--border)/0.4)] focus:ring focus:ring-blue-500/30 outline-none transition"
             />
           </div>
 
@@ -105,7 +105,7 @@ export default function Contact() {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full py-3 font-medium text-[rgb(var(--accent-foreground))] bg-[rgb(var(--accent))] hover:bg-[rgb(var(--bg)/0.5)] rounded-full transition-colors duration-300 disabled:opacity-60"
+            className="w-full py-3 font-medium text-[rgb(var(--accent-foreground))] bg-[rgb(var(--accent))] hover:bg-[rgb(var(--accent)/0.8)] rounded-full transition-colors duration-300 disabled:opacity-60"
           >
             {isPending ? 'Sending...' : 'Send Message →'}
           </button>

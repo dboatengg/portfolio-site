@@ -187,7 +187,7 @@ my-app/
  └─ next.config.js
 ```
 
-### <b>`app/`</b>
+### 1. <b>`app/`</b>
 
 This is the heart of your application. Every folder and file inside `app/` contributes to your routing system.
 
@@ -197,19 +197,19 @@ This is the heart of your application. Every folder and file inside `app/` contr
 
 You’ll spend most of your development time inside this `app/` folder.
 
-### `public/`
+### 2. `public/`
 
 A place for static files such as images, icons, and fonts. Anything inside this folder can be accessed directly through the browser.
 
-### `globals.css` 
+### 3. `globals.css` 
 
 Your global stylesheet. Any CSS code you place here applies to every page in the app. This file is also where Tailwind’s base styles are imported.
 
-### `package.json`
+### 4. `package.json`
 
 Tracks your project’s dependencies and scripts. When you run commands like `npm run dev`, this file is what makes it possible.
 
-### `next.config.js`
+### 5. `next.config.js`
 
 Your project’s configuration file. You’ll rarely need to touch it when starting out, but it becomes useful for optimizations and advanced features later.
 
@@ -520,7 +520,6 @@ A dynamic route lets you generate pages like this:
 /posts/1
 /posts/2
 /posts/3
-
 ```
 
 ...from just a single file. You don’t manually create a page for every post. Instead, you use a folder with square brackets to capture the part of the URL that changes.
@@ -554,7 +553,6 @@ export default async function PostDetailsPage({ params }: { params: { id: string
     </div>
   );
 }
-
 ```
 
 ### Link to Dynamic Pages:
@@ -639,7 +637,6 @@ app/
       ├─ page.tsx
       ├─ loading.tsx
       └─ error.tsx
-
 ```
 
 Add this inside `error.tsx`:

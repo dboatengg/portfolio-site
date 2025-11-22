@@ -44,10 +44,10 @@ export default function Skills() {
         {skills.map(({ name, icon: Icon }) => (
           <div
             key={name}
-            className="group flex flex-col items-center justify-center gap-3 bg-[rgb(var(--surface-overlay))] border border-[rgb(var(--border))] rounded-xl p-5 hover:border-gray-700 hover:bg-gray-900/70 transition-all duration-300"
+            className="group flex flex-col items-center justify-center gap-3 dark:bg-gray-900/70 rounded-xl p-5 border border-[rgb(var(--ctrl-border))] dark:border-gray-700 transition-all duration-300"
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[rgb(var(--surface-solid))] shadow-sm group-hover:bg-gray-700 transition">
-              <Icon className="w-6 h-6 text-[rgb(var(--body-text))] group-hover:text-[rgb(var(--body-text))]" />
+            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[rgb(var(--surface-solid))] shadow-sm transition">
+              <Icon className="w-6 h-6 text-[rgb(var(--body-text))]" />
             </div>
             <span className="text-[rgb(var(--body-text))] text-sm font-medium">{name}</span>
           </div>
