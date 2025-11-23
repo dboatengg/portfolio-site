@@ -1607,3 +1607,95 @@ By updating these final pieces, your application now includes:
 - loading/error handling
 - optimized images
 - and a clean, modern UI
+
+## Deploying Your Next.js App
+
+Once your Movie App is complete, the final step is to put it online so others can use it. The easiest and most reliable way to deploy a Next.js application is through **Vercel**, the platform created by the same team behind Next.js.
+
+Deployment takes only a few minutes.
+
+### 1. Push Your Project to GitHub
+
+If you haven’t already, initialize a Git repository:
+
+```
+git init git add . 
+git commit -m "Initial commit"
+```
+
+Then create a new GitHub repository and push your project:
+
+```
+git branch -M main 
+git remote add origin https://github.com/your-username/your-repo-name.git 
+git push -u origin main
+```
+
+
+### 2. Deploy to Vercel
+
+1. Go to [https://vercel.com/](https://vercel.com/)
+2. Sign in using GitHub
+3. Click “New Project”
+4. Select the repository you just pushed 
+5. Vercel will detect that it’s a Next.js project automatically
+    
+
+### 3. Add Your Environment Variables
+
+Your Movie App uses the TMDB API key, so you need to provide that in the Vercel dashboard:
+
+1. In your project on Vercel, go to <b>Settings → Environment Variables</b>
+
+2. Add:
+```
+`TMDB_API_KEY = your_real_api_key_here`
+```
+
+3. Click Save   
+4. Press Redeploy
+
+Vercel will rebuild your app with the new environment variables.
+
+### 4. Wait for the Build to Finish
+
+Vercel will:
+
+- install your dependencies
+- build your Next.js project
+- optimize your images
+- generate static pages    
+- deploy your server routes
+    
+
+When it’s done, you’ll get a live URL like:
+```
+https://your-app.vercel.app
+```
+You can share this link with anyone.
+
+### Your Movie App Is Live
+
+With your application deployed, you now have:
+
+- A complete Next.js project
+- Real API integration
+- Dynamic routes
+- Search functionality
+- Loading and error states
+- Tailwind styling
+- And a production-ready deployment
+
+## Conclusion
+
+You’ve now built a complete Movie Browsing Application using Next.js.
+
+By working through each step, you’ve learned the core concepts that power modern Next.js applications. 
+At this point, you have the foundation needed to build real production-ready projects and confidently explore more advanced features such as server actions, caching strategies, authentication, and API routes.
+
+If you’d like to follow more of my work, explore additional projects, or connect with me online, you can find me here:
+
+GitHub: [dboatengg](https://github.com/dboatengg)
+LinkedIn: [dboatengx](https://www.linkedin.com/in/dboatengx/)
+
+I'm Dickson, a software developer who enjoys teaching practical, beginner-friendly concepts to help developers build real-world applications. Thanks for following along and happy coding!
