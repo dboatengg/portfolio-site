@@ -44,8 +44,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.15, duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
-            className="group relative border border-[rgb(var(--ctrl-border))] dark:border-gray-700 rounded-2xl overflow-hidden hover:border-[rgb(var(--border)/0.8)] bg-[rgb(var(--surface-overlay))] shadow-lg transition-all duration-300 flex flex-col"
-          >
+            className="group relative border border-[rgb(var(--ctrl-border))] dark:border-gray-700 rounded-2xl overflow-hidden hover:border-[rgb(var(--border)/0.8)] bg-[rgb(var(--bg))] shadow-lg transition-all duration-300 flex flex-col">
             {/* Coming Soon Badge */}
             {/* <span className="absolute top-3 right-3 bg-yellow-500 text-black text-xs font-semibold px-3 py-1 rounded-full z-10">
               Coming Soon
