@@ -9,7 +9,7 @@ tags:
   - Next.js Tutorial
   - App Router
 ---
-React is excellent for building user interfaces, but it doesn’t include many of the tools needed to build a full web application. 
+React is excellent for building user interfaces, but it doesn’t provide many of the tools needed to build a full web application. 
 Out of the box, React doesn’t handle routing, server-side rendering, SEO optimization, API endpoints, or performance optimizations.
 
 If you try to build a production-ready application with only React, you often end up installing and configuring many external libraries: 
@@ -760,37 +760,37 @@ Tailwind comes preconfigured when you create a new Next.js project, so you don�
 
 ## Styling Your Layout With Tailwind
 
-Let’s update the layout you built earlier to look cleaner.
+Let’s update the layout you've built so far to look cleaner.
 
 Open `app/layout.tsx` and update it to match the version below:
 
 ```jsx
 import Link from "next/link";
 import './globals.css';
-
+ 
 export const metadata = {
-  title: "My Next.js App",
+  title: "My First App",
   description: "Learning Next.js step by step",
 };
-
+ 
 export default function RootLayout({ children }:Readonly<{children: React.ReactNode}>) {
   return (
     <html lang="en">
       <body className="bg-gray-50 text-gray-900">
         <header className="bg-gray-100 shadow-sm">
           <nav className="max-w-4xl mx-auto flex items-center gap-6 p-4">
-            <Link href="/" className="hover:underline">
+            <Link href="/" className="text-blue-500 hover:underline">
               Home
             </Link>
-            <Link href="/about" className="hover:underline">
+            <Link href="/about" className="text-blue-500 hover:underline">
               About
             </Link>
-            <Link href="/posts" className="hover:underline">
+            <Link href="/posts" className="text-blue-500 hover:underline">
               Posts
             </Link>
           </nav>
         </header>
-
+ 
         <main className="max-w-4xl mx-auto p-4">
           {children}
         </main>
@@ -802,6 +802,10 @@ export default function RootLayout({ children }:Readonly<{children: React.ReactN
 
 Look at your app now, it already feels more professional.
 
+<div className="shadow-lg overflow-hidden">
+  <img src="/blog/nextjs-tutorial/tailwind.png" alt="Links" />
+</div>
+
 ## Styling a Page With Tailwind
 
 Now let’s style your `/posts` page so it looks cleaner and more modern.
@@ -809,6 +813,8 @@ Now let’s style your `/posts` page so it looks cleaner and more modern.
 Update `app/posts/page.tsx` to the following:
 
 ```jsx
+import Link from "next/link";
+
 type Post = {
   id: number;
   title: string;
@@ -827,10 +833,8 @@ export default async function PostsPage() {
         {posts.slice(0, 5).map((post) => (
           <li
             key={post.id}
-            className="p-4 bg-white rounded-lg shadow-sm border"
-          >
-            <h2 className="font-medium text-lg">{post.title}</h2>
-            <p className="text-gray-700">{post.body}</p>
+            className="p-4 bg-white rounded-lg shadow-sm border">
+            <Link href={`/posts/${post.id}`} className="font-medium text-lg">{post.title}</Link>
           </li>
         ))}
       </ul>
@@ -838,6 +842,10 @@ export default async function PostsPage() {
   );
 }
 ```
+
+<div className="shadow-lg overflow-hidden">
+  <img src="/blog/nextjs-tutorial/styling-post.png" alt="Styling Posts" />
+</div>
 
 With just a few classes, your page now has:
 
@@ -902,16 +910,21 @@ export default function About() {
 }
 ```
 
-Now, when you visit the about page, you will see the image displayed there.
 
-How It Works
+### What This Code Does
 
 - The image file sits inside the `public/` folder.
-- You reference it with `src="/laptop.png"`
+- You reference it with `src="/test-image.png"`
 - You must provide `width` and `height.`
-- Next.js automatically optimizes the image for speed.
+- Next.js automatically optimizes the image for speed becuase you are using the `<Image>` component.
 
 This gives you a clean, responsive image without writing CSS or resizing anything manually.
+
+Now, when you visit the about page, you will see the image displayed there.
+
+<div className="shadow-lg overflow-hidden">
+  <img src="/blog/nextjs-tutorial/images.gif" alt="Using Images in Next.js" />
+</div>
 
 ## Building a Movie Browsing App
 
