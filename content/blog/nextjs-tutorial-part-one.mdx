@@ -580,18 +580,26 @@ This page automatically loads when a user visits /posts/1, /posts/2, or any othe
 
 ### Link to Dynamic Pages:
 
-Now, in your main posts listing page (`app/posts/page.tsx`), add links to each individual post page:
+Now, in your main posts listing page (`app/posts/page.tsx`), add links to each individual post page. This should be your fully-updated `app/posts/page.tsx`:
 
 ```jsx
-// app/posts/page.tsx (add inside your map)
-import Link from "next/link";
+export default async function PostDetailsPage({ params }: { params: { id: string } }) {
 
-// ...inside your component:
-{posts.map(post => (
-  <li key={post.id}>
-    <Link href={`/posts/${post.id}`}>{post.title}</Link>
-  </li>
-))}
+    const {id} = await params;
+
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  if (!res.ok) {
+    return <div>Could not load post.</div>;
+  }
+  const post = await res.json();
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+      <p><strong>Post ID:</strong> {post.id}</p>
+    </div>
+  );
+}
 ```
 
 Now, when a user clicks a post title, they’ll be taken to `/posts/1`, `/posts/2`, etc., and see the details for that specific post.
@@ -649,6 +657,16 @@ You don’t need to manage any state; it just works.
 
 Now, try refreshing the `/posts` page and you’ll see the loading message appear briefly before the content.
 
+<div className="shadow-lg overflow-hidden">
+  <img src="/blog/nextjs-tutorial/dynamic-routes.gif" alt="Links" />
+</div>
+
+You will notice that the loading message doesn’t just appear on the `/posts` page. 
+It also shows up when you click an individual post. 
+
+If you want a different loading message for individual post pages, you can create another `loading.tsx` inside the `[id]` folder. 
+Next.js uses the most specific loading file it finds. 
+
 ### Adding an Error State
 
 Still inside the `app/posts/` folder, create:
@@ -687,23 +705,23 @@ export default function Error({ error, reset }: ErrorProps) {
 
 #### A few things to notice:
 
-- `error.js` must be a Client Component, so it needs `"use client"`.
+- `error.tsx` must be a Client Component, so it needs `"use client"`.
 - If something goes wrong in `page.tsx`, like a failed fetch, a bug in your code, or a network problem, Next.js will automatically show this error message to the user.
 - `reset()` lets the user retry the page, triggering a new data fetch.
 
-Try forcing an error in `page.tsx` by using an incorrect API endpoint:
+Try forcing an error in `app/posts/page.tsx` by using an incorrect API endpoint:
 
 ```jsx
 const res = await fetch("https://jsonplaceholder.typicode.com/invalid-url");
 ```
 
-When you visit `/movies`, Next.js will automatically:
+When you visit `/posts`, Next.js will automatically:
 
 - Show your custom error screen from `error.tsx`
 - Provide the error message.
 - allow the user to retry using `reset()`
 
-This demonstrates exactly how real data-fetching issues get handled in the App Router.
+This demonstrates exactly how real data-fetching issues get handled in Next.js.
 
 ## Why Loading and Error Files Matter
 
@@ -715,8 +733,8 @@ In traditional React:
 
 In Next.js:
 
-- One `loading.js` per route
-- One `error.js` per route
+- One `loading.tsx` per route
+- One `error.tsx` per route
 - Next.js handles everything automatically.
 
 This keeps your code clean and free of repetitive boilerplate, especially as pages grow more complex.
