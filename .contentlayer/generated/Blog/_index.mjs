@@ -2,6 +2,6 @@
 
 import blog__learningInPublicMdx from './blog__learning-in-public.mdx.json' assert { type: 'json' }
 import blog__maladaptiveDaydreamingMdx from './blog__maladaptive-daydreaming.mdx.json' assert { type: 'json' }
-import blog__nextjsTutorialPartOneMdx from './blog__nextjs-tutorial-part-one.mdx.json' assert { type: 'json' }
+import blog__nextjsTutorialBeginnersMdx from './blog__nextjs-tutorial-beginners.mdx.json' assert { type: 'json' }
 
-export const allBlogs = [blog__learningInPublicMdx, blog__maladaptiveDaydreamingMdx, blog__nextjsTutorialPartOneMdx]
+export const allBlogs = [blog__learningInPublicMdx, blog__maladaptiveDaydreamingMdx, blog__nextjsTutorialBeginnersMdx]
