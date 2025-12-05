@@ -102,7 +102,7 @@ const projectscomp = [
     status: "done",
   },
   {
-    title: "Spotify Cline",
+    title: "Spotify Clone",
     description:
       "A Spotify clone built with Next.js. Inspired by Code with Antonio’s tutorial.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
