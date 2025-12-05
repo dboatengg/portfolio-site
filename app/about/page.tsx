@@ -138,7 +138,11 @@ export default function AboutPage() {
         <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">
           Miscellaneous
         </h2>
-        <p className="text-[rgb(var(--accent))] underline">
+        <p
+          className="space-y-3 list-disc pl-6 
+          marker:text-neutral-500 dark:marker:text-neutral-400
+         text-[rgb(var(--accent))] underline"
+        >
           <Link href="/DicksonBoatengCV.pdf">Resume</Link>
         </p>
       </div>
