@@ -6,7 +6,6 @@ import {
   FileCode2,
   Layers,
   Database,
-  GitBranch,
   Github,
   Palette,
   LoaderPinwheel,

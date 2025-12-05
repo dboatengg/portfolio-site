@@ -1,4 +1,3 @@
-import { Github, Twitter, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 
