@@ -101,6 +101,13 @@ const projectscomp = [
     gradient: "from-orange-500 to-red-600",
     status: "done",
   },
+  {
+    title: "Spotify Cline",
+    description:
+      "A Spotify clone built with Next.js. Inspired by Code with Antonio’s tutorial.",
+    gradient: "from-[#06b6d4] to-[#2563eb]",
+    status: "progress",
+  },
 ];
 
 export default function Projects() {
