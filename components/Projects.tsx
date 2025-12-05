@@ -79,7 +79,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Lock } from "lucide-react";
 
-const projects = [
+const projectscomp = [
   {
     title: "Portfolio Website",
     description:
@@ -111,7 +111,7 @@ export default function Projects() {
       </h2>
 
       <div className="grid gap-10 md:grid-cols-2">
-        {projects.map((project, index) => (
+        {projectscomp.map((project, index) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 30 }}
@@ -130,7 +130,7 @@ export default function Projects() {
             <div
               className={`
                 relative h-40 w-full rounded-t-3xl 
-                bg-gradient-to-br ${project.gradient}
+                bg-linear-to-br ${project.gradient}
                 flex items-end px-6 pb-4
                 overflow-hidden
               `}
