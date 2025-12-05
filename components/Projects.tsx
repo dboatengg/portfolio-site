@@ -178,7 +178,6 @@ export default function Projects() {
                   text-[rgb(var(--text))]
                   rounded-full transition-colors duration-300
                   hover:bg-[rgb(var(--muted))]
-                  border border-[rgb(var(--ctrl-border))]
                 "
               >
                 {project.status === "progress" ? "Locked" : "Learn more →"}
