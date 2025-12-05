@@ -90,7 +90,7 @@ export const projects: Project[] = [
     techStack: [
       "PHP",
       "MySQL",
-      "TypeScript",
+      // "TypeScript",
       "CRUD",
       "Authentication",
       "File uploads",

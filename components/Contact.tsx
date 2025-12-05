@@ -1,34 +1,42 @@
-'use client';
+"use client";
 
-import { useState, useTransition } from 'react';
-import { sendMessage } from '../app/actions/SendMessage';
-import { Github, Linkedin, Twitter, MessageCircle } from 'lucide-react';
-import {motion} from 'framer-motion';
+import { useState, useTransition } from "react";
+import { sendMessage } from "../app/actions/SendMessage";
+import { Github, Linkedin, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
-  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isPending, startTransition] = useTransition();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     startTransition(async () => {
       const formData = new FormData();
-      Object.entries(formState).forEach(([key, value]) => formData.append(key, value));
+      Object.entries(formState).forEach(([key, value]) =>
+        formData.append(key, value)
+      );
 
       const result = await sendMessage(formData);
       if (result?.success) {
         setSubmitted(true);
-        setFormState({ name: '', email: '', message: '' });
+        setFormState({ name: "", email: "", message: "" });
       } else {
-        setError('Something went wrong. Please try again.');
+        setError("Something went wrong. Please try again.");
       }
     });
   };
@@ -43,20 +51,28 @@ export default function Contact() {
       id="contact"
       className="mb-12 w-full max-w-2xl mx-auto text-center"
     >
-  {/* Contact form JSX */}
+      {/* Contact form JSX */}
 
-      <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-4">Let’s Connect</h2>
+      <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-4">
+        Let’s Connect
+      </h2>
       <p className="text-[rgb(var(--text))] mb-10">
-        Have a project in mind or just want to say hi? I’d love to hear from you.
+        Have a project in mind or just want to say hi? I’d love to hear from
+        you.
       </p>
 
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 text-left dark:bg-gray-900/70 border border-[rgb(var(--ctrl-border))] dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-lg"
+          className="flex flex-col gap-5 text-left 
+          dark:bg-gray-900/70 border border-[rgb(var(--ctrl-border))] 
+          dark:border-gray-700 rounded-2xl p-6 md:p-8 shadow-lg"
         >
           <div>
-            <label htmlFor="name" className="block text-sm text-[rgb(var(--text))] mb-1">
+            <label
+              htmlFor="name"
+              className="block text-sm text-[rgb(var(--text))] mb-1"
+            >
               Name
             </label>
             <input
@@ -71,7 +87,10 @@ export default function Contact() {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm text-[rgb(var(--text))] mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm text-[rgb(var(--text))] mb-1"
+            >
               Email
             </label>
             <input
@@ -86,7 +105,10 @@ export default function Contact() {
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm text-[rgb(var(--text))] mb-1">
+            <label
+              htmlFor="message"
+              className="block text-sm text-[rgb(var(--text))] mb-1"
+            >
               Message
             </label>
             <textarea
@@ -107,7 +129,7 @@ export default function Contact() {
             disabled={isPending}
             className="w-full py-3 font-medium text-[rgb(var(--accent-foreground))] bg-[rgb(var(--accent))] hover:bg-[rgb(var(--accent)/0.8)] rounded-full transition-colors duration-300 disabled:opacity-60"
           >
-            {isPending ? 'Sending...' : 'Send Message →'}
+            {isPending ? "Sending..." : "Send Message →"}
           </button>
         </form>
       ) : (

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Code2,
@@ -11,24 +11,22 @@ import {
   Palette,
   LoaderPinwheel,
   Globe,
-  DatabaseBackup
-} from 'lucide-react';
+  DatabaseBackup,
+} from "lucide-react";
 
 export default function Skills() {
   const skills = [
-    { name: 'Next.js', icon: Globe },
-    { name: 'React.js', icon: Layers },
-    { name: 'TypeScript', icon: FileCode2 },
-    { name: 'JavaScript', icon: Braces },
-    { name: 'Tailwind CSS', icon: Palette },
-    { name: 'PostgreSQL', icon: DatabaseBackup },
-    { name: 'Prisma', icon: LoaderPinwheel },
-    { name: 'WordPress', icon: Database },
-    { name: 'PHP', icon: Code2 },
-    { name: 'Git/GitHub', icon: Github },
+    { name: "Next.js", icon: Globe },
+    { name: "React.js", icon: Layers },
+    { name: "TypeScript", icon: FileCode2 },
+    { name: "JavaScript", icon: Braces },
+    { name: "Tailwind CSS", icon: Palette },
+    { name: "PostgreSQL", icon: DatabaseBackup },
+    { name: "Prisma", icon: LoaderPinwheel },
+    { name: "WordPress", icon: Database },
+    { name: "PHP", icon: Code2 },
+    { name: "Git/GitHub", icon: Github },
   ];
-
-  
 
   return (
     <section id="skills" className="mb-24">
@@ -44,12 +42,19 @@ export default function Skills() {
         {skills.map(({ name, icon: Icon }) => (
           <div
             key={name}
-            className="group flex flex-col items-center justify-center gap-3 dark:bg-gray-900/70 rounded-xl p-5 border border-[rgb(var(--ctrl-border))] dark:border-gray-700 transition-all duration-300"
+            className="group flex flex-col items-center justify-center gap-3 
+            dark:bg-gray-900/70 rounded-xl p-5 border 
+            border-[rgb(var(--ctrl-border))] dark:border-gray-700 transition-all duration-300"
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[rgb(var(--surface-solid))] shadow-sm transition">
+            <div
+              className="flex items-center justify-center w-10 h-10 rounded-lg 
+            bg-[rgb(var(--surface-solid))] shadow-sm transition"
+            >
               <Icon className="w-6 h-6 text-[rgb(var(--body-text))]" />
             </div>
-            <span className="text-[rgb(var(--body-text))] text-sm font-medium">{name}</span>
+            <span className="text-[rgb(var(--body-text))] text-sm font-medium">
+              {name}
+            </span>
           </div>
         ))}
       </div>
