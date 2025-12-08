@@ -61,7 +61,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="icon"
@@ -81,7 +81,12 @@ export default function RootLayout({
         className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
       >
         <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
           <div className="min-h-screen flex flex-col items-center">
             <Header />
             <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8">
