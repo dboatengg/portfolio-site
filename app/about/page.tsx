@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "About | Dickson Boateng",
   description:
     "I’m Dickson Boateng, a software developer from Ghana who enjoys building clean, responsive, and practical web interfaces with modern JavaScript tools.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
@@ -52,6 +55,7 @@ export default function AboutPage() {
             <Link
               href="https://x.com/search?q=alege_dev&src=typed_query"
               target="_blank"
+              rel="noopener noreferrer"
             >
               tech community
             </Link>
@@ -103,6 +107,7 @@ export default function AboutPage() {
             <Link
               href="https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Asynchronous Programming in JavaScript – Guide for Beginners
             </Link>
@@ -111,6 +116,7 @@ export default function AboutPage() {
             <Link
               href="https://www.freecodecamp.org/news/context-api-in-react/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               How to Use the React Context API in Your Projects
             </Link>
@@ -119,6 +125,7 @@ export default function AboutPage() {
             <Link
               href="https://www.freecodecamp.org/news/javascript-dom/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               How the Document Object Model Works in JavaScript
             </Link>
@@ -127,6 +134,7 @@ export default function AboutPage() {
             <Link
               href="https://www.freecodecamp.org/news/redux-and-redux-toolkit-for-beginners/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               How to Use Redux and Redux Toolkit – Tutorial for Beginners
             </Link>
