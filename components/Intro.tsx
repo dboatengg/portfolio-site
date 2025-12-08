@@ -10,7 +10,7 @@ export default function Intro() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="mb-24 flex flex-col flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"
+      className="mb-24 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"
     >
       <div className="flex-1">
         <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))] mb-2">
@@ -53,8 +53,8 @@ export default function Intro() {
       </div>
 
       {/* Right Section - Profile Image */}
-      <div className="flex-shrink-0">
-        <div className="relative mx-auto md:mx-0 flex-shrink-0 w-fit">
+      <div className="shrink-0">
+        <div className="relative mx-auto md:mx-0 shrink-0 w-fit">
           <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 rounded-sm md:rounded-full overflow-hidden border border-[rgb(var(--border))] shadow-lg shadow-black/30">
             <Image
               src="/images/profile-img.webp"
