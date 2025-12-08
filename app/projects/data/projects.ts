@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   description: string;
   gradient: string;
+  status: string;
   image: string;
   liveUrl?: string;
   githubUrl?: string;
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     slug: "portfolio-website",
     title: "Portfolio Website",
     gradient: "from-blue-500 to-purple-600",
+    status: "done",
     description:
       "I built this portfolio site to showcase major projects I've worked on and to serve as a playground for trying new tools and blog ideas.",
     image: "/images/featured-project01.webp",
@@ -47,6 +49,7 @@ export const projects: Project[] = [
   {
     slug: "stride-ecommerce",
     title: "Stride - E-Commerce Platform",
+    status: "progress",
     description:
       "A online shoe ecommerce store focused on modern design, dynamic product handling, and smooth checkout flow.",
     image: "/images/featured-project02.webp",
@@ -73,6 +76,7 @@ export const projects: Project[] = [
   {
     slug: "task-hub",
     title: "Task Hub",
+    status: "done",
     description:
       "I built this project to practice buildng full-stack applications with PHP.",
     image: "/images/featured-project01.web",

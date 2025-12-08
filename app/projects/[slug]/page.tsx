@@ -32,6 +32,9 @@ export default async function ProjectPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
+  // Block in-progress projects
+  if (project.status === "progress") return notFound();
+
   return (
     <article className="max-w-3xl mx-auto py-16 space-y-10">
       {/* Hero Section */}
