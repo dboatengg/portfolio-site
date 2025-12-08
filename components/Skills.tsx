@@ -22,7 +22,7 @@ export default function Skills() {
     { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
     { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
     { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
+    { name: "Tailwind", icon: SiTailwindcss, color: "#38BDF8" },
     { name: "Cypress", icon: SiCypress, color: "#69D3A7" },
     { name: "PHP", icon: SiPhp, color: "#777BB4" },
     { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
