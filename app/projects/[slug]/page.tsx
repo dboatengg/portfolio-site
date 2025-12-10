@@ -55,7 +55,7 @@ export default async function ProjectPage({
                       `}
         >
           {/* diagonal texture */}
-          <div className="absolute inset-0 opacity-[0.07] bg-[url('/images/diagonal-lines.svg')] bg-cover" />
+          <div className="absolute inset-0 opacity-[0.07]" />
 
           {/* big number */}
           <span className="relative text-5xl font-extrabold text-white/40 select-none">

@@ -4,7 +4,7 @@ export interface Project {
   description: string;
   gradient: string;
   status: string;
-  image: string;
+  // image: string;
   liveUrl?: string;
   githubUrl?: string;
   intro: string;
@@ -22,7 +22,7 @@ export const projects: Project[] = [
     status: "done",
     description:
       "I built this portfolio site to showcase major projects I've worked on and to serve as a playground for trying new tools and blog ideas.",
-    image: "/images/featured-project01.webp",
+    // image: "/images/featured-project01.webp",
     liveUrl: "https://dicksonboateng.com",
     githubUrl: "https://github.com/dboatengg/portfolio-site",
     intro:
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     status: "progress",
     description:
       "A online shoe ecommerce store focused on modern design, dynamic product handling, and smooth checkout flow.",
-    image: "/images/featured-project02.webp",
+    // image: "/images/featured-project02.webp",
     liveUrl: "#",
     githubUrl: "https://github.com/dboatengg/stride-ecommerce-platform",
     intro:
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     status: "done",
     description:
       "I built this project to practice buildng full-stack applications with PHP.",
-    image: "/images/featured-project01.web",
+    // image: "/images/featured-project01.web",
     liveUrl: "https://taskhub-b.fwh.is/",
     githubUrl: "https://github.com/dboatengg/taskhub",
     gradient: "from-orange-500 to-red-600",
@@ -98,6 +98,34 @@ export const projects: Project[] = [
       "CRUD",
       "Authentication",
       "File uploads",
+    ],
+  },
+  {
+    slug: "next.js-fullstack-starter",
+    title: "Next.js Fullstack Starter",
+    status: "done",
+    description:
+      "A fullstack starter using Next.js 16, Prisma 7, and PostgreSQL.",
+    // image: "/images/featured-project01.web",
+    liveUrl: "https://fullstack-nextjs-starter-green.vercel.app/",
+    githubUrl: "https://github.com/dboatengg/fullstack-nextjs-starter",
+    gradient: "from-[#06b6d4] to-[#2563eb]",
+    intro:
+      "This project is a fullstack starter template to demonstrate modern Next.js App Router architecture. It includes server-side data fetching, type-safe database operations with Prisma, and authentication powered by NextAuth v5.",
+    purpose:
+      "The goal was to explore and implement a fullstack architecture for Next.js applications. The focus is solely on based on functionality and backend structure, not design or UI.",
+    spotlight:
+      "This project features a full authentication flow with GitHub OAuth, a draft-to-publish workflow for posts, and direct database queries inside Server Components.",
+    lessons:
+      "Building this project clarified how Server Actions reduce boilerplate in mutation logic, how relational data modeling works cleanly with Prisma, and how authentication is handled in the newest version of NextAuth. ",
+    techStack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "Prisma 7",
+      "PostgreSQL / Vercel Postgres",
+      "NextAuth v5 (GitHub OAuth)",
+      "TypeScript",
+      "Tailwind CSS",
     ],
   },
 ];

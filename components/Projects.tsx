@@ -13,13 +13,6 @@ const projectscomp = [
     status: "done",
   },
   {
-    title: "Stride (E-commerce)",
-    description:
-      "A fully functional e-commerce store I built to explore the complexity and features of modern online stores without CMS tools.",
-    gradient: "from-emerald-500 to-teal-600",
-    status: "progress",
-  },
-  {
     title: "Task Hub",
     description:
       "A PHP Task Manager I built to practice PHP, MySQL, CRUD, authentication, and file uploads.",
@@ -27,10 +20,17 @@ const projectscomp = [
     status: "done",
   },
   {
-    title: "Spotify Clone",
+    title: "Next.js Fullstack Starter",
     description:
-      "A Spotify clone built with Next.js. Inspired by Code with Antonio’s tutorial.",
+      "A fullstack starter kit using Next.js 16, Prisma 7, and PostgreSQL with authentication, drafts, and publish workflow.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
+    status: "done",
+  },
+  {
+    title: "Stride (E-commerce)",
+    description:
+      "A fully functional e-commerce store I built to explore the complexity and features of modern online stores without CMS tools.",
+    gradient: "from-emerald-500 to-teal-600",
     status: "progress",
   },
 ];
