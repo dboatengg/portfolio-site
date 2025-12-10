@@ -39,7 +39,7 @@ export default async function ProjectPage({
     <article className="max-w-3xl mx-auto py-16 space-y-10">
       {/* Hero Section */}
       <header className="space-y-6 text-center">
-        <h1 className="text-4xl font-semibold text-[rgb(var(--text))]">
+        <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))]">
           {project.title}
         </h1>
         <p className="text-[rgb(var(--body-text))] text-lg">
