@@ -22,7 +22,7 @@ const projectscomp = [
   {
     title: "Next.js Fullstack Starter",
     description:
-      "A fullstack starter kit using Next.js 16, Prisma 7, and PostgreSQL with authentication, drafts, and publish workflow.",
+      "A fullstack starter template using Next.js 16, Prisma 7, and PostgreSQL with authentication, drafts, and publish workflow.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
     status: "done",
   },
