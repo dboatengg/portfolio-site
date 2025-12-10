@@ -65,7 +65,7 @@ export default function AboutPage() {
       </div>
       <div>
         <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">
-          What I&aposm doing now
+          What I&apos;m doing now
         </h2>
         <ul className="space-y-3 list-disc pl-6 text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
           <li>Working as a full-time remote web developer</li>
