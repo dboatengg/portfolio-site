@@ -78,7 +78,7 @@ export const projects: Project[] = [
     title: "DownNote",
     status: "done", // Change to "done" when you finish
     description:
-      "A modern, beautiful markdown editor built with Next.js and PostgreSQL. Features real-time preview, dark mode, cloud sync, and guest mode for instant writing.",
+      "A modern markdown editor that features real-time preview, dark mode, cloud sync, and guest mode for instant writing.",
     // image: "/images/downnote-preview.png", // Add a screenshot later
     liveUrl: "https://downnote.vercel.app", // Update with your deployment URL
     githubUrl: "https://github.com/dboatengg/downnote", // Update with your repo
