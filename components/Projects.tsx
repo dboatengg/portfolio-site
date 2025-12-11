@@ -22,7 +22,7 @@ const projectscomp = [
   {
     title: "DownNote",
     description:
-      "A fullstack starter template using Next.js 16, Prisma 7, and PostgreSQL with authentication, drafts, and publish workflow.",
+      "DownNote is a markdown editor I built for use myself and for other developers and writers. Write with focus, preview in real-time, and sync your work across all devices.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
     status: "done",
   },
