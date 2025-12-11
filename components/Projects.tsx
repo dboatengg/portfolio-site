@@ -13,19 +13,20 @@ const projectscomp = [
     status: "done",
   },
   {
-    title: "Task Hub",
-    description:
-      "A PHP Task Manager I built to practice PHP, MySQL, CRUD, authentication, and file uploads.",
-    gradient: "from-orange-500 to-red-600",
-    status: "done",
-  },
-  {
     title: "DownNote",
     description:
       "DownNote is a markdown editor I built for use myself and for other developers and writers. Write with focus, preview in real-time, and sync your work across all devices.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
     status: "done",
   },
+  {
+    title: "Task Hub",
+    description:
+      "A PHP Task Manager I built to practice PHP, MySQL, CRUD, authentication, and file uploads.",
+    gradient: "from-orange-500 to-red-600",
+    status: "done",
+  },
+
   // {
   //   title: "Stride (E-commerce)",
   //   description:

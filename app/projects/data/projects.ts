@@ -47,33 +47,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "stride-ecommerce",
-    title: "Stride - E-Commerce Platform",
-    status: "progress",
-    description:
-      "A online shoe ecommerce store focused on modern design, dynamic product handling, and smooth checkout flow.",
-    // image: "/images/featured-project02.webp",
-    liveUrl: "#",
-    githubUrl: "https://github.com/dboatengg/stride-ecommerce-platform",
-    intro:
-      "I built Stride out of curiosity to find out how complex it would be build a fully functional E-commerce platform without relying on WordPress or prebuilt systems.",
-    gradient: "from-emerald-500 to-teal-600",
-    purpose:
-      "The main goal was to challenge myself to build a robust and scalable online store entirely with code. I wanted to understand the architecture behind real-world e-commerce systems, things like: cart state, checkout logic, product data, and API communication.",
-    spotlight:
-      "The standout feature is the custom shopping cart system, which maintains persistent cart state across sessions and syncs seamlessly with the checkout flow.",
-    lessons:
-      "This project taught me a great deal about managing state effectively in larger applications, handling asynchronous operations, and creating a UX that feels effortless.",
-    techStack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
-    ],
-  },
-  {
     slug: "downnote",
     title: "DownNote",
     status: "done",
@@ -105,6 +78,34 @@ export const projects: Project[] = [
       "Framer Motion",
     ],
   },
+  // {
+  //   slug: "stride-ecommerce",
+  //   title: "Stride - E-Commerce Platform",
+  //   status: "progress",
+  //   description:
+  //     "A online shoe ecommerce store focused on modern design, dynamic product handling, and smooth checkout flow.",
+  //   // image: "/images/featured-project02.webp",
+  //   liveUrl: "#",
+  //   githubUrl: "https://github.com/dboatengg/stride-ecommerce-platform",
+  //   intro:
+  //     "I built Stride out of curiosity to find out how complex it would be build a fully functional E-commerce platform without relying on WordPress or prebuilt systems.",
+  //   gradient: "from-emerald-500 to-teal-600",
+  //   purpose:
+  //     "The main goal was to challenge myself to build a robust and scalable online store entirely with code. I wanted to understand the architecture behind real-world e-commerce systems, things like: cart state, checkout logic, product data, and API communication.",
+  //   spotlight:
+  //     "The standout feature is the custom shopping cart system, which maintains persistent cart state across sessions and syncs seamlessly with the checkout flow.",
+  //   lessons:
+  //     "This project taught me a great deal about managing state effectively in larger applications, handling asynchronous operations, and creating a UX that feels effortless.",
+  //   techStack: [
+  //     "Next.js",
+  //     "React",
+  //     "TypeScript",
+  //     "Tailwind CSS",
+  //     "Prisma",
+  //     "PostgreSQL",
+  //   ],
+  // },
+
   {
     slug: "task-hub",
     title: "Task Hub",
