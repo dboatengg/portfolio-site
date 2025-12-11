@@ -20,19 +20,19 @@ const projectscomp = [
     status: "done",
   },
   {
-    title: "Next.js Fullstack Starter",
+    title: "DownNote",
     description:
       "A fullstack starter template using Next.js 16, Prisma 7, and PostgreSQL with authentication, drafts, and publish workflow.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
     status: "done",
   },
-  {
-    title: "Stride (E-commerce)",
-    description:
-      "A fully functional e-commerce store I built to explore the complexity and features of modern online stores without CMS tools.",
-    gradient: "from-emerald-500 to-teal-600",
-    status: "progress",
-  },
+  // {
+  //   title: "Stride (E-commerce)",
+  //   description:
+  //     "A fully functional e-commerce store I built to explore the complexity and features of modern online stores without CMS tools.",
+  //   gradient: "from-emerald-500 to-teal-600",
+  //   status: "progress",
+  // },
 ];
 
 export default function Projects() {
