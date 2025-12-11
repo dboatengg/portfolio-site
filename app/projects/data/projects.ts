@@ -76,13 +76,13 @@ export const projects: Project[] = [
   {
     slug: "downnote",
     title: "DownNote",
-    status: "done", // Change to "done" when you finish
+    status: "done",
     description:
       "A modern markdown editor that features real-time preview, dark mode, cloud sync, and guest mode for instant writing.",
-    // image: "/images/downnote-preview.png", // Add a screenshot later
-    liveUrl: "https://downnote.vercel.app", // Update with your deployment URL
-    githubUrl: "https://github.com/dboatengg/downnote", // Update with your repo
-    gradient: "from-[#06b6d4] to-[#2563eb]", // Matches DownNote's brand colors
+    // image: "/images/downnote-preview.png",
+    liveUrl: "https://downnote.vercel.app",
+    githubUrl: "https://github.com/dboatengg/downnote",
+    gradient: "from-[#06b6d4] to-[#2563eb]",
     intro:
       "DownNote is a markdown editor that combines the simplicity of writing with powerful features like real-time preview, cloud synchronization, and a beautiful modern interface. ThIS project showcases modern full-stack development with React Server Components, authentication, database management, and responsive design.",
     purpose:
@@ -132,33 +132,4 @@ export const projects: Project[] = [
       "File uploads",
     ],
   },
-
-  // {
-  //   slug: "next.js-fullstack-starter",
-  //   title: "Next.js Fullstack Starter",
-  //   status: "done",
-  //   description:
-  //     "A fullstack starter using Next.js 16, Prisma 7, and PostgreSQL.",
-  //   // image: "/images/featured-project01.web",
-  //   liveUrl: "https://fullstack-nextjs-starter-green.vercel.app/",
-  //   githubUrl: "https://github.com/dboatengg/fullstack-nextjs-starter",
-  //   gradient: "from-[#06b6d4] to-[#2563eb]",
-  //   intro:
-  //     "This project is a fullstack starter template to demonstrate modern Next.js App Router architecture. It includes server-side data fetching, type-safe database operations with Prisma, and authentication powered by NextAuth v5.",
-  //   purpose:
-  //     "The goal was to explore and implement a fullstack architecture for Next.js applications. The focus is solely on based on functionality and backend structure, not design or UI.",
-  //   spotlight:
-  //     "This project features a full authentication flow with GitHub OAuth, a draft-to-publish workflow for posts, and direct database queries inside Server Components.",
-  //   lessons:
-  //     "Building this project clarified how Server Actions reduce boilerplate in mutation logic, how relational data modeling works cleanly with Prisma, and how authentication is handled in the newest version of NextAuth. ",
-  //   techStack: [
-  //     "Next.js 16 (App Router)",
-  //     "React 19",
-  //     "Prisma 7",
-  //     "PostgreSQL / Vercel Postgres",
-  //     "NextAuth v5 (GitHub OAuth)",
-  //     "TypeScript",
-  //     "Tailwind CSS",
-  //   ],
-  // },
 ];
