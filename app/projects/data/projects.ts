@@ -57,13 +57,13 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/dboatengg/downnote",
     gradient: "from-[#06b6d4] to-[#2563eb]",
     intro:
-      "DownNote is a markdown editor that combines the simplicity of writing with powerful features like real-time preview, cloud synchronization, and a beautiful modern interface. ThIS project showcases modern full-stack development with React Server Components, authentication, database management, and responsive design.",
+      "This project demonstrates modern full-stack development with React Server Components, authentication, and database management.",
     purpose:
-      "I built DownNote to create a better writing experience than traditional markdown editors like StackEdit. The goal was to modernize the interface while adding essential features like guest mode (localStorage), OAuth authentication, and cloud sync. This project also served as practice for building production-ready full-stack applications with the latest Next.js App Router.",
+      "I built DownNote to create a better writing experience than traditional markdown editors like StackEdit. The goal was to modernize the interface while adding essential features like guest mode, OAuth authentication, and cloud sync. This project also served as practice for building production-ready full-stack applications with the latest Next.js App Router.",
     spotlight:
       "The standout feature is the transition between guest and authenticated modes. Users can start writing immediately without an account, then sign in with GitHub, Google, or email to automatically sync their work to the cloud. The split-pane editor with real-time markdown preview, custom typography, and glass-morphism dark mode create a premium writing experience.",
     lessons:
-      "This project deepened my understanding of Next.js 16's App Router, React Server Components, and API routes. I learned to implement multi-provider authentication with NextAuth.js, manage database schemas with Prisma, and handle localStorage for offline-first functionality. Key challenges included building auto-save with debouncing, managing theme persistence, and creating a responsive split-pane editor. I also gained experience with TypeScript generics, proper error handling, and deploying full-stack apps with database migrations.",
+      "I learned to implement multi-provider authentication with NextAuth.js, manage database schemas with Prisma, and handle localStorage for offline-first functionality. Key challenges included building auto-save with debouncing, managing theme persistence, and creating a responsive split-pane editor. I also gained experience with TypeScript generics, proper error handling, and deploying full-stack apps with database migrations.",
     techStack: [
       "Next.js",
       "React",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
       "NextAuth.js",
       "Tailwind CSS",
       "CodeMirror",
-      "OAuth (GitHub/Google)",
+      "OAuth",
       "localStorage API",
       "Framer Motion",
     ],
