@@ -2,6 +2,7 @@
 
 import blog__learningInPublicMdx from './blog__learning-in-public.mdx.json' assert { type: 'json' }
 import blog__maladaptiveDaydreamingMdx from './blog__maladaptive-daydreaming.mdx.json' assert { type: 'json' }
+import blog__nextjsPrismaPostgresMdx from './blog__nextjs-prisma-postgres.mdx.json' assert { type: 'json' }
 import blog__nextjsTutorialBeginnersMdx from './blog__nextjs-tutorial-beginners.mdx.json' assert { type: 'json' }
 
-export const allBlogs = [blog__learningInPublicMdx, blog__maladaptiveDaydreamingMdx, blog__nextjsTutorialBeginnersMdx]
+export const allBlogs = [blog__learningInPublicMdx, blog__maladaptiveDaydreamingMdx, blog__nextjsPrismaPostgresMdx, blog__nextjsTutorialBeginnersMdx]
