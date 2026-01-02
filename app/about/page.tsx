@@ -70,25 +70,24 @@ export default function AboutPage() {
         <ul className="space-y-3 list-disc pl-6 text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
           <li>Working as a full-time remote web developer</li>
           <li>
-            I run a clothing brand/store [at]{" "}
+            I run a clothing brand/store at {""}
             <span className="text-[rgb(var(--accent))] underline">
               <Link href="https://www.boldpixelsgh.com">boldpixelsgh.com</Link>
             </span>
             .
           </li>
-          {/* <li>Working on occasional freelance projects </li>         */}
-          <li>Building production-ready side projects with NextJS</li>
-          {/* <li>Learning Nodejs</li> */}
+          <li>Building production-ready side projects </li>
+          <li>Writing articles on web development and personal growth</li>
         </ul>
       </div>
       <div>
         <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">
-          Fun Facts about me
+          Fun Facts about me 
         </h2>
         <ul className="space-y-3 list-disc pl-6 text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
           <li>
-            I have never missed an episode from these podcasts: Darknet Diaries
-            and What Now with Trevor Noah.
+            I have never missed an episode from these podcasts:{" "}
+            <b>Darknet Diaries</b> and <b>What Now with Trevor Noah</b>.
           </li>
           <li>I’ve watched every season of Black Mirror twice!</li>
           <li>
