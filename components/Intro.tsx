@@ -57,7 +57,7 @@ export default function Intro() {
         <div className="relative mx-auto md:mx-0 shrink-0 w-fit">
           <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 rounded-sm md:rounded-full overflow-hidden border border-[rgb(var(--border))] shadow-lg shadow-black/30">
             <Image
-              src="/images/profile-img.webp"
+              src="/images/DicksonBoateng-profile.webp"
               alt="Dickson Boateng"
               fill
               className="object-cover object-top"
