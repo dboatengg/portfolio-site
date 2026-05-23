@@ -76,6 +76,13 @@ export default function RootLayout({
           sizes="512x512"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          // Set initial theme before React hydration to avoid flash.
+          // Also add `theme-set` when a user preference exists so CSS fallbacks don't override it.
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark')document.documentElement.classList.add('dark');}else{if(prefersDark)document.documentElement.classList.add('dark');}}catch(e){} })();`,
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
@@ -85,7 +92,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange={false}
+          disableTransitionOnChange={true}
         >
           <div className="min-h-screen flex flex-col items-center">
             <Header />

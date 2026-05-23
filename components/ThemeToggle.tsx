@@ -56,7 +56,10 @@ export default function ThemeToggle() {
     <div className="absolute right-0 mt-2 w-40 rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--bg))] shadow-lg overflow-hidden z-50 animate-fadeIn">
         
         <button
-        onClick={() => setTheme('light')}
+        onClick={() => {
+          try { localStorage.setItem('theme', 'light'); document.documentElement.classList.add('theme-set'); }catch(e){}
+          setTheme('light');
+        }}
         className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition 
             ${theme === 'light' ? 'bg-muted font-medium' : ''}`}
         >
@@ -66,7 +69,10 @@ export default function ThemeToggle() {
         {/* <div className="h-px bg-[rgb(var(--border))]" /> */}
 
         <button
-        onClick={() => setTheme('dark')}
+        onClick={() => {
+          try { localStorage.setItem('theme', 'dark'); document.documentElement.classList.add('theme-set'); }catch(e){}
+          setTheme('dark');
+        }}
         className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition 
             ${theme === 'dark' ? 'bg-muted font-medium' : ''}`}
         >
@@ -76,7 +82,10 @@ export default function ThemeToggle() {
         {/* <div className="h-px bg-[rgb(var(--border))]" /> */}
 
         <button
-        onClick={() => setTheme('system')}
+        onClick={() => {
+          try { localStorage.removeItem('theme'); document.documentElement.classList.remove('theme-set'); }catch(e){}
+          setTheme('system');
+        }}
         className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition 
             ${theme === 'system' ? 'bg-muted font-medium' : ''}`}
         >
