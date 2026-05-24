@@ -14,17 +14,10 @@ const navLinks = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // Lock body scroll when menu is open
+  // Do NOT lock body scroll; allow page to remain scrollable when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isMenuOpen])
+    return () => {}
+  }, [])
 
   const closeMenu = () => setIsMenuOpen(false)
 
@@ -63,37 +56,39 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay - transparent, just for closing */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 top-[57px] z-40 md:hidden"
-          onClick={closeMenu}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Panel (top glass effect) */}
       <div
-        className={`fixed top-[57px] right-0 h-[calc(100vh-57px)] w-72 bg-[rgb(var(--bg))] border-l border-[rgb(var(--border))] z-50 transform transition-transform duration-300 ease-out md:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed left-0 top-[57px] w-full z-40 md:hidden transform transition-transform duration-300 ease-out transition-opacity ${
+          isMenuOpen
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "-translate-y-[100vh] opacity-0 pointer-events-none"
         }`}
+        aria-hidden={!isMenuOpen}
       >
-        <nav className="flex flex-col p-4 pt-6">
-          {navLinks.map((link) => {
-            const Icon = link.icon
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={closeMenu}
-                className="flex items-center gap-4 px-4 py-4 rounded-lg text-[rgb(var(--text))] hover:bg-[rgb(var(--divide))] hover:text-[rgb(var(--accent))] transition-all"
-              >
-                <Icon size={20} className="text-[rgb(var(--muted-text))]" />
-                <span className="text-base font-medium">{link.label}</span>
-              </Link>
-            )
-          })}
-        </nav>
+        {/* Glass padding area */}
+        <div className="backdrop-blur-md bg-[rgb(var(--bg)/0.32)] border-b border-[rgb(var(--border))]">
+          <div className="max-w-4xl mx-auto px-4 py-4">
+            {/* Solid menu panel */}
+            <div className="bg-[rgb(var(--bg))] rounded-md shadow-sm border border-[rgb(var(--border))]">
+              <nav className="flex flex-col p-4 pt-6">
+                {navLinks.map((link) => {
+                  const Icon = link.icon
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="flex items-center gap-4 px-4 py-4 rounded-lg text-[rgb(var(--text))] hover:bg-[rgb(var(--divide))] hover:text-[rgb(var(--accent))] transition-all"
+                    >
+                      <Icon size={20} className="text-[rgb(var(--muted-text))]" />
+                      <span className="text-base font-medium">{link.label}</span>
+                    </Link>
+                  )
+                })}
+              </nav>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   )
