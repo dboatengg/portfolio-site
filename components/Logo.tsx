@@ -32,7 +32,7 @@ export default function Logo() {
             stroke-gray-700 
             
             /* Dark mode */
-            dark:stroke-neutral-700
+            dark:stroke-gray-300
           "
         />
 

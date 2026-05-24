@@ -78,10 +78,10 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={closeMenu}
-                      className="flex items-center gap-4 px-4 py-4 rounded-lg text-[rgb(var(--text))] hover:bg-[rgb(var(--divide))] hover:text-[rgb(var(--accent))] transition-all"
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-[rgb(var(--text))] hover:bg-[rgb(var(--divide))] hover:text-[rgb(var(--accent))] transition-all"
                     >
-                      <Icon size={20} className="text-[rgb(var(--muted-text))]" />
-                      <span className="text-base font-medium">{link.label}</span>
+                      <Icon size={18} className="text-[rgb(var(--muted-text))]" />
+                      <span className="text-sm font-medium">{link.label}</span>
                     </Link>
                   )
                 })}
