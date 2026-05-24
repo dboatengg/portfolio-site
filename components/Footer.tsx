@@ -38,16 +38,6 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* Bottom Signature */}
-        <div className="flex items-center justify-center gap-1 hover:text-[rgb(var(--text)/0.5)] text-sm">
-          <span>Made with</span>
-          <Heart
-            size={14}
-            strokeWidth={2}
-            className="text-red-500 fill-red-500 animate-pulse"
-          />
-          <span>by Dickson</span>
-        </div>
       </div>
     </footer>
   );

@@ -38,7 +38,7 @@ const projectscomp = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="mb-24">
+    <section id="projects" className="mb-16">
       <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-8">
         Featured Projects
       </h2>
