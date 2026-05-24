@@ -32,7 +32,7 @@ export default function BlogPage() {
         <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))] mb-3">
           Blog
         </h1>
-        <p className="text-[rgb(var(--body-text))]">
+        <p className="text-sm md:text-base text-[rgb(var(--muted-text))] max-w-2xl">
           A collection of technical write-ups and personal reflections.
         </p>
       </header>
@@ -45,37 +45,33 @@ export default function BlogPage() {
               {year}
             </h2>
 
-            <ul className="divide-y divide-[rgb(var(--divide))]">
-              {postsByYear[year].map((post) => (
-                <li key={post._id} className="py-6">
-                  <article>
-                    <div className="flex justify-between items-center mb-2">
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="text-xl font-medium text-[rgb(var(--text))] hover:text-[rgb(var(--accent))] transition-colors duration-300"
-                      >
-                        {post.title}
-                      </Link>
-                      <time className="text-sm text-[rgb(var(--muted-text))]">
-                        {formatShortDate(post.date)}
-                      </time>
-                    </div>
-
+            <ul className="space-y-5">
+              {postsByYear[year].map((post, index) => (
+                <li
+                  key={post._id}
+                  className={`flex justify-between items-baseline pb-3 ${
+                    index !== postsByYear[year].length - 1
+                      ? "border-b border-[rgb(var(--divide))]"
+                      : ""
+                  }`}
+                >
+                  <div>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="text-base font-medium hover:underline text-white"
+                    >
+                      {post.title}
+                    </Link>
                     {post.summary && (
-                      <p className="text-[rgb(var(--body-text))] leading-relaxed text-sm md:text-base mt-2">
+                      <p className="text-sm text-gray-500 mt-2">
                         {post.summary}
                       </p>
                     )}
+                  </div>
 
-                    <div className="mt-4">
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="inline-block text-sm text-[rgb(var(--accent))] hover:text-[rgb(var(--accent)/0.6)] transition"
-                      >
-                        Read more →
-                      </Link>
-                    </div>
-                  </article>
+                  <time className="text-sm text-gray-500 whitespace-nowrap">
+                    {formatShortDate(post.date)}
+                  </time>
                 </li>
               ))}
             </ul>

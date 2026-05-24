@@ -9,7 +9,7 @@ export default function BlogList() {
   )
 
   return (
-    <section>
+    <section className="mb-24">
       <h2 className="text-3xl font-semibold mb-4 flex items-center gap-2">
          Recent Writing
       </h2>

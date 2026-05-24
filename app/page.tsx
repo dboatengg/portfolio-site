@@ -2,7 +2,7 @@ import Intro from "@/components/Intro";
 import { Metadata } from "next";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
-import Skills from "@/components/Skills";
+import BlogList from "@/components/BlogList";
 
 export const metadata: Metadata = {
   title: "Dickson Boateng",
@@ -47,7 +47,7 @@ export default function HomePage() {
   return (
     <main>
       <Intro />
-      <Skills />
+      <BlogList />
       <Projects />
       <Contact />
     </main>
