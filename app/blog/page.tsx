@@ -58,18 +58,18 @@ export default function BlogPage() {
                   <div>
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="text-base font-medium hover:underline text-white"
+                      className="text-base font-medium hover:underline text-[rgb(var(--text))]"
                     >
                       {post.title}
                     </Link>
                     {post.summary && (
-                      <p className="text-sm text-gray-500 mt-2">
+                      <p className="text-sm text-[rgb(var(--muted-text))] mt-2">
                         {post.summary}
                       </p>
                     )}
                   </div>
 
-                  <time className="text-sm text-gray-500 whitespace-nowrap">
+                  <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
                     {formatShortDate(post.date)}
                   </time>
                 </li>

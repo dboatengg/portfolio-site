@@ -36,16 +36,17 @@ export default function Intro() {
           PostgreSQL, and Prisma.
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-4 ">
+        <div className="mt-6 flex flex-wrap gap-4">
           <Link
             href="/about"
-            className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] hover:bg-muted rounded-full transition-colors duration-300"
+            className="inline-block px-4 py-2 text-sm font-medium text-[rgb(var(--accent))] border border-[rgb(var(--accent))] rounded-full hover:bg-[rgb(var(--accent))]/10 transition-colors duration-200"
           >
             Learn more →
           </Link>
+
           <a
             href="#projects"
-            className="inline-block px-6 py-3 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] hover:bg-muted rounded-full transition-colors duration-300"
+            className="inline-block px-4 py-2 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full hover:bg-[rgb(var(--ctrl-border))]/10 transition-colors duration-200"
           >
             View my work →
           </a>
