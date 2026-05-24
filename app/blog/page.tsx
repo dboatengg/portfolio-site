@@ -49,29 +49,32 @@ export default function BlogPage() {
               {postsByYear[year].map((post, index) => (
                 <li
                   key={post._id}
-                  className={`flex justify-between items-baseline pb-3 ${
+                  className={`pb-3 ${
                     index !== postsByYear[year].length - 1
                       ? "border-b border-[rgb(var(--divide))]"
                       : ""
                   }`}
                 >
-                  <div>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-base font-medium hover:underline text-[rgb(var(--text))]"
-                    >
-                      {post.title}
-                    </Link>
+                  <div className="flex flex-col gap-2 w-full">
+                    <div className="flex flex-wrap justify-between items-baseline gap-4 w-full">
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="min-w-0 flex-1 text-base font-medium hover:underline text-[rgb(var(--text))]"
+                      >
+                        {post.title}
+                      </Link>
+
+                      <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
+                        {formatShortDate(post.date)}
+                      </time>
+                    </div>
+
                     {post.summary && (
-                      <p className="text-sm text-[rgb(var(--muted-text))] mt-2">
+                      <p className="w-full text-sm text-[rgb(var(--muted-text))] mt-2">
                         {post.summary}
                       </p>
                     )}
                   </div>
-
-                  <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
-                    {formatShortDate(post.date)}
-                  </time>
                 </li>
               ))}
             </ul>
