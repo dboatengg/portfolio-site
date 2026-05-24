@@ -22,8 +22,7 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="text-[rgb(var(--body-text))]">
-          Sharing technical guides, personal stories, and experiences from my
-          journey as a developer.
+          A collection of technical write-ups and personal reflections.
         </p>
       </header>
 
