@@ -9,10 +9,21 @@ export const metadata: Metadata = {
     "I’m Dickson Boateng, a software developer from Ghana who enjoys building clean, responsive, and practical web interfaces with modern JavaScript tools.",
 };
 
+type BlogPost = (typeof allBlogs)[number];
+
 export default function BlogPage() {
-  const posts = allBlogs.sort(
+  const posts = [...allBlogs].sort(
     (a, b) => +new Date(b.date) - +new Date(a.date)
   );
+
+  const postsByYear = posts.reduce<Record<string, BlogPost[]>>((groups, post) => {
+    const year = new Date(post.date).getFullYear().toString();
+    groups[year] ||= [];
+    groups[year].push(post);
+    return groups;
+  }, {});
+
+  const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
 
   return (
     <section className="py-10">
@@ -27,40 +38,50 @@ export default function BlogPage() {
       </header>
 
       {/* Blog List */}
-      <ul className="max-w-3xl mx-auto divide-y divide-[rgb(var(--divide))]">
-        {posts.map((post) => (
-          <li key={post._id} className="py-6">
-            <article>
-              <div className="flex justify-between items-center mb-2">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="text-xl font-medium text-[rgb(var(--text))] hover:text-[rgb(var(--accent))] transition-colors duration-300"
-                >
-                  {post.title}
-                </Link>
-                <time className="text-sm text-[rgb(var(--muted-text))]">
-                  {formatShortDate(post.date)}
-                </time>
-              </div>
+      <div className="max-w-3xl mx-auto space-y-16">
+        {years.map((year) => (
+          <section key={year}>
+            <h2 className="text-2xl font-semibold text-[rgb(var(--text))] mb-6">
+              {year}
+            </h2>
 
-              {post.summary && (
-                <p className="text-[rgb(var(--body-text))] leading-relaxed text-sm md:text-base mt-2">
-                  {post.summary}
-                </p>
-              )}
+            <ul className="divide-y divide-[rgb(var(--divide))]">
+              {postsByYear[year].map((post) => (
+                <li key={post._id} className="py-6">
+                  <article>
+                    <div className="flex justify-between items-center mb-2">
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="text-xl font-medium text-[rgb(var(--text))] hover:text-[rgb(var(--accent))] transition-colors duration-300"
+                      >
+                        {post.title}
+                      </Link>
+                      <time className="text-sm text-[rgb(var(--muted-text))]">
+                        {formatShortDate(post.date)}
+                      </time>
+                    </div>
 
-              <div className="mt-4">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="inline-block text-sm text-[rgb(var(--accent))] hover:text-[rgb(var(--accent)/0.6)] transition"
-                >
-                  Read more →
-                </Link>
-              </div>
-            </article>
-          </li>
+                    {post.summary && (
+                      <p className="text-[rgb(var(--body-text))] leading-relaxed text-sm md:text-base mt-2">
+                        {post.summary}
+                      </p>
+                    )}
+
+                    <div className="mt-4">
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="inline-block text-sm text-[rgb(var(--accent))] hover:text-[rgb(var(--accent)/0.6)] transition"
+                      >
+                        Read more →
+                      </Link>
+                    </div>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
