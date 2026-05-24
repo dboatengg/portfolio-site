@@ -8,14 +8,14 @@ export default function Footer() {
         {/* Top Links Row */}
         <div className="max-w-3xl mx-auto px-6 flex flex-wrap justify-center gap-8 text-sm mb-6">
           <Link
-          href="#"
-          target="_blank"
-          className="flex items-center gap-1 hover:underline hover:text-[rgb(var(--text)/0.5)] transition-colors"
-        >
-          <span>follow me on twitter</span>
-          <ArrowUpRight size={14} strokeWidth={1.5} />
-        </Link>
-
+            href="https://www.linkedin.com/in/dboatengx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 hover:underline hover:text-[rgb(var(--text)/0.5)] transition-colors"
+          >
+            <span>connect on LinkedIn</span>
+            <ArrowUpRight size={14} strokeWidth={1.5} />
+          </Link>
 
           <Link
             href="https://github.com/dboatengg"

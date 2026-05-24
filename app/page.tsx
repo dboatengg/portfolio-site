@@ -1,7 +1,6 @@
 import Intro from "@/components/Intro";
 import { Metadata } from "next";
 import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
 import BlogList from "@/components/BlogList";
 
 export const metadata: Metadata = {
@@ -49,7 +48,6 @@ export default function HomePage() {
       <Intro />
       <BlogList />
       <Projects />
-      <Contact />
     </main>
   );
 }
