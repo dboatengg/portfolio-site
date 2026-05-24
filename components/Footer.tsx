@@ -23,7 +23,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:underline hover:text-[rgb(var(--text)/0.5)] transition-colors"
           >
-            <span>let&apos;s collaborate on github</span>
+            <span>let&apos;s collaborate on GitHub</span>
             <ArrowUpRight size={14} strokeWidth={1.5} />
           </Link>
 

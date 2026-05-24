@@ -13,24 +13,23 @@ export default function Intro() {
       className="mb-24 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"
     >
       <div className="flex-1">
-        <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))] mb-2">
+        <h1 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-2">
           Dickson Boateng
         </h1>
         <p className="text-[rgb(var(--muted-text))] text-lg mb-4">
           Software Developer
         </p>
 
-        <p className="text-[rgb(var(--body-text))] leading-relaxed max-w-2xl mb-6">
-          Hi, I&lsquo;m Dickson—a Software Developer from Ghana. My tech journey
-          began in 2012, when my father surprised my younger brother and me with
-          our first computer.
+        <p className="text-base leading-relaxed max-w-2xl mb-6">
+          My tech journey began years ago, when my father surprised my younger brother and me with
+          our first home computer.
         </p>
-        <p className="text-[rgb(var(--body-text))] leading-relaxed max-w-2xl mb-6">
+        <p className="text-base leading-relaxed max-w-2xl mb-6">
           At first, we just used it to play various computer games, but that
           early exposure to a home computer soon sparked a fascination that led
           me to explore programming.
         </p>
-        <p className="text-[rgb(var(--body-text))] leading-relaxed max-w-2xl mb-6">
+        <p className="text-base leading-relaxed max-w-2xl mb-6">
           Today, I specialize in building responsive, user-friendly web
           applications with modern technologies such as Next.js, React,
           PostgreSQL, and Prisma.

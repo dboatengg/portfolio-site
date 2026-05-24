@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model GuestbookEntry {
+  id        String   @id @default(cuid())
+  githubId  String   @unique
+  name      String
+  username  String
+  image     String?
+  message   String
+  signature String
+  createdAt DateTime @default(now())
+}

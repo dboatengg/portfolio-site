@@ -2,13 +2,14 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Menu, X, PenLine, User } from "lucide-react"
+import { Menu, X, PenLine, User, BookOpen } from "lucide-react"
 import Logo from "./Logo"
 import ThemeToggle from "./ThemeToggle"
 
 const navLinks = [
   { href: "/blog", label: "Blog", icon: PenLine },
   { href: "/about", label: "About", icon: User },
+  { href: "/guestbook", label: "Guestbook", icon: BookOpen },
 ]
 
 export default function Header() {

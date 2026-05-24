@@ -115,6 +115,19 @@ h6 {
 }
 /* }    */
 
+textarea, input {
+  color: rgb(var(--text));
+  background-color: rgb(var(--bg));
+}
+
+.signature-img {
+  filter: none;
+}
+
+:where(.dark, .dark *) .signature-img {
+  filter: invert(1);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
