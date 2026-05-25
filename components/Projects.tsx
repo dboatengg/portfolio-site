@@ -7,7 +7,7 @@ const projectscomp = [
   {
     title: "Portfolio Website",
     description:
-      "I built this portfolio site from the ground up to showcase my work, explore some blog ideas, and experiment with Next.js, React 19, and Tailwind CSS.",
+      "I built this site from scratch as both a personal portfolio and a playground to experiment with modern full-stack tools like Next.js, PostgreSQL, Prisma, React 19, and Tailwind CSS.",
     gradient: "from-blue-500 to-purple-600",
     live: "https://dicksonboateng.com", 
     github: "https://github.com/dboatengg/portfolio-site", 
@@ -15,7 +15,7 @@ const projectscomp = [
   {
     title: "DownNote",
     description:
-      "DownNote is a markdown editor I built for use myself and for other developers and writers. Write with focus, preview in real-time, and sync your work across all devices.",
+      "I built DownNote as a lightweight markdown editor for developers and writers who want a clean markdown writing experience with live previews and cross-device syncing.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
     live: "https://downnote.vercel.app/", 
     github: "https://github.com/dboatengg/downnote", 
