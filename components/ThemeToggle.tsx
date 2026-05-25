@@ -59,8 +59,12 @@ export default function ThemeToggle() {
 
     rippleContainer.appendChild(circle);
 
+    circle.getBoundingClientRect();
+
     requestAnimationFrame(() => {
-      circle.style.transform = 'scale(1)';
+      requestAnimationFrame(() => {
+        circle.style.transform = 'scale(1)';
+      });
     });
 
     setTimeout(() => {

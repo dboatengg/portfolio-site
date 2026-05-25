@@ -15,7 +15,7 @@ const projectscomp = [
   {
     title: "DownNote",
     description:
-      "I built DownNote as a lightweight markdown editor for developers and writers who want a clean markdown writing experience with live previews and cross-device syncing.",
+      "I built DownNote as a lightweight markdown editor for developers and writers who want a clean writing experience with live previews and cross-device syncing.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
     live: "https://downnote.vercel.app/", 
     github: "https://github.com/dboatengg/downnote", 

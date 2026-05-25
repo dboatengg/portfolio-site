@@ -128,6 +128,22 @@ textarea, input {
   filter: invert(1);
 }
 
+/* .giscus {
+  margin-top: 0;
+}
+
+.giscus-frame {
+  border: none !important;
+}
+
+iframe.giscus-frame {
+  border-radius: 12px;
+}
+
+.giscus-frame {
+  background: transparent;
+} */
+
 @keyframes fadeIn {
   from {
     opacity: 0;

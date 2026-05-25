@@ -1,58 +1,11 @@
-// import GiscusComments from "@/components/GiscusComments"
-// import { compileMDX } from "next-mdx-remote/rsc"
-// import { getAllSlugs, getPostBySlug, rehypePlugins } from "@/utils/mdx"
 
-// export async function generateStaticParams() {
-//   return getAllSlugs().map((slug) => ({ slug }))
-// }
-
-// export default async function BlogPost({
-//   params,
-// }: {
-//   params: Promise<{ slug: string }>
-// }) {
-//   const { slug } = await params
-
-//   console.log("🧩 BlogPost params:", slug)
-
-//   const { source } = await getPostBySlug(slug)
-
-//   const { content, frontmatter } = await compileMDX<{
-//     title: string
-//     description?: string
-//     date?: string
-//   }>({
-//     source,
-//     options: {
-//       parseFrontmatter: true,
-//       mdxOptions: { remarkPlugins: [], rehypePlugins },
-//     },
-//   })
-
-//   return (
-//     <article className="prose prose-invert max-w-3xl mx-auto py-8">
-//       <header className="mb-10">
-//         <h1 className="!text-2xl sm:!text-3xl md:!text-4xl font-bold mb-3">{frontmatter.title}</h1>
-//         {frontmatter.date && (
-//           <p className="text-gray-400 text-sm">
-//             {new Date(frontmatter.date).toISOString().split("T")[0]}
-
-//           </p>
-//         )}
-//       </header>
-//       {content}
-//       <GiscusComments />
-//     </article>
-//   )
-// }
-
-
-//SEO READY VERSION
 import { compileMDX } from "next-mdx-remote/rsc"
 import { getAllSlugs, getPostBySlug, rehypePlugins } from "@/utils/mdx"
 import GiscusComments from "@/components/GiscusComments"
 import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -153,13 +106,18 @@ export default async function BlogPost({
   }
 
   return (
-    <article className="prose prose-invert max-w-3xl mx-auto pt-6 pb-8">
+    <article className=" prose prose-invert max-w-3xl mx-auto pt-10 pb-20 text-zinc-300 leading-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-[rgb(var(--muted-text))] hover:text-[rgb(var(--text))] transition-colors mb-10">
+      <ArrowLeft size={16} />
+        Back to blog
+      </Link>
       <header className="mb-10">
-        <h1 className="!text-2xl sm:!text-3xl md:!text-4xl font-bold mb-3">
+        {/* <h1 className="!text-2xl sm:!text-3xl md:!text-4xl font-bold mb-3"> */}
+        <h1 className="!text-3xl sm:!text-4xl md:!text-5xl !leading-tight font-bold tracking-tight mb-5">
           {frontmatter.title}
         </h1>
         {/* {date && (
@@ -167,7 +125,8 @@ export default async function BlogPost({
         )} */}
 
         {/* Date + Reading time */}
-        <div className="flex items-center gap-3 text-[rgb(var(--muted-text))] text-sm">
+        {/* <div className="flex items-center gap-3 text-[rgb(var(--muted-text))] text-sm"> */}
+        <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
           {date && <span>{formatDate(date)}</span>}
           <span>•</span>
           <span>{readingTime}</span>
@@ -192,6 +151,10 @@ export default async function BlogPost({
         )}
       </header>
       {content}
+      <hr className="my-16 border-[rgb(var(--border))]" />
+      {/* <div className="mt-16 rounded-2xl border border-[rgb(var(--border))] p-4 sm:p-6">
+        <GiscusComments />
+      </div> */}
       <GiscusComments />
     </article>
   )
