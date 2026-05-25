@@ -64,8 +64,8 @@ export default function AboutPage() {
           staying connected to tech communities on Twitter and Reddit.
         </p>
           <p>
-            Today, I work fully in web development and have had the privilege of
-            collaborating with developers and designers from diverse backgrounds.
+            I currently work in web development and have had the privilege of
+            working and collaborating with developers and designers from diverse backgrounds.
           </p>
           <p>
             The path here wasn&apos;t linear, but it shaped me into a problem-solver
