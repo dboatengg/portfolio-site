@@ -88,6 +88,19 @@ export default function ThemeToggle() {
     setTheme(newTheme);
   }
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+  const t = setTimeout(() => {
+    setMounted(true);
+    // Restore theme-set class after next-themes hydration wipes it
+    const theme = localStorage.getItem('theme');
+    if (theme) {
+      document.documentElement.classList.add('theme-set');
+    }
+  }, 0);
+  return () => clearTimeout(t);
+}, []);
+
   return (
     <div className="relative" ref={menuRef}>
       <button

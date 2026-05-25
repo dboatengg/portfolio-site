@@ -29,9 +29,27 @@
 }
 
 /* Respect system preference before JS runs to reduce flash */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) { */
   /* Only apply system dark variables when the user hasn't explicitly chosen a theme. */
-  html:not(.theme-set) {
+  /* html:not(.theme-set) {
+    --bg: 23 23 23;
+    --card: 38 38 38;
+    --text: 209 213 219;
+    --body-text: 209 213 219;
+    --card-text: 245 245 245;
+    --border: 38 38 38;
+    --accent: 59 130 246;
+    --muted: 39 39 42;
+    --muted-text: 161 161 170;
+    --divide: 31 41 55;
+    --ctrl-border: 82 82 82;
+    --surface-overlay: 0 0 0 / 0.05;
+    --surface-solid: 31 41 55;
+  }
+} */
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
     --bg: 23 23 23;
     --card: 38 38 38;
     --text: 209 213 219;
