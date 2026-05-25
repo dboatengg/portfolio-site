@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 export default function Intro() {
   return (
@@ -36,18 +35,22 @@ export default function Intro() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
-          <Link
-            href="/about"
-            className="inline-block px-4 py-2 text-sm font-medium text-[rgb(var(--accent))] border border-[rgb(var(--accent))] rounded-full hover:bg-[rgb(var(--accent))]/10 transition-colors duration-200"
+          
+            <a href="https://dicksonboateng.com/DicksonBoatengCV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
           >
-            Learn more →
-          </Link>
+            View resume
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
 
-          <a
-            href="#projects"
-            className="inline-block px-4 py-2 text-sm font-medium text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full hover:bg-[rgb(var(--ctrl-border))]/10 transition-colors duration-200"
+          
+            <a href="#projects"
+            className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-5 py-2 text-sm font-medium transition-opacity hover:opacity-70"
           >
-            View my work →
+            View my work
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
