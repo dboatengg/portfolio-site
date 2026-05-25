@@ -93,7 +93,9 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange={true}
+          
         >
+          <div id="theme-ripple" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999, overflow: 'hidden',}} />
           <div className="min-h-screen flex flex-col items-center">
             <Header />
             <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8 flex-1">
