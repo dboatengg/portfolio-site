@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Lock } from "lucide-react";
 
 const projectscomp = [
   {
@@ -10,30 +9,17 @@ const projectscomp = [
     description:
       "I built this portfolio site from the ground up to showcase my work, explore some blog ideas, and experiment with Next.js, React 19, and Tailwind CSS.",
     gradient: "from-blue-500 to-purple-600",
-    status: "done",
+    live: "https://dicksonboateng.com", 
+    github: "https://github.com/dboatengg/portfolio-site", 
   },
   {
     title: "DownNote",
     description:
       "DownNote is a markdown editor I built for use myself and for other developers and writers. Write with focus, preview in real-time, and sync your work across all devices.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
-    status: "done",
+    live: "https://downnote.vercel.app/", 
+    github: "https://github.com/dboatengg/downnote", 
   },
-  {
-    title: "Task Hub",
-    description:
-      "A PHP Task Manager I built to practice PHP, MySQL, CRUD, authentication, and file uploads.",
-    gradient: "from-orange-500 to-red-600",
-    status: "done",
-  },
-
-  // {
-  //   title: "Stride (E-commerce)",
-  //   description:
-  //     "A fully functional e-commerce store I built to explore the complexity and features of modern online stores without CMS tools.",
-  //   gradient: "from-emerald-500 to-teal-600",
-  //   status: "progress",
-  // },
 ];
 
 export default function Projects() {
@@ -51,38 +37,16 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15, duration: 0.5 }}
             viewport={{ once: true, amount: 0.2 }}
-            className="
-              group relative rounded-3xl overflow-hidden 
-              border border-[rgb(var(--border))]
-              bg-[rgb(var(--card))]
-              shadow-lg transition-all duration-500 hover:shadow-xl
-              flex flex-col
-            "
+            className="group relative rounded-3xl overflow-hidden border border-[rgb(var(--border))] bg-[rgb(var(--card))] shadow-lg transition-all duration-500 hover:shadow-xl flex flex-col"
           >
             {/* TOP COLOR SECTION */}
             <div
-              className={`
-                relative h-40 w-full rounded-t-3xl 
-                bg-linear-to-br ${project.gradient}
-                flex items-end px-6 pb-4
-                overflow-hidden
-              `}
+              className={`relative h-40 w-full rounded-t-3xl bg-linear-to-br ${project.gradient} flex items-end px-6 pb-4 overflow-hidden`}
             >
-              {/* diagonal texture */}
               <div className="absolute inset-0 opacity-[0.07] bg-[url('/images/diagonal-lines.svg')] bg-cover" />
-
-              {/* big number */}
               <span className="relative text-5xl font-extrabold text-white/40 select-none">
                 {String(index + 1).padStart(2, "0")}
               </span>
-
-              {/* private / progress badge */}
-              {project.status === "progress" && (
-                <div className="absolute top-3 right-3 bg-yellow-500 text-black font-semibold text-xs px-3 py-1 rounded-full flex items-center gap-1 shadow">
-                  <Lock size={12} />
-                  In progress
-                </div>
-              )}
             </div>
 
             {/* BOTTOM SECTION */}
@@ -91,30 +55,34 @@ export default function Projects() {
                 {project.title}
               </h3>
 
-              <p className="text-[rgb(var(--muted-text))] text-sm leading-relaxed mt-2 mb-4">
+              <p className="text-[rgb(var(--muted-text))] text-sm leading-relaxed mt-2 mb-6">
                 {project.description}
               </p>
 
-              <Link
-                href={
-                  project.status === "progress"
-                    ? "#"
-                    : `/projects/${project.title
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`
-                }
-                onClick={(e) =>
-                  project.status === "progress" && e.preventDefault()
-                }
-                className="
-                  mt-auto inline-block px-4 py-2 text-sm font-medium 
-                  text-[rgb(var(--text))]
-                  rounded-full transition-colors duration-300
-                  hover:bg-[rgb(var(--muted))]
-                "
-              >
-                {project.status === "progress" ? "Locked" : "Learn more →"}
-              </Link>
+              <div className="mt-auto flex items-center gap-3">
+                
+                  <a href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+                >
+                  Live site
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M7 7h10v10"/>
+                  </svg>
+                </a>
+                
+                  <a href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                  </svg>
+                  Source code
+                </a>
+              </div>
             </div>
           </motion.div>
         ))}

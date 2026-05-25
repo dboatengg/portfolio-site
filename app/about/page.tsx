@@ -4,154 +4,181 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About | Dickson Boateng",
   description:
-    "I’m Dickson Boateng, a software developer from Ghana who enjoys building clean, responsive, and practical web interfaces with modern JavaScript tools.",
+    "I'm Dickson Boateng, a software developer from Ghana who enjoys building clean, responsive, and practical web interfaces with modern JavaScript tools.",
   alternates: {
     canonical: "/about",
   },
 };
 
+const publications = [
+  {
+    title: "Asynchronous Programming in JavaScript – Guide for Beginners",
+    href: "https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/",
+  },
+  {
+    title: "How to Use the React Context API in Your Projects",
+    href: "https://www.freecodecamp.org/news/context-api-in-react/",
+  },
+  {
+    title: "How the Document Object Model Works in JavaScript",
+    href: "https://www.freecodecamp.org/news/javascript-dom/",
+  },
+  {
+    title: "How to Use Redux and Redux Toolkit – Tutorial for Beginners",
+    href: "https://www.freecodecamp.org/news/redux-and-redux-toolkit-for-beginners/",
+  },
+];
+
+const nowItems = [
+  "Working remotely as a web developer at WopeDigital",
+  "Building and tweaking this site",
+  "Working on side projects",
+  "Writing about web development and personal growth",
+];
+
+const outsideItems = [
+  <>I have never missed an episode from these podcasts: <b>Darknet Diaries</b> and <b>What Now with Trevor Noah</b>.</>,
+  <>My favorite movies and shows: <b>Perfect Days</b>, <b>Ted Lasso</b>, and <b>Shrinking</b>.</>,
+  <>I consider Pavel Durov (Telegram Founder &amp; CEO) a mentor from afar. His discipline and philosophy deeply inspire me.</>,
+];
+
 export default function AboutPage() {
   return (
-    <section className="max-w-3xl mx-auto py-10 space-y-8">
-      <header>
+    <section className="max-w-3xl mx-auto py-10">
+
+      <header className="mb-12">
         <h1 className="text-3xl font-bold mb-2 text-[rgb(var(--text))]">
           About
         </h1>
       </header>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">
+      {/* Background */}
+      <div className="mb-12">
+        <h2 className="text-lg font-semibold mb-4 text-[rgb(var(--text))]">
           Background
         </h2>
-        <p className="text-[rgb(var(--body-text))] mb-4 leading-relaxed">
-          I didn’t start my career in a traditional Computer Science program. I
-          began my university journey studying Occupational Therapy at the
-          University of Ghana, an unexpected detour from my original plan to
-          pursue tech.
+        <div className="space-y-4 text-[rgb(var(--body-text))] leading-relaxed">
+          <p>
+          I didn&apos;t take the traditional path into software development. My journey
+          started with pure curiosity, taking online courses, and
+          staying connected to tech communities on Twitter and Reddit.
         </p>
-        <p className="text-[rgb(var(--body-text))] mb-4 leading-relaxed">
-          But even while studying that degree, I kept learning about technology
-          on my own, taking online courses, building small projects, and staying
-          connected to the tech communities on Twitter and Reddit.
-        </p>
-        <p className="text-[rgb(var(--body-text))] mb-4 leading-relaxed">
-          That persistence eventually brought me back to software development,
-          where I’ve been able to combine analytical thinking and empathy from
-          my background with the technical skills I’ve built over the years.
-        </p>
-        <p className="text-[rgb(var(--body-text))] mb-4 leading-relaxed">
-          Today, I work fully in web development and have had the privilege of
-          collaborating with engineers and designers from diverse backgrounds.
-        </p>
-        <p className="text-[rgb(var(--body-text))] mb-4 leading-relaxed">
-          The path here wasn’t linear, but it shaped me into a problem-solver
-          who learns quickly, works well with others, and approaches challenges
-          with both creativity and discipline.
-        </p>
-        <p className="text-[rgb(var(--body-text))] leading-relaxed">
-          When I’m not coding, I enjoy writing articles about web development
-          and personal growth. Sharing my experiences and insights with the{" "}
-          <span className="text-[rgb(var(--accent))] underline">
+          <p>
+            Today, I work fully in web development and have had the privilege of
+            collaborating with developers and designers from diverse backgrounds.
+          </p>
+          <p>
+            The path here wasn&apos;t linear, but it shaped me into a problem-solver
+            who learns quickly, works well with others, and approaches challenges
+            with both creativity and discipline.
+          </p>
+          <p>
+            When I&apos;m not coding, I enjoy writing articles about web development
+            and personal growth. Sharing my experiences and insights with the{" "}
             <Link
               href="https://x.com/search?q=alege_dev&src=typed_query"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-[rgb(var(--accent))] underline underline-offset-2"
             >
               tech community
-            </Link>
-          </span>{" "}
-          is something I find incredibly rewarding.
-        </p>
+            </Link>{" "}
+            is something I find incredibly rewarding.
+          </p>
+        </div>
       </div>
-      <div>
-        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">
+
+      <div className="border-t border-[rgb(var(--border))] mb-12" />
+
+      {/* What I'm doing now */}
+      <div className="mb-12">
+        <h2 className="text-lg font-semibold mb-4 text-[rgb(var(--text))]">
           What I&apos;m doing now
         </h2>
-        <ul className="space-y-3 list-disc pl-6 text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
-          <li>Working as a full-time remote web developer</li>
-          <li>
-            I run a clothing brand/store at {""}
-            <span className="text-[rgb(var(--accent))] underline">
-              <Link href="https://www.boldpixelsgh.com">boldpixelsgh.com</Link>
-            </span>
-            .
-          </li>
-          <li>Building production-ready side projects </li>
-          <li>Writing articles on web development and personal growth</li>
-        </ul>
-      </div>
-      <div>
-        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">
-          Fun Facts about me 
-        </h2>
-        <ul className="space-y-3 list-disc pl-6 text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
-          <li>
-            I have never missed an episode from these podcasts:{" "}
-            <b>Darknet Diaries</b> and <b>What Now with Trevor Noah</b>.
-          </li>
-          <li>I’ve watched every season of Black Mirror twice!</li>
-          <li>
-            I consider Pavel Durov (Telegram Founder & CEO) a mentor from afar.
-            His discipline and philosophy deeply inspire me.
-          </li>
+        <ul className="space-y-3">
+          {nowItems.map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-[rgb(var(--body-text))]">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[rgb(var(--accent))] flex-shrink-0" />
+              <span className="text-base leading-relaxed">{item}</span>
+            </li>
+          ))}
         </ul>
       </div>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text))]">
-          Publications
+      <div className="border-t border-[rgb(var(--border))] mb-12" />
+
+      {/* Outside of coding */}
+      <div className="mb-12">
+        <h2 className="text-lg font-semibold mb-4 text-[rgb(var(--text))]">
+          Outside of coding
         </h2>
-        <ul className="space-y-3 list-disc pl-6 text-[rgb(var(--body-text))] marker:text-neutral-500 dark:marker:text-neutral-400">
-          <li className="text-[rgb(var(--accent))] underline">
-            <Link
-              href="https://www.freecodecamp.org/news/asynchronous-programming-in-javascript/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Asynchronous Programming in JavaScript – Guide for Beginners
-            </Link>
-          </li>
-          <li className="text-[rgb(var(--accent))] underline">
-            <Link
-              href="https://www.freecodecamp.org/news/context-api-in-react/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              How to Use the React Context API in Your Projects
-            </Link>
-          </li>
-          <li className="text-[rgb(var(--accent))] underline">
-            <Link
-              href="https://www.freecodecamp.org/news/javascript-dom/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              How the Document Object Model Works in JavaScript
-            </Link>
-          </li>
-          <li className="text-[rgb(var(--accent))] underline">
-            <Link
-              href="https://www.freecodecamp.org/news/redux-and-redux-toolkit-for-beginners/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              How to Use Redux and Redux Toolkit – Tutorial for Beginners
-            </Link>
-          </li>
+        <ul className="space-y-3">
+          {outsideItems.map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-[rgb(var(--body-text))]">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[rgb(var(--accent))] flex-shrink-0" />
+              <span className="text-base leading-relaxed">{item}</span>
+            </li>
+          ))}
         </ul>
       </div>
-      <div>
-        <h2 className="text-2xl font-semibold mb-4 text-[rgb(var(--text)/0.9)]">
-          Miscellaneous
+
+      <div className="border-t border-[rgb(var(--border))] mb-12" />
+
+      {/* Publications */}
+      <div className="mb-12">
+        <h2 className="text-lg font-semibold mb-4 text-[rgb(var(--text))]">
+          Publications
         </h2>
-        <p
-          className="space-y-3 list-disc pl-6 
-          marker:text-neutral-500 dark:marker:text-neutral-400
-         text-[rgb(var(--accent))] underline"
-        >
-          <Link href="/DicksonBoatengCV.pdf">Resume</Link>
-        </p>
+        <div className="space-y-3">
+          {publications.map((pub) => (
+            <Link
+              key={pub.href}
+              href={pub.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start justify-between gap-4 p-4 rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] hover:bg-[rgb(var(--muted))] transition-colors group"
+            >
+              <span className="text-sm text-[rgb(var(--body-text))] leading-relaxed group-hover:text-[rgb(var(--text))] transition-colors">
+                {pub.title}
+              </span>
+              <svg
+                className="flex-shrink-0 mt-0.5 text-[rgb(var(--muted-text))] group-hover:text-[rgb(var(--accent))] transition-colors"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17L17 7M7 7h10v10" />
+              </svg>
+            </Link>
+          ))}
+        </div>
       </div>
+
+      <div className="border-t border-[rgb(var(--border))] mb-12" />
+
+      {/* Resume */}
+      <div>
+        <h2 className="text-lg font-semibold mb-4 text-[rgb(var(--text))]">
+          Resume
+        </h2>
+        
+          <a href="/DicksonBoatengCV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+        >
+          View resume
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 17L17 7M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+
     </section>
   );
 }
