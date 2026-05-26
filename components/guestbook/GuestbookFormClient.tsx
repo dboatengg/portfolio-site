@@ -4,6 +4,7 @@ import { useState } from "react";
 import { signIn, signOut } from "next-auth/react";
 import type { Session } from "next-auth";
 import GuestbookModal from "./GuestbookModal";
+import { useGuestbook } from "./GuestbookContext";
 
 type Entry = {
   id: string;
@@ -18,10 +19,10 @@ type Entry = {
 type Props = {
   session: Session | null;
   hasSigned: boolean;
-  onNewEntry?: (entry: Entry) => void;
 };
 
-export default function GuestbookFormClient({ session, hasSigned: initialHasSigned, onNewEntry }: Props) {
+export default function GuestbookFormClient({ session, hasSigned: initialHasSigned }: Props) {
+  const { addEntry } = useGuestbook();
   const [hasSigned, setHasSigned] = useState(initialHasSigned);
   const [modalOpen, setModalOpen] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
@@ -39,59 +40,57 @@ export default function GuestbookFormClient({ session, hasSigned: initialHasSign
   function handleNewEntry(entry: Entry) {
     setHasSigned(true);
     setModalOpen(false);
-    onNewEntry?.(entry);
+    addEntry(entry);
   }
 
   return (
-  <>
-    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-      {session?.user ? (
-        <>
-          <button
-            onClick={handleSignOut}
-            disabled={authLoading}
-            className="self-start flex items-center gap-2 border border-[rgb(var(--border))] rounded-lg px-3 py-2 text-sm text-[rgb(var(--muted-text))] hover:bg-[rgb(var(--muted))] transition-colors disabled:opacity-50 whitespace-nowrap"
-          >
-            {authLoading ? <><Spinner /> Signing out...</> : "Sign out"}
-          </button>
-
-          {hasSigned ? (
-            <p className="text-sm text-green-600">✓ You&apos;ve signed</p>
-          ) : (
+    <>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+        {session?.user ? (
+          <>
             <button
-              onClick={() => setModalOpen(true)}
-              className="self-start flex items-center gap-2 bg-[rgb(var(--accent))] text-[rgb(var(--accent-foreground))] rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+              onClick={handleSignOut}
+              disabled={authLoading}
+              className="self-start flex items-center gap-2 border border-[rgb(var(--border))] rounded-lg px-3 py-2 text-sm text-[rgb(var(--muted-text))] hover:bg-[rgb(var(--muted))] transition-colors disabled:opacity-50 whitespace-nowrap"
             >
-              Sign the guestbook
+              {authLoading ? <><Spinner /> Signing out...</> : "Sign out"}
             </button>
-          )}
-        </>
-      ) : (
-        <button
-          onClick={handleSignIn}
-          disabled={authLoading}
-          className="self-start flex items-center gap-2 bg-[rgb(var(--accent))] text-[rgb(var(--accent-foreground))] rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
-        >
-          {authLoading ? (
-            <><Spinner /> Redirecting...</>
-          ) : (
-            <><GitHubIcon /> Sign in with GitHub</>
-          )}
-        </button>
+
+            {hasSigned ? (
+              <p className="text-sm text-green-600">✓ You&apos;ve signed</p>
+            ) : (
+              <button
+                onClick={() => setModalOpen(true)}
+                className="self-start flex items-center gap-2 bg-[rgb(var(--accent))] text-[rgb(var(--accent-foreground))] rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+              >
+                Sign the guestbook
+              </button>
+            )}
+          </>
+        ) : (
+          <button
+            onClick={handleSignIn}
+            disabled={authLoading}
+            className="self-start flex items-center gap-2 bg-[rgb(var(--accent))] text-[rgb(var(--accent-foreground))] rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
+          >
+            {authLoading ? (
+              <><Spinner /> Redirecting...</>
+            ) : (
+              <><GitHubIcon /> Sign in with GitHub</>
+            )}
+          </button>
+        )}
+      </div>
+
+      {modalOpen && (
+        <GuestbookModal
+          onClose={() => setModalOpen(false)}
+          onSuccess={handleNewEntry}
+          user={session!.user}
+        />
       )}
-    </div>
-
-    {modalOpen && (
-      <GuestbookModal
-        onClose={() => setModalOpen(false)}
-        onSuccess={handleNewEntry}
-        user={session!.user}
-      />
-    )}
-  </>
-);
-
-
+    </>
+  );
 }
 
 function Spinner() {
