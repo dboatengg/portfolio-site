@@ -3,6 +3,8 @@ import Link from "next/link";
 import { formatShortDate } from "@/utils/formatShortDate";
 import { Metadata } from "next";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Blog | Dickson Boateng",
   description:
