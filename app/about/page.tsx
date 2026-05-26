@@ -30,8 +30,8 @@ const publications = [
 ];
 
 const nowItems = [
-  "Working remotely as a web developer at WopeDigital",
-  "Building and tweaking this site",
+  "Working remotely as a web developer",
+  "Experimenting and tweaking this website",
   "Working on side projects",
   "Writing about web development and personal growth",
 ];

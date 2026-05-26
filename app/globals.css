@@ -96,6 +96,10 @@
     border-color 0.25s ease;
 }
 
+pre, pre * {
+  transition: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -192,6 +196,30 @@ iframe.giscus-frame {
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-out;
 }
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgb(var(--accent));
+  color: rgb(var(--accent-foreground));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease;
+}
+
+.copy-button:hover {
+  opacity: 0.85;
+}
 
 /* ===========================================================
  DARK MODE SHIKI / REHYPE-PRETTY-CODE 
@@ -265,15 +293,7 @@ iframe.giscus-frame {
 }
 
 /* Base code block container */
-.dark .prose pre {
-  background-color: #0d1117; /* GitHub dark background */
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  padding: 1rem 1.25rem;
-  border: 1px solid #1e293b;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
+
 
 /* Inline code */
 .dark .prose code:not(pre code) {
@@ -374,8 +394,7 @@ iframe.giscus-frame {
 
 /* Copy button (dark mode) */
 
-/* Copy button (ALWAYS VISIBLE) */
-.dark .copy-button {
+:where(.dark, .dark *) .copy-button {
   position: absolute;
   top: 0.5rem;
   right: 0.75rem;
@@ -388,9 +407,9 @@ iframe.giscus-frame {
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  background: rgb(var(--surface-solid) / 0.6);
-  color: rgb(var(--accent-foreground));
-  border: 1px solid rgb(var(--ctrl-border) / 0.3);
+  background: #333333;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid #3a3a3a;
   backdrop-filter: blur(4px);
   user-select: none;
   -webkit-user-select: none;
@@ -398,16 +417,19 @@ iframe.giscus-frame {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
 }
 
-/* Copy button icon sizing */
-.dark .copy-button svg {
+:where(.dark, .dark *) .copy-button svg {
   width: 0.85rem;
   height: 0.85rem;
   display: block;
 }
 
-/* Press state */
-.dark .copy-button:active {
+:where(.dark, .dark *) .copy-button:active {
   transform: translateY(1px);
+}
+
+:where(.dark, .dark *) .copy-button:hover {
+  background: #3d3d3d;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .dark figure[data-rehype-pretty-code-figure] pre {
@@ -426,6 +448,53 @@ iframe.giscus-frame {
 /* ============================================================================
 LIGHT MODE 
 ===================================================================== */
+.prose {
+  --tw-prose-body: rgb(var(--body-text));
+  --tw-prose-headings: rgb(var(--text));
+  --tw-prose-lead: rgb(var(--body-text));
+  --tw-prose-links: rgb(var(--accent));
+  --tw-prose-bold: rgb(var(--text));
+  --tw-prose-counters: rgb(var(--muted-text));
+  --tw-prose-bullets: rgb(var(--muted-text));
+  --tw-prose-hr: rgb(var(--border));
+  --tw-prose-quotes: rgb(var(--body-text));
+  --tw-prose-quote-borders: rgb(var(--accent));
+  --tw-prose-captions: rgb(var(--muted-text));
+  --tw-prose-code: rgb(var(--text));
+  --tw-prose-pre-code: rgb(var(--text));
+  --tw-prose-pre-bg: rgb(var(--card));
+  --tw-prose-th-borders: rgb(var(--border));
+  --tw-prose-td-borders: rgb(var(--border));
+}
+
+/* Apply Shiki dual theme CSS variables */
+.prose pre span {
+  color: var(--shiki-light);
+}
+
+.dark .prose pre span {
+  color: var(--shiki-dark);
+}
+
+.prose pre {
+  background-color: var(--shiki-light-bg) !important;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 1.25rem;
+  border: 1px solid #e5e7eb;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+:where(.dark, .dark *) .prose pre {
+  background-color: #1f1f1f !important;
+  border: 1px solid #2a2a2a !important;
+}
+
+
+/* .prose pre span {
+  color: unset;
+} */
 /* code,
 pre {
   font-family: var(--font-mono);
@@ -559,6 +628,12 @@ pre {
   margin-bottom: 1rem;
 }
 
+.prose ul li,
+.prose ol li {
+  color: rgb(var(--body-text));
+}
+
+
 .prose li {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -611,28 +686,6 @@ figure[data-rehype-pretty-code-figure] {
 }
 
 /* Copy button (ALWAYS VISIBLE) */
-.copy-button {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.75rem;
-  z-index: 12;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.28rem 0.5rem;
-  border-radius: 0.375rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: rgb(var(--accent));
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgb(var(--accent-foreground));
-  backdrop-filter: blur(4px);
-  user-select: none;
-  -webkit-user-select: none;
-  transition: background 0.12s ease, color 0.12s ease, transform 0.08s ease;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
-}
 
 /* Copy button icon sizing */
 .copy-button svg {
@@ -646,11 +699,11 @@ figure[data-rehype-pretty-code-figure] {
   transform: translateY(1px);
 }
 
-figure[data-rehype-pretty-code-figure] pre {
+/* figure[data-rehype-pretty-code-figure] pre {
   overflow-x: auto;
   padding-right: 4rem;
   background: transparent;
-}
+} */
 
 pre [data-highlighted-line] {
   background-color: rgba(0, 0, 0, 0.06);

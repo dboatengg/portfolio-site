@@ -106,7 +106,8 @@ export default async function BlogPost({
   }
 
   return (
-    <article className=" prose prose-invert max-w-3xl mx-auto pt-10 pb-20 text-zinc-300 leading-8">
+    // <article className=" prose prose-invert max-w-3xl mx-auto pt-10 pb-20 text-zinc-300 leading-8">
+    <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 leading-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

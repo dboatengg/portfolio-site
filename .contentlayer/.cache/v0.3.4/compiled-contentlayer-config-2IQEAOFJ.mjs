@@ -42,7 +42,7 @@ var Blog = defineDocumentType(() => ({
 var rehypeOptions = {
   theme: {
     dark: "one-dark-pro",
-    light: "min-light"
+    light: "github-light"
   },
   keepBackground: false,
   defaultLang: "js",
@@ -70,4 +70,4 @@ export {
   Blog,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-6MH2TKZZ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-2IQEAOFJ.mjs.map
