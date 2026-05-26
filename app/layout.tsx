@@ -81,11 +81,12 @@ export default function RootLayout({
             __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark')document.documentElement.classList.add('dark');}else{if(prefersDark)document.documentElement.classList.add('dark');}}catch(e){} })();`,
           }}
         /> */}
-        <script
+        {/* <script
         dangerouslySetInnerHTML={{
       __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}else{if(prefersDark){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}}catch(e){} })();`,
       }}
-      />
+      /> */}
+      
       </head>
       <body
         className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
