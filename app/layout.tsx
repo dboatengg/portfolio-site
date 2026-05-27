@@ -76,17 +76,37 @@ export default function RootLayout({
           sizes="512x512"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        {/* <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark')document.documentElement.classList.add('dark');}else{if(prefersDark)document.documentElement.classList.add('dark');}}catch(e){} })();`,
           }}
-        /> */}
+        />
         {/* <script
         dangerouslySetInnerHTML={{
       __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}else{if(prefersDark){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}}catch(e){} })();`,
       }}
       /> */}
-      
+      {/* <script
+  dangerouslySetInnerHTML={{
+    __html: `(function(){
+      try {
+        var theme = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
+        var root = document.documentElement;
+        if (isDark) {
+          root.classList.add('dark');
+          root.setAttribute('style', 'background: rgb(23 23 23); color-scheme: dark;');
+        } else {
+          root.classList.remove('dark');
+          root.setAttribute('style', 'background: rgb(247 247 247); color-scheme: light;');
+        }
+        if (theme) root.classList.add('theme-set');
+      } catch(e) {}
+    })();`,
+  }}
+/>
+       */}
       </head>
       <body
         className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
