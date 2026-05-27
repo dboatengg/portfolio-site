@@ -1,7 +1,7 @@
 
 import { MetadataRoute } from "next";
 import { allBlogs } from "@/.contentlayer/generated";
-// import { projects } from "@/app/projects/data/projects";
+import { projects } from "@/app/projects/data/projects";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://dicksonboateng.com";
@@ -13,10 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Project pages (dynamic only)
-  // const projectPages = projects.map((project) => ({
-  //   url: `${baseUrl}/projects/${project.slug}`,
-  //   lastModified: new Date(),
-  // }));
+  const projectPages = projects.map((project) => ({
+    url: `${baseUrl}/projects/${project.slug}`,
+    lastModified: new Date(),
+  }));
 
   // Static pages
   const staticPages = ["", "about", "blog"].map((path) => ({
@@ -25,5 +25,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Final combined sitemap
-  return [...staticPages, ...posts];
+  return [...staticPages, ...posts, ...projectPages];
 }
