@@ -46,6 +46,24 @@
   }
 }
 
+/* html.light {
+  --bg: 247 247 247;
+  --card: 250 250 250;
+  --text: 55 65 81;
+  --body-text: 75 85 99;
+  --card-text: 31 41 55;
+  --border: 229 231 235;
+  --accent: 37 99 235;
+  --accent-foreground: 255 255 255;
+  --muted: 243 244 246;
+  --muted-text: 107 114 128;
+  --divide: 229 231 235;
+  --ctrl-border: 156 163 175;
+  --surface-overlay: 255 255 255 / 0.6;
+  --surface-solid: 245 245 245;
+} */
+
+
 /* ----- Dark Mode ----- */
 .dark {
   --bg: 23 23 23;

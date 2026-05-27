@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About | Dickson Boateng",
   description:
-    "I'm Dickson Boateng, a software developer from Ghana who enjoys building clean, responsive, and practical web interfaces with modern JavaScript tools.",
+    " I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, PostgreSQL,Prisma, etc.",
   alternates: {
     canonical: "/about",
   },

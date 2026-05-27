@@ -6,6 +6,8 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import CopyCode from "@/components/CopyCode";
 import "./globals.css";
+// import { cookies } from "next/headers";
+
 
 const inter = Inter({
   variable: "--font-inter",
@@ -57,11 +59,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+
+  //   const cookieStore = await cookies();
+  // const theme = cookieStore.get("theme")?.value;
+  
+  // const isDark = theme === "dark";
+  // const isLight = theme === "light";
+  
+  // const themeClass = isDark ? "dark" : isLight ? "light" : "";
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning >
       <head>
         <link
           rel="icon"
@@ -76,16 +87,42 @@ export default function RootLayout({
           sizes="512x512"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark')document.documentElement.classList.add('dark');}else{if(prefersDark)document.documentElement.classList.add('dark');}}catch(e){} })();`,
           }}
-        />
+        /> */}
         {/* <script
         dangerouslySetInnerHTML={{
       __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}else{if(prefersDark){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}}catch(e){} })();`,
       }}
       /> */}
+
+      <script
+  dangerouslySetInnerHTML={{
+    __html: `(function(){
+      try {
+        document.documentElement.style.visibility = 'hidden';
+        var theme = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
+        var root = document.documentElement;
+        if (isDark) {
+          root.classList.add('dark');
+          root.classList.remove('light');
+        } else {
+          root.classList.remove('dark');
+          root.classList.add('light');
+        }
+        if (theme) root.classList.add('theme-set');
+        document.documentElement.style.visibility = 'visible';
+      } catch(e) {
+        document.documentElement.style.visibility = 'visible';
+      }
+    })();`,
+  }}
+/>
+
       {/* <script
   dangerouslySetInnerHTML={{
     __html: `(function(){
@@ -96,21 +133,27 @@ export default function RootLayout({
         var root = document.documentElement;
         if (isDark) {
           root.classList.add('dark');
-          root.setAttribute('style', 'background: rgb(23 23 23); color-scheme: dark;');
+          root.classList.remove('light');
+          root.style.background = 'rgb(23 23 23)';
+          root.style.colorScheme = 'dark';
         } else {
           root.classList.remove('dark');
-          root.setAttribute('style', 'background: rgb(247 247 247); color-scheme: light;');
+          root.classList.add('light');
+          root.style.background = 'rgb(247 247 247)';
+          root.style.colorScheme = 'light';
         }
         if (theme) root.classList.add('theme-set');
       } catch(e) {}
     })();`,
   }}
-/>
-       */}
+/> */}
+
+
       </head>
-      <body
+      {/* <body
         className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
-      >
+      > */}
+      <body className={`${inter.variable} ${sora.variable} antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}>
         <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} />
         <ThemeProvider
           attribute="class"
@@ -119,7 +162,7 @@ export default function RootLayout({
           disableTransitionOnChange={true}
           storageKey="theme"
         >
-          <div id="theme-ripple" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999, overflow: 'hidden',}} />
+          <div id="theme-ripple" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: -1, overflow: 'hidden',}} />
           <div className="min-h-screen flex flex-col items-center">
             <Header />
             <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8 flex-1">
