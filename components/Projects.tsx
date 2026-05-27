@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 const projectscomp = [
@@ -9,7 +8,7 @@ const projectscomp = [
     description:
       "I built this site from scratch as both a personal portfolio and a playground to experiment with modern full-stack tools like Next.js, PostgreSQL, Prisma, React 19, and Tailwind CSS.",
     gradient: "from-blue-500 to-purple-600",
-    live: "https://dicksonboateng.com", 
+    // live: "https://dicksonboateng.com", 
     github: "https://github.com/dboatengg/portfolio-site", 
   },
   {
@@ -60,7 +59,7 @@ export default function Projects() {
               </p>
 
               <div className="mt-auto flex items-center gap-3">
-                
+                {project.live &&
                   <a href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -71,6 +70,8 @@ export default function Projects() {
                     <path d="M7 17L17 7M7 7h10v10"/>
                   </svg>
                 </a>
+
+                }
                 
                   <a href={project.github}
                   target="_blank"

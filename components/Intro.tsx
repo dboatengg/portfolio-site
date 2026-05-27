@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 export default function Intro() {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
       className="mb-24 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"
     >
       <div className="flex-1">
