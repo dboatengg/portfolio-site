@@ -7,6 +7,8 @@ export default function CopyCode() {
   const pathname = usePathname();
 
   function attachButtons() {
+    const scrollY = window.scrollY;
+    
     document.querySelectorAll(".copy-button").forEach((btn) => btn.remove());
     document.querySelectorAll("figure[data-rehype-pretty-code-figure]").forEach((figure) => {
       const button = document.createElement("button");
@@ -22,6 +24,8 @@ export default function CopyCode() {
 
       figure.appendChild(button);
     });
+
+    window.scrollTo({ top: scrollY, behavior: "instant" });
   }
 
   useEffect(() => {

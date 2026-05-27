@@ -28,26 +28,6 @@
   --surface-solid: 245 245 245;
 }
 
-/* Respect system preference before JS runs to reduce flash */
-/* @media (prefers-color-scheme: dark) { */
-  /* Only apply system dark variables when the user hasn't explicitly chosen a theme. */
-  /* html:not(.theme-set) {
-    --bg: 23 23 23;
-    --card: 38 38 38;
-    --text: 209 213 219;
-    --body-text: 209 213 219;
-    --card-text: 245 245 245;
-    --border: 38 38 38;
-    --accent: 59 130 246;
-    --muted: 39 39 42;
-    --muted-text: 161 161 170;
-    --divide: 31 41 55;
-    --ctrl-border: 82 82 82;
-    --surface-overlay: 0 0 0 / 0.05;
-    --surface-solid: 31 41 55;
-  }
-} */
-
 @media (prefers-color-scheme: dark) {
   html:not(.light) {
     --bg: 23 23 23;
@@ -150,21 +130,6 @@ textarea, input {
   filter: invert(1);
 }
 
-/* .giscus {
-  margin-top: 0;
-}
-
-.giscus-frame {
-  border: none !important;
-}
-
-iframe.giscus-frame {
-  border-radius: 12px;
-}
-
-.giscus-frame {
-  background: transparent;
-} */
 
 @keyframes fadeIn {
   from {
@@ -181,17 +146,6 @@ iframe.giscus-frame {
   animation: fadeIn 0.12s ease-out;
 }
 
-/* blog post loading animation */
-/* @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} */
 
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-out;
@@ -449,6 +403,8 @@ iframe.giscus-frame {
 LIGHT MODE 
 ===================================================================== */
 .prose {
+    line-height: 1.8;
+    font-size: 1rem;
   --tw-prose-body: rgb(var(--body-text));
   --tw-prose-headings: rgb(var(--text));
   --tw-prose-lead: rgb(var(--body-text));
