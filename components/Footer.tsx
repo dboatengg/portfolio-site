@@ -87,12 +87,12 @@ export default function Footer() {
             </Link>
 
             <Link
-              href="https://cal.com/dicksonboateng/30min"
+              href="mailto:dicksonboateng@proton.me"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-1 text-[rgb(var(--body-text))] hover:text-[rgb(var(--text))] transition-colors"
             >
-              Book a call
+              Email
               <ArrowUpRight
                 size={14}
                 strokeWidth={1.5}

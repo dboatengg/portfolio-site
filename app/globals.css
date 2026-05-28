@@ -63,6 +63,11 @@
   --surface-solid: 245 245 245;
 } */
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
 
 /* ----- Dark Mode ----- */
 .dark {
