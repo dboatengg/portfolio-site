@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Blog | Dickson Boateng",
   description:
-    " I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, PostgreSQL,Prisma, etc.",
+    " I build solid web applications.",
 };
 
 type BlogPost = (typeof allBlogs)[number];
@@ -30,12 +30,12 @@ export default function BlogPage() {
   return (
     <section className="py-10">
       {/* Header */}
-      <header className="max-w-3xl mx-auto mb-12">
+      <header className="max-w-4xl mx-auto mb-12">
         <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))] mb-3">
           Blog
         </h1>
         <p className="text-sm md:text-base text-[rgb(var(--muted-text))] max-w-2xl">
-          A collection of technical write-ups and personal reflections.
+          A collection of mostly personal reflections and technical write-ups.
         </p>
       </header>
 
@@ -66,9 +66,9 @@ export default function BlogPage() {
                         {post.title}
                       </Link>
 
-                      <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
+                      {/* <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
                         {formatShortDate(post.date)}
-                      </time>
+                      </time> */}
                     </div>
 
                     {post.summary && (

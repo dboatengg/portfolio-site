@@ -29,9 +29,9 @@ export default function BlogList() {
                   {post.title}
                 </Link>
 
-                <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
+                {/* <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
                   {formatShortDate(post.date)}
-                </time>
+                </time> */}
               </div>
 
               {post.summary && (
