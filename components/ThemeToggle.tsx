@@ -22,59 +22,6 @@ export default function ThemeToggle() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // function switchTheme(newTheme: string) {
-  //   setOpen(false);
-
-  //   const rippleContainer = document.getElementById('theme-ripple');
-  //   const btn = btnRef.current;
-  //   if (!rippleContainer || !btn) {
-  //     applyTheme(newTheme);
-  //     return;
-  //   }
-
-  //   const rect = btn.getBoundingClientRect();
-  //   const x = rect.left + rect.width / 2;
-  //   const y = rect.top + rect.height / 2;
-
-  //   const size = Math.hypot(
-  //     Math.max(x, window.innerWidth - x),
-  //     Math.max(y, window.innerHeight - y)
-  //   ) * 2;
-
-  //   const isDark = newTheme === 'dark' ||
-  //     (newTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-  //   const circle = document.createElement('div');
-  //   circle.style.cssText = `
-  //     position: absolute;
-  //     border-radius: 50%;
-  //     width: ${size}px;
-  //     height: ${size}px;
-  //     left: ${x - size / 2}px;
-  //     top: ${y - size / 2}px;
-  //     background: ${isDark ? '#171717' : '#f7f7f7'};
-  //     transform: scale(0);
-  //     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  //   `;
-
-  //   rippleContainer.appendChild(circle);
-
-  //   circle.getBoundingClientRect();
-
-  //   requestAnimationFrame(() => {
-  //     requestAnimationFrame(() => {
-  //       circle.style.transform = 'scale(1)';
-  //     });
-  //   });
-
-  //   setTimeout(() => {
-  //     applyTheme(newTheme);
-  //   }, 300);
-
-  //   setTimeout(() => {
-  //     rippleContainer.removeChild(circle);
-  //   }, 650);
-  // }
 
   async function switchTheme(newTheme: string) {
   setOpen(false);
@@ -109,7 +56,7 @@ export default function ThemeToggle() {
         ],
       },
       {
-        duration: 500,
+        duration: 600,
         easing: 'ease-in-out',
         pseudoElement: '::view-transition-new(root)',
       }

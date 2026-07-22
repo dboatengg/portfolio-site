@@ -35,7 +35,7 @@ export default async function GuestbookPage() {
               {session?.user ? `Hello, ${session.user.name}` : "Guestbook"}
             </h1>
             <p className="text-sm text-[rgb(var(--muted-text))]">
-              Leave your mark and let me know you stopped by.
+              Leave your mark to let me know you stopped by.
             </p>
           </div>
 

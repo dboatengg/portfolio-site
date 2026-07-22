@@ -58,6 +58,21 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+
+            <Link
+              href="mailto:dicksonboateng@proton.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-1 text-[rgb(var(--body-text))] hover:text-[rgb(var(--text))] transition-colors"
+            >
+              Email
+              <ArrowUpRight
+                size={14}
+                strokeWidth={1.5}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </Link>
+
             <Link
               href="https://github.com/dboatengg"
               target="_blank"
@@ -86,19 +101,6 @@ export default function Footer() {
               />
             </Link>
 
-            <Link
-              href="mailto:dicksonboateng@proton.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-1 text-[rgb(var(--body-text))] hover:text-[rgb(var(--text))] transition-colors"
-            >
-              Email
-              <ArrowUpRight
-                size={14}
-                strokeWidth={1.5}
-                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </Link>
           </div>
         </div>
       </div>

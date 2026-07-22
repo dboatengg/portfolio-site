@@ -63,13 +63,6 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
 
-  //   const cookieStore = await cookies();
-  // const theme = cookieStore.get("theme")?.value;
-  
-  // const isDark = theme === "dark";
-  // const isLight = theme === "light";
-  
-  // const themeClass = isDark ? "dark" : isLight ? "light" : "";
 
   return (
     <html lang="en" suppressHydrationWarning >
@@ -87,16 +80,7 @@ export default async function RootLayout({
           sizes="512x512"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        {/* <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark')document.documentElement.classList.add('dark');}else{if(prefersDark)document.documentElement.classList.add('dark');}}catch(e){} })();`,
-          }}
-        /> */}
-        {/* <script
-        dangerouslySetInnerHTML={{
-      __html: `(function(){try{var theme=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(theme){document.documentElement.classList.add('theme-set');if(theme==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}else{if(prefersDark){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}}catch(e){} })();`,
-      }}
-      /> */}
+        
 
       <script
   dangerouslySetInnerHTML={{
@@ -122,32 +106,6 @@ export default async function RootLayout({
     })();`,
   }}
 />
-
-      {/* <script
-  dangerouslySetInnerHTML={{
-    __html: `(function(){
-      try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
-        var root = document.documentElement;
-        if (isDark) {
-          root.classList.add('dark');
-          root.classList.remove('light');
-          root.style.background = 'rgb(23 23 23)';
-          root.style.colorScheme = 'dark';
-        } else {
-          root.classList.remove('dark');
-          root.classList.add('light');
-          root.style.background = 'rgb(247 247 247)';
-          root.style.colorScheme = 'light';
-        }
-        if (theme) root.classList.add('theme-set');
-      } catch(e) {}
-    })();`,
-  }}
-/> */}
-
 
       </head>
       {/* <body
