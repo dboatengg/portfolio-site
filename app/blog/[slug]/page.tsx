@@ -107,7 +107,7 @@ export default async function BlogPost({
 
   return (
     // <article className=" prose prose-invert max-w-3xl mx-auto pt-10 pb-20 text-zinc-300 leading-8">
-    <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 leading-8">
+    <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -116,17 +116,11 @@ export default async function BlogPost({
       <ArrowLeft size={16} />
         Back to blog
       </Link>
-      <header className="mb-10">
-        {/* <h1 className="!text-2xl sm:!text-3xl md:!text-4xl font-bold mb-3"> */}
+      <header className="mb-14">
         <h1 className="!text-3xl sm:!text-4xl md:!text-5xl !leading-tight font-bold tracking-tight mb-5">
           {frontmatter.title}
         </h1>
-        {/* {date && (
-          <p className="text-[rgb(var(--muted-text))] text-sm">{formatDate(date)}</p>
-        )} */}
 
-        {/* Date + Reading time */}
-        {/* <div className="flex items-center gap-3 text-[rgb(var(--muted-text))] text-sm"> */}
         <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
           {date && <span>{formatDate(date)}</span>}
           <span>•</span>
@@ -136,7 +130,7 @@ export default async function BlogPost({
 
 
         {/* TAGS */}
-        {frontmatter.tags && (
+        {/* {frontmatter.tags && (
           <div className="flex flex-wrap gap-2 mt-3">
             {frontmatter.tags.map((tag) => (
               <span
@@ -149,7 +143,7 @@ export default async function BlogPost({
               </span>
             ))}
           </div>
-        )}
+        )} */}
       </header>
       {content}
       <hr className="my-16 border-[rgb(var(--border))]" />

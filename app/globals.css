@@ -209,9 +209,10 @@ textarea, input {
 .dark .prose {
   max-width: 70ch;
   margin: 0 auto;
+  font-family: Georgia, "Times New Roman", serif; 
   color: #e5e7eb;
   line-height: 1.8;
-  font-size: 1rem;
+  font-size: 1.0625rem;
 }
 
 /* --- Headings --- */
@@ -243,8 +244,8 @@ textarea, input {
 
 /* --- Paragraphs & Text --- */
 .dark .prose p {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
   color: #d1d5db;
 }
 
@@ -426,8 +427,9 @@ textarea, input {
 LIGHT MODE 
 ===================================================================== */
 .prose {
-    line-height: 1.8;
-    font-size: 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.8;
+  font-size: 1.0625rem;
   --tw-prose-body: rgb(var(--body-text));
   --tw-prose-headings: rgb(var(--text));
   --tw-prose-lead: rgb(var(--body-text));
@@ -518,8 +520,8 @@ pre {
 
 /* --- Paragraphs & Text --- */
 .prose p {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
   color: rgb(var(--body-text));
 }
 
