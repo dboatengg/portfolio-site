@@ -6,8 +6,15 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import CopyCode from "@/components/CopyCode";
 import "./globals.css";
+import { Newsreader } from "next/font/google";
 // import { cookies } from "next/headers";
 
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  style: ["normal", "italic"],
+})
 
 const inter = Inter({
   variable: "--font-inter",

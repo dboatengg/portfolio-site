@@ -7,6 +7,7 @@
 :root {
   --font-inter: Inter, system-ui, sans-serif;
   --font-mono: Geist Mono, monospace;
+  --font-serif: "Newsreader", serif; 
 
   --bg: 247 247 247;
   --card: 250 250 250;
@@ -209,7 +210,7 @@ textarea, input {
 .dark .prose {
   max-width: 70ch;
   margin: 0 auto;
-  font-family: Georgia, "Times New Roman", serif; 
+  font-family: var(--font-serif); 
   color: #e5e7eb;
   line-height: 1.8;
   font-size: 1.0625rem;
@@ -427,7 +428,7 @@ textarea, input {
 LIGHT MODE 
 ===================================================================== */
 .prose {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-serif);
   line-height: 1.8;
   font-size: 1.0625rem;
   --tw-prose-body: rgb(var(--body-text));
