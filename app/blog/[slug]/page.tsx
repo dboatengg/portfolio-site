@@ -2,6 +2,7 @@
 import { compileMDX } from "next-mdx-remote/rsc"
 import { getAllSlugs, getPostBySlug, rehypePlugins } from "@/utils/mdx"
 import GiscusComments from "@/components/GiscusComments"
+import PolaroidGallery from "../PolaroidGallery"
 import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
 import Link from "next/link"
@@ -82,6 +83,7 @@ export default async function BlogPost({
       parseFrontmatter: true,
       mdxOptions: { rehypePlugins },
     },
+    components: { PolaroidGallery }
   })
 
   // --- Reading time (computed locally) ---
