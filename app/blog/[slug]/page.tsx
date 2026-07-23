@@ -2,7 +2,7 @@
 import { compileMDX } from "next-mdx-remote/rsc"
 import { getAllSlugs, getPostBySlug, rehypePlugins } from "@/utils/mdx"
 import GiscusComments from "@/components/GiscusComments"
-import PolaroidGallery from "../PolaroidGallery"
+import PolaroidGallery from "../../../components/PolaroidGallery"
 import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
 import Link from "next/link"
@@ -31,6 +31,7 @@ export async function generateMetadata(
       parseFrontmatter: true,
       mdxOptions: { rehypePlugins },
     },
+    components: { PolaroidGallery }, 
   })
 
   const title = frontmatter.title || "Untitled Post"
