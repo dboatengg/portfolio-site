@@ -1,6 +1,6 @@
 
 import { compileMDX } from "next-mdx-remote/rsc"
-import { getAllSlugs, getPostBySlug, rehypePlugins } from "@/utils/mdx"
+import { getAllSlugs, getPostBySlug, mdxCompileOptions } from "@/utils/mdx"
 import GiscusComments from "@/components/GiscusComments"
 import PolaroidGallery from "../../../components/PolaroidGallery"
 import type { Metadata } from "next"
@@ -27,11 +27,8 @@ export async function generateMetadata(
     image?: string
   }>({
     source,
-    options: {
-      parseFrontmatter: true,
-      mdxOptions: { rehypePlugins },
-    },
-    components: { PolaroidGallery }, 
+    options: mdxCompileOptions,
+    components: { PolaroidGallery },
   })
 
   const title = frontmatter.title || "Untitled Post"
@@ -80,11 +77,8 @@ export default async function BlogPost({
     image?: string
   }>({
     source,
-    options: {
-      parseFrontmatter: true,
-      mdxOptions: { rehypePlugins },
-    },
-    components: { PolaroidGallery }
+    options: mdxCompileOptions,
+    components: { PolaroidGallery },
   })
 
   // --- Reading time (computed locally) ---

@@ -10,17 +10,24 @@ type PolaroidImage = {
   alt?: string
 }
 
+function getRotation(index: number) {
+  const tilts = [-3.5, 2.5, -2, 3, -2.5]
+  return tilts[index % tilts.length]
+}
+
+const MAX_VISIBLE = 5
+
 export default function PolaroidGallery({ images = [] }: { images?: PolaroidImage[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const close = useCallback(() => setActiveIndex(null), [])
   const next = useCallback(
-    () => setActiveIndex((i) => (i === null ? null : (i + 1) % images.length)),
+    () => setActiveIndex((i) => (i === null || i >= images.length - 1 ? i : i + 1)),
     [images.length]
   )
   const prev = useCallback(
-    () => setActiveIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length)),
-    [images.length]
+    () => setActiveIndex((i) => (i === null || i <= 0 ? i : i - 1)),
+    []
   )
 
   useEffect(() => {
@@ -36,27 +43,41 @@ export default function PolaroidGallery({ images = [] }: { images?: PolaroidImag
 
   if (images.length === 0) return null
 
+  const visibleImages = images.slice(0, MAX_VISIBLE)
+  // const remainingCount = images.length - MAX_VISIBLE
+
   return (
     <>
-      <div className="not-prose flex flex-wrap justify-center gap-6 my-10">
-        {images.map((img, i) => (
-          <button
-            key={img.src}
-            onClick={() => setActiveIndex(i)}
-            className="group relative bg-[#f5f5f0] p-3 pb-10 rounded-sm shadow-lg
-                       transition-transform duration-300 ease-out
-                       hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:z-10
-                       focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-            style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * (2 + (i % 3))}deg)` }}
-          >
-            <div className="relative w-40 h-40 sm:w-44 sm:h-44 overflow-hidden">
-              <Image src={img.src} alt={img.alt ?? img.caption} fill className="object-cover" />
-            </div>
-            <p className="mt-3 text-center text-sm text-neutral-700 font-serif italic">
-              {img.caption}
-            </p>
-          </button>
-        ))}
+      <div className="not-prose my-12 w-[100vw] max-w-[100vw] relative left-1/2 -translate-x-1/2">
+        <div className="polaroid-gallery-track overflow-x-auto overscroll-x-contain scroll-smooth snap-x snap-mandatory px-4 sm:px-8 md:px-12 pb-3 pt-6 pb-3">
+          <div className="flex w-max min-w-full items-end gap-5 sm:gap-7 md:gap-8 md:justify-center">
+            {visibleImages.map((img, i) => (
+              <button
+                key={img.src}
+                type="button"
+                onClick={() => setActiveIndex(i)}
+                className="polaroid-card group relative snap-center cursor-pointer rounded-[1px]
+                           bg-[#f0f0eb] dark:bg-[#e8e8e2]
+                           px-2.5 pb-6 shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]
+                           focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 focus-visible:ring-offset-2"
+                style={{ "--rotate": `${getRotation(i)}deg` } as React.CSSProperties}
+              >
+                <div className="relative h-40 w-40 overflow-hidden sm:h-44 sm:w-44 md:h-48 md:w-48 lg:h-52 lg:w-52">
+                  <Image
+                    src={img.src}
+                    alt={img.alt ?? img.caption}
+                    fill
+                    sizes="(max-width: 640px) 160px, (max-width: 768px) 176px, 208px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="mt-2 px-1 text-center text-[12px] leading-snug text-neutral-600 dark:text-neutral-700 font-serif italic">
+                  {img.caption}
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {activeIndex !== null && (
@@ -65,20 +86,37 @@ export default function PolaroidGallery({ images = [] }: { images?: PolaroidImag
           onClick={close}
         >
           <button
-            onClick={(e) => { e.stopPropagation(); close() }}
-            className="absolute top-5 right-5 text-white/70 hover:text-white"
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              close()
+            }}
+            className="absolute top-5 right-5 text-white/70 hover:text-white transition-colors"
+            aria-label="Close gallery"
           >
             <X size={28} />
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); prev() }}
-            className="absolute left-4 sm:left-8 text-white/70 hover:text-white"
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              prev()
+            }}
+            className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-[60] text-white/70 hover:text-white transition-colors disabled:opacity-0 disabled:pointer-events-none"
+            aria-label="Previous image"
+            disabled={activeIndex === 0}
           >
             <ChevronLeft size={36} />
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); next() }}
-            className="absolute right-4 sm:right-8 text-white/70 hover:text-white"
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              next()
+            }}
+            className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-[60] text-white/70 hover:text-white transition-colors disabled:opacity-0 disabled:pointer-events-none"
+            aria-label="Next image"
+            disabled={activeIndex === images.length - 1}
           >
             <ChevronRight size={36} />
           </button>

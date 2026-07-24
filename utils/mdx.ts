@@ -40,3 +40,10 @@ const rehypeOptions = {
 
 // export const rehypePlugins = [[rehypePrettyCode, rehypeOptions]] as const
 export const rehypePlugins = [[rehypePrettyCode, rehypeOptions]] as any[]
+
+export const mdxCompileOptions = {
+  parseFrontmatter: true,
+  // Allow JSX expression props (e.g. images={[...]}) in author-written MDX
+  blockJS: false,
+  mdxOptions: { rehypePlugins },
+}
