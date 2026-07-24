@@ -10,7 +10,7 @@ type PolaroidImage = {
   alt?: string
 }
 
-export default function PolaroidGallery({ images }: { images: PolaroidImage[] }) {
+export default function PolaroidGallery({ images = [] }: { images?: PolaroidImage[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const close = useCallback(() => setActiveIndex(null), [])
@@ -33,6 +33,8 @@ export default function PolaroidGallery({ images }: { images: PolaroidImage[] })
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
   }, [activeIndex, close, next, prev])
+
+  if (images.length === 0) return null
 
   return (
     <>
