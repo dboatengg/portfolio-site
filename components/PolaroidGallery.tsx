@@ -71,7 +71,8 @@ export default function PolaroidGallery({ images = [] }: { images?: PolaroidImag
                     className="object-cover"
                   />
                 </div>
-                <div className="mt-2 px-1 text-center text-[12px] leading-snug text-neutral-600 dark:text-neutral-700 font-serif italic">
+                {/* <div className="mt-2 px-1 text-center text-[12px] leading-snug text-neutral-600 dark:text-neutral-700 font-serif italic"> */}
+                <div className="mt-2 px-1 text-center text-[15px] leading-snug text-neutral-800 font-handwriting not-italic">
                   {img.caption}
                 </div>
               </button>
@@ -131,7 +132,7 @@ export default function PolaroidGallery({ images = [] }: { images?: PolaroidImag
               fill
               className="object-contain"
             />
-            <p className="absolute -bottom-8 w-full text-center text-white/80 text-sm font-serif italic">
+            <p className="absolute -bottom-8 w-full text-center !text-white/80 text-sm font-serif italic">
               {images[activeIndex].caption}
             </p>
           </div>
