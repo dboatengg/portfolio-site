@@ -48,7 +48,7 @@ export default function PolaroidGallery({ images = [] }: { images?: PolaroidImag
 
   return (
     <>
-      <div className="not-prose my-12 w-[100vw] max-w-[100vw] relative left-1/2 -translate-x-1/2">
+      <div className="not-prose my-12 w-[100vw] lg:w-[90vw] max-w-[100vh] lg:max-w-[90vw] relative left-1/2 -translate-x-1/2">
         <div className="polaroid-gallery-track overflow-x-auto overscroll-x-contain scroll-smooth snap-x snap-mandatory px-4 sm:px-8 md:px-12 pb-3 pt-6 pb-3">
           <div className="flex w-max min-w-full items-end gap-5 sm:gap-7 md:gap-8 md:justify-center">
             {visibleImages.map((img, i) => (
@@ -58,16 +58,17 @@ export default function PolaroidGallery({ images = [] }: { images?: PolaroidImag
                 onClick={() => setActiveIndex(i)}
                 className="polaroid-card group relative snap-center cursor-pointer rounded-[1px]
                            bg-[#f0f0eb] dark:bg-[#e8e8e2]
-                           px-2.5 pb-6 shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]
+                           px-2 pt-2.5 pb-6 md:pb-3 shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]
                            focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 focus-visible:ring-offset-2"
                 style={{ "--rotate": `${getRotation(i)}deg` } as React.CSSProperties}
               >
-                <div className="relative h-40 w-40 overflow-hidden sm:h-44 sm:w-44 md:h-48 md:w-48 lg:h-52 lg:w-52">
+                <div className="relative h-32 w-32 overflow-hidden sm:h-36 sm:w-36 md:h-40 md:w-40 lg:h-44 lg:w-44">
                   <Image
                     src={img.src}
                     alt={img.alt ?? img.caption}
                     fill
-                    sizes="(max-width: 640px) 160px, (max-width: 768px) 176px, 208px"
+                    // sizes="(max-width: 640px) 160px, (max-width: 768px) 176px, 208px"
+                    sizes="(max-width: 640px) 128px, (max-width: 768px) 144px, 176px"
                     className="object-cover"
                   />
                 </div>

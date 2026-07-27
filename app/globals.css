@@ -385,8 +385,8 @@ textarea, input {
 /* --- Images --- */
 .dark .prose img {
   border-radius: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-top: 1rem;
+  margin-bottom: 1rem; */
   display: block;
   max-width: 100%;
   height: auto;
@@ -681,8 +681,8 @@ pre {
 /* --- Images --- */
 .prose img {
   border-radius: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-top: 1rem;
+  margin-bottom: 1rem; */
   display: block;
   max-width: 100%;
   height: auto;
