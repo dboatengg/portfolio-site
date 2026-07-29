@@ -1,0 +1,32 @@
+---
+title: "How JWT Authentication Works in Node.js"
+date: "2026-07-29"
+summary: "Learn how JWT authentication works in Node.js."
+tags:
+  - nodejs
+  - authentication
+  - jwt
+  - backend
+  - web-development
+---
+
+Every time you visit a website or search for something online, something very simple happens behind the scenes: your browser sends a request to a server, asking for that thing you just searched (a website, article, image, etc.).
+The server then searches for what you requested, finds it, and sends it right back to your browser.
+
+That's really it. You typing the URL of a website and searching for it is like telling your browser to write a request to the server saying "hey, can I have the homepage of this website?". 
+The server reads that request, searches for what you asked for, and sends back a response. Your browser opens the response and shows you the page.
+
+<RequestDemo />
+
+This back-and-forth is happening constantly, every time you type to search for something in a browser, click a link, submit a form, etc.
+
+Now, here's the part of this browser-server relationship that confuses people: each request is treated as a brand-new, isolated event. 
+This means that the server is stateless and therefore has no memory of the last request it received from you. It doesn't recognise you; it doesn't even recall what you asked for five seconds ago unless something is specifically built to make it remember.
+
+<StatelessDiagram />
+
+This is a very strange behaviour, if you think about it. Imagine walking into a shop and asking to buy something, and every time you speak, even ten seconds later, the shopkeeper treats you like a complete stranger who just walked into the shop for the first time. But that's the default behavior of how the web runs.
+
+So this raises an obvious question: if the server forgets you the moment one request is completed, how does it know you're still logged in when you click to a different part of an application? How does it know you're you, and not just a different visitor?
+
+That question is the whole reason JWTs exist.

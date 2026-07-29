@@ -2,11 +2,15 @@
 import { compileMDX } from "next-mdx-remote/rsc"
 import { getAllSlugs, getPostBySlug, mdxCompileOptions } from "@/utils/mdx"
 import GiscusComments from "@/components/GiscusComments"
-import PolaroidGallery from "../../../components/PolaroidGallery"
 import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+
+// Blog components 
+import PolaroidGallery from "../../../components/PolaroidGallery"
+import RequestDemo from "@/components/RequestDemo"
+import StatelessDiagram from "@/components/StatelessDiagram"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -28,7 +32,7 @@ export async function generateMetadata(
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery },
+    components: { PolaroidGallery, RequestDemo, StatelessDiagram },
   })
 
   const title = frontmatter.title || "Untitled Post"
@@ -78,7 +82,7 @@ export default async function BlogPost({
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery },
+    components: { PolaroidGallery, RequestDemo, StatelessDiagram },
   })
 
   // --- Reading time (computed locally) ---
@@ -103,7 +107,6 @@ export default async function BlogPost({
   }
 
   return (
-    // <article className=" prose prose-invert max-w-3xl mx-auto pt-10 pb-20 text-zinc-300 leading-8">
     <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight">
       <script
         type="application/ld+json"
@@ -125,28 +128,9 @@ export default async function BlogPost({
         </div>
 
 
-
-        {/* TAGS */}
-        {/* {frontmatter.tags && (
-          <div className="flex flex-wrap gap-2 mt-3">
-            {frontmatter.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 text-xs font-medium rounded-full 
-                bg-[rgb(var(--surface-solid))] text-[rgb(var(--muted-text))] 
-                dark:bg-zinc-800 dark:text-zinc-300"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
-        )} */}
       </header>
       {content}
       <hr className="my-16 border-[rgb(var(--border))]" />
-      {/* <div className="mt-16 rounded-2xl border border-[rgb(var(--border))] p-4 sm:p-6">
-        <GiscusComments />
-      </div> */}
       <GiscusComments />
     </article>
   )
