@@ -30,3 +30,31 @@ This is a very strange behaviour, if you think about it. Imagine walking into a 
 So this raises an obvious question: if the server forgets you the moment one request is completed, how does it know you're still logged in when you click to a different part of an application? How does it know you're you, and not just a different visitor?
 
 That question is the whole reason JWTs exist.
+
+## What is JWT?
+JWT stands for JSON Web Token.
+
+> From here on, we'll use "JWT" and "token" interchangeably. They mean the same thing throughout this article, so don't worry if I switch between the two.
+
+Remember the problem we ended on: the server forgets you the second a request is completed. So somehow, we need to give the server a way to recognize you on your next requests. JWT is one answer to that problem. 
+But to really understand why it's designed the way it is, it helps to look at how this problem was traditionally handled, and the limitations that came with it.
+
+### The traditional method: making the server keep records
+
+The earliest common solution to this was sessions.
+
+Here's how it worked: when you logged into a site, the server would create a little record about you, something like "this is Jermaine, he logged in at 10:03am, he's authenticated," and store that record in its own memory or database. It would then hand you a small ID, called a session ID, and your browser would attach that ID to every request you made afterward.
+
+So this is what the conversation looks like when you refresh the page or navigate elsewhere in the app: "Hey server, it's me again, session ID 8842." The server checks its records, finds the one for 8842, sees that it's you, and lets you carry on as if you'd never left.
+
+This worked, and it's still used today. But notice what it requires: the server has to keep a record for every logged-in user, sitting in memory or a database, and it has to search for that record on every single request.
+
+That's fine with a handful of users. But think about an app like Instagram or Twitter. Millions of people are logged in at once, all sending requests every second: scrolling, posting, liking. One server, no matter how powerful, can't handle that much traffic alone. So companies run many servers instead, and spread incoming requests across them.
+
+<LoadBalancerDiagram />
+
+> A load balancer sits between you and those servers. It decides which server handles each request, usually just to spread traffic out evenly, with no regard for which server handled your last one.
+
+Here's the problem that creates: say you log in and your session record gets created on Server A. A few seconds later you click something else, but this request happens to land on Server B. Server B checks its own records and finds nothing. It has no idea who you are, because your record only exists on Server A.
+
+To fix that, every server would need to share the exact same set of records, staying perfectly in sync at all times. The instant one server creates or changes a record, every other server needs to know. That's genuinely difficult to build well, and it's the exact kind of problem that got developers asking: is there a way to do this without every server needing to constantly match what every other one knows?
