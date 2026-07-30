@@ -13,6 +13,7 @@ import RequestDemo from "@/components/RequestDemo"
 import StatelessDiagram from "@/components/StatelessDiagram"
 import LoadBalancerDiagram from "@/components/LoadBalancerDiagram"
 import StatelessJWTDiagram from "@/components/StatelessJWTDiagram"
+import TakeNote from "@/components/TakeNote"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -34,7 +35,7 @@ export async function generateMetadata(
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, StatelessJWTDiagram },
+    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, TakeNote },
   })
 
   const title = frontmatter.title || "Untitled Post"
@@ -84,7 +85,7 @@ export default async function BlogPost({
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, StatelessJWTDiagram },
+    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, StatelessJWTDiagram, TakeNote },
   })
 
   // --- Reading time (computed locally) ---

@@ -13,30 +13,36 @@ tags:
 Every time you visit a website or search for something online, something very simple happens behind the scenes: your browser sends a request to a server, asking for that thing you just searched (a website, article, image, etc.).
 The server then searches for what you requested, finds it, and sends it right back to your browser.
 
-That's really it. You typing the URL of a website and searching for it is like telling your browser to write a request to the server saying "hey, can I have the homepage of this website?". 
+That's really it. So when you type the URL of a website and search for it, you're basically telling your browser to write a request to the server saying "hey, can I have the homepage of this website?"
 The server reads that request, searches for what you asked for, and sends back a response. Your browser opens the response and shows you the page.
 
 <RequestDemo />
 
 This back-and-forth is happening constantly, every time you type to search for something in a browser, click a link, submit a form, etc.
 
-Now, here's the part of this browser-server relationship that confuses people: each request is treated as a brand-new, isolated event. 
-This means that the server is stateless and therefore has no memory of the last request it received from you. It doesn't recognise you; it doesn't even recall what you asked for five seconds ago unless something is specifically built to make it remember.
+<TakeNote>
+Literally every action you take on a website or web app: clicking a button, scrolling to load more posts, submitting a form, liking a comment, is a separate request that is sent to the server. Using a particular site might feel like one continuous experience, but underneath, it's dozens or even hundreds of these request-response exchanges happening one after another.
+</TakeNote>
+
+Now, here's the part of this browser-server communication that confuses people: each request is treated as brand-new. 
+The server is stateless, meaning it has no memory of the last request it received from you. It doesn't recognise you; it doesn't even recall what you asked for five seconds ago unless something is specifically built to make it remember.
 
 <StatelessDiagram />
 
-This is a very strange behaviour, if you think about it. Imagine walking into a shop and asking to buy something, and every time you speak, even ten seconds later, the shopkeeper treats you like a complete stranger who just walked into the shop for the first time. But that's the default behavior of how the web runs.
+This is a very strange behaviour, if you think about it. Imagine walking into a shop and asking to buy something, and every time you speak, even ten seconds later, the shopkeeper treats you like a complete stranger who just walked into the shop for the first time. But that's the default behaviour of how the web runs.
 
-So this raises an obvious question: if the server forgets you the moment one request is completed, how does it know you're still logged in when you click to a different part of an application? How does it know you're you, and not just a different visitor?
+So this raises an obvious question: if the server forgets you the moment a request is completed, how does it then know you're still logged in when you're using a website or an application? 
 
 That question is the whole reason JWTs exist.
 
 ## What is JWT?
 JWT stands for JSON Web Token.
 
-> From here on, we'll use "JWT" and "token" interchangeably. They mean the same thing throughout this article, so don't worry if I switch between the two.
+<TakeNote>
+From here on, we'll use "JWT" and "token" interchangeably. They mean the same thing throughout this article, so don't worry if I switch between the two.
+</TakeNote>
 
-Remember the problem we ended on: the server forgets you the second a request is completed. So somehow, we need to give the server a way to recognize you on your next requests. JWT is one answer to that problem. 
+Remember the problem we ended on: the server forgets you the second a request is completed. So somehow, we need to give the server a way to recognise you on your next requests. JWT is one answer to that problem. 
 But to really understand why it's designed the way it is, it helps to look at how this problem was traditionally handled, and the limitations that came with it.
 
 ### The traditional method: making the server keep records
@@ -53,7 +59,9 @@ That's fine with a handful of users. But think about an app like Instagram or Tw
 
 <LoadBalancerDiagram />
 
-> A load balancer sits between you and those servers. It decides which server handles each request, usually just to spread traffic out evenly, with no regard for which server handled your last one.
+<TakeNote>
+A load balancer sits between you and those servers. It decides which server handles each request, usually just to spread traffic out evenly, with no regard for which server handled your last one.
+</TakeNote>
 
 Here's the problem that creates: say you log in and your session record gets created on **Server A**. A few seconds later you click something else, but this request happens to land on **Server B**. **Server B** checks its own records and finds nothing. It has no idea who you are, because your record only exists on **Server A**.
 
@@ -159,7 +167,7 @@ That middleware pulls the token out of the request and recomputes its signature 
 
 ## Access tokens vs refresh tokens
 
-By now, every time we’ve said “the token,” we actually meant a specific kind of token called an access token. It’s the one your browser have been carrying around and attaching to every request, and it’s what the server checks to know who you are.
+By now, every time we’ve said “the token,” we actually meant a specific kind of token called an access token. It’s the one your browser has been carrying around and attaching to every request, and it’s what the server checks to know who you are.
 
 Here’s something you should know: a JWT isn’t meant to last forever. When the server first builds the token, it also decides how long that token should remain valid. It can be an hour, a day, whatever the app is comfortable with. Once that time is up, the token stops working entirely. If you try to use it after that point, the server will look at it, see that its time is up, and reject it. 
 
@@ -181,4 +189,9 @@ A refresh token is only ever handed out by the server at two moments:
 - When you log in with your real email and password 
 - Or when a valid refresh token is used to request a new access token. 
 
-So an attacker who only has your access token can act as you for a while, but the moment that token expires, they’re locked out for good. They were never given a refresh token, because they don’t have your email and password to get one.
+So an attacker who only has your access token can act as you for a while, but the moment that token expires, they’re locked out for good. They will never be given a refresh token by the server, because they don’t have your email and password to get one.
+
+This gives you the best of both worlds: an access token that's short-lived enough to limit damage if it's ever stolen, and a refresh token that keeps you logged in for a long time without repeatedly asking for your credentials.
+
+
+
