@@ -9,15 +9,15 @@ import { ArrowLeft } from "lucide-react"
 
 // Blog components 
 import PolaroidGallery from "../../../components/PolaroidGallery"
-import RequestDemo from "@/components/RequestDemo"
-import StatelessDiagram from "@/components/StatelessDiagram"
-import LoadBalancerDiagram from "@/components/LoadBalancerDiagram"
-import StatelessJWTDiagram from "@/components/StatelessJWTDiagram"
-import TakeNote from "@/components/TakeNote"
-import TokenAnatomyDiagram from "@/components/TokenAnatomyDiagram"
-import LoginFlowDiagram from "@/components/LoginFlowDiagram"
-import RequestVerifyDiagram from "@/components/RequestVerifyDiagram"
-import TokenTimelineDiagram from "@/components/TokenTimelineDiagram"
+import RequestDemo from "@/components/mdx/demos/jwt-auth/RequestDemo"
+import StatelessDiagram from "@/components/mdx/diagrams/jwt-auth/StatelessDiagram"
+import LoadBalancerDiagram from "@/components/mdx/diagrams/jwt-auth/LoadBalancerDiagram"
+import StatelessJWTDiagram from "@/components/mdx/diagrams/jwt-auth/StatelessJWTDiagram"
+import TakeNote from "@/components/mdx/shared/TakeNote"
+import TokenAnatomyDiagram from "@/components/mdx/diagrams/jwt-auth/TokenAnatomyDiagram"
+import LoginFlowDiagram from "@/components/mdx/diagrams/jwt-auth/LoginFlowDiagram"
+import RequestVerifyDiagram from "@/components/mdx/diagrams/jwt-auth/RequestVerifyDiagram"
+import TokenTimelineDiagram from "@/components/mdx/diagrams/jwt-auth/TokenTimelineDiagram"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))

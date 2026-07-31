@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc"
-import { Pre } from "@/components/Pre"
+import { Pre } from "@/components/mdx/shared/Pre"
 
 const components = {
   pre: Pre,
