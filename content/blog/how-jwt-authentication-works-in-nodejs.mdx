@@ -10,10 +10,10 @@ tags:
   - web-development
 ---
 
-Every time you visit a website or search for something online, something very simple happens behind the scenes: your browser sends a request to a server, asking for that thing you just searched (a website, article, image, etc.).
+Every time you visit a website or search for something online, something very simple happens behind the scenes: your browser sends a request to a server, asking for that thing you just searched.
 The server then searches for what you requested, finds it, and sends it right back to your browser.
 
-That's really it. So when you type the URL of a website and search for it, you're basically telling your browser to write a request to the server saying "hey, can I have the homepage of this website?"
+That's really it. So when you type the URL of a website and search for it, you're basically telling your browser to write a request to a server saying "hey, can I have the homepage of this website?"
 The server reads that request, searches for what you asked for, and sends back a response. Your browser opens the response and shows you the page.
 
 <RequestDemo />
@@ -33,7 +33,7 @@ This is a very strange behaviour, if you think about it. Imagine walking into a 
 
 So this raises an obvious question: if the server forgets you the moment a request is completed, how does it then know you're still logged in when you're using a website or an application? 
 
-That question is the whole reason JWTs exist.
+That question is the whole reason JWT exists.
 
 ## What is JWT?
 JWT stands for JSON Web Token.
@@ -43,29 +43,34 @@ From here on, we'll use "JWT" and "token" interchangeably. They mean the same th
 </TakeNote>
 
 Remember the problem we ended on: the server forgets you the second a request is completed. So somehow, we need to give the server a way to recognise you on your next requests. JWT is one answer to that problem. 
-But to really understand why it's designed the way it is, it helps to look at how this problem was traditionally handled, and the limitations that came with it.
+But to really understand JWT, it helps to look at how this problem was traditionally handled, and the limitations that came with it.
 
 ### The traditional method: making the server keep records
 
-The earliest common solution to this was sessions.
+The earliest common solution to this problem about the server forgetting you after every request was **sessions**.
 
-Here's how it worked: when you logged into a site, the server would create a little record about you, something like "this is Jermaine, he logged in at 10:03am, he's authenticated," and store that record in its own memory or database. It would then hand you a small ID, called a **session ID**, and your browser would attach that ID to every request you made afterward.
+Here's how it worked: when you logged into a site, the server would create a little record about you, something like **"this is John, he logged in at 10:03am, he's authenticated,"** and store that record in its own memory or database. 
+It would then hand you a small ID, called a **session ID**, and your browser would attach that ID to every request you made afterward.
 
-So this is what the conversation looks like when you refresh the page or navigate elsewhere in the app: "Hey server, it's me again, session ID 8842." The server checks its records, finds the one for 8842, sees that it's you, and lets you carry on as if you'd never left.
+So here's what that conversation looks like under the hood, every single time you do anything on the site: click a link, submit a form, refresh the page: "Hey server, it's me again, session ID 8842." The server checks its records, finds the one for 8842, sees that it's you, and lets you carry on as if you'd never left.
 
-This worked, and it's still used today. But notice what it requires: the server has to keep a record for every logged-in user in memory or a database, and it has to search for that record on every single request.
+This worked, and it's still used today. But notice what it requires: the server has to keep a record for every logged-in user in a database, and it has to search for that record on every single request.
 
-That's fine with a handful of users. But think about an app like Instagram or Twitter. Millions of people are logged in at once, all sending requests every second: scrolling, posting, liking. One server, no matter how powerful, can't handle that much traffic alone. So companies run many servers instead, and spread incoming requests across them.
+That's fine with a handful of users. But think about a site like Instagram or Twitter. Millions of people are logged in at once, all sending requests every second: scrolling, posting, liking, etc. 
+One server, no matter how powerful, can't handle that much traffic alone. So companies run many servers instead, and spread incoming requests across them.
 
 <LoadBalancerDiagram />
 
 <TakeNote>
-A load balancer sits between you and those servers. It decides which server handles each request, usually just to spread traffic out evenly, with no regard for which server handled your last one.
+A load balancer sits between you and those servers. It decides which server handles each request, usually just to spread traffic out evenly, with no regard for which server handled your last request.
 </TakeNote>
 
-Here's the problem that creates: say you log in and your session record gets created on **Server A**. A few seconds later you click something else, but this request happens to land on **Server B**. **Server B** checks its own records and finds nothing. It has no idea who you are, because your record only exists on **Server A**.
+Here's the problem this creates: Let's say you log in and your session record gets created on **Server A**. A few seconds later you click to like an image, but this request happens to land on **Server B**. **Server B** checks its own records and finds nothing. It has no idea who you are, because your record only exists on **Server A**.
 
-To fix that, every server would need to share the exact same set of records, and stay perfectly updated with each other at all times. The instant one server creates or changes a record, every other server needs to know about it too. That's genuinely difficult to build and maintain very well. It's a real headache for software engineers, and it's the exact kind of problem that got developers asking: is there a better way to do this without needing every server to constantly match what every other one knows?
+To fix this, every server would need to share the exact same set of records, and stay perfectly updated with each other at all times. 
+The instant one server creates or changes a record, every other server needs to know about it too. 
+That's genuinely difficult to build and maintain very well. It's a real headache for software engineers, and it's the exact kind of problem that got developers asking: 
+Is there a better way to do this without needing every server to stay perfectly in sync?
 
 ### The new method: letting the client hold its own record
 
@@ -77,11 +82,10 @@ The signature doesn't hide anything on the token. Anyone who gets hold of it can
 - That the token really came from the server 
 - And that nobody has changed it since. If someone tries to alter even one letter on the token, the signature breaks, and the server immediately knows something is wrong. 
 
-Your browser holds onto that token and attaches it to every request you send from then on. The server reads straight off the token instead of searching for it.
 
 So the conversation now looks like this: "Hey server, it's me, here's my token." The server just checks the signature to confirm the token is genuine and untampered with, then reads who you are directly from it. That's it.
 
-Notice what just disappeared: there's no shared record store anymore. No Server A creating something Server B has never seen. No syncing, no real-time updates between servers. Each server can verify your token completely on its own, the moment it receives it.
+Now, notice what just disappeared: there's no shared record store anymore. No **Server A** creating something **Server B** has never seen. No syncing, no real-time updates between servers. Each server can verify your token completely on its own, the moment it receives it.
 
 <StatelessJWTDiagram />
 

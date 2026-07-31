@@ -11,7 +11,7 @@ export default function LoadBalancerDiagram() {
           {/* You */}
           <rect x="20" y="175" width="140" height="70" rx="12" className="fill-white dark:fill-zinc-800 stroke-zinc-300 dark:stroke-zinc-600" strokeWidth="0.5" />
           <text x="90" y="200" textAnchor="middle" dominantBaseline="central" className="fill-zinc-900 dark:fill-zinc-100 text-sm font-medium">You</text>
-          <text x="90" y="220" textAnchor="middle" dominantBaseline="central" className="fill-zinc-500 dark:fill-zinc-400 text-xs">the client</text>
+          <text x="90" y="220" textAnchor="middle" dominantBaseline="central" className="fill-zinc-500 dark:fill-zinc-400 text-xs">browser</text>
   
           {/* Load balancer */}
           <rect x="250" y="175" width="160" height="70" rx="12" className="fill-indigo-50 dark:fill-indigo-900/40 stroke-indigo-500" strokeWidth="0.5" />
@@ -42,7 +42,7 @@ export default function LoadBalancerDiagram() {
           <text x="400" y="280" textAnchor="middle" className="fill-zinc-500 dark:fill-zinc-400 text-xs">request 2 (later)</text>
   
           <text x="340" y="400" textAnchor="middle" className="fill-zinc-500 dark:fill-zinc-400 text-xs">
-            {"Same client, different request. One server remembers you, the other doesn't."}
+            {"Same browser, different request. One server remembers you, the other doesn't."}
           </text>
         </svg>
       </div>

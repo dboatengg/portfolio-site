@@ -10,7 +10,7 @@ export default function StatelessJWTDiagram() {
   
           {/* You */}
           <rect x="20" y="175" width="140" height="70" rx="12" className="fill-white dark:fill-zinc-800 stroke-zinc-300 dark:stroke-zinc-600" strokeWidth="0.5" />
-          <text x="90" y="200" textAnchor="middle" dominantBaseline="central" className="fill-zinc-900 dark:fill-zinc-100 text-sm font-medium">You</text>
+          <text x="90" y="200" textAnchor="middle" dominantBaseline="central" className="fill-zinc-900 dark:fill-zinc-100 text-sm font-medium">You (Browser)</text>
           <text x="90" y="220" textAnchor="middle" dominantBaseline="central" className="fill-zinc-500 dark:fill-zinc-400 text-xs">holds a token</text>
   
           {/* Load balancer */}
