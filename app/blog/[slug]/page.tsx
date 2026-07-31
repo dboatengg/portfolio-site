@@ -18,6 +18,7 @@ import TokenAnatomyDiagram from "@/components/mdx/diagrams/jwt-auth/TokenAnatomy
 import LoginFlowDiagram from "@/components/mdx/diagrams/jwt-auth/LoginFlowDiagram"
 import RequestVerifyDiagram from "@/components/mdx/diagrams/jwt-auth/RequestVerifyDiagram"
 import TokenTimelineDiagram from "@/components/mdx/diagrams/jwt-auth/TokenTimelineDiagram"
+import { Pre } from "@/components/mdx/shared/Pre"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -39,7 +40,18 @@ export async function generateMetadata(
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, TakeNote, TokenAnatomyDiagram,  LoginFlowDiagram, RequestVerifyDiagram, TokenTimelineDiagram  },
+    components: { 
+      PolaroidGallery, 
+      RequestDemo, 
+      StatelessDiagram, 
+      LoadBalancerDiagram, 
+      TakeNote, 
+      TokenAnatomyDiagram,  
+      LoginFlowDiagram, 
+      RequestVerifyDiagram, 
+      TokenTimelineDiagram,
+      pre: Pre,
+      },
   })
 
   const title = frontmatter.title || "Untitled Post"
@@ -89,7 +101,20 @@ export default async function BlogPost({
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, StatelessJWTDiagram, TakeNote, TokenAnatomyDiagram,  LoginFlowDiagram, RequestVerifyDiagram, TokenTimelineDiagram },
+    components: { 
+      PolaroidGallery, 
+      RequestDemo, 
+      StatelessDiagram, 
+      LoadBalancerDiagram, 
+      StatelessJWTDiagram, 
+      TakeNote, 
+      TokenAnatomyDiagram,  
+      LoginFlowDiagram, 
+      RequestVerifyDiagram, 
+      TokenTimelineDiagram,
+      pre: Pre,
+
+     },
   })
 
   // --- Reading time (computed locally) ---
