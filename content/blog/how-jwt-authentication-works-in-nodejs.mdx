@@ -107,6 +107,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMywiZW1haWwiOiJqZXJtYWluZUB
 
 At a glance, you'll notice it's really just one long string with two dots in it. Those two dots split the string into exactly three sections: the header, the payload, and the signature.
 
+<TokenAnatomyDiagram />
+
 ### 1. The header
 
 This part carries a small amount of information about the token itself. Mainly, what kind of token it is, and which signing algorithm was used to create the signature (something like HMAC-SHA256, often shortened to HS256).
@@ -140,9 +142,13 @@ If they don't match, the server sends back an error, and that's the end of it.
 
 But if they do match, the server still won't remember you on your next request. So instead of trying to remember, it hands you something you can carry forward as proof: a token.
 
-Building that token means putting together the payload, your user ID, maybe your role or email, when the token should expire, and signing all of it with a secret key that only the server knows. That signing step is what stitches the header, payload, and signature together into the final token string you saw earlier.
+Building that token means putting together the payload, your user ID, maybe your role or email, when the token should expire, then signing it like you saw in the last section.
 
-Once the token is created and handed back to your browser, your browser holds onto it and attaches it to every request it makes from then on. The server never needs to check a database or "remember" you again. It just checks the token you hand it, every time.
+Once the token is created and handed back to your browser, your browser holds onto it and attaches it to every request it makes from then on. 
+
+<LoginFlowDiagram />
+
+The server never needs to check a database or "remember" you again. It just checks the token you hand it, every time.
 
 
 
@@ -154,7 +160,11 @@ From here on, your browser attaches the token to every request it sends, usually
 
 Before handling anything else about the request, the server checks whether the token is genuine. This check usually happens in middleware, a small piece of code that runs on every incoming request before it reaches its destination.
 
-That middleware pulls the token out of the request and recomputes its signature using the server's secret key, then compares it to the signature already on the token. If they match, the server knows the token is genuine and untampered, and reads who you are straight off the payload. If they don't match, or the token's missing or expired, the request gets rejected immediately, and nothing else runs.
+That middleware pulls the token out of the request and recomputes its signature using the server's secret key, then compares it to the signature already on the token. 
+
+<RequestVerifyDiagram />
+
+If they match, the server knows the token is genuine and untampered, and reads who you are straight off the payload. If they don't match, or the token's missing or expired, the request gets rejected immediately, and nothing else runs.
 
 
 
@@ -181,9 +191,11 @@ This is where a second kind of token comes in: the refresh token.
 
 A refresh token is longer-lived than an access token. It can sometimes last for days or even weeks. Its only job is to get you a brand-new access token, without you needing to type in your email and password again. It’s usually stored more carefully than the access token too, often in a place ordinary JavaScript on the page can’t easily reach, to reduce the risk of it being stolen.
 
-So here’s how the two work together: when you first log in, the server hands you both an access token and a refresh token. You use the access token as normal, on every request, until it eventually expires. When that happens, instead of logging in again, your browser quietly sends the refresh token to the server, which checks that refresh token to see if it’s valid and issue a brand-new access token.
+So here’s how the two work together: when you first log in, the server hands you both an access token and a refresh token. 
 
-Now, a fair question to ask at this point: if someone steals your access token, can’t they just get a new refresh token too, and stay logged in as you forever? The answer is no, and it comes down to what actually counts as “logging in.”
+<TokenTimelineDiagram />
+
+You use the access token as normal, on every request, until it eventually expires. When that happens, instead of logging in again, your browser quietly sends the refresh token to the server, which checks that refresh token to see if it’s valid and issue a brand-new access token.
 
 A refresh token is only ever handed out by the server at two moments: 
 - When you log in with your real email and password 
@@ -194,4 +206,37 @@ So an attacker who only has your access token can act as you for a while, but th
 This gives you the best of both worlds: an access token that's short-lived enough to limit damage if it's ever stolen, and a refresh token that keeps you logged in for a long time without repeatedly asking for your credentials.
 
 
+## The hard part: revocation and storage
 
+Everything so far has made JWTs sound almost too good to be true.  
+No database lookups, no shared memory between servers, just a signature the server can check on its own. 
+But there’s a real tradeoff hiding underneath all of that .
+
+### The problem: you can’t take a JWT back
+
+Think about what “logging someone out” actually means with sessions (the old approach). The server just deletes that person’s record from its database (recommend an appropriate word here). The next request they send has nothing to match against, so the server no longer recognises them. 
+
+Now think about what “logging out” actually does with a JWT. Clicking “log out” here does not make your access token stop working. It can’t; the server never stored that token anywhere in the first place, so there’s nothing to go delete. As long as an access token hasn’t expired yet, and its signature still checks out, the server has no way of knowing it’s “supposed” to reject it.
+
+So what does logging out actually do, then? Two things: 
+
+- Your browser deletes its own copy of the access and refresh tokens, so it stops sending them on future requests.
+- And separately, the server revokes the refresh token, since that's the one piece of this the server actually keeps track of.
+
+But notice what this doesn’t cover. If a copy of your access token already exists somewhere else, let’s say, it was stolen five minutes ago, logging out on your own device does nothing to that stolen copy. It doesn’t know a theft happened. It just clears your own browser and revokes the refresh token. The attacker’s copy of the access token keeps working, completely unaffected, for as long as that token remains valid.
+
+This is exactly why keeping access tokens short-lived matters so much. It’s not only about limiting general damage from a stolen token — it specifically covers this exact gap: the fact that “logging out” can clear your own device and cut off future refresh tokens, but it can’t reach out and kill a copy of the access token that’s already out in the world. A short lifespan puts a hard ceiling on that exposure, even in the worst case.
+
+In practice, a few strategies help narrow this gap further:
+
+- Keep access tokens short-lived, for exactly the reason above.
+- Actually revoke the refresh token on logout, so even though the stolen access token keeps working until it expires, the attacker can never renew it into a fresh one once that happens.
+
+
+
+## Wrapping up
+Let's go back to the question that kicked off this whole article: if the server forgets you the moment one request ends, how does it know you're still you on the next one?
+
+By now, you've seen the full answer. Instead of asking the server to remember anything, JWT flips the problem around entirely. It hands you a signed piece of proof, and lets any server verify that proof on its own, without needing a shared record, without needing to look anything up, without needing to remember a single thing about you between requests.
+
+None of this makes JWT the "correct" answer for every app, and it isn't a replacement for sessions in every situation either. It comes with a tradeoff, just like most things in software.

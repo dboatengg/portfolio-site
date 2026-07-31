@@ -14,6 +14,10 @@ import StatelessDiagram from "@/components/StatelessDiagram"
 import LoadBalancerDiagram from "@/components/LoadBalancerDiagram"
 import StatelessJWTDiagram from "@/components/StatelessJWTDiagram"
 import TakeNote from "@/components/TakeNote"
+import TokenAnatomyDiagram from "@/components/TokenAnatomyDiagram"
+import LoginFlowDiagram from "@/components/LoginFlowDiagram"
+import RequestVerifyDiagram from "@/components/RequestVerifyDiagram"
+import TokenTimelineDiagram from "@/components/TokenTimelineDiagram"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -35,7 +39,7 @@ export async function generateMetadata(
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, TakeNote },
+    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, TakeNote, TokenAnatomyDiagram,  LoginFlowDiagram, RequestVerifyDiagram, TokenTimelineDiagram  },
   })
 
   const title = frontmatter.title || "Untitled Post"
@@ -85,7 +89,7 @@ export default async function BlogPost({
   }>({
     source,
     options: mdxCompileOptions,
-    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, StatelessJWTDiagram, TakeNote },
+    components: { PolaroidGallery, RequestDemo, StatelessDiagram, LoadBalancerDiagram, StatelessJWTDiagram, TakeNote, TokenAnatomyDiagram,  LoginFlowDiagram, RequestVerifyDiagram, TokenTimelineDiagram },
   })
 
   // --- Reading time (computed locally) ---

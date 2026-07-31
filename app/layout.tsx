@@ -2,9 +2,9 @@ import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "next-themes";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Script from "next/script";
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
-import CopyCode from "@/components/CopyCode";
 import "./globals.css";
 import { Newsreader, Caveat } from "next/font/google";
 // import { cookies } from "next/headers";
@@ -94,7 +94,9 @@ export default async function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         
 
-      <script
+      <Script
+        id="theme-init"
+  strategy="beforeInteractive"
   dangerouslySetInnerHTML={{
     __html: `(function(){
       try {
@@ -136,7 +138,6 @@ export default async function RootLayout({
           <div className="min-h-screen flex flex-col items-center">
             <Header />
             <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8 flex-1">
-              <CopyCode />
               {children}
             </main>
             <Footer />
