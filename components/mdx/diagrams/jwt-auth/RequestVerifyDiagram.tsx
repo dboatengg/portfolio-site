@@ -44,7 +44,7 @@ export default function RequestVerifyDiagram() {
           <line x1="500" y1="295" x2="180" y2="295" className="stroke-zinc-400 dark:stroke-zinc-500" strokeWidth="0.5" markerEnd="url(#arrow)" />
   
           <text x="340" y="360" textAnchor="middle" className="fill-zinc-500 dark:fill-zinc-400 text-xs">
-            {"No database lookup. Just a signature check, every single time."}
+            {"No database lookup. Just a signature check."}
           </text>
         </svg>
       </div>

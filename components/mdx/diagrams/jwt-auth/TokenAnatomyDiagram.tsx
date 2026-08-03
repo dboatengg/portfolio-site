@@ -39,7 +39,7 @@ export default function TokenAnatomyDiagram() {
           {/* Payload card */}
           <rect x="230" y="120" width="220" height="60" rx="8" className="fill-violet-50 dark:fill-violet-900/40 stroke-violet-500" strokeWidth="0.5" />
           <text x="340" y="142" textAnchor="middle" dominantBaseline="central" className="fill-violet-700 dark:fill-violet-300 text-sm font-medium">Payload</text>
-          <text x="340" y="160" textAnchor="middle" dominantBaseline="central" className="fill-violet-600 dark:fill-violet-400 text-xs">The actual claims</text>
+          <text x="340" y="160" textAnchor="middle" dominantBaseline="central" className="fill-violet-600 dark:fill-violet-400 text-xs">Your info</text>
   
           {/* Signature card */}
           <rect x="480" y="120" width="180" height="60" rx="8" className="fill-amber-50 dark:fill-amber-900/40 stroke-amber-500" strokeWidth="0.5" />
