@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { allBlogs } from "contentlayer/generated"
-import { formatShortDate } from "@/utils/formatShortDate"
+// import { formatShortDate } from "@/utils/formatShortDate"
 
 export default function BlogList() {
   // Sort by date (descending)

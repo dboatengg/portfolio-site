@@ -20,16 +20,13 @@ export default function Intro() {
         </p>
 
         <p className="text-base leading-relaxed max-w-2xl mb-6">
-          My tech journey began years ago, when our parents bought a home computer for my younger brother and me.
+          My tech journey started when our parents bought a home computer for my younger brother and me.
         </p>
         <p className="text-base leading-relaxed max-w-2xl mb-6">
-          At the start, we used it mostly to play games, but that experience quickly 
-          sparked a curiosity that led me to explore programming.
+          We used it mostly to play games, but those early experiences gradually pulled me toward programming.
         </p>
         <p className="text-base leading-relaxed max-w-2xl mb-6">
-          Today, I specialize in building responsive, user-friendly web
-          applications with modern technologies such as Next.js, React,
-          PostgreSQL,Prisma, etc.
+          Today I build full-stack web applications with React and Next.js on the frontend, and Node.js, Express, and PostgreSQL on the backend.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
