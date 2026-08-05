@@ -42,10 +42,10 @@ JWT stands for JSON Web Token.
 From here on, we'll use "JWT" and "token" interchangeably. They mean the same thing throughout this article, so don't worry if I switch between the two.
 </TakeNote>
 
-Remember the problem we ended on: the server forgets you after request. So somehow, we need to give the server a way to recognise you on your next requests. JWT is one answer to that problem. 
+Remember the problem we ended on: the server forgets you after every request. So somehow, we need to give the server a way to recognise you on your next requests. JWT is one answer to that problem. 
 But to really understand JWT, it helps to look at how this problem was traditionally handled, and the limitations that came with it.
 
-### The traditional method: making the server keep records
+### The old way: the server remembers you with sessions
 
 The earliest common solution to this problem about the server forgetting you after every request was **sessions**.
 
@@ -72,7 +72,7 @@ The instant one server creates or changes a record, every other server needs to 
 That's genuinely difficult to build and maintain very well. It's a real headache for software engineers, and it's the exact kind of problem that got developers asking: 
 Is there a better way to do this without needing every server to stay perfectly in sync?
 
-### The new method: letting the client hold its own record
+### The new approach: letting the browser remember who you are
 
 This is where JWT comes in.
 
@@ -84,7 +84,7 @@ The signature proves two things:
 
 So the conversation now looks like this: "Hey server, it's me, here's my token." The server just checks the signature to confirm the token is genuine and untampered with, then reads who you are directly from it. That's it.
 
-Now, notice what just disappeared: there's no shared set of records between servers anymore. No Server A creating something Server B has never seen. No syncing, no real-time updates between servers. Each server can verify your token completely on its own, the moment it receives it.
+Now, notice what just disappeared: the servers no longer need to share information about every logged-in user. No **Server A** creating something **Server B** has never seen. No syncing, no real-time updates between servers. Each server can verify your token completely on its own.
 
 <StatelessJWTDiagram />
 
@@ -95,7 +95,8 @@ In short: JWT is a signed token that holds everything a server needs to know abo
 
 Before we look at how a token gets created and used, it helps to know what one is actually like.
 
-If you've ever seen a JWT before, you might have noticed it just looks like a long string of letters and numbers. But this isn't random; it's made up of three distinct parts, and once you know what each part does, the whole string starts to make sense.
+If you've ever seen a JWT before, you might have noticed it just looks like a long string of letters and numbers. 
+But this isn't just random; it's made up of three distinct parts, and once you know what each part does, the whole string starts to make sense.
 
 Here's what an actual JWT looks like:
 
@@ -116,53 +117,52 @@ This part carries a small amount of information about the token itself. Mainly, 
 
 ### 2. The payload
 
-This is the part represents your actual information. Your user ID, your email, maybe your role, when the token was issued, when it expires. Whatever the server decided to include when it built the token.
+This part represents your actual information. Your user ID, your email, maybe your role, when the token was issued, when it expires. Whatever the server decided to include when it built the token.
 
 Here’s what confuses people the first time they hear it: the payload is not encrypted; it’s just encoded. This means that anyone who gets hold of the token can decode the payload and read exactly what’s on it, in plain text. 
-Try it yourself: paste any JWT into a site like <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">jwt.io</a>, and you’ll see the payload displayed as plain, readable JSON. 
 
-This is exactly why the golden rule of JWTs is: never put sensitive information in the payload. No passwords, no card numbers, nothing you wouldn't be comfortable with a stranger reading.
+Try it yourself: paste any JWT into a site like <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">jwt.io</a>, and you’ll see the payload displayed as plain, readable JSON. 
 
 ### 3. The signature
 
-The signature is created by taking the header and payload, running them through the signing algorithm, and mixing in a secret key that only the server knows.
+The server creates the signature by taking the header and payload, running them through a signing algorithm, and combining the result with a secret key that only the server knows.
 
-If even one character in the header or payload changes, the signature changes completely too. So when the server later receives this token back, it doesn't need to "remember" you. 
-It just takes the header and payload again, signs them with its secret key, and checks whether the result matches the signature already on the token. If it matches, the token is genuine and untouched. If it doesn't, the server knows immediately that something's wrong. Either the token was tampered with, or it wasn't issued by this server at all.
+If even one character in the header or payload changes, the signature changes completely too. So when the server later receives the token back, it doesn't need to "remember" you. 
 
-So, the header says what kind of token this is, the payload says what this token knows about you, and the signature says whether the first two can be trusted.
+It just takes the header and payload again, signs them with its secret key, and checks whether the result matches the signature already on the token. If it matches, the token is genuine and untouched. If it doesn't, the server knows immediately that something's wrong and rejects your request.
+
+So, the header says what kind of token this is, the payload says what information the token carries, and the signature is what allows the server to verify that the token is genuine and unchanged.
 
 That’s the entire anatomy of a JWT.
 
 
-## The login flow – issuing a token
+## The login flow: how the server gives you a token
 
 So what actually happens the moment you type in your email and password and hit "log in"?
 
 Your browser sends your email and password to the server as a request. The server checks that email and password against whatever it has stored in a database, to make sure they're correct and belong to a real account.
 
-If they don't match, the server sends back an error, and that's the end of it.
+If they don't match, the server rejects the login attempt and sends back an error message telling you that the credentials are incorrect.
 
-But if they do match, the server still won't remember you on your next request. So it gives you a token, a piece of proof you'll show it every time you make a request.
+But if they do match, the server still won't remember you on your next request. So it gives you a token, you'll show it every time you make a request.
 
 <LoginFlowDiagram />
 
-The server never needs to check a database or "remember" you. It just checks the token your browser gives it.
+## The request flow: how the server verifies your token
 
-## The request flow - verifying a token
-
-So you've logged in, and your browser now has a token saved. What happens on every request after that?
+So you've logged in, and your browser now has a token stored. What happens on every request after that?
 
 From here on, your browser attaches the token to every request it sends. 
 
-The server's first job, before doing anything else with a request, is to check that the token is genuine. This check usually happens in **middleware**, a small piece of code that runs on every incoming request before that request is allowed to actually do anything.
+The server's first job, before doing anything else with a request, is to check that the token is genuine. This check usually happens in a **middleware**, a small piece of code that runs on every incoming request before that request is allowed to actually do anything.
 
 That middleware pulls the token out of the request, signs the header and payload again using the server's secret key, then compares the result to the signature already on the token.
 
 <RequestVerifyDiagram />
 
-If they match, the server knows the token is genuine, and looks at the payload to see who you are. 
-If they don't match, or the token's missing or expired, the request gets rejected immediately. Whatever you were trying to do, load a page, post something, doesn't happen.
+If they match, the server knows the token is genuine and hasn't been modified. It can now safely read the payload to find information about the user, such as their user ID or role, and use that information to decide what they are allowed to do.
+
+If they don't match, or the token is missing or expired, the request gets rejected immediately. Whatever you were trying to do, load a page, post something, doesn't happen.
 
 
 
@@ -174,21 +174,23 @@ If they don't match, or the token's missing or expired, the request gets rejecte
 
 ## Access tokens vs refresh tokens
 
-By now, every time we’ve said “the token,” we actually meant a specific kind of token called an access token. It’s the one your browser has been carrying around and attaching to every request, and it’s what the server checks to know who you are.
+By now, every time we’ve said “the token,” we actually meant a specific kind of token called an **access token**. It’s the one your browser has been carrying around and attaching to every request, and it’s what the server checks to know who you are.
 
-Here’s something you should know: a JWT isn’t meant to last forever. When the server first builds a token, it also decides how long that token should remain valid. It can be an hour, a day, whatever the app is comfortable with. Once that time is up, the token stops working entirely. 
+Here’s something you should know: a token isn’t meant to last forever. When the server first builds a token, it also decides how long that token should remain valid. It can be an hour, a day, whatever the website or application is comfortable with. Once that time is up, the token stops working entirely. 
 If you try to use it after that point, the server will look at it, see that its expired, and reject it. 
 
 So why would a token ever expire at all? Wouldn’t it be more convenient if, once you logged in, your token just worked forever?
 
-The answer comes down to risk. A token is really just proof and if someone else ever gets hold of your token (say, through a stolen device, or hacking), they can use it to act as you, for as long as that token remains valid. 
-Giving a token a short lifespan say, fifteen minutes, or an hour limits how much damage a stolen token can do. Once it expires, it’s worthless.
+The answer comes down to risk. 
 
-However, this creates an obvious problem: if your token expires every hour, does that mean you have to log in again, every single hour? That would be a miserable experience for anyone using the app.
+A token is really just proof and if someone else ever gets hold of your token (through a stolen device, or hacking), they can use it to act as you, for as long as that token remains valid. 
+Giving a token a short lifespan like, fifteen minutes, or an hour limits how much damage a stolen token can do. Once it expires, it’s worthless.
+
+However, this creates an obvious problem: if your token expires every hour, does that mean you have to log in again, every single hour? That would be a miserable experience for anyone using the website.
 
 This is where a second kind of token comes in: **refresh token**.
 
-A refresh token is longer-lived than an access token. It can sometimes last for days or even weeks. 
+A **refresh token** is longer-lived than an access token. It can sometimes last for days or even weeks. 
 Its only job is to get you a brand-new access token, without you needing to type in your email and password again.
 It’s usually stored more carefully than the access token too, often in a place ordinary JavaScript on the page can’t easily reach (to reduce the risk of it being stolen).
 
@@ -206,13 +208,13 @@ So an attacker who only has your access token can act as you for a while, but th
 
 So together, the two tokens balance each other out: an access token that's short-lived enough to limit damage if it's ever stolen, and a refresh token that keeps you logged in for a long time without repeatedly entering your email and password.
 
-## The hard part: revocation and storage
+## The problem with JWTs: you can't easily log someone out
 
 Everything so far has made JWTs sound almost too good to be true.  
 No database lookups, no shared memory between servers, just a signature the server can check on its own. 
-But there’s a real tradeoff hiding underneath all of that .
+But there’s a problem hiding underneath all of that.
 
-### The problem: you can’t take a JWT back
+### Why logging out is harder with JWTs
 
 Think about what “logging someone out” actually means with sessions (the old approach). The server just deletes that person’s record from its database. The next request they send has nothing to match against, so the server no longer recognises them. 
 
@@ -223,9 +225,12 @@ So what does logging out actually do, then? Two things:
 - Your browser deletes its own copy of the access and refresh tokens, so it stops sending them on future requests.
 - And separately, the server revokes the refresh token, since that's the one piece of this the server actually keeps track of.
 
-But notice what this doesn’t cover. If a copy of your access token already exists somewhere else, let’s say, it was stolen five minutes ago, logging out on your own device does nothing to that stolen copy. It doesn’t know a theft happened. It just clears your own browser and revokes the refresh token. The attacker’s copy of the access token keeps working, completely unaffected, for as long as that token remains valid.
+But notice what this doesn’t cover. If a copy of your access token already exists somewhere else, let’s say, it was stolen few moments ago, logging out on your own device does nothing to that stolen copy. The server doesn’t know a theft happened. It just clears your own browser and revokes the refresh token. The attacker’s copy of the access token keeps working, completely unaffected, for as long as that token remains valid.
 
-This is exactly why keeping access tokens short-lived matters so much. It’s not only about limiting general damage from a stolen token. It specifically covers this exact gap: the fact that “logging out” can clear your own device and cut off future refresh tokens, but it can’t reach out and kill a copy of the access token that’s already out in the world. 
+This is exactly why keeping access tokens short-lived matters so much. It’s not only about limiting general damage from a stolen token. 
+
+It specifically solves one important problem: logging out cannot take back an access token that has already been stolen. The server can clear the tokens from your own browser and cut off future refresh tokens, but a stolen access token will continue working until it expires.
+
 
 ## Wrapping up
 Let's go back to the question that kicked off this whole article: if the server forgets you the moment a request completes, how does it still recognize you on subsequent requests?

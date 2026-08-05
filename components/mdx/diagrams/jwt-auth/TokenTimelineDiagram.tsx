@@ -38,7 +38,7 @@ export default function TokenTimelineDiagram() {
           <text x="300" y="210" textAnchor="middle" dominantBaseline="central" className="fill-zinc-600 dark:fill-zinc-400 text-[10px]">Refresh token stays valid much longer, days or weeks</text>
   
           <text x="340" y="250" textAnchor="middle" className="fill-zinc-500 dark:fill-zinc-400 text-xs">
-            {"You never notice the swap. Only a real login issues a new refresh token."}
+            {/* {"You never notice the swap. Only a real login issues a new refresh token."} */}
           </text>
         </svg>
       </div>
