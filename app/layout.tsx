@@ -125,7 +125,7 @@ export default async function RootLayout({
       {/* <body
         className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
       > */}
-      <body className={`${inter.variable} ${sora.variable} antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}>
+      <body className={`${inter.variable} ${sora.variable} antialiased font-sans selection:bg-blue-600`}>
         <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} />
         <ThemeProvider
           attribute="class"

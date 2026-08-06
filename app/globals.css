@@ -73,6 +73,22 @@
   mix-blend-mode: normal;
 }
 
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Suppress per-element transitions during theme switch (View Transition handles the reveal) */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: none !important;
+}
+
 /* ----- Dark Mode ----- */
 .dark {
   --bg: 23 23 23;
@@ -98,15 +114,6 @@
   color: rgb(var(--accent-foreground));
 }
 
-* {
-  transition: background-color 0.25s ease, color 0.25s ease,
-    border-color 0.25s ease;
-}
-
-pre, pre * {
-  transition: none !important;
-}
-
 html, body {
   overflow-x: hidden;
 }
@@ -120,7 +127,6 @@ body {
   font-family: var(--font-inter);
   color: rgb(var(--text));
   background: rgb(var(--bg));
-  transition: background 0.3s, color 0.3s;
 }
 
 /* Selection colors */

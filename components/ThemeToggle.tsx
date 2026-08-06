@@ -4,6 +4,8 @@ import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import { Sun, Moon, Monitor } from 'lucide-react';
 
+const THEME_TRANSITION_MS = 500;
+
 export default function ThemeToggle() {
   const { theme, setTheme, systemTheme } = useTheme();
   const [open, setOpen] = useState(false);
@@ -22,48 +24,6 @@ export default function ThemeToggle() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-
-  async function switchTheme(newTheme: string) {
-  setOpen(false);
-
-  const btn = btnRef.current;
-
-  if (!document.startViewTransition || !btn) {
-    applyTheme(newTheme);
-    return;
-  }
-
-  const rect = btn.getBoundingClientRect();
-
-  const x = rect.left + rect.width / 2;
-  const y = rect.top + rect.height / 2;
-
-  const maxRadius = Math.hypot(
-    Math.max(x, window.innerWidth - x),
-    Math.max(y, window.innerHeight - y)
-  );
-
-  const transition = document.startViewTransition(() => {
-    applyTheme(newTheme);
-  });
-
-  transition.ready.then(() => {
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration: 600,
-        easing: 'ease-in-out',
-        pseudoElement: '::view-transition-new(root)',
-      }
-    );
-  });
-}
-
   function applyTheme(newTheme: string) {
     const root = document.documentElement;
     if (newTheme === 'light') {
@@ -76,22 +36,77 @@ export default function ThemeToggle() {
     setTheme(newTheme);
   }
 
+  async function switchTheme(newTheme: string) {
+    setOpen(false);
+
+    const root = document.documentElement;
+    const btn = btnRef.current;
+
+    root.classList.add('theme-transitioning');
+
+    const endTransition = () => root.classList.remove('theme-transitioning');
+
+    if (!document.startViewTransition || !btn) {
+      applyTheme(newTheme);
+      requestAnimationFrame(() => requestAnimationFrame(endTransition));
+      return;
+    }
+
+    const rect = btn.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const maxRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    try {
+      const transition = document.startViewTransition(() => {
+        applyTheme(newTheme);
+      });
+
+      await transition.ready;
+
+      const animation = root.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${maxRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: THEME_TRANSITION_MS,
+          easing: 'ease-in-out',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      );
+
+      await Promise.all([
+        transition.finished,
+        animation.finished.catch(() => undefined),
+      ]);
+    } catch {
+      applyTheme(newTheme);
+    } finally {
+      endTransition();
+    }
+  }
+
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-  const t = setTimeout(() => {
-    setMounted(true);
-    // Restore theme-set class after next-themes hydration wipes it
-    const theme = localStorage.getItem('theme');
-    if (theme) {
-      document.documentElement.classList.add('theme-set');
-    }
-  }, 0);
-  return () => clearTimeout(t);
-}, []);
+    const t = setTimeout(() => {
+      setMounted(true);
+      const stored = localStorage.getItem('theme');
+      if (stored) {
+        document.documentElement.classList.add('theme-set');
+      }
+    }, 0);
+    return () => clearTimeout(t);
+  }, []);
 
-if (!mounted) return (
-  <button className="p-1 rounded-md border border-[rgb(var(--border))] w-7 h-7" />
-);
+  if (!mounted) return (
+    <button className="p-1 rounded-md border border-[rgb(var(--border))] w-7 h-7" />
+  );
 
   return (
     <div className="relative" ref={menuRef}>
