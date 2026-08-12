@@ -8,16 +8,23 @@ const projectscomp = [
     description:
       "I built this site from scratch as both a personal portfolio and a playground to experiment with modern full-stack tools like Next.js, PostgreSQL, Prisma, etc.",
     gradient: "from-blue-500 to-purple-600",
-    // live: "https://dicksonboateng.com", 
-    github: "https://github.com/dboatengg/portfolio-site", 
+    github: "https://github.com/dboatengg/portfolio-site",
+  },
+  {
+    title: "Capstone",
+    description:
+      "A full-stack real estate platform that connects clients with property agents. Built with Next.js, Express, PostgreSQL, Prisma,etc.",
+    gradient: "from-emerald-500 to-teal-700",
+    live:"https://capstone-frontend-rust.vercel.app/",
+    github: "https://github.com/dboatengg/capstone-frontend",
   },
   {
     title: "DownNote",
     description:
       "A lightweight markdown editor for developers and writers who want a clean writing experience with live previews and cross-device syncing.",
     gradient: "from-[#06b6d4] to-[#2563eb]",
-    live: "https://downnote.vercel.app/", 
-    github: "https://github.com/dboatengg/downnote", 
+    live: "https://downnote.vercel.app/",
+    github: "https://github.com/dboatengg/downnote",
   },
 ];
 

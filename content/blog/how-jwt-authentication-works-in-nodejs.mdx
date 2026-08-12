@@ -18,18 +18,18 @@ The server reads that request, searches for what you asked, and sends back a res
 
 <RequestDemo />
 
-This back-and-forth is happening constantly, every time you type to search for something in a browser, click a link, submit a form, etc.
+This back-and-forth is happening constantly, every time you search for something online, click a link, submit a form, or do anything else on a website.
 
 <TakeNote>
 Literally every action you take on a website: clicking a button, scrolling to load more posts, submitting a form, liking a comment, is a separate request that is sent to the server. Using a particular site might feel like one continuous experience, but underneath, it's dozens or even hundreds of these request-response exchanges happening one after another.
 </TakeNote>
 
-Now, here's the part of this browser-server communication that confuses people: each request is treated as brand-new. 
+But here's the surprising part: each request is treated as brand-new. 
 The server is stateless, meaning it has no memory of the last request it received from you. It doesn't recognise you; it doesn't even recall what you asked five seconds ago unless something is specifically built to make it remember.
 
 <StatelessDiagram />
 
-This is a very strange behaviour, if you think about it. Imagine walking into a shop and asking to buy something, and every time you speak, even ten seconds later, the shopkeeper treats you like a complete stranger who just walked into the shop for the first time. But that's the default behaviour of how the web runs.
+This is a very strange behaviour, if you think about it. Imagine walking into a shop and asking to buy something, and every time you speak, even just a few seconds later, the shopkeeper treats you like a complete stranger who just walked into the shop for the first time. But that’s how the Internet works by default.
 
 So this raises an obvious question: if the server forgets you after every request, how does a site like Instagram or X (formerly Twitter) still know you're logged in as you scroll, like, and comment on other people's posts?
 
