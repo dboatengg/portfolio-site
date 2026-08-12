@@ -6,7 +6,7 @@ const projectscomp = [
   {
     title: "Portfolio Website",
     description:
-      "I built this site from scratch as both a personal portfolio and a playground to experiment with modern full-stack tools like Next.js, PostgreSQL, Prisma, etc.",
+      "I built this site from scratch as both a personal portfolio and a playground to experiment with modern full-stack technologies like Next.js, PostgreSQL, Prisma, etc.",
     gradient: "from-blue-500 to-purple-600",
     github: "https://github.com/dboatengg/portfolio-site",
   },
