@@ -116,6 +116,7 @@ html.theme-transitioning *::after {
 
 html, body {
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 html {
@@ -136,9 +137,7 @@ body {
 }
 
 /* Base styles */
-html {
-  scroll-behavior: smooth;
-}
+/* `scroll-behavior` is set above; duplicate rule removed */
 
 h1,
 h2,
@@ -244,6 +243,11 @@ textarea, input {
 .dark code,
 .dark pre {
   font-family: var(--font-mono);
+}
+
+.prose {
+  max-width: 70ch;
+  margin: 0 auto;
 }
 
 .dark .prose {
