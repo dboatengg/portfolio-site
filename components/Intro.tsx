@@ -30,7 +30,7 @@ export default function Intro() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
-            <a href="https://dicksonboateng.com/DicksonBoatengCV.pdf"
+            <a href="/DicksonBoateng.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
