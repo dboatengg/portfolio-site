@@ -167,7 +167,7 @@ export default function AboutPage() {
           Resume
         </h2>
         
-          <a href="/DicksonBoatengCV.pdf"
+          <a href="/DicksonBoateng.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
