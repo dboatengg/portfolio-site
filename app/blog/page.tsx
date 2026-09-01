@@ -1,6 +1,6 @@
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";
-import { formatShortDate } from "@/utils/formatShortDate";
+// import { formatShortDate } from "@/utils/formatShortDate";
 import { Metadata } from "next";
 
 export const dynamic = "force-static";
@@ -35,7 +35,7 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="text-sm md:text-base text-[rgb(var(--muted-text))] max-w-2xl">
-        I don&apos;t keep a diary. This blog is my diary. I want to keep writing so that in 5 years I can look back and marvel at how much I&apos;ve improved at putting thoughts into words.
+        I don&apos;t keep a diary. This blog is my diary. I want to keep writing so that in 5 years I can look back and marvel at how much I&apos;ve improved at putting my thoughts into words.
         </p>
       </header>
 
