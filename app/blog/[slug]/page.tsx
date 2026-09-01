@@ -58,6 +58,7 @@ export async function generateMetadata(
   const description = frontmatter.summary || "Read this article on my blog."
   // const keywords = frontmatter.tags?.join(", ")
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com"
+  
   const url = `${baseUrl}/blog/${slug}`
   const image = frontmatter.image || `${baseUrl}/og-image.jpg`
 
@@ -66,6 +67,7 @@ export async function generateMetadata(
     description,
     keywords: frontmatter.tags?.join(", "),
     alternates: { canonical: url },
+    robots: { index: true, follow: true },
     openGraph: {
       title,
       description,
@@ -91,10 +93,12 @@ export default async function BlogPost({
 }) {
   const { slug } = await params
   const { source } = await getPostBySlug(slug)
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com"
+
 
   const { content, frontmatter } = await compileMDX<{
     title: string
-    description?: string
+    summary?: string
     date?: string
     tags?: string[]
     image?: string
@@ -127,16 +131,21 @@ export default async function BlogPost({
     ? new Date(frontmatter.date).toISOString().split("T")[0]
     : undefined
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: frontmatter.title,
-    datePublished: date,
-    description: frontmatter.description,
-    keywords: frontmatter.tags?.join(", "),
-    author: { "@type": "Person", name: "Dickson Boateng" },
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
-  }
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: frontmatter.title,
+      datePublished: date,
+      description: frontmatter.summary || "Read this article on my blog.",
+      image: frontmatter.image || `${baseUrl}/og-image.jpg`,        
+      keywords: frontmatter.tags?.join(", "),
+      author: { "@type": "Person", name: "Dickson Boateng" },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${baseUrl}/blog/${slug}`,                          
+      },
+      url: `${baseUrl}/blog/${slug}`,                                 
+    }
 
   return (
     <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight">
