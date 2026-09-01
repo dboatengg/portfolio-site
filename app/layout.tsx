@@ -6,20 +6,20 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
-import { Newsreader, Caveat } from "next/font/google";
+// import { Newsreader, Caveat } from "next/font/google";
 // import { cookies } from "next/headers";
 
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  style: ["normal", "italic"],
-})
+// const newsreader = Newsreader({
+//   subsets: ["latin"],
+//   variable: "--font-serif",
+//   style: ["normal", "italic"],
+// })
 
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-})
+// const caveat = Caveat({
+//   subsets: ["latin"],
+//   variable: "--font-caveat",
+// })
 
 const inter = Inter({
   variable: "--font-inter",
