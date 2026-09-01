@@ -35,7 +35,7 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="text-sm md:text-base text-[rgb(var(--muted-text))] max-w-2xl">
-          A collection of mostly personal reflections and technical write-ups.
+        I don&apos;t keep a diary. This blog is my diary. I want to keep writing so that in 5 years I can look back and marvel at how much I&apos;ve improved at putting thoughts into words.
         </p>
       </header>
 
