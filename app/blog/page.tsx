@@ -46,7 +46,7 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="text-sm md:text-base italic text-[rgb(var(--muted-text))] max-w-2xl">
-        I don&apos;t keep a diary. This blog is my diary. I want to keep writing so that in 5 years I can look back and marvel at how much I&apos;ve improved at putting my thoughts into words.
+        The goal is to keep writing so that in 5 years I can look back and marvel at how much I&apos;ve improved at putting my thoughts into words.
         </p>
       </header>
 
