@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projects } from "../data/projects";
 import { ExternalLink, Github } from "lucide-react";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -12,14 +13,28 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Promise<{ title: string; description: string }> {
+}): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com";
+
   return {
     title: project
-      ? `${project.title} | Dickson Boateng`
-      : "Project | Dickson Boateng",
+      ? project.title
+      : "Project",
     description: project?.description || "",
+    alternates: {
+      canonical: `${baseUrl}/projects/${slug}`,
+    },
+    openGraph: {
+      title: project
+        ? `${project.title} | Dickson Boateng`
+        : "Project | Dickson Boateng",
+      description: project?.description || "",
+      url: `${baseUrl}/projects/${slug}`,
+      type: "article",
+      images: [{ url: `${baseUrl}/og-image.jpg` }],
+    },
   };
 }
 
@@ -35,8 +50,23 @@ export default async function ProjectPage({
   // Block in-progress projects
   if (project.status === "progress") return notFound();
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    url: `${baseUrl}/projects/${project.slug}`,
+    creator: { "@type": "Person", name: "Dickson Boateng", url: baseUrl },
+    keywords: project.techStack.join(", "),
+  };
+
   return (
     <article className="max-w-3xl mx-auto py-16 space-y-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <header className="space-y-6 text-center">
         <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))]">

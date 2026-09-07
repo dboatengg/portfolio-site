@@ -6,9 +6,20 @@ import { Metadata } from "next";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Blog | Dickson Boateng",
+  title: "Blog",
   description:
-    " I build solid web applications.",
+    "Articles by Dickson Boateng about web development, JavaScript, Next.js, backend engineering, learning, and personal growth.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | Dickson Boateng",
+    description:
+      "Articles about web development, JavaScript, Next.js, backend engineering, learning, and personal growth.",
+    url: "/blog",
+    type: "website",
+    images: ["/og-image.jpg"],
+  },
 };
 
 type BlogPost = (typeof allBlogs)[number];

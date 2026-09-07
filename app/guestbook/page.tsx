@@ -7,9 +7,9 @@ import GuestbookShell from "@/components/guestbook/GuestbookShell";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Guestbook | Dickson Boateng",
+  title: "Guestbook",
   description:
-    " I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, PostgreSQL,Prisma, etc.",
+    " If you've found my work helpful or inspiring, I would love to hear from you! Please feel free to leave a message in my guestbook. Your feedback and encouragement mean a lot to me.",
   alternates: {
     canonical: "/guestbook",
   },

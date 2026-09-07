@@ -2,11 +2,19 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About | Dickson Boateng",
+  title: "About",
   description:
-    " I specialize in building responsive, user-friendly web applications with modern technologies such as Next.js, React, PostgreSQL,Prisma, etc.",
+    "Learn more about Dickson Boateng, a software developer from Ghana who builds responsive web applications with modern JavaScript technologies.",
   alternates: {
     canonical: "/about",
+  },
+  openGraph: {
+    title: "About Dickson Boateng",
+    description:
+      "Learn more about Dickson Boateng, a software developer from Ghana.",
+    url: "/about",
+    type: "profile",
+    images: ["/og-image.jpg"],
   },
 };
 

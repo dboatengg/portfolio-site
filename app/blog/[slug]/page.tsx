@@ -56,16 +56,18 @@ export async function generateMetadata(
 
   const title = frontmatter.title || "Untitled Post"
   const description = frontmatter.summary || "Read this article on my blog."
-  // const keywords = frontmatter.tags?.join(", ")
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com"
-  
   const url = `${baseUrl}/blog/${slug}`
-  const image = frontmatter.image || `${baseUrl}/og-image.jpg`
+  const image = new URL(frontmatter.image || "/og-image.jpg", baseUrl).toString()
+  const publishedTime = frontmatter.date
+    ? new Date(frontmatter.date).toISOString()
+    : undefined
 
   return {
     title,
     description,
     keywords: frontmatter.tags?.join(", "),
+    authors: [{ name: "Dickson Boateng", url: baseUrl }],
     alternates: { canonical: url },
     robots: { index: true, follow: true },
     openGraph: {
@@ -75,6 +77,10 @@ export async function generateMetadata(
       type: "article",
       url,
       images: [{ url: image }],
+      publishedTime,
+      authors: [baseUrl],
+      section: "Web development",
+      tags: frontmatter.tags,
     },
     twitter: {
       card: "summary_large_image",
@@ -137,14 +143,20 @@ export default async function BlogPost({
       headline: frontmatter.title,
       datePublished: date,
       description: frontmatter.summary || "Read this article on my blog.",
-      image: frontmatter.image || `${baseUrl}/og-image.jpg`,        
+      image: new URL(frontmatter.image || "/og-image.jpg", baseUrl).toString(),
       keywords: frontmatter.tags?.join(", "),
-      author: { "@type": "Person", name: "Dickson Boateng" },
+      author: {
+        "@type": "Person",
+        name: "Dickson Boateng",
+        url: baseUrl,
+      },
+      publisher: { "@type": "Person", name: "Dickson Boateng" },
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": `${baseUrl}/blog/${slug}`,                          
       },
-      url: `${baseUrl}/blog/${slug}`,                                 
+      url: `${baseUrl}/blog/${slug}`,
+      dateModified: date,
     }
 
   return (

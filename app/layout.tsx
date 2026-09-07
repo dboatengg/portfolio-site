@@ -35,14 +35,38 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com"),
-  title: "Dickson Boateng",
+  title: {
+    default: "Dickson Boateng | Software Developer from Ghana",
+    template: "%s | Dickson Boateng",
+  },
   description:
-    "I’m Dickson Boateng, a software developer from Ghana who enjoys building clean, responsive, and practical web interfaces with modern JavaScript tools.",
+    "I’m Dickson Boateng, a software developer from Ghana who builds clean, responsive, and practical web interfaces.",
+  applicationName: "Dickson Boateng",
+  authors: [{ name: "Dickson Boateng", url: "https://dicksonboateng.com/about" }],
+  creator: "Dickson Boateng",
+  publisher: "Dickson Boateng",
+  category: "technology",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Dickson Boateng ",
+    title: "Dickson Boateng | Software Developer from Ghana",
     description:
-      "I'm Dickson Boateng, a software developer passionate about creating clean and performant web experiences.",
-    url: "https://dicksonboateng.com",
+      "I'm Dickson Boateng, a software developer passionate about creating clean and performant web applications.",
+    url: "/",
     siteName: "Dickson Boateng",
     images: [
       {
@@ -57,10 +81,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dickson Boateng ",
+    title: "Dickson Boateng | Software Developer from Ghana",
     description:
-      "Hi, I'm Dickson—a Software Developer from Ghana. My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. Computers are not very common in Ghanaian homes, so you can imagine how excited we were. At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.",
+      "Hi, I'm Dickson, a Software Developer from Ghana. My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. Computers are not very common in Ghanaian homes, so you can imagine how excited we were. At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.",
     images: ["/og-image.jpg"],
+    creator: "@alege_dev",
   },
   icons: {
     icon: [

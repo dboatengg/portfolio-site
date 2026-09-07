@@ -4,7 +4,7 @@ import Projects from "@/components/Projects";
 import BlogList from "@/components/BlogList";
 
 export const metadata: Metadata = {
-  title: "Dickson Boateng",
+  title: "Software Developer from Ghana",
   description:
     "Hi, I'm Dickson—a Software Developer from Ghana. My tech journey began in 2012, when my father surprised my younger brother and me with our first computer. Computers are not very common in Ghanaian homes, so you can imagine how excited we were. At first, we just used it to play games and do some typing with Mavis Beacon, but that early exposure to a home computer soon sparked a fascination that led me to explore programming.",
   keywords: [
@@ -42,9 +42,37 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      name: "Dickson Boateng",
+      url: "https://dicksonboateng.com",
+      jobTitle: "Software Developer",
+      description:
+        "Software developer from Ghana who builds clean, responsive, and practical web applications.",
+      image: "https://dicksonboateng.com/images/DicksonBoateng.webp",
+      sameAs: ["https://x.com/alege_dev", "https://github.com/dboatengg"],
+    },
+    {
+      "@type": "WebSite",
+      name: "Dickson Boateng",
+      url: "https://dicksonboateng.com",
+      description:
+        "The personal portfolio and blog of Dickson Boateng, a software developer from Ghana.",
+      publisher: { "@type": "Person", name: "Dickson Boateng" },
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Intro />
       <BlogList />
       <Projects />
