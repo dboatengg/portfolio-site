@@ -10,14 +10,24 @@ const projectscomp = [
     gradient: "from-blue-500 to-purple-600",
     github: "https://github.com/dboatengg/portfolio-site",
   },
+
   {
     title: "Capstone",
     description:
-      "A full-stack real estate platform that connects clients with property agents. Built with Next.js, Express, PostgreSQL, Prisma,etc.",
+      "A full-stack real estate platform that connects clients with property agents. Built with Next.js, Express, PostgreSQL, Prisma, etc.",
     gradient: "from-emerald-500 to-teal-700",
-    live:"https://capstone-frontend-rust.vercel.app/",
+    live: "https://capstone-frontend-rust.vercel.app/",
     github: "https://github.com/dboatengg/capstone",
   },
+
+  {
+    title: "Spark & Drive",
+    description:
+      "A professional website for an automotive electrical and diagnostic business in Kumasi.",
+    gradient: "from-[#C81E1E] to-[#F2A900]",
+    live: "https://spark-and-drive-auto.vercel.app/",
+  },
+
   {
     title: "DownNote",
     description:
