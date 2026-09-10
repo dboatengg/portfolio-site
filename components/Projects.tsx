@@ -23,9 +23,10 @@ const projectscomp = [
   {
     title: "Spark & Drive",
     description:
-      "A professional website for an automotive electrical and diagnostic business in Kumasi.",
+      "A professional website for Spark & Drive Autoelectrical and Diagnostic Services, an automotive electrical and diagnostic business in Kumasi.",
     gradient: "from-[#C81E1E] to-[#F2A900]",
     live: "https://spark-and-drive-auto.vercel.app/",
+    githubPrivate: true,
   },
 
   {
@@ -60,6 +61,7 @@ export default function Projects() {
               className={`relative h-40 w-full rounded-t-3xl bg-linear-to-br ${project.gradient} flex items-end px-6 pb-4 overflow-hidden`}
             >
               <div className="absolute inset-0 opacity-[0.07] bg-[url('/images/diagonal-lines.svg')] bg-cover" />
+
               <span className="relative text-5xl font-extrabold text-white/40 select-none">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -76,30 +78,95 @@ export default function Projects() {
               </p>
 
               <div className="mt-auto flex items-center gap-3">
-                {project.live &&
-                  <a href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
-                >
-                  Live site
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 17L17 7M7 7h10v10"/>
-                  </svg>
-                </a>
+                {/* LIVE SITE */}
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+                  >
+                    Live site
 
-                }
-                
-                  <a href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-                  </svg>
-                  Source code
-                </a>
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M7 17L17 7M7 7h10v10" />
+                    </svg>
+                  </a>
+                )}
+
+                {/* GITHUB / PRIVATE SOURCE */}
+                {project.githubPrivate ? (
+                  <div className="relative group/private">
+                    <button
+                      type="button"
+                      disabled
+                      aria-label="Source code is private"
+                      className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--muted-text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium cursor-not-allowed opacity-70 transition-all duration-200 group-hover/private:border-[rgb(var(--text))] group-hover/private:text-[rgb(var(--text))]"
+                    >
+                      <motion.svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        animate={{ rotate: 0 }}
+                        whileHover={{
+                          rotate: [0, -8, 8, -5, 5, 0],
+                          scale: [1, 1.15, 1],
+                        }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <rect
+                          x="4"
+                          y="10"
+                          width="16"
+                          height="11"
+                          rx="2"
+                        />
+                        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                      </motion.svg>
+
+                      Source code
+                    </button>
+
+                    {/* TOOLTIP */}
+                    <span className="pointer-events-none absolute left-1/2 bottom-full mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[rgb(var(--text))] text-[rgb(var(--bg))] px-3 py-1.5 text-xs font-medium opacity-0 translate-y-1 transition-all duration-200 group-hover/private:opacity-100 group-hover/private:translate-y-0">
+                      Private repository
+                    </span>
+                  </div>
+                ) : (
+                  project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
+
+                      Source code
+                    </a>
+                  )
+                )}
               </div>
             </div>
           </motion.div>
