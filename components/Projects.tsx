@@ -23,7 +23,7 @@ const projectscomp = [
   {
     title: "Spark & Drive",
     description:
-      "A professional website for Spark & Drive Autoelectrical and Diagnostic Services, an automotive electrical and diagnostic business in Kumasi.",
+      "A full-stack website for an auto electrical repair shop in Kumasi. Includes a customer-facing site with a Paystack-integrated checkout, and an admin panel for managing products, orders, etc. ",
     gradient: "from-[#C81E1E] to-[#F2A900]",
     live: "https://spark-and-drive-auto.vercel.app/",
     githubPrivate: true,
