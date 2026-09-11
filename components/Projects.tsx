@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
 
 const projectscomp = [
   {
@@ -40,6 +42,14 @@ const projectscomp = [
 ];
 
 export default function Projects() {
+  const [tappedPrivate, setTappedPrivate] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!tappedPrivate) return;
+    const timer = setTimeout(() => setTappedPrivate(null), 2000);
+    return () => clearTimeout(timer);
+  }, [tappedPrivate]);
+
   return (
     <section id="projects" className="mb-16">
       <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-8">
@@ -108,8 +118,9 @@ export default function Projects() {
                   <div className="relative group/private">
                     <button
                       type="button"
-                      disabled
+                      aria-disabled="true"
                       aria-label="Source code is private"
+                      onClick={() => setTappedPrivate(project.title)}
                       className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--muted-text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium cursor-not-allowed opacity-70 transition-all duration-200 group-hover/private:border-[rgb(var(--text))] group-hover/private:text-[rgb(var(--text))]"
                     >
                       <motion.svg
@@ -128,21 +139,19 @@ export default function Projects() {
                         }}
                         transition={{ duration: 0.4 }}
                       >
-                        <rect
-                          x="4"
-                          y="10"
-                          width="16"
-                          height="11"
-                          rx="2"
-                        />
+                        <rect x="4" y="10" width="16" height="11" rx="2" />
                         <path d="M8 10V7a4 4 0 0 1 8 0v3" />
                       </motion.svg>
 
                       Source code
                     </button>
 
-                    {/* TOOLTIP */}
-                    <span className="pointer-events-none absolute left-1/2 bottom-full mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[rgb(var(--text))] text-[rgb(var(--bg))] px-3 py-1.5 text-xs font-medium opacity-0 translate-y-1 transition-all duration-200 group-hover/private:opacity-100 group-hover/private:translate-y-0">
+                    {/* TOOLTIP — shows on hover (desktop) OR after a tap (mobile) */}
+                    <span
+                      className={`pointer-events-none absolute left-1/2 bottom-full mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[rgb(var(--text))] text-[rgb(var(--bg))] px-3 py-1.5 text-xs font-medium transition-all duration-200 group-hover/private:opacity-100 group-hover/private:translate-y-0 ${
+                        tappedPrivate === project.title ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+                      }`}
+                    >
                       Private repository
                     </span>
                   </div>
