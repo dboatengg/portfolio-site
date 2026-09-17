@@ -18,6 +18,7 @@ import TokenAnatomyDiagram from "@/components/mdx/diagrams/jwt-auth/TokenAnatomy
 import LoginFlowDiagram from "@/components/mdx/diagrams/jwt-auth/LoginFlowDiagram"
 import RequestVerifyDiagram from "@/components/mdx/diagrams/jwt-auth/RequestVerifyDiagram"
 import TokenTimelineDiagram from "@/components/mdx/diagrams/jwt-auth/TokenTimelineDiagram"
+import WideImage from "@/components/mdx/shared/WideImage"
 import { Pre } from "@/components/mdx/shared/Pre"
 
 export async function generateStaticParams() {
@@ -51,6 +52,7 @@ export async function generateMetadata(
       RequestVerifyDiagram, 
       TokenTimelineDiagram,
       pre: Pre,
+      img:WideImage,
       },
   })
 
@@ -123,6 +125,7 @@ export default async function BlogPost({
       RequestVerifyDiagram, 
       TokenTimelineDiagram,
       pre: Pre,
+      img:WideImage,
 
      },
   })
