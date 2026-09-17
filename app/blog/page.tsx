@@ -46,7 +46,7 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="text-sm md:text-base italic text-[rgb(var(--muted-text))] max-w-2xl">
-        The goal is to keep writing so that in 5 years I can look back and marvel at how much I&apos;ve improved at putting my thoughts into words.
+        I want to keep writing so that, five years from now, I can look back and marvel at how much I’ve improved at putting my thoughts into words and making complex subjects easier for others to understand.
         </p>
       </header>
 
