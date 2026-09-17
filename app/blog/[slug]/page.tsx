@@ -78,7 +78,12 @@ export async function generateMetadata(
       
       type: "article",
       url,
-      images: [{ url: image }],
+      images: [{
+        url: image,
+        width: 1200,
+        height: 630,
+        alt: `${title} social preview`,
+      }],
       publishedTime,
       authors: [baseUrl],
       section: "Web development",
@@ -88,7 +93,10 @@ export async function generateMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [{
+        url: image,
+        alt: `${title} social preview`,
+      }],
     },
   }
 }
