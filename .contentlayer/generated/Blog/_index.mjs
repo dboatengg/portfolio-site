@@ -6,5 +6,6 @@ import blog__lettingGoMdx from './blog__letting-go.mdx.json' assert { type: 'jso
 import blog__maladaptiveDaydreamingMdx from './blog__maladaptive-daydreaming.mdx.json' assert { type: 'json' }
 import blog__nextjsTutorialBeginnersMdx from './blog__nextjs-tutorial-beginners.mdx.json' assert { type: 'json' }
 import blog__theCedisDepreciationIsMoreComplicatedThanIThoughtMdx from './blog__the-cedis-depreciation-is-more-complicated-than-i-thought.mdx.json' assert { type: 'json' }
+import blog__understandingWebsiteCookiesMdx from './blog__understanding-website-cookies.mdx.json' assert { type: 'json' }
 
-export const allBlogs = [blog__howJwtAuthenticationWorksInNodejsMdx, blog__learningInPublicMdx, blog__lettingGoMdx, blog__maladaptiveDaydreamingMdx, blog__nextjsTutorialBeginnersMdx, blog__theCedisDepreciationIsMoreComplicatedThanIThoughtMdx]
+export const allBlogs = [blog__howJwtAuthenticationWorksInNodejsMdx, blog__learningInPublicMdx, blog__lettingGoMdx, blog__maladaptiveDaydreamingMdx, blog__nextjsTutorialBeginnersMdx, blog__theCedisDepreciationIsMoreComplicatedThanIThoughtMdx, blog__understandingWebsiteCookiesMdx]
