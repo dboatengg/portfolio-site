@@ -20,6 +20,7 @@ import RequestVerifyDiagram from "@/components/mdx/diagrams/jwt-auth/RequestVeri
 import TokenTimelineDiagram from "@/components/mdx/diagrams/jwt-auth/TokenTimelineDiagram"
 import WideImage from "@/components/mdx/shared/WideImage"
 import { Pre } from "@/components/mdx/shared/Pre"
+import { allBlogs } from "contentlayer/generated"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -147,6 +148,17 @@ export default async function BlogPost({
   const date = frontmatter.date
     ? new Date(frontmatter.date).toISOString().split("T")[0]
     : undefined
+  const currentTags = new Set(frontmatter.tags ?? [])
+
+  const relatedPosts = [...allBlogs]
+    .filter((post) => post.slug !== slug && new Date(post.date) < new Date(date || 0))
+    .sort((a, b) => {
+      const sharedTagsA = a.tags?.filter((tag) => currentTags.has(tag)).length ?? 0
+      const sharedTagsB = b.tags?.filter((tag) => currentTags.has(tag)).length ?? 0
+
+      return sharedTagsB - sharedTagsA || +new Date(b.date) - +new Date(a.date)
+    })
+    .slice(0, 2)
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -194,7 +206,26 @@ export default async function BlogPost({
 
       </header>
       {content}
-      <hr className="my-16 border-[rgb(var(--border))]" />
+      {relatedPosts.length > 0 && (
+        <section className="mt-16" aria-labelledby="related-posts-heading">
+          <h2 id="related-posts-heading" className="!text-xl !mt-0 mb-4">
+            Related posts
+          </h2>
+          <ul className="space-y-3">
+            {relatedPosts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="text-[rgb(var(--text))] hover:underline"
+                >
+                  {post.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <div className="my-16" aria-hidden="true" />
       <GiscusComments />
     </article>
   )

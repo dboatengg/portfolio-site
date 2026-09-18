@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { allBlogs } from "contentlayer/generated"
+import { ArrowRight } from "lucide-react"
 // import { formatShortDate } from "@/utils/formatShortDate"
 
 export default function BlogList() {
@@ -10,8 +11,8 @@ export default function BlogList() {
 
   return (
     <section className="mb-24">
-      <h2 className="text-3xl font-semibold mb-4 flex items-center gap-2">
-         Recent Writing
+      <h2 className="text-3xl font-semibold mb-4">
+        Recent Writing
       </h2>
 
       <ul className="space-y-5">
@@ -43,6 +44,14 @@ export default function BlogList() {
           </li>
         ))}
       </ul>
+
+      <Link
+        href="/blog"
+        className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-[rgb(var(--text))] hover:underline"
+      >
+        Browse all posts
+        <ArrowRight size={15} aria-hidden="true" />
+      </Link>
     </section>
   )
 }
