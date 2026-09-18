@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Script from "next/script";
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
+import { siteUrl } from "@/config/site";
 import "./globals.css";
 // import { Newsreader, Caveat } from "next/font/google";
 // import { cookies } from "next/headers";
@@ -34,7 +35,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Dickson Boateng | Software Developer from Ghana",
     template: "%s | Dickson Boateng",
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
   description:
     "I’m Dickson Boateng, a software developer from Ghana who builds clean, responsive, and practical web interfaces.",
   applicationName: "Dickson Boateng",
-  authors: [{ name: "Dickson Boateng", url: "https://dicksonboateng.com/about" }],
+  authors: [{ name: "Dickson Boateng", url: `${siteUrl}/about` }],
   creator: "Dickson Boateng",
   publisher: "Dickson Boateng",
   category: "technology",

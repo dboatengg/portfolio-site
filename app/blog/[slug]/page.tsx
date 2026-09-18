@@ -21,6 +21,7 @@ import TokenTimelineDiagram from "@/components/mdx/diagrams/jwt-auth/TokenTimeli
 import WideImage from "@/components/mdx/shared/WideImage"
 import { Pre } from "@/components/mdx/shared/Pre"
 import { allBlogs } from "contentlayer/generated"
+import { siteUrl } from "@/config/site"
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -59,9 +60,8 @@ export async function generateMetadata(
 
   const title = frontmatter.title || "Untitled Post"
   const description = frontmatter.summary || "Read this article on my blog."
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com"
-  const url = `${baseUrl}/blog/${slug}`
-  const image = new URL(frontmatter.image || "/og-image.jpg", baseUrl).toString()
+  const url = `${siteUrl}/blog/${slug}`
+  const image = new URL(frontmatter.image || "/og-image.jpg", siteUrl).toString()
   const publishedTime = frontmatter.date
     ? new Date(frontmatter.date).toISOString()
     : undefined
@@ -70,7 +70,7 @@ export async function generateMetadata(
     title,
     description,
     keywords: frontmatter.tags?.join(", "),
-    authors: [{ name: "Dickson Boateng", url: baseUrl }],
+    authors: [{ name: "Dickson Boateng", url: siteUrl }],
     alternates: { canonical: url },
     robots: { index: true, follow: true },
     openGraph: {
@@ -86,7 +86,7 @@ export async function generateMetadata(
         alt: `${title} social preview`,
       }],
       publishedTime,
-      authors: [baseUrl],
+      authors: [siteUrl],
       section: "Web development",
       tags: frontmatter.tags,
     },
@@ -110,9 +110,6 @@ export default async function BlogPost({
 }) {
   const { slug } = await params
   const { source } = await getPostBySlug(slug)
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dicksonboateng.com"
-
-
   const { content, frontmatter } = await compileMDX<{
     title: string
     summary?: string
@@ -166,19 +163,19 @@ export default async function BlogPost({
       headline: frontmatter.title,
       datePublished: date,
       description: frontmatter.summary || "Read this article on my blog.",
-      image: new URL(frontmatter.image || "/og-image.jpg", baseUrl).toString(),
+      image: new URL(frontmatter.image || "/og-image.jpg", siteUrl).toString(),
       keywords: frontmatter.tags?.join(", "),
       author: {
         "@type": "Person",
         name: "Dickson Boateng",
-        url: baseUrl,
+        url: siteUrl,
       },
       publisher: { "@type": "Person", name: "Dickson Boateng" },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": `${baseUrl}/blog/${slug}`,                          
+        "@id": `${siteUrl}/blog/${slug}`,
       },
-      url: `${baseUrl}/blog/${slug}`,
+      url: `${siteUrl}/blog/${slug}`,
       dateModified: date,
     }
 

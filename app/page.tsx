@@ -2,6 +2,7 @@ import Intro from "@/components/Intro";
 import { Metadata } from "next";
 import Projects from "@/components/Projects";
 import BlogList from "@/components/BlogList";
+import { siteUrl } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Software Developer from Ghana",
@@ -31,14 +32,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dickson Boateng | Frontend Developer in Ghana",
     description: "Personal website of Dickson Boateng",
-    url: "https://dicksonboateng.com",
+    url: siteUrl,
     siteName: "Dickson Boateng Personal Website",
     images: ["/og-image.jpg"],
     locale: "en_GH",
     type: "website",
   },
   alternates: {
-    canonical: "https://dicksonboateng.com",
+    canonical: siteUrl,
   },
 };
 
@@ -48,17 +49,17 @@ const jsonLd = {
     {
       "@type": "Person",
       name: "Dickson Boateng",
-      url: "https://dicksonboateng.com",
+      url: siteUrl,
       jobTitle: "Software Developer",
       description:
         "Software developer from Ghana who builds clean, responsive, and practical web applications.",
-      image: "https://dicksonboateng.com/images/DicksonBoateng.webp",
+      image: `${siteUrl}/images/DicksonBoateng.webp`,
       sameAs: ["https://x.com/alege_dev", "https://github.com/dboatengg"],
     },
     {
       "@type": "WebSite",
       name: "Dickson Boateng",
-      url: "https://dicksonboateng.com",
+      url: siteUrl,
       description:
         "The personal portfolio and blog of Dickson Boateng, a software developer from Ghana.",
       publisher: { "@type": "Person", name: "Dickson Boateng" },

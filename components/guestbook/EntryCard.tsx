@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Entry = {
   id: string;
   name: string;
@@ -30,9 +32,12 @@ export default function EntryCard({ entry }: { entry: Entry }) {
             })}
           </p>
         </div>
-        <img
+        <Image
           src={entry.signature}
           alt={`${entry.name}'s signature`}
+          width={180}
+          height={64}
+          unoptimized
           className="signature-img flex-shrink-0"
           style={{ maxHeight: "64px", maxWidth: "180px", objectFit: "contain", flexShrink: 0 }}
         />

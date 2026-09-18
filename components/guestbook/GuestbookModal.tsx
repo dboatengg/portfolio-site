@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import SignaturePad from "./SignaturePad";
 
 type User = {
@@ -78,11 +79,12 @@ export default function GuestbookModal({ onClose, onSuccess, user }: Props) {
 
         <div className="flex items-center gap-2 bg-[rgb(var(--muted))] rounded-lg px-3 py-2 mb-4">
           {user.image && (
-            <img
+            <Image
               src={user.image}
               alt={user.name ?? ""}
               width={24}
               height={24}
+              unoptimized
               className="rounded-full"
             />
           )}

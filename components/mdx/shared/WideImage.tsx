@@ -8,12 +8,15 @@ interface WideImageProps {
 
 export default function WideImage({ src, alt }: WideImageProps) {
   if (!src) return null
+  if (alt === undefined) {
+    throw new Error(`Missing alt text for MDX image: ${src}`)
+  }
 
   return (
     <span className="block relative my-8 -mx-12 w-[calc(100%+6rem)] aspect-[3/2] shadow-lg overflow-hidden rounded-lg">
       <Image
         src={src}
-        alt={alt || ""}
+        alt={alt}
         fill
         className="object-cover"
         sizes="(max-width: 768px) 100vw, 768px"
