@@ -55,7 +55,7 @@ export default function Intro() {
           <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-50 md:h-96 rounded-sm md:rounded-full overflow-hidden border border-[rgb(var(--border))] shadow-lg shadow-black/30">
             <Image
               src="/images/DicksonBoateng-profile.webp"
-              alt="Dickson Boateng"
+              alt="Dickson Boateng, software developer from Ghana"
               fill
               className="object-cover object-top"
               sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"

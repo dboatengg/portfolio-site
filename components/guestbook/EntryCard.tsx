@@ -34,7 +34,7 @@ export default function EntryCard({ entry }: { entry: Entry }) {
         </div>
         <Image
           src={entry.signature}
-          alt={`${entry.name}'s signature`}
+          alt={`Handwritten signature from guestbook visitor ${entry.name}`}
           width={180}
           height={64}
           unoptimized

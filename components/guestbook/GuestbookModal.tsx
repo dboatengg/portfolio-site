@@ -81,7 +81,7 @@ export default function GuestbookModal({ onClose, onSuccess, user }: Props) {
           {user.image && (
             <Image
               src={user.image}
-              alt={user.name ?? ""}
+              alt={`${user.name ?? user.username}'s profile photo`}
               width={24}
               height={24}
               unoptimized
