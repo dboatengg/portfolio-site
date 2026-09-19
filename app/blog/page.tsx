@@ -46,7 +46,7 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="text-sm md:text-base italic text-[rgb(var(--muted-text))] max-w-2xl">
-        I want to keep writing so that, five years from now, I can look back and marvel at how much I’ve improved at putting my thoughts into words and making complex subjects easier for others to understand.
+        I write to break down complex ideas into simpler easy-to-understand concepts.
         </p>
       </header>
 
