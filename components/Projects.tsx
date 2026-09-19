@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 
@@ -58,13 +57,10 @@ export default function Projects() {
 
       <div className="grid gap-10 md:grid-cols-2">
         {projectscomp.map((project, index) => (
-          <motion.div
+          <div
             key={project.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15, duration: 0.5 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="group relative rounded-3xl overflow-hidden border border-[rgb(var(--border))] bg-[rgb(var(--card))] shadow-lg transition-all duration-500 hover:shadow-xl flex flex-col"
+            className="animate-project-in group relative rounded-3xl overflow-hidden border border-[rgb(var(--border))] bg-[rgb(var(--card))] shadow-lg transition-all duration-500 hover:shadow-xl flex flex-col"
+            style={{ "--project-delay": `${index * 0.15}s` } as React.CSSProperties}
           >
             {/* TOP COLOR SECTION */}
             <div
@@ -123,7 +119,7 @@ export default function Projects() {
                       onClick={() => setTappedPrivate(project.title)}
                       className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--muted-text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium cursor-not-allowed opacity-70 transition-all duration-200 group-hover/private:border-[rgb(var(--text))] group-hover/private:text-[rgb(var(--text))]"
                     >
-                      <motion.svg
+                      <svg
                         width="14"
                         height="14"
                         viewBox="0 0 24 24"
@@ -132,16 +128,10 @@ export default function Projects() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        animate={{ rotate: 0 }}
-                        whileHover={{
-                          rotate: [0, -8, 8, -5, 5, 0],
-                          scale: [1, 1.15, 1],
-                        }}
-                        transition={{ duration: 0.4 }}
                       >
                         <rect x="4" y="10" width="16" height="11" rx="2" />
                         <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-                      </motion.svg>
+                      </svg>
 
                       Source code
                     </button>
@@ -178,7 +168,7 @@ export default function Projects() {
                 )}
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

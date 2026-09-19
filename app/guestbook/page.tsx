@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { auth } from "@/auth";
-import { prisma } from "@/lib/prisma";
 import GuestbookEntries, { EntriesSkeleton } from "@/components/guestbook/GuestbookEntries";
 import GuestbookFormSection, { FormSkeleton } from "@/components/guestbook/GuestbookFormSection";
 import GuestbookShell from "@/components/guestbook/GuestbookShell";
@@ -18,17 +17,11 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function GuestbookPage() {
-  const [session, initialEntries] = await Promise.all([
-    auth(),
-    prisma.guestbookEntry.findMany({
-      orderBy: { createdAt: "desc" },
-      take: 50,
-    }),
-  ]);
+  const session = await auth();
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
-      <GuestbookShell initialEntries={initialEntries}>
+      <GuestbookShell initialEntries={[]}>
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
           <div>
             <h1 className="text-2xl font-medium mb-1 text-[rgb(var(--text))]">

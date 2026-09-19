@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Menu, X, PenLine, User, BookOpen } from "lucide-react"
 import Logo from "./Logo"
 import ThemeToggle from "./ThemeToggle"
@@ -14,11 +14,6 @@ const navLinks = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  // Do NOT lock body scroll; allow page to remain scrollable when menu is open
-  useEffect(() => {
-    return () => {}
-  }, [])
 
   const closeMenu = () => setIsMenuOpen(false)
 

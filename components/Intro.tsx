@@ -1,16 +1,8 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 export default function Intro() {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="mb-24 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10"
-    >
+    <section className="animate-intro-in mb-24 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10">
       <div className="flex-1">
         <h1 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-2">
           Dickson Boateng
@@ -64,6 +56,6 @@ export default function Intro() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

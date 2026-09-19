@@ -47,3 +47,9 @@ export const mdxCompileOptions = {
   blockJS: false,
   mdxOptions: { rehypePlugins },
 }
+
+export const lightMdxCompileOptions = {
+  parseFrontmatter: true,
+  blockJS: false,
+  mdxOptions: { rehypePlugins: [] },
+}

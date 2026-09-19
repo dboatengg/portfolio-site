@@ -14,6 +14,7 @@ type Entry = {
 
 type GuestbookContextType = {
   entries: Entry[];
+  setEntries: (entries: Entry[]) => void;
   addEntry: (entry: Entry) => void;
 };
 
@@ -33,7 +34,7 @@ export function GuestbookProvider({
   }
 
   return (
-    <GuestbookContext.Provider value={{ entries, addEntry }}>
+    <GuestbookContext.Provider value={{ entries, setEntries, addEntry }}>
       {children}
     </GuestbookContext.Provider>
   );

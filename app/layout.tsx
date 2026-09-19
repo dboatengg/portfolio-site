@@ -126,7 +126,6 @@ export default async function RootLayout({
   dangerouslySetInnerHTML={{
     __html: `(function(){
       try {
-        document.documentElement.style.visibility = 'hidden';
         var theme = localStorage.getItem('theme');
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
@@ -139,10 +138,7 @@ export default async function RootLayout({
           root.classList.add('light');
         }
         if (theme) root.classList.add('theme-set');
-        document.documentElement.style.visibility = 'visible';
-      } catch(e) {
-        document.documentElement.style.visibility = 'visible';
-      }
+      } catch(e) {}
     })();`,
   }}
 />

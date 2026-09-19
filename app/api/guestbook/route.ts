@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   const entries = await prisma.guestbookEntry.findMany({
     orderBy: { createdAt: "desc" },
+    take: 20,
   });
   return NextResponse.json(entries);
 }

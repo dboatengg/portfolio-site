@@ -1,6 +1,6 @@
 
 import { compileMDX } from "next-mdx-remote/rsc"
-import { getAllSlugs, getPostBySlug, mdxCompileOptions } from "@/utils/mdx"
+import { getAllSlugs, getPostBySlug, lightMdxCompileOptions, mdxCompileOptions } from "@/utils/mdx"
 import GiscusComments from "@/components/GiscusComments"
 import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
@@ -8,7 +8,6 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
 // Blog components 
-import PolaroidGallery from "../../../components/PolaroidGallery"
 import RequestDemo from "@/components/mdx/demos/jwt-auth/RequestDemo"
 import StatelessDiagram from "@/components/mdx/diagrams/jwt-auth/StatelessDiagram"
 import LoadBalancerDiagram from "@/components/mdx/diagrams/jwt-auth/LoadBalancerDiagram"
@@ -42,9 +41,8 @@ export async function generateMetadata(
     image?: string
   }>({
     source,
-    options: mdxCompileOptions,
+    options: slug === "nextjs-tutorial-beginners" ? lightMdxCompileOptions : mdxCompileOptions,
     components: { 
-      PolaroidGallery, 
       RequestDemo, 
       StatelessDiagram, 
       LoadBalancerDiagram, 
@@ -118,9 +116,8 @@ export default async function BlogPost({
     image?: string
   }>({
     source,
-    options: mdxCompileOptions,
+    options: slug === "nextjs-tutorial-beginners" ? lightMdxCompileOptions : mdxCompileOptions,
     components: { 
-      PolaroidGallery, 
       RequestDemo, 
       StatelessDiagram, 
       LoadBalancerDiagram, 
