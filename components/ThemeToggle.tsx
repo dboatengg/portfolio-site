@@ -25,14 +25,6 @@ export default function ThemeToggle() {
   }, []);
 
   function applyTheme(newTheme: string) {
-    const root = document.documentElement;
-    if (newTheme === 'light') {
-      try { localStorage.setItem('theme', 'light'); root.classList.add('theme-set'); } catch(e) {}
-    } else if (newTheme === 'dark') {
-      try { localStorage.setItem('theme', 'dark'); root.classList.add('theme-set'); } catch(e) {}
-    } else {
-      try { localStorage.removeItem('theme'); root.classList.remove('theme-set'); } catch(e) {}
-    }
     setTheme(newTheme);
   }
 
@@ -41,12 +33,14 @@ export default function ThemeToggle() {
 
     const root = document.documentElement;
     const btn = btnRef.current;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const compactViewport = window.matchMedia('(max-width: 640px)').matches;
 
     root.classList.add('theme-transitioning');
 
     const endTransition = () => root.classList.remove('theme-transitioning');
 
-    if (!document.startViewTransition || !btn) {
+    if (reducedMotion || compactViewport || !document.startViewTransition || !btn) {
       applyTheme(newTheme);
       requestAnimationFrame(() => requestAnimationFrame(endTransition));
       return;
@@ -94,14 +88,7 @@ export default function ThemeToggle() {
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => {
-      setMounted(true);
-      const stored = localStorage.getItem('theme');
-      if (stored) {
-        document.documentElement.classList.add('theme-set');
-      }
-    }, 0);
-    return () => clearTimeout(t);
+    setMounted(true);
   }, []);
 
   if (!mounted) return (
@@ -111,8 +98,14 @@ export default function ThemeToggle() {
   return (
     <div className="relative" ref={menuRef}>
       <button
+        type="button"
         ref={btnRef}
         onClick={() => setOpen(!open)}
+        aria-label="Theme settings"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-controls="theme-menu"
+        title="Theme settings"
         className="p-1 rounded-md border border-[rgb(var(--border))] hover:bg-muted transition-colors"
       >
         {resolvedTheme === 'light' && <Sun className="w-5 h-5 text-[rgb(var(--body-text))]" />}
@@ -121,9 +114,12 @@ export default function ThemeToggle() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-40 rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--bg))] shadow-lg overflow-hidden z-50 animate-fadeIn">
+        <div id="theme-menu" role="menu" className="absolute right-0 mt-2 w-40 rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--bg))] shadow-lg overflow-hidden z-50 animate-fadeIn">
           <button
+            type="button"
             onClick={() => switchTheme('light')}
+            role="menuitemradio"
+            aria-checked={theme === 'light'}
             className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition
               ${theme === 'light' ? 'bg-muted font-medium' : ''}`}
           >
@@ -131,7 +127,10 @@ export default function ThemeToggle() {
           </button>
 
           <button
+            type="button"
             onClick={() => switchTheme('dark')}
+            role="menuitemradio"
+            aria-checked={theme === 'dark'}
             className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition
               ${theme === 'dark' ? 'bg-muted font-medium' : ''}`}
           >
@@ -139,7 +138,10 @@ export default function ThemeToggle() {
           </button>
 
           <button
+            type="button"
             onClick={() => switchTheme('system')}
+            role="menuitemradio"
+            aria-checked={theme === 'system'}
             className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition
               ${theme === 'system' ? 'bg-muted font-medium' : ''}`}
           >

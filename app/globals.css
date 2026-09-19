@@ -81,6 +81,17 @@
   z-index: 9999;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Suppress per-element transitions during theme switch (View Transition handles the reveal) */
 html.theme-transitioning,
 html.theme-transitioning *,
