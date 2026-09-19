@@ -1,7 +1,10 @@
 ---
-title: "I Built a Movie App to Understand Next.js"
-date: "2025-11-21"
-summary: "I wanted to break Next.js down for beginners, so I built a movie app to explain routing, data fetching, layouts, and other core ideas."
+title: I Built a Movie App to Make Next.js Easy to Understand
+date: '2025-11-21'
+summary: >-
+  I wanted to break down Next.js for beginners, so I built a movie app to
+  explain routing, data fetching, layouts, and other core ideas.
+published: true
 tags:
   - Next.js
   - React
@@ -13,13 +16,10 @@ tags:
 React is excellent for building user interfaces, but it doesn’t provide many of the tools needed to build a full web application.
 Out of the box, React doesn’t handle routing, server-side rendering, SEO optimization, API endpoints, or performance optimizations.
 
-If you try to build a production-ready application with only React, you often end up installing and configuring many external libraries:
-React Router, Axios, Vite/Webpack, server frameworks, SSR tools, and more. Managing all of this yourself quickly
-becomes complicated and makes your code harder to maintain.
+If you try to build a production-ready application with only React, you often end up installing and configuring a lot external libraries like:
+React Router, Axios, Vite/Webpack, server frameworks, SSR tools, and more. Managing all of these libraries yourself can quickly become complicated and make your code harder to maintain.
 
-This is exactly the problem Next.js solves. Next.js combines React with routing, server rendering, data fetching, file-based organization,
-and backend logic, all in one environment and already configured for you. Instead of managing a collection of separate libraries
-on your own, Next.js gives you a complete, unified setup right from the start.
+This is exactly the problem Next.js solves. Next.js combines React with routing, server rendering, data fetching, file-based organization, and backend logic, all in one environment and already configured for you. Instead of managing a collection of separate libraries on your own, Next.js gives you a complete setup right from the start.
 
 ## Prerequisite
 
@@ -32,7 +32,7 @@ Before you proceed, make sure you have:
 ## Goals
 
 - Understand the core concepts of Next.js and how the App Router works.
-- Build a practical, real-world Movie Browsing App that applies each concept step by step.
+- Build a Movie Browsing App that applies all of the concepts we'll learn.
 
 You can explore the full project here:
 
@@ -41,10 +41,10 @@ You can explore the full project here:
 
 ## Key Terms You Should Know
 
-Before we dive into it, let’s clarify a few important technical terms you’ll see throughout this tutorial. Understanding these will help you follow along more easily:
+Before we dive into it, let’s clarify a few important technical terms you’ll see throughout this article. Understanding these will help you follow along more easily:
 
-- <b>Routing:</b> The process by which your application determines the page or content
-  to display when a user visits a specific URL. In Next.js, routing is mostly file-based;
+- <b>Routing:</b> The process by which your application decides the page or content
+  to display when a user clicks a link. In Next.js, routing is mostly file-based;
   you create folders and files, and each one automatically becomes a route in your
   app.
 - <b>Route</b>: A route is simply a specific URL path in your application, like
@@ -63,11 +63,11 @@ Before we dive into it, let’s clarify a few important technical terms you’ll
 
 ## What We’ll be Building
 
-In this tutorial, we’ll build a Movie Browsing application that has:
+We’ll build a Movie Browsing application that has:
 
 - A homepage
 - About page
-- A movie page that fetches a list of popular films from a real public API
+- A movie page that fetches a list of popular films from a public API
 - Individual movie pages using dynamic routes to show movie details
 - Loading and error states
 - Clean, responsive UI styled with Tailwind
@@ -78,7 +78,7 @@ In this tutorial, we’ll build a Movie Browsing application that has:
   <img src="/blog/nextjs-tutorial/project.gif" alt="Completed Next.js movie browsing project homepage" />
 </div>
 
-By the end, you’ll have a strong foundation to start building your own production-ready Next.js applications.
+By the end, you’ll have a strong foundation to start building basic production-ready Next.js applications.
 
 ## Setting Up Next.js
 
@@ -118,7 +118,7 @@ At this point, you have everything you need to begin this tutorial.
 - A homepage
 - A development environment that reloads automatically whenever you save changes.
 
-If you open the project in your code editor, you’ll notice a clean structure. The `app/` folder contains your routes, `globals.css` contains your global styles, and the rest of the files give you a fully configured foundation to start building immediately.
+If you open the project in your code editor, you’ll notice a clean structure. The `app/` folder contains your routes, `globals.css` contains your global styles, and the rest of the files give you a fully configured foundation to start creating a Next.js application immediately.
 
 ### Remove Tailwind’s Default Styling
 
@@ -186,7 +186,7 @@ export default function RootLayout({
 
 (We will re-enable this import later when we get to Tailwind styling.)
 
-This keeps Tailwind fully enabled, but removes the default styling so your layout and pages look exactly like the examples you’ll build throughout this tutorial.
+This keeps Tailwind fully enabled, but removes the default styling so your layout and pages look exactly like the example application we’ll build in this article.
 
 ## Understanding the Folder Structure
 
