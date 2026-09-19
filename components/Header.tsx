@@ -42,49 +42,47 @@ export default function Header() {
         <div className="flex items-center gap-4 md:hidden">
           <ThemeToggle />
           <button
+            type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 text-[rgb(var(--text))] hover:text-[rgb(var(--accent))] transition-colors"
+            className="rounded-md border border-[rgb(var(--border))] p-2 text-[rgb(var(--text))] hover:bg-[rgb(var(--muted))] hover:text-[rgb(var(--accent))] transition-colors"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Panel (top glass effect) */}
+      {/* Mobile navigation */}
       <div
-        className={`fixed left-0 top-[57px] w-full z-40 md:hidden transform transition-transform duration-300 ease-out transition-opacity ${
+        id="mobile-navigation"
+        className={`absolute left-0 top-full w-full z-40 md:hidden transform transition-transform duration-300 ease-out transition-opacity ${
           isMenuOpen
             ? "translate-y-0 opacity-100 pointer-events-auto"
-            : "-translate-y-[100vh] opacity-0 pointer-events-none"
+            : "-translate-y-3 opacity-0 pointer-events-none"
         }`}
         aria-hidden={!isMenuOpen}
       >
-        {/* Glass padding area */}
-        <div className="backdrop-blur-md bg-[rgb(var(--bg)/0.32)] border-b border-[rgb(var(--border))]">
-          <div className="max-w-4xl mx-auto px-4 py-4">
-            {/* Solid menu panel */}
-            <div className="bg-[rgb(var(--bg))] rounded-md shadow-sm border border-[rgb(var(--border))]">
-              <nav className="flex flex-col p-4 pt-6">
-                {navLinks.map((link) => {
-                  const Icon = link.icon
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMenu}
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-[rgb(var(--text))] hover:bg-[rgb(var(--divide))] hover:text-[rgb(var(--accent))] transition-all"
-                    >
-                      <Icon size={18} className="text-[rgb(var(--muted-text))]" />
-                      <span className="text-sm font-medium">{link.label}</span>
-                    </Link>
-                  )
-                })}
-              </nav>
-            </div>
+        <nav className="border-y border-[rgb(var(--border))] bg-[rgb(var(--bg)/0.96)] px-4 py-3 shadow-lg backdrop-blur-md" aria-label="Mobile navigation">
+          <div className="mx-auto flex max-w-4xl flex-col gap-1">
+            {navLinks.map((link) => {
+              const Icon = link.icon
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  tabIndex={isMenuOpen ? 0 : -1}
+                  className="flex items-center gap-3 rounded-lg px-3 py-3 text-[rgb(var(--text))] transition-colors hover:bg-[rgb(var(--muted))] hover:text-[rgb(var(--accent))]"
+                >
+                  <Icon size={18} className="text-[rgb(var(--muted-text))]" />
+                  <span className="text-sm font-medium">{link.label}</span>
+                </Link>
+              )
+            })}
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   )
