@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 type BlogPost = (typeof allBlogs)[number];
 
 export default function BlogPage() {
-  const posts = [...allBlogs].sort(
+  const posts = allBlogs.filter((post) => post.published !== false).sort(
     (a, b) => +new Date(b.date) - +new Date(a.date)
   );
 

@@ -16,6 +16,7 @@ export type Blog = {
   title: string
   date: IsoDateTimeString
   summary: string
+  published?: boolean | undefined
   tags?: string[] | undefined
   image?: string | undefined
   /** MDX file body */

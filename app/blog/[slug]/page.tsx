@@ -1,6 +1,7 @@
 
 import { compileMDX } from "next-mdx-remote/rsc"
-import { getAllSlugs, getPostBySlug, lightMdxCompileOptions, mdxCompileOptions } from "@/utils/mdx"
+import { getAllSlugs, getPostBySlug, getPostLastModified, isPublished, mdxCompileOptions } from "@/utils/mdx"
+import { notFound } from "next/navigation"
 import GiscusComments from "@/components/GiscusComments"
 import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
@@ -32,6 +33,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params
   const { source } = await getPostBySlug(slug)
+  if (!isPublished(source)) notFound()
 
   const { frontmatter } = await compileMDX<{
     title: string
@@ -41,7 +43,7 @@ export async function generateMetadata(
     image?: string
   }>({
     source,
-    options: slug === "nextjs-tutorial-beginners" ? lightMdxCompileOptions : mdxCompileOptions,
+    options: mdxCompileOptions,
     components: { 
       RequestDemo, 
       StatelessDiagram, 
@@ -84,6 +86,7 @@ export async function generateMetadata(
         alt: `${title} social preview`,
       }],
       publishedTime,
+      modifiedTime: getPostLastModified(slug).toISOString(),
       authors: [siteUrl],
       section: "Web development",
       tags: frontmatter.tags,
@@ -108,6 +111,7 @@ export default async function BlogPost({
 }) {
   const { slug } = await params
   const { source } = await getPostBySlug(slug)
+  if (!isPublished(source)) notFound()
   const { content, frontmatter } = await compileMDX<{
     title: string
     summary?: string
@@ -116,7 +120,7 @@ export default async function BlogPost({
     image?: string
   }>({
     source,
-    options: slug === "nextjs-tutorial-beginners" ? lightMdxCompileOptions : mdxCompileOptions,
+    options: mdxCompileOptions,
     components: { 
       RequestDemo, 
       StatelessDiagram, 
@@ -142,6 +146,8 @@ export default async function BlogPost({
   const date = frontmatter.date
     ? new Date(frontmatter.date).toISOString().split("T")[0]
     : undefined
+  const lastModified = getPostLastModified(slug)
+  const lastModifiedDate = lastModified.toISOString().split("T")[0]
   const currentTags = new Set(frontmatter.tags ?? [])
 
   const relatedPosts = [...allBlogs]
@@ -173,7 +179,7 @@ export default async function BlogPost({
         "@id": `${siteUrl}/blog/${slug}`,
       },
       url: `${siteUrl}/blog/${slug}`,
-      dateModified: date,
+      dateModified: lastModified.toISOString(),
     }
 
   return (
@@ -187,7 +193,7 @@ export default async function BlogPost({
         Back to blog
       </Link>
       <header className="mb-14">
-        <h1 className="!text-3xl sm:!text-4xl md:!text-5xl !leading-tight font-bold tracking-tight mb-5">
+        <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">
           {frontmatter.title}
         </h1>
 
@@ -196,6 +202,9 @@ export default async function BlogPost({
           <span>•</span>
           <span>{readingTime}</span>
         </div>
+        <p className="mt-3 text-sm text-[rgb(var(--muted-text))]">
+          Last updated {formatDate(lastModifiedDate)}
+        </p>
 
 
       </header>

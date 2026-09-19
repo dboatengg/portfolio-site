@@ -26,10 +26,17 @@ export default function GuestbookFormClient({ session, hasSigned: initialHasSign
   const [hasSigned, setHasSigned] = useState(initialHasSigned);
   const [modalOpen, setModalOpen] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
+  const [authError, setAuthError] = useState("");
 
   async function handleSignIn() {
     setAuthLoading(true);
-    await signIn("github");
+    setAuthError("");
+    try {
+      await signIn("github", { callbackUrl: window.location.href });
+    } catch {
+      setAuthLoading(false);
+      setAuthError("GitHub sign-in could not start. Check the OAuth configuration.");
+    }
   }
 
   async function handleSignOut() {
@@ -68,17 +75,20 @@ export default function GuestbookFormClient({ session, hasSigned: initialHasSign
             )}
           </>
         ) : (
-          <button
-            onClick={handleSignIn}
-            disabled={authLoading}
-            className="self-start flex items-center gap-2 bg-[rgb(var(--accent))] text-[rgb(var(--accent-foreground))] rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
-          >
-            {authLoading ? (
-              <><Spinner /> Redirecting...</>
-            ) : (
-              <><GitHubIcon /> Sign in with GitHub</>
-            )}
-          </button>
+          <div className="flex flex-col items-start gap-2">
+            <button
+              onClick={handleSignIn}
+              disabled={authLoading}
+              className="self-start flex items-center gap-2 bg-[rgb(var(--accent))] text-[rgb(var(--accent-foreground))] rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
+            >
+              {authLoading ? (
+                <><Spinner /> Redirecting...</>
+              ) : (
+                <><GitHubIcon /> Sign in with GitHub</>
+              )}
+            </button>
+            {authError && <p className="max-w-xs text-xs text-red-600">{authError}</p>}
+          </div>
         )}
       </div>
 

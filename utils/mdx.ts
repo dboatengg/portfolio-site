@@ -2,6 +2,7 @@
 import fs from "fs"
 import path from "path"
 import rehypePrettyCode from "rehype-pretty-code"
+import matter from "gray-matter"
 
 const postsDir = path.join(process.cwd(), "content", "blog")
 
@@ -9,13 +10,26 @@ export function getAllSlugs() {
   return fs
     .readdirSync(postsDir)
     .filter((file) => file.endsWith(".mdx"))
+    .filter((file) => {
+      const source = fs.readFileSync(path.join(postsDir, file), "utf8")
+      return matter(source).data.published !== false
+    })
     .map((file) => file.replace(/\.mdx$/, ""))
+}
+
+export function isPublished(source: string) {
+  return matter(source).data.published !== false
 }
 
 export async function getPostBySlug(slug: string) {
   const filePath = path.join(postsDir, `${slug}.mdx`)
   const source = fs.readFileSync(filePath, "utf8")
   return { source }
+}
+
+export function getPostLastModified(slug: string) {
+  const filePath = path.join(postsDir, `${slug}.mdx`)
+  return fs.statSync(filePath).mtime
 }
 
 const rehypeOptions = {

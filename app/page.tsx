@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Projects from "@/components/Projects";
 import BlogList from "@/components/BlogList";
 import { siteUrl } from "@/config/site";
+import { allBlogs } from "contentlayer/generated";
 
 export const metadata: Metadata = {
   title: "Software Developer from Ghana",
@@ -67,6 +68,8 @@ const jsonLd = {
   ],
 };
 
+const publishedBlogs = allBlogs.filter((post) => post.published !== false);
+
 export default function HomePage() {
   return (
     <main>
@@ -75,7 +78,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Intro />
-      <BlogList />
+      <BlogList posts={publishedBlogs} />
       <Projects />
     </main>
   );

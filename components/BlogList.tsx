@@ -3,9 +3,9 @@ import { allBlogs } from "contentlayer/generated"
 import { ArrowRight } from "lucide-react"
 // import { formatShortDate } from "@/utils/formatShortDate"
 
-export default function BlogList() {
+export default function BlogList({ posts: allPosts }: { posts: typeof allBlogs }) {
   // Sort by date (descending)
-  const posts = allBlogs.sort(
+  const posts = [...allPosts].sort(
     (a, b) => +new Date(b.date) - +new Date(a.date)
   )
 
