@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
-import { Sun, Moon, Monitor } from 'lucide-react';
+import { Sun, Moon, Monitor, Check } from 'lucide-react';
 
 const THEME_TRANSITION_MS = 500;
 
@@ -114,16 +114,18 @@ export default function ThemeToggle() {
       </button>
 
       {open && (
-        <div id="theme-menu" role="menu" className="absolute right-0 mt-2 w-40 rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--bg))] shadow-lg overflow-hidden z-50 animate-fadeIn">
+        <div id="theme-menu" role="menu" className="absolute right-0 mt-2 w-36 rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--bg))] p-1 shadow-lg overflow-hidden z-50 animate-fadeIn">
           <button
             type="button"
             onClick={() => switchTheme('light')}
             role="menuitemradio"
             aria-checked={theme === 'light'}
-            className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition
-              ${theme === 'light' ? 'bg-muted font-medium' : ''}`}
+            className={`flex items-center gap-2 w-full rounded-md px-2.5 py-1.5 text-left text-sm text-[rgb(var(--body-text))] hover:bg-muted transition
+              ${theme === 'light' ? 'bg-muted font-medium text-[rgb(var(--text))]' : ''}`}
           >
-            <Sun className="w-4 h-4" /> Light
+            <Sun className="h-4 w-4 shrink-0" />
+            <span className="flex-1">Light</span>
+            {theme === 'light' && <Check className="h-3.5 w-3.5 text-[rgb(var(--accent))]" />}
           </button>
 
           <button
@@ -131,10 +133,12 @@ export default function ThemeToggle() {
             onClick={() => switchTheme('dark')}
             role="menuitemradio"
             aria-checked={theme === 'dark'}
-            className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition
-              ${theme === 'dark' ? 'bg-muted font-medium' : ''}`}
+            className={`flex items-center gap-2 w-full rounded-md px-2.5 py-1.5 text-left text-sm text-[rgb(var(--body-text))] hover:bg-muted transition
+              ${theme === 'dark' ? 'bg-muted font-medium text-[rgb(var(--text))]' : ''}`}
           >
-            <Moon className="w-4 h-4" /> Dark
+            <Moon className="h-4 w-4 shrink-0" />
+            <span className="flex-1">Dark</span>
+            {theme === 'dark' && <Check className="h-3.5 w-3.5 text-[rgb(var(--accent))]" />}
           </button>
 
           <button
@@ -142,10 +146,12 @@ export default function ThemeToggle() {
             onClick={() => switchTheme('system')}
             role="menuitemradio"
             aria-checked={theme === 'system'}
-            className={`flex items-center gap-2 w-full px-4 py-2 text-left text-[rgb(var(--body-text))] hover:bg-muted transition
-              ${theme === 'system' ? 'bg-muted font-medium' : ''}`}
+            className={`flex items-center gap-2 w-full rounded-md px-2.5 py-1.5 text-left text-sm text-[rgb(var(--body-text))] hover:bg-muted transition
+              ${theme === 'system' ? 'bg-muted font-medium text-[rgb(var(--text))]' : ''}`}
           >
-            <Monitor className="w-4 h-4" /> System
+            <Monitor className="h-4 w-4 shrink-0" />
+            <span className="flex-1">System</span>
+            {theme === 'system' && <Check className="h-3.5 w-3.5 text-[rgb(var(--accent))]" />}
           </button>
         </div>
       )}
