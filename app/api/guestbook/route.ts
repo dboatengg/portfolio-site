@@ -1,14 +1,19 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { getGuestbookEntries, GUESTBOOK_TAG } from "@/lib/guestbook";
+
 
 // GET — fetch all entries
 export async function GET() {
-  const entries = await prisma.guestbookEntry.findMany({
-    orderBy: { createdAt: "desc" },
-    take: 20,
+  const entries = await getGuestbookEntries();
+  return NextResponse.json(entries, {
+    headers: {
+      // browser always revalidates; Vercel's CDN holds it for 60s
+      "Cache-Control": "public, max-age=0, s-maxage=60, stale-while-revalidate=300",
+    },
   });
-  return NextResponse.json(entries);
 }
 
 // POST — create a new entry
@@ -57,6 +62,8 @@ export async function POST(req: Request) {
       signature,
     },
   });
+
+  revalidateTag(GUESTBOOK_TAG, { expire: 0 });
 
   return NextResponse.json(entry, { status: 201 });
 }
