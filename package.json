@@ -35,6 +35,7 @@
     "remark-gfm": "^4.0.1",
     "resend": "^6.4.2",
     "shiki": "^3.15.0",
+    "swr": "^2.5.1",
     "unified": "^11.0.5"
   },
   "devDependencies": {
