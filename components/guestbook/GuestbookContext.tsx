@@ -56,7 +56,10 @@ export function GuestbookProvider({
   }
 
   function addEntry(entry: Entry) {
-    void mutate((prev) => [entry, ...(prev ?? [])], { revalidate: false });
+    void mutate(
+      (prev) => [entry, ...(prev ?? initialEntries)],
+      { revalidate: false }
+    );
   }
 
   return (
