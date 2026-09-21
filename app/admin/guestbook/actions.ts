@@ -23,6 +23,7 @@ export async function deleteGuestbookEntry(
 
   // Same invalidation as the POST handler, so visitors stop seeing it
   revalidateTag(GUESTBOOK_TAG, { expire: 0 });
+  revalidatePath("/guestbook");
   revalidatePath("/admin/guestbook");
   return { ok: true };
 }

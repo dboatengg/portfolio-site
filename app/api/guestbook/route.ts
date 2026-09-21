@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { revalidateTag } from "next/cache";
+// import { revalidateTag } from "next/cache";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { getGuestbookEntries, GUESTBOOK_TAG } from "@/lib/guestbook";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 
 // GET — fetch all entries
@@ -64,6 +65,7 @@ export async function POST(req: Request) {
   });
 
   revalidateTag(GUESTBOOK_TAG, { expire: 0 });
+    revalidatePath("/guestbook");
 
   return NextResponse.json(entry, { status: 201 });
 }
