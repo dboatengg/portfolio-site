@@ -5,6 +5,7 @@ import { signIn, signOut } from "next-auth/react";
 import type { Session } from "next-auth";
 import GuestbookModal from "./GuestbookModal";
 import { useGuestbook } from "./GuestbookContext";
+import { useSWRConfig } from "swr";
 
 type Entry = {
   id: string;
@@ -23,6 +24,7 @@ type Props = {
 
 export default function GuestbookFormClient({ session, hasSigned: initialHasSigned }: Props) {
   const { addEntry } = useGuestbook();
+  const { mutate } = useSWRConfig();
   const [hasSigned, setHasSigned] = useState(initialHasSigned);
   const [modalOpen, setModalOpen] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
@@ -45,10 +47,12 @@ export default function GuestbookFormClient({ session, hasSigned: initialHasSign
   }
 
   function handleNewEntry(entry: Entry) {
-    setHasSigned(true);
-    setModalOpen(false);
-    addEntry(entry);
-  }
+  setHasSigned(true);
+  setModalOpen(false);
+  addEntry(entry);
+  
+  void mutate("/api/guestbook/me", { hasSigned: true }, { revalidate: false });
+}
 
   return (
     <>
