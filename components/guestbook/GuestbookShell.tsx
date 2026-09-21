@@ -1,5 +1,6 @@
 "use client";
 
+import { SessionProvider } from "next-auth/react";
 import { GuestbookProvider } from "./GuestbookContext";
 
 type Entry = {
@@ -20,8 +21,10 @@ export default function GuestbookShell({
   initialEntries: Entry[];
 }) {
   return (
-    <GuestbookProvider initialEntries={initialEntries}>
-      {children}
-    </GuestbookProvider>
+    <SessionProvider>
+      <GuestbookProvider initialEntries={initialEntries}>
+        {children}
+      </GuestbookProvider>
+    </SessionProvider>
   );
 }

@@ -1,19 +1,35 @@
-import { prisma } from "@/lib/prisma";
-import type { Session } from "next-auth";
+"use client";
+
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
 import GuestbookFormClient from "./GuestbookFormClient";
 
-type Props = {
-  session: Session | null;
-};
+async function fetcher(url: string): Promise<{ hasSigned: boolean }> {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Failed to check signature status");
+  return response.json();
+}
 
-export default async function GuestbookFormSection({ session }: Props) {
-  const hasSigned = session?.user
-    ? !!(await prisma.guestbookEntry.findUnique({
-        where: { githubId: String(session.user.id) },
-      }))
-    : false;
+export default function GuestbookFormSection() {
+  const { data: session, status } = useSession();
+  const signedIn = !!session?.user;
 
-  return <GuestbookFormClient session={session} hasSigned={hasSigned} />;
+  const { data, error } = useSWR(
+    signedIn ? "/api/guestbook/me" : null,
+    fetcher,
+    { revalidateOnFocus: false }
+  );
+
+  if (status === "loading" || (signedIn && !data && !error)) {
+    return <FormSkeleton />;
+  }
+
+  return (
+    <GuestbookFormClient
+      session={session ?? null}
+      hasSigned={data?.hasSigned ?? false}
+    />
+  );
 }
 
 export function FormSkeleton() {
