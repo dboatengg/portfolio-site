@@ -89,13 +89,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
     creator: "@alege_dev",
   },
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
-  },
+  
 };
 
 export default async function RootLayout({
@@ -106,7 +100,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning >
       <head>
-        <link
+        {/* <link
           rel="icon"
           type="image/png"
           href="/icon-192.png"
@@ -117,32 +111,37 @@ export default async function RootLayout({
           type="image/png"
           href="/icon-512.png"
           sizes="512x512"
-        />
+        /> */}
         <link rel="manifest" href="/site.webmanifest" />
+          <link
+    rel="icon"
+    type="image/png"
+    href="/favicons/b-light.png"
+  />
         
 
-      <Script
-        id="theme-init"
-  strategy="beforeInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `(function(){
-      try {
-        var theme = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
-        var root = document.documentElement;
-        if (isDark) {
-          root.classList.add('dark');
-          root.classList.remove('light');
-        } else {
-          root.classList.remove('dark');
-          root.classList.add('light');
-        }
-        if (theme) root.classList.add('theme-set');
-      } catch(e) {}
-    })();`,
-  }}
-/>
+        <Script
+    id="theme-init"
+    strategy="beforeInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `(function(){
+        try {
+          var theme = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
+          var root = document.documentElement;
+          if (isDark) {
+            root.classList.add('dark');
+            root.classList.remove('light');
+          } else {
+            root.classList.remove('dark');
+            root.classList.add('light');
+          }
+          if (theme) root.classList.add('theme-set');
+        } catch(e) {}
+      })();`,
+    }}
+  />
 
       </head>
       {/* <body
