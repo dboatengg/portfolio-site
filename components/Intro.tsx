@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Intro() {
   return (
@@ -12,14 +13,17 @@ export default function Intro() {
         </p>
 
         <p className="text-base leading-relaxed max-w-2xl mb-6">
-          My tech journey started when our parents bought a home computer for my younger brother and me.
+          I build and maintain websites and web applications for businesses and clients. 
         </p>
         <p className="text-base leading-relaxed max-w-2xl mb-6">
-          We used it mostly to play games, but those early experiences gradually pulled me toward programming.
+          As a software developer, I always aim to create clean and reliable software that is both intuitive and enjoyable for users.
         </p>
-        <p className="text-base leading-relaxed max-w-2xl mb-6">
-          Today I build full-stack web applications with React and Next.js on the frontend, and Node.js, Express, and PostgreSQL on the backend.
-        </p>
+       <p className="text-base leading-relaxed max-w-2xl mb-6">
+        I have a passion for learning, and I am constantly seeking to improve my skills through reading and{" "}
+        <Link href="/blog" className="underline underline-offset-2 hover:opacity-70 transition-opacity">writing</Link>.</p>
+        {/* <p className="text-base leading-relaxed max-w-2xl mb-6">
+          I&apos;m interested in TypeScript and Node.js, and at the same time, I&apos;m also experimenting with native apps with Swift.
+        </p> */}
 
         <div className="mt-6 flex flex-wrap gap-4">
             <a href="/DicksonBoateng-v3.pdf"

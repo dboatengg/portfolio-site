@@ -39,15 +39,15 @@ const publications = [
 
 const nowItems = [
   "Working remotely as a web developer",
-  "Experimenting and tweaking this website",
-  "Working on side projects",
-  "Writing about web development and personal growth",
+  "Building and maintaining various client websites and web applications",
+  "Writing about software development, technology, and personal growth",
+  "Continuously learning and building interesting side projects"
 ];
 
 const outsideItems = [
-  <>I have never missed an episode from these podcasts: <b>Darknet Diaries</b> and <b>What Now with Trevor Noah</b>.</>,
-  <>My favorite movies and shows: <b>Perfect Days</b>, <b>Ted Lasso</b>, and <b>Shrinking</b>.</>,
-  <>I consider Pavel Durov (Telegram Founder &amp; CEO) a mentor from afar. His discipline and philosophy deeply inspire me.</>,
+  <><b>Podcasts:</b> Darknet Diaries, What Now with Trevor Noah</>,
+  <><b>Movies & shows:</b> Perfect Days, Ted Lasso, Slow Horses, Mythic Quest</>,
+  <><b>Books:</b> 100 World&apos;s Greatest Short Stories</>,
 ];
 
 export default function AboutPage() {
@@ -67,31 +67,20 @@ export default function AboutPage() {
         </h2>
         <div className="space-y-4 text-[rgb(var(--body-text))] leading-relaxed">
           <p>
-          I didn&apos;t take the traditional path into software development. My journey
-          started with pure curiosity, taking online courses, and
-          staying connected to tech communities on Twitter and Reddit.
+          Most of what I know about software and programming comes from building things, breaking them, 
+          and fixing them. 
         </p>
           <p>
-            I currently work in web development and have had the privilege of
-            working and collaborating with developers and designers from diverse backgrounds.
+            My path into software development wasn&apos;t conventional. I started out of curiosity by learning through various online courses
+             and staying connected to developer communities on Reddit and Twitter. 
+            Over time, that curiosity turned into professional work and a career I genuinely enjoy.
+          </p>
+
+          <p>
+            Today, I build software for businesses and clients and have worked with developers, designers, and clients from diverse backgrounds. 
           </p>
           <p>
-            The path here wasn&apos;t linear, but it shaped me into a problem-solver
-            who learns quickly, works well with others, and approaches challenges
-            with both creativity and discipline.
-          </p>
-          <p>
-            When I&apos;m not coding, I enjoy writing articles about web development
-            and personal growth. Sharing my experiences and insights with the{" "}
-            <Link
-              href="https://x.com/search?q=alege_dev&src=typed_query"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[rgb(var(--accent))] underline underline-offset-2"
-            >
-              tech community
-            </Link>{" "}
-            is something I find incredibly rewarding.
+            Outside of client and professional work, I enjoy experimenting with new ideas and sharing my personal and professional experiences through writing.
           </p>
         </div>
       </div>
@@ -120,6 +109,11 @@ export default function AboutPage() {
         <h2 className="text-lg font-semibold mb-4 text-[rgb(var(--text))]">
           Outside of coding
         </h2>
+        <p>Technology is a big part of what I do, but it isn&apos;t everything I&apos;m interested in.</p><br/>
+        
+        <p>I enjoy listening to podcasts, watching films, and reading various interesting books I pick up from the roadside bookshop.</p><br/>
+
+        <p>A few things I&apos;ve been enjoying lately:</p><br/>
         <ul className="space-y-3">
           {outsideItems.map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-[rgb(var(--body-text))]">
@@ -128,6 +122,7 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
+        <br></br><p>And, of course, I spend a ridiculous amount of time tweaking this website.</p>
       </div>
 
       <div className="border-t border-[rgb(var(--border))] mb-12" />
