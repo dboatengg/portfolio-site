@@ -9,7 +9,12 @@ export async function GET() {
   }
 
   const entry = await prisma.guestbookEntry.findUnique({
-    where: { githubId: String(session.user.id) },
+    where: {
+      provider_providerId: {
+        provider: session.user.provider,
+        providerId: session.user.id,
+      },
+    },
     select: { id: true },
   });
 

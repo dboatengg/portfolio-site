@@ -26,7 +26,8 @@ export type AggregateGuestbookEntry = {
 
 export type GuestbookEntryMinAggregateOutputType = {
   id: string | null
-  githubId: string | null
+  provider: string | null
+  providerId: string | null
   name: string | null
   username: string | null
   image: string | null
@@ -37,7 +38,8 @@ export type GuestbookEntryMinAggregateOutputType = {
 
 export type GuestbookEntryMaxAggregateOutputType = {
   id: string | null
-  githubId: string | null
+  provider: string | null
+  providerId: string | null
   name: string | null
   username: string | null
   image: string | null
@@ -48,7 +50,8 @@ export type GuestbookEntryMaxAggregateOutputType = {
 
 export type GuestbookEntryCountAggregateOutputType = {
   id: number
-  githubId: number
+  provider: number
+  providerId: number
   name: number
   username: number
   image: number
@@ -61,7 +64,8 @@ export type GuestbookEntryCountAggregateOutputType = {
 
 export type GuestbookEntryMinAggregateInputType = {
   id?: true
-  githubId?: true
+  provider?: true
+  providerId?: true
   name?: true
   username?: true
   image?: true
@@ -72,7 +76,8 @@ export type GuestbookEntryMinAggregateInputType = {
 
 export type GuestbookEntryMaxAggregateInputType = {
   id?: true
-  githubId?: true
+  provider?: true
+  providerId?: true
   name?: true
   username?: true
   image?: true
@@ -83,7 +88,8 @@ export type GuestbookEntryMaxAggregateInputType = {
 
 export type GuestbookEntryCountAggregateInputType = {
   id?: true
-  githubId?: true
+  provider?: true
+  providerId?: true
   name?: true
   username?: true
   image?: true
@@ -167,7 +173,8 @@ export type GuestbookEntryGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 
 export type GuestbookEntryGroupByOutputType = {
   id: string
-  githubId: string
+  provider: string
+  providerId: string
   name: string
   username: string
   image: string | null
@@ -199,7 +206,8 @@ export type GuestbookEntryWhereInput = {
   OR?: Prisma.GuestbookEntryWhereInput[]
   NOT?: Prisma.GuestbookEntryWhereInput | Prisma.GuestbookEntryWhereInput[]
   id?: Prisma.StringFilter<"GuestbookEntry"> | string
-  githubId?: Prisma.StringFilter<"GuestbookEntry"> | string
+  provider?: Prisma.StringFilter<"GuestbookEntry"> | string
+  providerId?: Prisma.StringFilter<"GuestbookEntry"> | string
   name?: Prisma.StringFilter<"GuestbookEntry"> | string
   username?: Prisma.StringFilter<"GuestbookEntry"> | string
   image?: Prisma.StringNullableFilter<"GuestbookEntry"> | string | null
@@ -210,7 +218,8 @@ export type GuestbookEntryWhereInput = {
 
 export type GuestbookEntryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  githubId?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   username?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -221,21 +230,24 @@ export type GuestbookEntryOrderByWithRelationInput = {
 
 export type GuestbookEntryWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  githubId?: string
+  provider_providerId?: Prisma.GuestbookEntryProviderProviderIdCompoundUniqueInput
   AND?: Prisma.GuestbookEntryWhereInput | Prisma.GuestbookEntryWhereInput[]
   OR?: Prisma.GuestbookEntryWhereInput[]
   NOT?: Prisma.GuestbookEntryWhereInput | Prisma.GuestbookEntryWhereInput[]
+  provider?: Prisma.StringFilter<"GuestbookEntry"> | string
+  providerId?: Prisma.StringFilter<"GuestbookEntry"> | string
   name?: Prisma.StringFilter<"GuestbookEntry"> | string
   username?: Prisma.StringFilter<"GuestbookEntry"> | string
   image?: Prisma.StringNullableFilter<"GuestbookEntry"> | string | null
   message?: Prisma.StringFilter<"GuestbookEntry"> | string
   signature?: Prisma.StringFilter<"GuestbookEntry"> | string
   createdAt?: Prisma.DateTimeFilter<"GuestbookEntry"> | Date | string
-}, "id" | "githubId">
+}, "id" | "provider_providerId">
 
 export type GuestbookEntryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  githubId?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   username?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -252,7 +264,8 @@ export type GuestbookEntryScalarWhereWithAggregatesInput = {
   OR?: Prisma.GuestbookEntryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.GuestbookEntryScalarWhereWithAggregatesInput | Prisma.GuestbookEntryScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"GuestbookEntry"> | string
-  githubId?: Prisma.StringWithAggregatesFilter<"GuestbookEntry"> | string
+  provider?: Prisma.StringWithAggregatesFilter<"GuestbookEntry"> | string
+  providerId?: Prisma.StringWithAggregatesFilter<"GuestbookEntry"> | string
   name?: Prisma.StringWithAggregatesFilter<"GuestbookEntry"> | string
   username?: Prisma.StringWithAggregatesFilter<"GuestbookEntry"> | string
   image?: Prisma.StringNullableWithAggregatesFilter<"GuestbookEntry"> | string | null
@@ -263,7 +276,8 @@ export type GuestbookEntryScalarWhereWithAggregatesInput = {
 
 export type GuestbookEntryCreateInput = {
   id?: string
-  githubId: string
+  provider: string
+  providerId: string
   name: string
   username: string
   image?: string | null
@@ -274,7 +288,8 @@ export type GuestbookEntryCreateInput = {
 
 export type GuestbookEntryUncheckedCreateInput = {
   id?: string
-  githubId: string
+  provider: string
+  providerId: string
   name: string
   username: string
   image?: string | null
@@ -285,7 +300,8 @@ export type GuestbookEntryUncheckedCreateInput = {
 
 export type GuestbookEntryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  githubId?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  providerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -296,7 +312,8 @@ export type GuestbookEntryUpdateInput = {
 
 export type GuestbookEntryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  githubId?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  providerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -307,7 +324,8 @@ export type GuestbookEntryUncheckedUpdateInput = {
 
 export type GuestbookEntryCreateManyInput = {
   id?: string
-  githubId: string
+  provider: string
+  providerId: string
   name: string
   username: string
   image?: string | null
@@ -318,7 +336,8 @@ export type GuestbookEntryCreateManyInput = {
 
 export type GuestbookEntryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  githubId?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  providerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -329,7 +348,8 @@ export type GuestbookEntryUpdateManyMutationInput = {
 
 export type GuestbookEntryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  githubId?: Prisma.StringFieldUpdateOperationsInput | string
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  providerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -338,9 +358,15 @@ export type GuestbookEntryUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type GuestbookEntryProviderProviderIdCompoundUniqueInput = {
+  provider: string
+  providerId: string
+}
+
 export type GuestbookEntryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  githubId?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   username?: Prisma.SortOrder
   image?: Prisma.SortOrder
@@ -351,7 +377,8 @@ export type GuestbookEntryCountOrderByAggregateInput = {
 
 export type GuestbookEntryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  githubId?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   username?: Prisma.SortOrder
   image?: Prisma.SortOrder
@@ -362,7 +389,8 @@ export type GuestbookEntryMaxOrderByAggregateInput = {
 
 export type GuestbookEntryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  githubId?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   username?: Prisma.SortOrder
   image?: Prisma.SortOrder
@@ -387,7 +415,8 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 export type GuestbookEntrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  githubId?: boolean
+  provider?: boolean
+  providerId?: boolean
   name?: boolean
   username?: boolean
   image?: boolean
@@ -398,7 +427,8 @@ export type GuestbookEntrySelect<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type GuestbookEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  githubId?: boolean
+  provider?: boolean
+  providerId?: boolean
   name?: boolean
   username?: boolean
   image?: boolean
@@ -409,7 +439,8 @@ export type GuestbookEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Type
 
 export type GuestbookEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  githubId?: boolean
+  provider?: boolean
+  providerId?: boolean
   name?: boolean
   username?: boolean
   image?: boolean
@@ -420,7 +451,8 @@ export type GuestbookEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Type
 
 export type GuestbookEntrySelectScalar = {
   id?: boolean
-  githubId?: boolean
+  provider?: boolean
+  providerId?: boolean
   name?: boolean
   username?: boolean
   image?: boolean
@@ -429,14 +461,15 @@ export type GuestbookEntrySelectScalar = {
   createdAt?: boolean
 }
 
-export type GuestbookEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "githubId" | "name" | "username" | "image" | "message" | "signature" | "createdAt", ExtArgs["result"]["guestbookEntry"]>
+export type GuestbookEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "provider" | "providerId" | "name" | "username" | "image" | "message" | "signature" | "createdAt", ExtArgs["result"]["guestbookEntry"]>
 
 export type $GuestbookEntryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "GuestbookEntry"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    githubId: string
+    provider: string
+    providerId: string
     name: string
     username: string
     image: string | null
@@ -867,7 +900,8 @@ export interface Prisma__GuestbookEntryClient<T, Null = never, ExtArgs extends r
  */
 export interface GuestbookEntryFieldRefs {
   readonly id: Prisma.FieldRef<"GuestbookEntry", 'String'>
-  readonly githubId: Prisma.FieldRef<"GuestbookEntry", 'String'>
+  readonly provider: Prisma.FieldRef<"GuestbookEntry", 'String'>
+  readonly providerId: Prisma.FieldRef<"GuestbookEntry", 'String'>
   readonly name: Prisma.FieldRef<"GuestbookEntry", 'String'>
   readonly username: Prisma.FieldRef<"GuestbookEntry", 'String'>
   readonly image: Prisma.FieldRef<"GuestbookEntry", 'String'>

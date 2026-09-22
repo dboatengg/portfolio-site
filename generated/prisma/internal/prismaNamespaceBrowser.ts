@@ -72,7 +72,8 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const GuestbookEntryScalarFieldEnum = {
   id: 'id',
-  githubId: 'githubId',
+  provider: 'provider',
+  providerId: 'providerId',
   name: 'name',
   username: 'username',
   image: 'image',

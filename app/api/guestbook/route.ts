@@ -26,8 +26,13 @@ export async function POST(req: Request) {
   }
 
   // Block if already signed
-  const existing = await prisma.guestbookEntry.findUnique({
-    where: { githubId: session.user.id },
+    const existing = await prisma.guestbookEntry.findUnique({
+    where: {
+      provider_providerId: {
+        provider: session.user.provider,
+        providerId: session.user.id,
+      },
+    },
   });
 
   if (existing) {
@@ -53,9 +58,10 @@ export async function POST(req: Request) {
     );
   }
 
-  const entry = await prisma.guestbookEntry.create({
+    const entry = await prisma.guestbookEntry.create({
     data: {
-      githubId: session.user.id,
+      provider: session.user.provider,
+      providerId: session.user.id,
       name: session.user.name!,
       username: session.user.username,
       image: session.user.image,

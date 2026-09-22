@@ -8,12 +8,15 @@ datasource db {
 }
 
 model GuestbookEntry {
-  id        String   @id @default(cuid())
-  githubId  String   @unique
-  name      String
-  username  String
-  image     String?
-  message   String
-  signature String
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  provider   String
+  providerId String
+  name       String
+  username   String
+  image      String?
+  message    String
+  signature  String
+  createdAt  DateTime @default(now())
+
+  @@unique([provider, providerId])
 }

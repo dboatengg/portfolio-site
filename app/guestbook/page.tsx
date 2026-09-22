@@ -20,7 +20,7 @@ export default async function GuestbookPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
       <GuestbookShell initialEntries={entries}>
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+        <div className="flex flex-col gap-4 mb-8">
           <GuestbookHeading />
           <GuestbookFormSection />
         </div>
