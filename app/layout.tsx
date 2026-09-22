@@ -100,24 +100,10 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning >
       <head>
-        {/* <link
-          rel="icon"
-          type="image/png"
-          href="/icon-192.png"
-          sizes="192x192"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/icon-512.png"
-          sizes="512x512"
-        /> */}
+        
         <link rel="manifest" href="/site.webmanifest" />
-          <link
-    rel="icon"
-    type="image/png"
-    href="/favicons/b-light.png"
-  />
+        <link rel="icon" type="image/png" href="/favicons/b-dark-v2.png"  />
+        
         
 
         <Script
@@ -144,9 +130,6 @@ export default async function RootLayout({
   />
 
       </head>
-      {/* <body
-        className={`${inter.variable} ${sora.variable} bg-bg antialiased font-sans selection:bg-blue-600 transition-colors duration-300`}
-      > */}
       <body className={`${inter.variable} ${sora.variable} antialiased font-sans selection:bg-blue-600`}>
         <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} />
         <ThemeProvider

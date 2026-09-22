@@ -78,8 +78,8 @@ export default function Logo() {
       <Image
         src="/logos/boateng-light.png"
         alt="Boateng"
-        width={120}
-        height={34}
+        width={145}
+        height={41}
         className="block h-auto w-[105px] sm:w-[120px] dark:hidden"
         priority
       />
@@ -88,9 +88,9 @@ export default function Logo() {
       <Image
         src="/logos/boateng-dark.png"
         alt="Boateng"
-        width={120}
-        height={34}
-        className="hidden h-auto w-[105px] sm:w-[120px] dark:block"
+        width={145}
+        height={41}
+        className="hidden h-auto w-[140x] sm:w-[145px] dark:block"
         priority
       />
     </div>
