@@ -80,7 +80,7 @@ export default function Logo() {
         alt="Boateng"
         width={145}
         height={41}
-        className="block h-auto w-[105px] sm:w-[120px] dark:hidden"
+        className="block h-auto w-[140px] sm:w-[145px] dark:hidden"
         priority
       />
 
