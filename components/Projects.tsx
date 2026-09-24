@@ -30,14 +30,22 @@ const projectscomp = [
     githubPrivate: true,
   },
 
+  // {
+  //   title: "DownNote",
+  //   description:
+  //     "A lightweight markdown editor for developers and writers who want a clean writing experience with live previews and cross-device syncing.",
+  //   gradient: "from-[#06b6d4] to-[#2563eb]",
+  //   live: "https://downnote.vercel.app/",
+  //   github: "https://github.com/dboatengg/downnote",
+  // },
   {
-    title: "DownNote",
-    description:
-      "A lightweight markdown editor for developers and writers who want a clean writing experience with live previews and cross-device syncing.",
-    gradient: "from-[#06b6d4] to-[#2563eb]",
-    live: "https://downnote.vercel.app/",
-    github: "https://github.com/dboatengg/downnote",
-  },
+  title: "iCenter Ghana",
+  description:
+    "A full-stack website for an Apple phone shop in Madina, Accra. Customers can browse iPhones, request a swap, sell their old phone, or apply for an installment plan.",
+  gradient: "from-[#d81159] to-[#2451c4]",
+  live: "https://icenter-ghana.vercel.app/",
+  githubPrivate: true,
+},
 ];
 
 export default function Projects() {
