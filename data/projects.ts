@@ -4,7 +4,8 @@ export type Project = {
   description: string;
   gradient: string;
   live?: string;
-  github?: string;
+  github?: string;          
+  githubOnDetail?: string;  
   githubPrivate?: boolean;
   learnMore?: boolean;
   detail?: {
@@ -30,13 +31,14 @@ export const projects: Project[] = [
     gradient: "from-blue-500 to-purple-600",
     github: "https://github.com/dboatengg/portfolio-site",
   },
-  {
+{
   slug: "capstone",
   title: "Capstone",
   description:
     "A full-stack real estate platform that connects clients with property agents. Built with Next.js, Express, PostgreSQL, Prisma, etc.",
   gradient: "from-emerald-500 to-teal-700",
   live: "https://capstone-frontend-rust.vercel.app/",
+  githubOnDetail: "https://github.com/dboatengg/capstone",
   learnMore: true,
   detail: {
     tagline: "Connecting clients with property agents in one place.",

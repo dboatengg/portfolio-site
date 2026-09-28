@@ -78,17 +78,17 @@ export default async function ProjectDetailPage({ params }: Props) {
           </a>
         )}
 
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70"
-          >
-            <Github size={14} />
-            View source
-          </a>
-        )}
+        {project.githubOnDetail && (
+            <a
+                href={project.githubOnDetail}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70"
+            >
+                <Github size={14} />
+                View source
+            </a>
+            )}
 
         {project.githubPrivate && (
           <span className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--muted-text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium opacity-70">
