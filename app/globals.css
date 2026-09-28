@@ -49,6 +49,15 @@
   }
 }
 
+/**/
+@media screen and (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
 
 /* html.light {
   --bg: 247 247 247;
