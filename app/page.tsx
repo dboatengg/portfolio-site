@@ -4,6 +4,7 @@ import Projects from "@/components/Projects";
 import BlogList from "@/components/BlogList";
 import { siteUrl } from "@/config/site";
 import { allBlogs } from "contentlayer/generated";
+import Services from "@/components/Services";
 
 export const metadata: Metadata = {
   title: "Software Developer from Ghana",
@@ -79,6 +80,8 @@ export default function HomePage() {
       />
       <Intro />
       <BlogList posts={publishedBlogs} />
+
+      <Services/>
       <Projects />
     </main>
   );
