@@ -95,7 +95,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         Let&apos;s talk
       </h3>
       <p className="mt-1 text-sm text-[rgb(var(--muted-text))]">
-        Tell me a bit about what you&apos;re working on.
+        Tell me about your project.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-5 space-y-4">
@@ -205,7 +205,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             value={formData.message}
             onChange={handleChange}
             className="w-full resize-none rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
-            placeholder="Tell me what you're trying to build..."
+            placeholder="Tell me a bit about your project"
           />
         </div>
 
