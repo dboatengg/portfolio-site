@@ -18,9 +18,7 @@ export default function CtaSection() {
           </h2>
 
           <p className="mt-4 text-[rgb(var(--muted-text))] leading-relaxed">
-            Whether it&apos;s a new website, an online shop, or fixing
-            something that&apos;s already there, I&apos;d love to hear what
-            you&apos;re working on.
+            Most people I work with hold onto their project for months before reaching out. If that&apos;s you, let&apos;s talk.
           </p>
 
           <button
