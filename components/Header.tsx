@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { Menu, X, PenLine, User, BookOpen, ArrowUpRight } from "lucide-react"
 import Logo from "./Logo"
 import ThemeToggle from "./ThemeToggle"
+import { useContactModal } from "@/contexts/ContactModalContext"
 
 const navLinks = [
   { href: "/blog", label: "Blog", icon: PenLine },
@@ -14,8 +15,14 @@ const navLinks = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { openModal } = useContactModal()
 
   const closeMenu = () => setIsMenuOpen(false)
+
+  const handleTalkClick = () => {
+    closeMenu()
+    openModal()
+  }
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : ""
@@ -44,13 +51,14 @@ export default function Header() {
               </Link>
             ))}
 
-            <a
-              href="mailto:you@example.com"
+            <button
+              type="button"
+              onClick={handleTalkClick}
               className="inline-flex items-center gap-1.5 rounded-full bg-[rgb(var(--text))] px-4 py-2 text-sm font-medium text-[rgb(var(--bg))] transition-opacity hover:opacity-80"
             >
               Let&apos;s talk
               <ArrowUpRight size={14} />
-            </a>
+            </button>
 
             <ThemeToggle />
           </div>
@@ -82,10 +90,8 @@ export default function Header() {
         }`}
         aria-hidden={!isMenuOpen}
       >
-        {/* Spacer for sticky header */}
         <div className="h-[57px] shrink-0" />
 
-        {/* Nav Links */}
         <nav
           className="flex-1 flex flex-col justify-center px-6"
           aria-label="Mobile navigation"
@@ -115,10 +121,11 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Bottom CTA */}
         <div className="px-6 pb-10">
           <a
-            href="mailto:you@example.com"
+            href="https://wa.me/233532683209"
+            target="_blank"
+            rel="noopener noreferrer"
             tabIndex={isMenuOpen ? 0 : -1}
             className={`flex w-full items-center justify-center gap-2 rounded-full bg-[rgb(var(--text))] px-4 py-4 text-sm font-medium text-[rgb(var(--bg))] transition-opacity hover:opacity-80 ${
               isMenuOpen
@@ -131,7 +138,7 @@ export default function Header() {
                 : "0ms",
             }}
           >
-            Let&apos;s talk
+            Chat on WhatsApp
             <ArrowUpRight size={16} />
           </a>
         </div>
