@@ -10,11 +10,11 @@ import { ArrowLeft } from "lucide-react"
 // Blog components
 import RequestDemo from "@/components/mdx/demos/jwt-auth/RequestDemo"
 import StatelessDiagram from "@/components/mdx/diagrams/jwt-auth/StatelessDiagram"
-import LoadBalancerDiagram from "@/components/mdx/diagrams/jwt-auth/LoadBalancerDiagram"
+// import LoadBalancerDiagram from "@/components/mdx/diagrams/jwt-auth/LoadBalancerDiagram"
 import StatelessJWTDiagram from "@/components/mdx/diagrams/jwt-auth/StatelessJWTDiagram"
 import TakeNote from "@/components/mdx/shared/TakeNote"
-import TokenAnatomyDiagram from "@/components/mdx/diagrams/jwt-auth/TokenAnatomyDiagram"
-import LoginFlowDiagram from "@/components/mdx/diagrams/jwt-auth/LoginFlowDiagram"
+// import TokenAnatomyDiagram from "@/components/mdx/diagrams/jwt-auth/TokenAnatomyDiagram"
+// import LoginFlowDiagram from "@/components/mdx/diagrams/jwt-auth/LoginFlowDiagram"
 import RequestVerifyDiagram from "@/components/mdx/diagrams/jwt-auth/RequestVerifyDiagram"
 import TokenTimelineDiagram from "@/components/mdx/diagrams/jwt-auth/TokenTimelineDiagram"
 import WideImage from "@/components/mdx/shared/WideImage"
@@ -46,11 +46,8 @@ export async function generateMetadata(
     components: {
       RequestDemo,
       StatelessDiagram,
-      LoadBalancerDiagram,
       StatelessJWTDiagram,
       TakeNote,
-      TokenAnatomyDiagram,
-      LoginFlowDiagram,
       RequestVerifyDiagram,
       TokenTimelineDiagram,
       pre: Pre,
@@ -124,11 +121,8 @@ export default async function BlogPost({
     components: {
       RequestDemo,
       StatelessDiagram,
-      LoadBalancerDiagram,
       StatelessJWTDiagram,
       TakeNote,
-      TokenAnatomyDiagram,
-      LoginFlowDiagram,
       RequestVerifyDiagram,
       TokenTimelineDiagram,
       pre: Pre,

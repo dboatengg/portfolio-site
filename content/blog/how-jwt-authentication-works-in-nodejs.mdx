@@ -1,7 +1,10 @@
 ---
-title: "How JWT Authentication Works in Node.js"
-date: "2026-07-29"
-summary: "The server forgets you after every request. I wanted to break down how JWT lets Node.js recognise you."
+title: How JWT Authentication Works in Node.js
+date: '2026-07-29'
+summary: >-
+  The server forgets you after every request. I wanted to break down how JWT
+  lets Node.js recognise you.
+published: true
 tags:
   - nodejs
   - authentication
@@ -27,7 +30,7 @@ Literally every action you take on a website: clicking a button, scrolling to lo
 But here's the surprising part: each request is treated as brand-new. 
 The server is stateless, meaning it has no memory of the last request it received from you. It doesn't recognise you; it doesn't even recall what you asked five seconds ago unless something is specifically built to make it remember.
 
-<StatelessDiagram />
+![StatelessDiagram](/blog/jwt/StatelessJWTDiagram.png)
 
 This is a very strange behaviour, if you think about it. Imagine walking into a shop and asking to buy something, and every time you speak, even just a few seconds later, the shopkeeper treats you like a complete stranger who just walked into the shop for the first time. But that’s how the Internet works by default.
 
@@ -59,7 +62,7 @@ This worked, and it's still used today. But notice what it requires: the server 
 That's fine with a handful of users. But think about a site like Instagram. Millions of people are logged in at once, all sending requests every second: scrolling, posting, liking, etc. 
 One server, no matter how powerful, can't handle that many requests alone. So companies run many servers instead, and spread incoming requests across them.
 
-<LoadBalancerDiagram />
+![LoadBalancerDiagram](/blog/jwt/loadbalancer-v2.png)
 
 <TakeNote>
 A load balancer sits between you and those servers. It decides which server handles each request, usually just to spread traffic out evenly, with no regard for which server handled your last request.
@@ -86,7 +89,7 @@ So the conversation now looks like this: "Hey server, it's me, here's my token."
 
 Now, notice what just disappeared: the servers no longer need to share information about every logged-in user. No **Server A** creating something **Server B** has never seen. No syncing, no real-time updates between servers. Each server can verify your token completely on its own.
 
-<StatelessJWTDiagram />
+![StatelessDiagram](/blog/jwt/loadbalancer-v3.png)
 
 In short: JWT is a signed token that holds everything a server needs to know about you. Your browser stores it and sends it along with every request you make. Because the information lives on the token itself, any server can verify who you are just by checking the signature. No records to search, no other servers to check in with.
 
@@ -109,7 +112,7 @@ At a glance, you'll notice it's really just one long string with two dots in it.
 - Payload
 - Signature
 
-<TokenAnatomyDiagram />
+![TokenAnatomyDiagram](/blog/jwt/TokenAnatomyDiagram.png)
 
 ### 1. The header
 
@@ -146,7 +149,7 @@ If they don't match, the server rejects the login attempt and sends back an erro
 
 But if they do match, the server still won't remember you on your next request. So it gives you a token, you'll show it every time you make a request.
 
-<LoginFlowDiagram />
+![TokenAnatomyDiagram](/blog/jwt/LoginFlowDiagram.png)
 
 ## The request flow: how the server verifies your token
 
