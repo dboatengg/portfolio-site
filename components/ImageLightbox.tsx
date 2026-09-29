@@ -37,7 +37,6 @@ export default function ImageLightbox({
     onIndexChange((index + 1) % images.length);
   }, [index, images.length, onIndexChange]);
 
-  // Keyboard controls
   useEffect(() => {
     if (!isOpen) return;
 
@@ -78,7 +77,7 @@ export default function ImageLightbox({
         <button
           type="button"
           onClick={onClose}
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/70"
           aria-label="Close"
         >
           <X size={18} />
@@ -90,19 +89,17 @@ export default function ImageLightbox({
         className="relative flex-1 flex items-center justify-center px-4 pb-4"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Prev button */}
         {images.length > 1 && (
           <button
             type="button"
             onClick={goPrev}
-            className="absolute left-2 sm:left-6 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            className="absolute left-3 sm:left-6 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/70"
             aria-label="Previous image"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={22} />
           </button>
         )}
 
-        {/* Image */}
         <div className="relative w-full h-full">
           <Image
             src={current.src}
@@ -114,15 +111,14 @@ export default function ImageLightbox({
           />
         </div>
 
-        {/* Next button */}
         {images.length > 1 && (
           <button
             type="button"
             onClick={goNext}
-            className="absolute right-2 sm:right-6 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            className="absolute right-3 sm:right-6 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/70"
             aria-label="Next image"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={22} />
           </button>
         )}
       </div>
