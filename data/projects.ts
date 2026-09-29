@@ -74,12 +74,12 @@ export const projects: Project[] = [
     caption: "Property detail with agent contact",
     section: "Customer-facing",
   },
-  {
-    src: "/projects/capstone/saved.png",
-    alt: "Saved properties",
-    caption: "Saved properties and search history",
-    section: "Customer-facing",
-  },
+  // {
+  //   src: "/projects/capstone/saved.png",
+  //   alt: "Saved properties",
+  //   caption: "Saved properties and search history",
+  //   section: "Customer-facing",
+  // },
 
   // Auth
   {
@@ -96,12 +96,12 @@ export const projects: Project[] = [
   },
 
   // Admin
-  {
-    src: "/projects/capstone/admin-login.png",
-    alt: "Admin login",
-    caption: "Separate admin login",
-    section: "Admin",
-  },
+  // {
+  //   src: "/projects/capstone/admin-login.png",
+  //   alt: "Admin login",
+  //   caption: "Separate admin login",
+  //   section: "Admin",
+  // },
   {
     src: "/projects/capstone/admin-dashboard.png",
     alt: "Admin dashboard",
