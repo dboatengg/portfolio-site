@@ -1,10 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2, CheckCircle2, ChevronDown } from "lucide-react";
 
 type ContactFormProps = {
   onSuccess?: () => void;
+};
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+};
+
+const STORAGE_KEY = "contact-form-draft";
+
+const EMPTY_FORM: FormData = {
+  name: "",
+  email: "",
+  phone: "",
+  service: "",
+  message: "",
 };
 
 const serviceOptions = [
@@ -15,26 +33,77 @@ const serviceOptions = [
   "Other",
 ];
 
+function loadSavedDraft(): FormData | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (!saved) return null;
+
+    const parsed = JSON.parse(saved) as Partial<FormData>;
+    const restored: FormData = {
+      name: parsed.name ?? "",
+      email: parsed.email ?? "",
+      phone: parsed.phone ?? "",
+      service: parsed.service ?? "",
+      message: parsed.message ?? "",
+    };
+
+    const hasContent = Object.values(restored).some(
+      (v) => v.trim().length > 0
+    );
+    return hasContent ? restored : null;
+  } catch {
+    return null;
+  }
+}
+
 export default function ContactForm({ onSuccess }: ContactFormProps) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
+  // Lazy init: read from storage on first render only
+  const [formData, setFormData] = useState<FormData>(
+    () => loadSavedDraft() ?? EMPTY_FORM
+  );
+  const [isRestored, setIsRestored] = useState<boolean>(
+    () => loadSavedDraft() !== null
+  );
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle"
   );
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Save draft on every change
+  useEffect(() => {
+    try {
+      const hasContent = Object.values(formData).some(
+        (v) => v.trim().length > 0
+      );
+
+      if (hasContent) {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+      } else {
+        sessionStorage.removeItem(STORAGE_KEY);
+      }
+    } catch {
+      // Storage unavailable; ignore
+    }
+  }, [formData]);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
+    setIsRestored(false);
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const clearDraft = () => {
+    try {
+      sessionStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Ignore
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -56,16 +125,13 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
       }
 
       setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
-      });
+      setFormData(EMPTY_FORM);
+      setIsRestored(false);
+      clearDraft();
 
       setTimeout(() => {
         onSuccess?.();
+        setStatus("idle");
       }, 2000);
     } catch (err) {
       setStatus("error");
@@ -73,6 +139,12 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         err instanceof Error ? err.message : "Something went wrong."
       );
     }
+  };
+
+  const handleManualReset = () => {
+    setFormData(EMPTY_FORM);
+    setIsRestored(false);
+    clearDraft();
   };
 
   if (status === "success") {
@@ -90,13 +162,28 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   }
 
   return (
-    <div>
-      <h3 className="text-lg font-medium text-[rgb(var(--text))]">
-        Let&apos;s talk
-      </h3>
-      <p className="mt-1 text-sm text-[rgb(var(--muted-text))]">
-        Tell me about your project.
-      </p>
+      <div>
+        <h3 className="text-lg font-medium text-[rgb(var(--text))]">
+          Let&apos;s talk
+        </h3>
+        <p className="mt-1 text-sm text-[rgb(var(--muted-text))]">
+          Tell me about your project.
+        </p>
+
+        {isRestored && (
+          <div className="mt-4 flex items-center justify-between gap-3 rounded-md bg-[rgb(var(--muted))] px-3 py-2">
+            <p className="text-xs text-[rgb(var(--muted-text))]">
+              Picked up where you left off.
+            </p>
+            <button
+              type="button"
+              onClick={handleManualReset}
+              className="shrink-0 text-xs font-medium text-[rgb(var(--text))] hover:underline transition-colors"
+            >
+              Start fresh
+            </button>
+          </div>
+        )}
 
       <form onSubmit={handleSubmit} className="mt-5 space-y-4">
         <div>
@@ -124,7 +211,10 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
               htmlFor="email"
               className="mb-1.5 block text-sm font-medium text-[rgb(var(--text))]"
             >
-              Email
+              Email{" "}
+              <span className="font-normal text-[rgb(var(--muted-text))]">
+                (optional)
+              </span>
             </label>
             <input
               type="email"
@@ -158,37 +248,37 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         </div>
 
         <div>
-  <label
-    htmlFor="service"
-    className="mb-1.5 block text-sm font-medium text-[rgb(var(--text))]"
-  >
-    What do you need help with?
-  </label>
-  <div className="relative">
-    <select
-      id="service"
-      name="service"
-      required
-      value={formData.service}
-      onChange={handleChange}
-      className="w-full appearance-none rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 pr-11 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
-    >
-      <option value="" disabled>
-        Select a service
-      </option>
-      {serviceOptions.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
+          <label
+            htmlFor="service"
+            className="mb-1.5 block text-sm font-medium text-[rgb(var(--text))]"
+          >
+            What do you need help with?
+          </label>
+          <div className="relative">
+            <select
+              id="service"
+              name="service"
+              required
+              value={formData.service}
+              onChange={handleChange}
+              className="w-full appearance-none rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 pr-11 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
+            >
+              <option value="" disabled>
+                Select a service
+              </option>
+              {serviceOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
 
-    <ChevronDown
-      size={16}
-      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[rgb(var(--muted-text))]"
-    />
-  </div>
-</div>
+            <ChevronDown
+              size={16}
+              className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[rgb(var(--muted-text))]"
+            />
+          </div>
+        </div>
 
         <div>
           <label
