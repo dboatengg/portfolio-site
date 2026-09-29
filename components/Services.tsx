@@ -14,7 +14,7 @@ const services = [
     number: "01",
     title: "Business websites",
     description:
-      "I build clean, professional websites that clearly explain what you do and make it effortless for customers to reach out to you.",
+      "I build clean, professional websites that clearly explain what you do and make it effortless for your customers to reach out to you.",
     icon: Globe,
     gradient: "from-slate-700 to-blue-900",
   },
@@ -22,7 +22,7 @@ const services = [
     number: "02",
     title: "Online shops",
     description:
-      "I build full e-commerce websites where your customers can pay with MoMo or bank card, and you also get a full dashboard to manage products, orders, and inventory yourself.",
+      "I build e-commerce websites where your customers can pay with MoMo or card, and you also get a full dashboard to manage products, orders, etc. yourself.",
     icon: ShoppingBag,
     gradient: "from-slate-600 to-emerald-900",
   },
@@ -30,7 +30,7 @@ const services = [
     number: "03",
     title: "Custom web apps",
     description:
-      "Need more than a standard website? I build custom full-stack applications from the ground up to solve the specific, unique problems holding your business back.",
+      "Need more than a standard website? I build custom full-stack applications from the ground up to solve the specific, unique problems your business is facing.",
     icon: LayoutDashboard,
     gradient: "from-slate-700 to-indigo-900",
   },

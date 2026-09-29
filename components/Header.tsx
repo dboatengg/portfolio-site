@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { Menu, X, PenLine, User, BookOpen, ArrowUpRight } from "lucide-react"
+import { Menu, X, PenLine, User, BookOpen, ArrowUpRight, Home } from "lucide-react"
 import Logo from "./Logo"
 import ThemeToggle from "./ThemeToggle"
 import { useContactModal } from "@/contexts/ContactModalContext"
@@ -11,6 +11,11 @@ const navLinks = [
   { href: "/blog", label: "Blog", icon: PenLine },
   { href: "/about", label: "About", icon: User },
   { href: "/guestbook", label: "Guestbook", icon: BookOpen },
+]
+
+const mobileNavLinks = [
+  { href: "/", label: "Home", icon: Home },
+  ...navLinks,
 ]
 
 export default function Header() {
@@ -24,10 +29,36 @@ export default function Header() {
     openModal()
   }
 
+  // Body lock when menu is open
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : ""
+    if (isMenuOpen) {
+      const scrollY = window.scrollY
+      document.body.style.position = "fixed"
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.left = "0"
+      document.body.style.right = "0"
+      document.body.style.width = "100%"
+      document.documentElement.style.overflow = "hidden"
+    } else {
+      const scrollY = document.body.style.top
+      document.body.style.position = ""
+      document.body.style.top = ""
+      document.body.style.left = ""
+      document.body.style.right = ""
+      document.body.style.width = ""
+      document.documentElement.style.overflow = ""
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || "0") * -1)
+      }
+    }
+
     return () => {
-      document.body.style.overflow = ""
+      document.body.style.position = ""
+      document.body.style.top = ""
+      document.body.style.left = ""
+      document.body.style.right = ""
+      document.body.style.width = ""
+      document.documentElement.style.overflow = ""
     }
   }, [isMenuOpen])
 
@@ -69,12 +100,25 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="rounded-md border border-[rgb(var(--border))] p-2 text-[rgb(var(--text))] hover:bg-[rgb(var(--muted))] hover:text-[rgb(var(--accent))] transition-colors"
+              className="relative flex h-10 w-10 items-center justify-center rounded-md border border-[rgb(var(--border))] text-[rgb(var(--text))] transition-colors hover:bg-[rgb(var(--muted))]"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <span
+                className={`absolute transition-all duration-300 ${
+                  isMenuOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
+                }`}
+              >
+                <Menu size={20} />
+              </span>
+              <span
+                className={`absolute transition-all duration-300 ${
+                  isMenuOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
+                }`}
+              >
+                <X size={20} />
+              </span>
             </button>
           </div>
         </nav>
@@ -96,7 +140,7 @@ export default function Header() {
           className="flex-1 flex flex-col justify-center px-6"
           aria-label="Mobile navigation"
         >
-          {navLinks.map((link, i) => {
+          {mobileNavLinks.map((link, i) => {
             const Icon = link.icon
             return (
               <Link
@@ -134,7 +178,7 @@ export default function Header() {
             }`}
             style={{
               transitionDelay: isMenuOpen
-                ? `${navLinks.length * 60}ms`
+                ? `${mobileNavLinks.length * 60}ms`
                 : "0ms",
             }}
           >
