@@ -17,8 +17,8 @@ export default function CtaSection() {
             Have a project in mind?
           </h2>
 
-          <p className="mt-4 text-[rgb(var(--muted-text))] leading-relaxed">
-            Most people I work with wait months before reaching out. If
+          <p className="mt-4 text-[rgb(var(--muted-text))] leading-relaxed"> 
+            Most people I work with hold onto their project for months before reaching out. If
             that&apos;s you, let&apos;s talk.
           </p>
 
