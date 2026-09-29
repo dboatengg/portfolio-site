@@ -20,6 +20,7 @@ const mobileNavLinks = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isHidden, setIsHidden] = useState(false)
   const { openModal } = useContactModal()
 
   const closeMenu = () => setIsMenuOpen(false)
@@ -28,6 +29,38 @@ export default function Header() {
     closeMenu()
     openModal()
   }
+
+  // Hide on scroll down, show on scroll up
+  useEffect(() => {
+    let lastY = window.scrollY
+    let ticking = false
+
+    const handleScroll = () => {
+      if (ticking) return
+
+      window.requestAnimationFrame(() => {
+        const currentY = window.scrollY
+        const delta = currentY - lastY
+
+        // Ignore tiny scrolls (trackpad noise)
+        if (Math.abs(delta) > 5) {
+          if (currentY > 120 && delta > 0) {
+            setIsHidden(true)
+          } else if (delta < 0) {
+            setIsHidden(false)
+          }
+          lastY = currentY
+        }
+
+        ticking = false
+      })
+
+      ticking = true
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   // Body lock when menu is open
   useEffect(() => {
@@ -64,7 +97,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[rgb(var(--bg)/0.7)] border-b border-[rgb(var(--border)/1)]">
+      <header
+        className={`sticky top-0 z-50 w-full backdrop-blur-md bg-[rgb(var(--bg)/0.7)] border-b border-[rgb(var(--border)/1)] transition-transform duration-300 ease-out ${
+          isHidden && !isMenuOpen ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <nav className="max-w-4xl mx-auto flex items-center justify-between px-4 py-3">
           <Link href="/" onClick={closeMenu}>
             <Logo />
