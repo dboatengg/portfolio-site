@@ -146,7 +146,7 @@ export default async function RootLayout({
             <div className="min-h-screen flex flex-col items-center">
               <Header />
               <ScrollToTop />
-              <main className="w-full max-w-3xl px-5 sm:px-6 md:px-8 py-8 flex-1">
+              <main className="w-full max-w-4xl px-5 sm:px-6 md:px-8 py-8 flex-1">
                 {children}
               </main>
               <Footer />

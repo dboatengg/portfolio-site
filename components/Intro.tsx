@@ -19,11 +19,11 @@ export default function Intro() {
           As a software developer, I always aim to create clean and reliable software that is both intuitive and enjoyable for users.
         </p>
        <p className="text-base leading-relaxed max-w-2xl mb-6">
-        I have a passion for learning, and I am constantly seeking to improve my skills through reading and{" "}
-        <Link href="/blog" className="underline underline-offset-2 hover:opacity-70 transition-opacity">writing</Link>.</p>
+        I have a passion for learning, and I am constantly seeking to improve my skills through reading and writing
         {/* <p className="text-base leading-relaxed max-w-2xl mb-6">
           I&apos;m interested in TypeScript and Node.js, and at the same time, I&apos;m also experimenting with native apps with Swift.
         </p> */}
+        </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
             <a href="/DicksonBoateng-v3.pdf"
