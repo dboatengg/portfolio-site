@@ -7,7 +7,7 @@ export default function CtaSection() {
   const { openModal } = useContactModal();
 
   return (
-    <section className="mb-16">
+    <section className="mb-24">
       <div className="relative overflow-hidden rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-6 py-12 sm:px-10 sm:py-16">
         {/* Subtle gradient glow */}
         <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[rgb(var(--accent))] opacity-10 blur-3xl" />
@@ -18,7 +18,8 @@ export default function CtaSection() {
           </h2>
 
           <p className="mt-4 text-[rgb(var(--muted-text))] leading-relaxed">
-            Most people I work with hold onto their project for months before reaching out. If that&apos;s you, let&apos;s talk.
+            Most people I work with wait months before reaching out. If
+            that&apos;s you, let&apos;s talk.
           </p>
 
           <button
