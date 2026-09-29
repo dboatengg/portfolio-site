@@ -4,26 +4,12 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Script from "next/script";
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { siteUrl } from "@/config/site";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ContactModalProvider } from "@/contexts/ContactModalContext";
 import GlobalContactModal from "@/components/GlobalContactModal";
 import "./globals.css";
-// import { Newsreader, Caveat } from "next/font/google";
-// import { cookies } from "next/headers";
-
-
-// const newsreader = Newsreader({
-//   subsets: ["latin"],
-//   variable: "--font-serif",
-//   style: ["normal", "italic"],
-// })
-
-// const caveat = Caveat({
-//   subsets: ["latin"],
-//   variable: "--font-caveat",
-// })
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,8 +17,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const sora = Sora({
-  variable: "--font-sora",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
@@ -91,48 +77,43 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
     creator: "@alege_dev",
   },
-  
 };
 
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-
-
   return (
-    <html lang="en" suppressHydrationWarning >
+    <html lang="en" suppressHydrationWarning>
       <head>
-        
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="icon" type="image/png" href="/favicons/b-dark-v2.png"  />
-        
-        
+        <link rel="icon" type="image/png" href="/favicons/b-dark-v2.png" />
 
         <Script
-    id="theme-init"
-    strategy="beforeInteractive"
-    dangerouslySetInnerHTML={{
-      __html: `(function(){
-        try {
-          var theme = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
-          var root = document.documentElement;
-          if (isDark) {
-            root.classList.add('dark');
-            root.classList.remove('light');
-          } else {
-            root.classList.remove('dark');
-            root.classList.add('light');
-          }
-          if (theme) root.classList.add('theme-set');
-        } catch(e) {}
-      })();`,
-    }}
-  />
-
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+              try {
+                var theme = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
+                var root = document.documentElement;
+                if (isDark) {
+                  root.classList.add('dark');
+                  root.classList.remove('light');
+                } else {
+                  root.classList.remove('dark');
+                  root.classList.add('light');
+                }
+                if (theme) root.classList.add('theme-set');
+              } catch(e) {}
+            })();`,
+          }}
+        />
       </head>
-      <body className={`${inter.variable} ${sora.variable} antialiased font-sans selection:bg-blue-600`}>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans selection:bg-blue-600`}
+      >
         <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} />
         <ThemeProvider
           attribute="class"
@@ -141,7 +122,6 @@ export default async function RootLayout({
           disableTransitionOnChange={true}
           storageKey="theme"
         >
-          {/* <div id="theme-ripple" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999, overflow: 'hidden',}} /> */}
           <ContactModalProvider>
             <div className="min-h-screen flex flex-col items-center">
               <Header />

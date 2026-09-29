@@ -165,7 +165,7 @@ export default function AboutPage() {
       <div className="border-t border-[rgb(var(--border))] mb-12" />
 
       {/* Resume */}
-      <div>
+      {/* <div>
         <h2 className="text-lg font-semibold mb-4 text-[rgb(var(--text))]">
           Resume
         </h2>
@@ -180,7 +180,7 @@ export default function AboutPage() {
             <path d="M7 17L17 7M7 7h10v10" />
           </svg>
         </a>
-      </div>
+      </div> */}
 
     </section>
   );
