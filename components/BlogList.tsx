@@ -30,7 +30,7 @@ export default function BlogList({ posts: allPosts }: { posts: typeof allBlogs }
                   {post.title}
                 </h3>
 
-                <div className="flex items-center gap-3 shrink-0 pt-0.5">
+                <div className="hidden sm:flex items-center gap-3 shrink-0 pt-0.5">
                   <time className="text-xs text-[rgb(var(--muted-text))] whitespace-nowrap">
                     {formatShortDate(post.date)}
                   </time>
