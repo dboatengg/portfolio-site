@@ -1,25 +1,19 @@
 export default function BlogPostLoading() {
   return (
-    <article className="max-w-3xl mx-auto py-8">
-      {/* Title */}
+    <article className="max-w-3xl mx-auto pt-10 pb-20">
+      {/* Back link */}
+      <div className="h-4 w-28 bg-[rgb(var(--divide))] rounded animate-pulse mb-10" />
+
+      {/* Header */}
       <header className="mb-10">
-        <div className="h-10 w-3/4 bg-[rgb(var(--divide))] rounded animate-pulse mb-3" />
+        {/* Title */}
+        <div className="h-11 md:h-12 w-3/4 bg-[rgb(var(--divide))] rounded animate-pulse mb-5" />
 
-        {/* Date + Reading time */}
+        {/* Date + reading time */}
         <div className="flex items-center gap-3">
-          <div className="h-4 w-28 bg-[rgb(var(--divide))] rounded animate-pulse" />
-          <div className="h-4 w-4 bg-[rgb(var(--divide))] rounded-full animate-pulse" />
+          <div className="h-4 w-24 bg-[rgb(var(--divide))] rounded animate-pulse" />
+          <div className="h-3 w-3 bg-[rgb(var(--divide))] rounded-full animate-pulse" />
           <div className="h-4 w-20 bg-[rgb(var(--divide))] rounded animate-pulse" />
-        </div>
-
-        {/* Tags */}
-        <div className="flex gap-2 mt-3">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="h-6 w-16 bg-[rgb(var(--divide))] rounded-full animate-pulse"
-            />
-          ))}
         </div>
       </header>
 

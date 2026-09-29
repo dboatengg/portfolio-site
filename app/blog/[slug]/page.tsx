@@ -1,4 +1,3 @@
-
 import { compileMDX } from "next-mdx-remote/rsc"
 import { getAllSlugs, getPostBySlug, getPostLastModified, isPublished, mdxCompileOptions } from "@/utils/mdx"
 import { notFound } from "next/navigation"
@@ -8,7 +7,7 @@ import { formatDate } from "@/utils/formatDate"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
-// Blog components 
+// Blog components
 import RequestDemo from "@/components/mdx/demos/jwt-auth/RequestDemo"
 import StatelessDiagram from "@/components/mdx/diagrams/jwt-auth/StatelessDiagram"
 import LoadBalancerDiagram from "@/components/mdx/diagrams/jwt-auth/LoadBalancerDiagram"
@@ -44,18 +43,19 @@ export async function generateMetadata(
   }>({
     source,
     options: mdxCompileOptions,
-    components: { 
-      RequestDemo, 
-      StatelessDiagram, 
-      LoadBalancerDiagram, 
-      TakeNote, 
-      TokenAnatomyDiagram,  
-      LoginFlowDiagram, 
-      RequestVerifyDiagram, 
+    components: {
+      RequestDemo,
+      StatelessDiagram,
+      LoadBalancerDiagram,
+      StatelessJWTDiagram,
+      TakeNote,
+      TokenAnatomyDiagram,
+      LoginFlowDiagram,
+      RequestVerifyDiagram,
       TokenTimelineDiagram,
       pre: Pre,
-      img:WideImage,
-      },
+      img: WideImage,
+    },
   })
 
   const title = frontmatter.title || "Untitled Post"
@@ -76,7 +76,6 @@ export async function generateMetadata(
     openGraph: {
       title,
       description,
-      
       type: "article",
       url,
       images: [{
@@ -112,6 +111,7 @@ export default async function BlogPost({
   const { slug } = await params
   const { source } = await getPostBySlug(slug)
   if (!isPublished(source)) notFound()
+
   const { content, frontmatter } = await compileMDX<{
     title: string
     summary?: string
@@ -121,26 +121,26 @@ export default async function BlogPost({
   }>({
     source,
     options: mdxCompileOptions,
-    components: { 
-      RequestDemo, 
-      StatelessDiagram, 
-      LoadBalancerDiagram, 
-      StatelessJWTDiagram, 
-      TakeNote, 
-      TokenAnatomyDiagram,  
-      LoginFlowDiagram, 
-      RequestVerifyDiagram, 
+    components: {
+      RequestDemo,
+      StatelessDiagram,
+      LoadBalancerDiagram,
+      StatelessJWTDiagram,
+      TakeNote,
+      TokenAnatomyDiagram,
+      LoginFlowDiagram,
+      RequestVerifyDiagram,
       TokenTimelineDiagram,
       pre: Pre,
-      img:WideImage,
-
-     },
+      img: WideImage,
+    },
   })
 
-  // --- Reading time (computed locally) ---
-  const plainText = source.replace(/<[^>]+>/g, "")
-  const wordCount = plainText.split(/\s+/).length
-  const readingMinutes = Math.ceil(wordCount / 200)
+  // Reading time (excluding frontmatter)
+  const withoutFrontmatter = source.replace(/^---[\s\S]*?---/, "")
+  const plainText = withoutFrontmatter.replace(/<[^>]+>/g, "")
+  const wordCount = plainText.split(/\s+/).filter(Boolean).length
+  const readingMinutes = Math.max(1, Math.ceil(wordCount / 200))
   const readingTime = `${readingMinutes} min read`
 
   const date = frontmatter.date
@@ -150,86 +150,104 @@ export default async function BlogPost({
   const lastModifiedDate = lastModified.toISOString().split("T")[0]
   const currentTags = new Set(frontmatter.tags ?? [])
 
+  // Simple related posts: same tag match, newest first, max 2
   const relatedPosts = [...allBlogs]
-    .filter((post) => post.slug !== slug && new Date(post.date) < new Date(date || 0))
+    .filter(
+      (post) =>
+        post.slug !== slug &&
+        post.published !== false &&
+        new Date(post.date) < new Date(date || 0)
+    )
     .sort((a, b) => {
-      const sharedTagsA = a.tags?.filter((tag) => currentTags.has(tag)).length ?? 0
-      const sharedTagsB = b.tags?.filter((tag) => currentTags.has(tag)).length ?? 0
-
+      const sharedTagsA =
+        a.tags?.filter((tag) => currentTags.has(tag)).length ?? 0
+      const sharedTagsB =
+        b.tags?.filter((tag) => currentTags.has(tag)).length ?? 0
       return sharedTagsB - sharedTagsA || +new Date(b.date) - +new Date(a.date)
     })
     .slice(0, 2)
 
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: frontmatter.title,
-      datePublished: date,
-      description: frontmatter.summary || "Read this article on my blog.",
-      image: new URL(frontmatter.image || "/og-image.jpg", siteUrl).toString(),
-      keywords: frontmatter.tags?.join(", "),
-      author: {
-        "@type": "Person",
-        name: "Dickson Boateng",
-        url: siteUrl,
-      },
-      publisher: { "@type": "Person", name: "Dickson Boateng" },
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `${siteUrl}/blog/${slug}`,
-      },
-      url: `${siteUrl}/blog/${slug}`,
-      dateModified: lastModified.toISOString(),
-    }
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: frontmatter.title,
+    datePublished: date,
+    description: frontmatter.summary || "Read this article on my blog.",
+    image: new URL(frontmatter.image || "/og-image.jpg", siteUrl).toString(),
+    keywords: frontmatter.tags?.join(", "),
+    author: {
+      "@type": "Person",
+      name: "Dickson Boateng",
+      url: siteUrl,
+    },
+    publisher: { "@type": "Person", name: "Dickson Boateng" },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blog/${slug}`,
+    },
+    url: `${siteUrl}/blog/${slug}`,
+    dateModified: lastModified.toISOString(),
+  }
 
   return (
-    <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-[rgb(var(--muted-text))] hover:text-[rgb(var(--text))] transition-colors mb-10">
-      <ArrowLeft size={16} />
-        Back to blog
-      </Link>
-      <header className="mb-14">
-        <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">
-          {frontmatter.title}
-        </h1>
 
-        <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
-          {date && <span>{formatDate(date)}</span>}
-          <span>•</span>
-          <span>{readingTime}</span>
-        </div>
-        <p className="mt-3 text-sm text-[rgb(var(--muted-text))]">
-          Last updated {formatDate(lastModifiedDate)}
-        </p>
+      <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-sm text-[rgb(var(--muted-text))] hover:text-[rgb(var(--text))] transition-colors mb-10"
+        >
+          <ArrowLeft size={16} />
+          Back to blog
+        </Link>
 
+        <header className="mb-10">
+          <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">
+            {frontmatter.title}
+          </h1>
 
-      </header>
-      {content}
-      {relatedPosts.length > 0 && (
-        <section className="mt-16" aria-labelledby="related-posts-heading">
-          <h2 id="related-posts-heading" className="!text-xl !mt-0 mb-4">
-            Related posts
-          </h2>
-          <ul className="space-y-3">
-            {relatedPosts.map((post) => (
-              <li key={post.slug}>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="text-[rgb(var(--text))] hover:underline"
-                >
-                  {post.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-      <div className="my-16" aria-hidden="true" />
-      <GiscusComments />
-    </article>
+          <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
+            {date && <span>{formatDate(date)}</span>}
+            <span>•</span>
+            <span>{readingTime}</span>
+          </div>
+
+          {lastModifiedDate !== date && (
+            <p className="mt-3 text-sm text-[rgb(var(--muted-text))]">
+              Last updated {formatDate(lastModifiedDate)}
+            </p>
+          )}
+        </header>
+
+        {content}
+
+        {relatedPosts.length > 0 && (
+          <section className="mt-16" aria-labelledby="related-posts-heading">
+            <h2 id="related-posts-heading" className="!text-xl !mt-0 mb-4">
+              Related posts
+            </h2>
+            <ul className="space-y-3">
+              {relatedPosts.map((post) => (
+                <li key={post.slug}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-[rgb(var(--text))] hover:underline"
+                  >
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <div className="my-16" aria-hidden="true" />
+        <GiscusComments />
+      </article>
+    </>
   )
 }
