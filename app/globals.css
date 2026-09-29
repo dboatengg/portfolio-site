@@ -135,13 +135,16 @@ html.theme-transitioning *::after {
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   scrollbar-gutter: stable;
+  scroll-padding-top: 64px;
+  scroll-behavior: smooth;
 }
 
-html {
-  scroll-padding-top: 64px; 
-  scroll-behavior: smooth;
+@supports not (overflow: clip) {
+  html {
+    overflow-x: hidden;
+  }
 }
 
 body {
@@ -577,6 +580,8 @@ LIGHT MODE
   border: 1px solid #e5e7eb;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 :where(.dark, .dark *) .prose pre {
@@ -828,7 +833,8 @@ pre [data-highlighted-line] {
 
 .prose pre code {
   display: block;
-  min-width: max-content;
+  width: max-content;
+  min-width: 100%;
 }
 
 @media (max-width: 640px) {
