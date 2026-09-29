@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Lock, Github } from "lucide-react";
 import { projects } from "@/data/projects";
+import ProjectScreenshots from "@/components/ProjectScreenshots";
 import type { Metadata } from "next";
 
 type Props = {
@@ -79,16 +79,16 @@ export default async function ProjectDetailPage({ params }: Props) {
         )}
 
         {project.githubOnDetail && (
-            <a
-                href={project.githubOnDetail}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70"
-            >
-                <Github size={14} />
-                View source
-            </a>
-            )}
+          <a
+            href={project.githubOnDetail}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70"
+          >
+            <Github size={14} />
+            View source
+          </a>
+        )}
 
         {project.githubPrivate && (
           <span className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--muted-text))] border border-[rgb(var(--ctrl-border))] rounded-full px-4 py-2 text-sm font-medium opacity-70">
@@ -117,8 +117,11 @@ export default async function ProjectDetailPage({ params }: Props) {
         </h2>
         <ul className="space-y-2 text-[rgb(var(--muted-text))]">
           {project.detail.features.map((feature, i) => (
-            <li key={i} className="flex gap-3">
-              <span className="text-[rgb(var(--accent))] mt-1.5">•</span>
+            <li
+              key={i}
+              className="flex items-start gap-3 text-[rgb(var(--muted-text))]"
+            >
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[rgb(var(--accent))] flex-shrink-0" />
               <span>{feature}</span>
             </li>
           ))}
@@ -126,56 +129,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {/* Screenshots */}
-      {/* Screenshots */}
-{project.detail.screenshots.length > 0 && (
-  <section className="mb-12">
-    <h2 className="text-xl font-semibold text-[rgb(var(--text))] mb-6">
-      Screenshots
-    </h2>
-
-    {(() => {
-      // Group screenshots by section while preserving order
-      const grouped = project.detail.screenshots.reduce(
-        (acc, shot) => {
-          const key = shot.section ?? "Screenshots";
-          if (!acc[key]) acc[key] = [];
-          acc[key].push(shot);
-          return acc;
-        },
-        {} as Record<string, typeof project.detail.screenshots>
-      );
-
-      return Object.entries(grouped).map(([sectionName, shots]) => (
-        <div key={sectionName} className="mb-12 last:mb-0">
-          <h3 className="text-sm font-medium uppercase tracking-wider text-[rgb(var(--muted-text))] mb-4">
-            {sectionName}
-          </h3>
-
-          <div className="space-y-8">
-            {shots.map((shot, i) => (
-              <figure key={i}>
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-[rgb(var(--border))] bg-[rgb(var(--card))]">
-                  <Image
-                    src={shot.src}
-                    alt={shot.alt}
-                    fill
-                    sizes="(min-width: 768px) 720px, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                {shot.caption && (
-                  <figcaption className="mt-3 text-sm text-[rgb(var(--muted-text))] text-center">
-                    {shot.caption}
-                  </figcaption>
-                )}
-              </figure>
-            ))}
-          </div>
-        </div>
-      ));
-    })()}
-  </section>
-)}
+      <ProjectScreenshots screenshots={project.detail.screenshots} />
 
       {/* Tech stack */}
       <section className="mb-12">

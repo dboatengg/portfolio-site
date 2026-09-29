@@ -197,86 +197,94 @@ export const projects: Project[] = [
   },
 },
   {
-    slug: "icenter-ghana",
-    title: "iCenter Ghana",
-    description:
-      "A full-stack website for an Apple phone shop in Madina, Accra. Customers can browse iPhones, request a swap, sell their old phone, or apply for an installment plan.",
-    gradient: "from-[#d81159] to-[#2451c4]",
-    live: "https://icenter-ghana.vercel.app/",
-    githubPrivate: true,
-    learnMore: true,
-    detail: {
-      tagline: "The online home for an Apple reseller in Accra.",
-      overview: [
-        "iCenter Ghana is an Apple phone shop in Madina, Accra. They needed a site that made it easy for customers to browse stock, request swaps, and apply for installment plans.",
-        "I built a full-stack site with a customer-facing flow for all four actions, plus an admin dashboard where staff manage inventory and applications.",
-      ],
-      features: [
-        "Product catalog with stock status",
-        "Swap requests and phone buyback",
-        "Installment plan applications",
-        "Admin dashboard with pending requests counter",
-      ],
-      tech: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS", "WhatsApp API"],
-      screenshots: [
-  // Customer-facing
-  {
-    src: "/projects/icenter-ghana/home.png",
-    alt: "iCenter Ghana homepage",
-    caption: "Homepage with featured iPhones",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/icenter-ghana/shop.png",
-    alt: "Product catalog",
-    caption: "Browse available iPhones",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/icenter-ghana/swap.png",
-    alt: "Phone swap request",
-    caption: "Swap request flow",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/icenter-ghana/sell.png",
-    alt: "Sell your phone",
-    caption: "Sell old phone form",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/icenter-ghana/installment.png",
-    alt: "Installment application",
-    caption: "Installment plan application",
-    section: "Customer-facing",
-  },
+  slug: "icenter-ghana",
+  title: "iCenter Ghana",
+  description:
+    "A full-stack website for an Apple phone shop in Madina, Accra. Customers can browse iPhones, request a swap, sell their old phone, or apply for an installment plan.",
+  gradient: "from-[#d81159] to-[#2451c4]",
+  live: "https://icenter-ghana.vercel.app/",
+  githubPrivate: true,
+  learnMore: true,
+  detail: {
+    tagline: "The online home for an Apple reseller in Accra.",
+    overview: [
+      "iCenter Ghana is an Apple phone shop in Madina, Accra. They sell iPhones and iPads, and also buy, swap, or offer installment plans for customers. They needed a site where people could browse their iPhones and start a swap, sale, or installment plan without calling.",
+      "I built a full-stack site with a shop, a swap request form, a sell request form, and an installment plan application. There's also an admin dashboard where staff can add, edit, and delete products, review and update the status of every request, and also manage customer video testimonials.",
+    ],
+    features: [
+      "Browse iPhones and iPads with live stock and pricing",
+      "Swap request form",
+      "Sell your old phone form",
+      "Installment plan application with ID upload",
+      "Admin dashboard to manage products, swaps, video testimonials, etc.",
+      "Live notification badge for admin dashboard when a new request comes in",
+    ],
+    tech: ["Next.js", "Express", "PostgreSQL", "Prisma", "Tailwind CSS"],
+    screenshots: [
+      // Customer-facing
+      {
+        src: "/projects/icenter-ghana/home.png",
+        alt: "iCenter Ghana homepage",
+        caption: "Homepage with featured iPhones",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/icenter-ghana/shop.png",
+        alt: "Product catalog",
+        caption: "Browse available iPhones",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/icenter-ghana/swap.png",
+        alt: "Phone swap request",
+        caption: "Swap request form",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/icenter-ghana/sell.png",
+        alt: "Sell your phone",
+        caption: "Sell old phone form",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/icenter-ghana/installment.png",
+        alt: "Installment application",
+        caption: "Installment plan application",
+        section: "Customer-facing",
+      },
 
-  // Admin
-  {
-    src: "/projects/icenter-ghana/admin-login.png",
-    alt: "Admin login",
-    caption: "Admin login",
-    section: "Admin",
+      // Admin
+      {
+        src: "/projects/icenter-ghana/admin-login.png",
+        alt: "Admin login",
+        caption: "Admin login",
+        section: "Admin",
+      },
+      {
+        src: "/projects/icenter-ghana/admin-dashboard.png",
+        alt: "Admin dashboard",
+        caption: "Dashboard with pending requests counter",
+        section: "Admin",
+      },
+      {
+        src: "/projects/icenter-ghana/admin-inventory.png",
+        alt: "Admin inventory",
+        caption: "Manage products",
+        section: "Admin",
+      },
+      {
+        src: "/projects/icenter-ghana/admin-requests.png",
+        alt: "Admin requests",
+        caption: "Review swap, sell, and installment requests",
+        section: "Admin",
+      },
+            {
+        src: "/projects/icenter-ghana/stories.png",
+        alt: "Customer Stories",
+        caption: "Manage customer video testimonials",
+        section: "Admin",
+      },
+    ],
   },
-  {
-    src: "/projects/icenter-ghana/admin-dashboard.png",
-    alt: "Admin dashboard",
-    caption: "Dashboard with pending requests counter",
-    section: "Admin",
-  },
-  {
-    src: "/projects/icenter-ghana/admin-inventory.png",
-    alt: "Admin inventory",
-    caption: "Manage inventory",
-    section: "Admin",
-  },
-  {
-    src: "/projects/icenter-ghana/admin-requests.png",
-    alt: "Admin requests",
-    caption: "Review swap, sell, and installment requests",
-    section: "Admin",
-  },
-],
-    },
-  },
+},
 ];
