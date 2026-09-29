@@ -16,7 +16,7 @@ const services = [
     description:
       "I build clean, professional websites that clearly explain what you do and make it effortless for customers to reach out to you.",
     icon: Globe,
-    gradient: "from-slate-700 to-slate-800",
+    gradient: "from-slate-700 to-blue-900",
   },
   {
     number: "02",
@@ -24,7 +24,7 @@ const services = [
     description:
       "I build full e-commerce websites where your customers can pay with MoMo or bank card, and you also get a full dashboard to manage products, orders, and inventory yourself.",
     icon: ShoppingBag,
-    gradient: "from-slate-600 to-slate-700",
+    gradient: "from-slate-600 to-emerald-900",
   },
   {
     number: "03",
@@ -40,7 +40,7 @@ const services = [
     description:
       "Already have a site that's slow, broken, or impossible to update? I step in to fix the mess and make sure you have a site you're actually proud of.",
     icon: Wrench,
-    gradient: "from-gray-700 to-gray-900",
+    gradient: "from-slate-700 to-amber-900",
   },
 ];
 
@@ -50,7 +50,7 @@ export default function Services() {
   return (
     <section id="services" className="mb-16">
       <h2 className="mb-8 text-2xl font-semibold text-[rgb(var(--text))] md:text-3xl">
-        How I can help
+        What I can build for you
       </h2>
 
       <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
