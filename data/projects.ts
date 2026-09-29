@@ -117,83 +117,85 @@ export const projects: Project[] = [
 ],
   },
 },
-  {
-    slug: "spark-and-drive",
-    title: "Spark & Drive",
-    description:
-      "A full-stack website for an auto electrical repair shop in Kumasi. Includes a customer-facing site with a Paystack-integrated checkout, and an admin panel for managing products, orders, etc.",
-    gradient: "from-[#C81E1E] to-[#F2A900]",
-    live: "https://spark-and-drive-auto.vercel.app/",
-    githubPrivate: true,
-    learnMore: true,
-    detail: {
-      tagline: "An online storefront for an auto electrical shop in Kumasi.",
-      overview: [
-        "Spark & Drive needed a way to sell auto electrical parts online and manage orders without hiring extra staff.",
-        "I built a customer-facing shop with Paystack-integrated checkout, and an admin panel where the owner manages products, stock, and orders from their phone.",
-      ],
-      features: [
-        "Product catalog with categories",
-        "Paystack checkout integration",
-        "Admin panel for products, orders, and stock",
-        "Order notifications via WhatsApp",
-      ],
-      tech: ["Next.js", "PostgreSQL", "Prisma", "Paystack API", "Tailwind CSS"],
-      screenshots: [
-  // Customer-facing
-  {
-    src: "/projects/spark-and-drive/home.png",
-    alt: "Spark & Drive homepage",
-    caption: "Homepage with featured products",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/spark-and-drive/shop.png",
-    alt: "Product catalog",
-    caption: "Browse products by category",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/spark-and-drive/product.png",
-    alt: "Product detail page",
-    caption: "Product detail with add to cart",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/spark-and-drive/checkout.png",
-    alt: "Checkout page",
-    caption: "Paystack-integrated checkout",
-    section: "Customer-facing",
-  },
+{
+  slug: "spark-and-drive",
+  title: "Spark & Drive",
+  description:
+    "A full website for an auto electrical repair shop in Kumasi, with an online shop where customers can buy parts, and an admin panel the owner uses to manage everything.",
+  gradient: "from-[#C81E1E] to-[#F2A900]",
+  live: "https://spark-and-drive-auto.vercel.app/",
+  githubPrivate: true,
+  learnMore: true,
+  detail: {
+    tagline: "A website and online shop for an auto electrical repair shop in Kumasi.",
+    overview: [
+      "Spark & Drive is an auto electrical repair shop in Kumasi. The client needed a proper website: somewhere customers could learn about his services, reach him easily, and also buy spare parts online. Plus a simple way for him to manage all of that himself without needing to touch any code.",
+      "I built a customer-facing site with a shop, cart, and secure online payments (card and mobile money), along with a private admin panel where he logs in to add products, track orders, and read messages from customers, all from his phone.",
+    ],
+    features: [
+      "Online shop with product photos, pricing, and stock levels",
+      "Shopping cart and secure checkout, accepting cards and mobile money",
+      "A contact form that emails him the moment someone reaches out",
+      "A direct WhatsApp button so customers can message the shop instantly",
+      "A private admin panel to add and edit products, view orders, and read messages",
+      "Built to load reasonably well on slow mobile connections",
+    ],
+    tech: ["Next.js", "Express", "PostgreSQL", "Prisma", "Paystack API", "Tailwind CSS"],
+    screenshots: [
+      // Customer-facing
+      {
+        src: "/projects/spark-and-drive/home.png",
+        alt: "Spark & Drive homepage",
+        caption: "Homepage introducing the shop and its services",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/spark-and-drive/shop.png",
+        alt: "Product catalog",
+        caption: "Shop page where customers browse products",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/spark-and-drive/product.png",
+        alt: "Product detail page",
+        caption: "Product page with an add-to-cart button",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/spark-and-drive/checkout.png",
+        alt: "Checkout page",
+        caption: "Checkout with secure payment via Paystack",
+        section: "Customer-facing",
+      },
 
-  // Admin
-  {
-    src: "/projects/spark-and-drive/admin-login.png",
-    alt: "Admin login",
-    caption: "Admin login",
-    section: "Admin",
+      // Admin
+      {
+        src: "/projects/spark-and-drive/admin-login.png",
+        alt: "Admin login",
+        caption: "Private login for the shop owner",
+        section: "Admin",
+      },
+      {
+        src: "/projects/spark-and-drive/admin-products.png",
+        alt: "Admin products",
+        caption: "Adding and editing products and stock levels",
+        section: "Admin",
+      },
+      {
+        src: "/projects/spark-and-drive/admin-orders.png",
+        alt: "Admin orders",
+        caption: "Viewing customer orders and their status",
+        section: "Admin",
+      },
+      {
+        src: "/projects/spark-and-drive/admin-messages.png",
+        alt: "Admin messages",
+        caption: "Reading messages customers send through the contact form",
+        section: "Admin",
+      },
+    ],
   },
-  {
-    src: "/projects/spark-and-drive/admin-dashboard.png",
-    alt: "Admin dashboard",
-    caption: "Dashboard with sales and order stats",
-    section: "Admin",
-  },
-  {
-    src: "/projects/spark-and-drive/admin-products.png",
-    alt: "Admin products",
-    caption: "Manage products and stock",
-    section: "Admin",
-  },
-  {
-    src: "/projects/spark-and-drive/admin-orders.png",
-    alt: "Admin orders",
-    caption: "View and fulfill orders",
-    section: "Admin",
-  },
-],
-    },
-  },
+},
   {
     slug: "icenter-ghana",
     title: "iCenter Ghana",
