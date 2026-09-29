@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { allBlogs } from "contentlayer/generated"
 import { ArrowRight } from "lucide-react"
-// import { formatShortDate } from "@/utils/formatShortDate"
+import { formatShortDate } from "@/utils/formatShortDate"
 
 export default function BlogList({ posts: allPosts }: { posts: typeof allBlogs }) {
   // Sort by date (descending)
@@ -21,26 +21,34 @@ export default function BlogList({ posts: allPosts }: { posts: typeof allBlogs }
             key={post._id}
             className={`pb-3 ${index !== 2 ? "border-b border-[rgb(var(--divide))]" : ""}`}
           >
-            <div className="flex flex-col gap-2 w-full">
-              <div className="flex flex-wrap justify-between items-baseline gap-4 w-full">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="min-w-0 flex-1 text-base font-medium hover:underline text-[rgb(var(--text))]"
-                >
+            <Link
+              href={`/blog/${post.slug}`}
+              className="group flex flex-col gap-2 w-full"
+            >
+              <div className="flex items-start justify-between gap-4 w-full">
+                <h3 className="min-w-0 flex-1 text-base font-medium text-[rgb(var(--text))] group-hover:underline">
                   {post.title}
-                </Link>
+                </h3>
 
-                {/* <time className="text-sm text-[rgb(var(--muted-text))] whitespace-nowrap">
-                  {formatShortDate(post.date)}
-                </time> */}
+                <div className="flex items-center gap-3 shrink-0 pt-0.5">
+                  <time className="text-xs text-[rgb(var(--muted-text))] whitespace-nowrap">
+                    {formatShortDate(post.date)}
+                  </time>
+
+                  <ArrowRight
+                    size={15}
+                    aria-hidden="true"
+                    className="text-[rgb(var(--muted-text))] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-[rgb(var(--text))]"
+                  />
+                </div>
               </div>
 
               {post.summary && (
-                <p className="w-full text-sm text-[rgb(var(--muted-text))] mt-2">
+                <p className="w-full text-sm text-[rgb(var(--muted-text))]">
                   {post.summary}
                 </p>
               )}
-            </div>
+            </Link>
           </li>
         ))}
       </ul>
