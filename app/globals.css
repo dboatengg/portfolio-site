@@ -134,7 +134,7 @@ html.theme-transitioning *::after {
   color: rgb(var(--accent-foreground));
 }
 
-html, body {
+html {
   overflow-x: hidden;
   scrollbar-gutter: stable;
 }
