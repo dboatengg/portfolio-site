@@ -8,9 +8,17 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Guestbook",
   description:
-    " If you've found my work helpful or inspiring, I would love to hear from you! Please feel free to leave a message in my guestbook. Your feedback and encouragement mean a lot to me.",
+    "If you've found my work helpful or inspiring, I'd love to hear from you. Leave a message in my guestbook.",
   alternates: {
     canonical: "/guestbook",
+  },
+  openGraph: {
+    title: "Guestbook | Dickson Boateng",
+    description:
+      "Leave a message, share your thoughts, or just say hello.",
+    url: "/guestbook",
+    type: "website",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -18,15 +26,13 @@ export default async function GuestbookPage() {
   const entries = await getGuestbookEntries();
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12">
-      <GuestbookShell initialEntries={entries}>
-        <div className="flex flex-col gap-4 mb-8">
-          <GuestbookHeading />
-          <GuestbookFormSection />
-        </div>
+    <GuestbookShell initialEntries={entries}>
+      <div className="flex flex-col gap-4 mb-8">
+        <GuestbookHeading />
+        <GuestbookFormSection />
+      </div>
 
-        <GuestbookEntries />
-      </GuestbookShell>
-    </main>
+      <GuestbookEntries />
+    </GuestbookShell>
   );
 }
