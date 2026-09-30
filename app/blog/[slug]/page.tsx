@@ -241,13 +241,13 @@ export default async function BlogPost({
                   <li key={post.slug} className="!m-0">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="group grid grid-cols-[auto_1fr] gap-x-5 sm:gap-x-10 items-baseline py-1"
+                      className="group flex flex-col gap-1 sm:grid sm:grid-cols-[auto_1fr] sm:gap-x-10 sm:items-baseline py-1"
                     >
-                      <time className="text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap">
+                      <time className="text-xs sm:text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap">
                         {postDate ? formatDate(postDate) : ""}
                       </time>
 
-                      <span className="text-base font-medium text-[rgb(var(--text))] group-hover:underline underline-offset-4 decoration-1">
+                      <span className="text-base font-medium text-[rgb(var(--text))]">
                         {post.title}
                       </span>
                     </Link>
