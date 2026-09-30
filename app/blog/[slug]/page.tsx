@@ -220,22 +220,51 @@ export default async function BlogPost({
         {content}
 
         {relatedPosts.length > 0 && (
-          <section className="mt-16" aria-labelledby="related-posts-heading">
-            <h2 id="related-posts-heading" className="!text-xl !mt-0 mb-4">
-              Related posts
-            </h2>
-            <ul className="space-y-3">
-              {relatedPosts.map((post) => (
-                <li key={post.slug}>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="text-[rgb(var(--text))] hover:underline"
-                  >
-                    {post.title}
-                  </Link>
-                </li>
-              ))}
+          <section
+            className="mt-20 pt-10 border-t border-[rgb(var(--border))]"
+            aria-labelledby="related-posts-heading"
+          >
+            <h2
+            id="related-posts-heading"
+            className="!text-xl !mt-0 !mb-8 !font-semibold !text-[rgb(var(--text))] !no-underline !border-0 !pb-0"
+          >
+            Related posts
+          </h2>
+
+            <ul className="!not-prose space-y-5 !p-0 !m-0">
+              {relatedPosts.map((post) => {
+                const postDate = post.date
+                  ? new Date(post.date).toISOString().split("T")[0]
+                  : undefined
+
+                return (
+                  <li key={post.slug} className="!m-0">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group grid grid-cols-[auto_1fr] gap-x-5 sm:gap-x-10 items-baseline py-1"
+                    >
+                      <time className="text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap">
+                        {postDate ? formatDate(postDate) : ""}
+                      </time>
+
+                      <span className="text-base font-medium text-[rgb(var(--text))] group-hover:underline underline-offset-4 decoration-1">
+                        {post.title}
+                      </span>
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
+
+            <div className="mt-10">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[rgb(var(--text))] hover:underline underline-offset-4"
+              >
+                <ArrowLeft size={15} />
+                All posts
+              </Link>
+            </div>
           </section>
         )}
 
