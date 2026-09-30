@@ -59,7 +59,6 @@ function loadSavedDraft(): FormData | null {
 }
 
 export default function ContactForm({ onSuccess }: ContactFormProps) {
-  // Lazy init: read from storage on first render only
   const [formData, setFormData] = useState<FormData>(
     () => loadSavedDraft() ?? EMPTY_FORM
   );
@@ -72,7 +71,6 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   );
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Save draft on every change
   useEffect(() => {
     try {
       const hasContent = Object.values(formData).some(
@@ -161,29 +159,32 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
     );
   }
 
-  return (
-      <div>
-        <h3 className="text-lg font-medium text-[rgb(var(--text))]">
-          Let&apos;s talk
-        </h3>
-        <p className="mt-1 text-sm text-[rgb(var(--muted-text))]">
-          Tell me about your project.
-        </p>
+  const inputClass =
+    "w-full rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-3.5 py-2.5 text-sm text-[rgb(var(--text))] outline-none transition-colors placeholder:text-[rgb(var(--muted-text))]/60 focus:border-[rgb(var(--accent))]";
 
-        {isRestored && (
-          <div className="mt-4 flex items-center justify-between gap-3 rounded-md bg-[rgb(var(--muted))] px-3 py-2">
-            <p className="text-xs text-[rgb(var(--muted-text))]">
-              Picked up where you left off.
-            </p>
-            <button
-              type="button"
-              onClick={handleManualReset}
-              className="shrink-0 text-xs font-medium text-[rgb(var(--text))] hover:underline transition-colors"
-            >
-              Start fresh
-            </button>
-          </div>
-        )}
+  return (
+    <div>
+      <h3 className="text-lg font-medium text-[rgb(var(--text))]">
+        Let&apos;s talk
+      </h3>
+      <p className="mt-1 text-sm text-[rgb(var(--muted-text))]">
+        Tell me about your project.
+      </p>
+
+      {isRestored && (
+        <div className="mt-4 flex items-center justify-between gap-3 rounded-md bg-[rgb(var(--muted))] px-3 py-2">
+          <p className="text-xs text-[rgb(var(--muted-text))]">
+            Picked up where you left off.
+          </p>
+          <button
+            type="button"
+            onClick={handleManualReset}
+            className="shrink-0 text-xs font-medium text-[rgb(var(--text))] hover:underline transition-colors"
+          >
+            Start fresh
+          </button>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="mt-5 space-y-4">
         <div>
@@ -200,7 +201,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
+            className={inputClass}
             placeholder="Your name"
           />
         </div>
@@ -222,7 +223,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
+              className={inputClass}
               placeholder="you@example.com"
             />
           </div>
@@ -241,7 +242,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
               required
               value={formData.phone}
               onChange={handleChange}
-              className="w-full rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
+              className={inputClass}
               placeholder="+233 20 000 0000"
             />
           </div>
@@ -261,7 +262,11 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
               required
               value={formData.service}
               onChange={handleChange}
-              className="w-full appearance-none rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 pr-11 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
+              className={`${inputClass} appearance-none pr-11 ${
+                formData.service
+                  ? "text-[rgb(var(--text))]"
+                  : "text-[rgb(var(--muted-text))]/60"
+              }`}
             >
               <option value="" disabled>
                 Select a service
@@ -294,7 +299,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             rows={4}
             value={formData.message}
             onChange={handleChange}
-            className="w-full resize-none rounded-lg border border-[rgb(var(--border))] bg-[#252525] px-3.5 py-2.5 text-sm text-[rgb(var(--text))] outline-none transition-colors focus:border-indigo-500"
+            className={`${inputClass} resize-none`}
             placeholder="Tell me a bit about your project"
           />
         </div>
