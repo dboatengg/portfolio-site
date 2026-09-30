@@ -50,13 +50,19 @@ export default function Intro() {
       {/* Right Section - Profile Image */}
       <div className="shrink-0">
         <div className="relative mx-auto md:mx-0 shrink-0 w-fit">
-          <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-96 rounded-sm md:rounded-full overflow-hidden border border-[rgb(var(--border))] shadow-lg shadow-black/30">
+          {/* Gradient glow — mobile only */}
+          <div
+            className="absolute -inset-2 rounded-[999px] bg-gradient-to-br from-blue-500/25 via-purple-500/20 to-pink-500/25 blur-xl md:hidden"
+            aria-hidden="true"
+          />
+
+          <div className="relative w-56 h-72 sm:w-64 sm:h-80 md:w-80 md:h-96 rounded-[999px] overflow-hidden border border-[rgb(var(--border))] shadow-lg shadow-black/30">
             <Image
               src="/images/DicksonBoateng-profile.webp"
               alt="Dickson Boateng, software developer from Ghana"
               fill
               className="object-cover object-top"
-              sizes="(max-width: 640px) 240px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+              sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
               priority
             />
           </div>
