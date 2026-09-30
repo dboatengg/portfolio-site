@@ -48,7 +48,7 @@ export default function Intro() {
       </div>
 
       {/* Right Section - Profile Image */}
-      <div className="shrink-0">
+      <div className="shrink-0 animate-float">
         <div className="relative mx-auto md:mx-0 shrink-0 w-fit">
           <div className="relative w-56 h-72 sm:w-64 sm:h-80 md:w-80 md:h-96 rounded-[999px] overflow-hidden border border-[rgb(var(--border))] shadow-lg shadow-black/30">
             <Image
