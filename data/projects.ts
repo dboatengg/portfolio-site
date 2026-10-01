@@ -296,7 +296,7 @@ export const projects: Project[] = [
         section: "Admin",
       },
             {
-              src: "/projects/icenter-ghana/admin-logout.webp",
+              src: "/projects/icenter-ghana/admin-logout.webp?v=2",
               alt: "Admin logout confirmation",
               caption: "Confirmation shown before signing out of the admin panel",
               section: "Admin",
