@@ -50,7 +50,7 @@ const outsideItems = [
     <b>Podcasts:</b> Darknet Diaries, What Now with Trevor Noah
   </>,
   <>
-    <b>Movies &amp; shows:</b> Perfect Days, Ted Lasso, Slow Horses, Mythic Quest
+    <b>Movies &amp; shows:</b> Perfect Days, Ted Lasso, Slow Horses, Mythic Quest, Mare of Easttown
   </>,
   <>
     <b>Books:</b> 100 World&apos;s Greatest Short Stories
