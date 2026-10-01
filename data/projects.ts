@@ -255,31 +255,31 @@ export const projects: Project[] = [
 
       // Admin
       {
-        src: "/projects/icenter-ghana/admin-login.png",
+        src: "/projects/icenter-ghana/admin-login.webp",
         alt: "Admin login",
         caption: "Admin login",
         section: "Admin",
       },
       {
-        src: "/projects/icenter-ghana/admin-dashboard.png",
+        src: "/projects/icenter-ghana/admin-dashboard.webp",
         alt: "Admin dashboard",
         caption: "Dashboard with pending requests counter",
         section: "Admin",
       },
       {
-        src: "/projects/icenter-ghana/admin-inventory.png",
+        src: "/projects/icenter-ghana/admin-inventory.webp",
         alt: "Admin inventory",
         caption: "Manage products",
         section: "Admin",
       },
       {
-        src: "/projects/icenter-ghana/admin-requests.png",
+        src: "/projects/icenter-ghana/admin-requests.webp",
         alt: "Admin requests",
         caption: "Review swap, sell, and installment requests",
         section: "Admin",
       },
             {
-        src: "/projects/icenter-ghana/stories.png",
+        src: "/projects/icenter-ghana/stories.webp",
         alt: "Customer Stories",
         caption: "Manage customer video testimonials",
         section: "Admin",
