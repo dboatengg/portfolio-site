@@ -97,7 +97,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full backdrop-blur-md border-b border-[rgb(var(--border)/1)]">
+      <header
+        className={`sticky top-0 z-50 w-full bg-[rgb(var(--bg))] backdrop-blur-md border-b border-[rgb(var(--border)/1)] transition-transform duration-300 ${
+          isHidden ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <nav className="max-w-4xl mx-auto flex items-center justify-between px-4 py-3">
           <Link href="/" onClick={closeMenu}>
             <Logo />

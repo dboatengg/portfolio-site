@@ -90,7 +90,7 @@ export default function Logo() {
         alt="Boateng"
         width={145}
         height={41}
-        className="hidden h-auto w-[140x] sm:w-[145px] dark:block"
+        className="hidden h-auto w-[140px] sm:w-[145px] dark:block"
         priority
       />
     </div>
