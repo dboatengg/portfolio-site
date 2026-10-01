@@ -74,13 +74,6 @@ export const projects: Project[] = [
     caption: "Property detail with agent contact",
     section: "Customer-facing",
   },
-  // {
-  //   src: "/projects/capstone/saved.png",
-  //   alt: "Saved properties",
-  //   caption: "Saved properties and search history",
-  //   section: "Customer-facing",
-  // },
-
   // Auth
   {
     src: "/projects/capstone/login.png",
@@ -96,12 +89,6 @@ export const projects: Project[] = [
   },
 
   // Admin
-  // {
-  //   src: "/projects/capstone/admin-login.png",
-  //   alt: "Admin login",
-  //   caption: "Separate admin login",
-  //   section: "Admin",
-  // },
   {
     src: "/projects/capstone/admin-dashboard.png",
     alt: "Admin dashboard",
@@ -162,35 +149,47 @@ export const projects: Project[] = [
         section: "Customer-facing",
       },
       {
+        src: "/projects/spark-and-drive/cart.png",
+        alt: "Shopping cart",
+        caption: "Review selected products before checkout",
+        section: "Customer-facing",
+      },
+      {
         src: "/projects/spark-and-drive/checkout.png",
         alt: "Checkout page",
         caption: "Checkout with secure payment via Paystack",
         section: "Customer-facing",
       },
+      {
+        src: "/projects/spark-and-drive/contact.png",
+        alt: "Contact page",
+        caption: "Contact form and shop information",
+        section: "Customer-facing",
+      },
 
       // Admin
       {
-        src: "/projects/spark-and-drive/admin-login.png",
+        src: "/projects/spark-and-drive/admin-login.webp",
         alt: "Admin login",
         caption: "Private login for the shop owner",
         section: "Admin",
       },
       {
-        src: "/projects/spark-and-drive/admin-products.png",
+        src: "/projects/spark-and-drive/admin-dashboard.webp",
+        alt: "Admin dashboard",
+        caption: "Store overview with orders, products, and customer messages",
+        section: "Admin",
+      },
+      {
+        src: "/projects/spark-and-drive/admin-products.webp",
         alt: "Admin products",
         caption: "Adding and editing products and stock levels",
         section: "Admin",
       },
       {
-        src: "/projects/spark-and-drive/admin-orders.png",
-        alt: "Admin orders",
-        caption: "Viewing customer orders and their status",
-        section: "Admin",
-      },
-      {
-        src: "/projects/spark-and-drive/admin-messages.png",
-        alt: "Admin messages",
-        caption: "Reading messages customers send through the contact form",
+        src: "/projects/spark-and-drive/admin-logout.webp",
+        alt: "Admin logout confirmation",
+        caption: "Confirmation shown before signing out of the admin panel",
         section: "Admin",
       },
     ],
@@ -235,6 +234,12 @@ export const projects: Project[] = [
         section: "Customer-facing",
       },
       {
+        src: "/projects/icenter-ghana/product-detail.png",
+        alt: "iPhone product detail",
+        caption: "Product details with WhatsApp and installment options",
+        section: "Customer-facing",
+      },
+      {
         src: "/projects/icenter-ghana/swap.png",
         alt: "Phone swap request",
         caption: "Swap request form",
@@ -250,6 +255,12 @@ export const projects: Project[] = [
         src: "/projects/icenter-ghana/installment.png",
         alt: "Installment application",
         caption: "Installment plan application",
+        section: "Customer-facing",
+      },
+      {
+        src: "/projects/icenter-ghana/testimonials.png",
+        alt: "Customer stories",
+        caption: "Customer video testimonials on the public site",
         section: "Customer-facing",
       },
 
@@ -280,10 +291,16 @@ export const projects: Project[] = [
       },
             {
         src: "/projects/icenter-ghana/stories.webp",
-        alt: "Customer Stories",
+              alt: "Admin testimonials",
         caption: "Manage customer video testimonials",
         section: "Admin",
       },
+            {
+              src: "/projects/icenter-ghana/admin-logout.webp",
+              alt: "Admin logout confirmation",
+              caption: "Confirmation shown before signing out of the admin panel",
+              section: "Admin",
+            },
     ],
   },
 },
