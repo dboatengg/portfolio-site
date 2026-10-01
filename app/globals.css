@@ -29,6 +29,8 @@
   --surface-overlay: 255 255 255 / 0.6;
   /* --surface-solid: 229 231 235;  */
   --surface-solid: 245 245 245;
+  --page-glow-amber: 245 158 11;     /* amber-500 */
+  --page-glow-amber-opacity: 0.07;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,6 +48,8 @@
     --ctrl-border: 82 82 82;
     --surface-overlay: 0 0 0 / 0.05;
     --surface-solid: 31 41 55;
+    --page-glow-amber: 217 119 6; /* amber-600 */
+    --page-glow-amber-opacity: 0.06;
   }
 }
 
@@ -127,6 +131,8 @@ html.theme-transitioning *::after {
 
   --surface-overlay: 0 0 0 / 0.05;
   --surface-solid: 31 41 55;
+  --page-glow-amber: 217 119 6;      /* amber-600 */
+  --page-glow-amber-opacity: 0.06;
 }
 
 ::selection {
@@ -150,8 +156,14 @@ html {
 body {
   font-family: var(--font-inter);
   color: rgb(var(--text));
-  background: rgb(var(--bg));
+  background-color: rgb(var(--bg));
+  background-image:
+    radial-gradient(ellipse 44rem 34rem at 50% 94%, rgb(var(--page-glow-amber) / var(--page-glow-amber-opacity)), transparent 72%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
+
+
 
 /* Selection colors */
 ::selection {

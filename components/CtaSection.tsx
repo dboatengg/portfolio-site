@@ -9,9 +9,6 @@ export default function CtaSection() {
   return (
     <section className="mb-24">
       <div className="relative overflow-hidden rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-6 py-12 sm:px-10 sm:py-16">
-        {/* Subtle gradient glow */}
-        <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[rgb(var(--accent))] opacity-10 blur-3xl" />
-
         <div className="relative max-w-xl">
           <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] leading-tight">
             Have a project in mind?

@@ -97,11 +97,7 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-50 w-full backdrop-blur-md bg-[rgb(var(--bg)/0.7)] border-b border-[rgb(var(--border)/1)] transition-transform duration-300 ease-out ${
-          isHidden && !isMenuOpen ? "-translate-y-full" : "translate-y-0"
-        }`}
-      >
+      <header className="sticky top-0 z-50 w-full backdrop-blur-md border-b border-[rgb(var(--border)/1)]">
         <nav className="max-w-4xl mx-auto flex items-center justify-between px-4 py-3">
           <Link href="/" onClick={closeMenu}>
             <Logo />
