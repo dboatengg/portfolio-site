@@ -49,9 +49,7 @@ export default function Services() {
 
   return (
     <section id="services" className="mb-16">
-      <h2 className="mb-8 text-2xl font-semibold text-[rgb(var(--text))] md:text-3xl">
-        What I can build for you
-      </h2>
+      <h2 className="section-heading">What I can build for you</h2>
 
       <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
         {services.map((service) => {
@@ -103,7 +101,7 @@ export default function Services() {
         <button
           type="button"
           onClick={openModal}
-          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[rgb(var(--text))] px-4 py-2.5 text-sm font-medium text-[rgb(var(--bg))] transition-opacity hover:opacity-80"
+          className="button-primary shrink-0"
         >
           Let&apos;s talk
           <ArrowUpRight size={15} />

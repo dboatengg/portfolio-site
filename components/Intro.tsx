@@ -31,7 +31,7 @@ export default function Intro() {
           <button
             type="button"
             onClick={openModal}
-            className="inline-flex items-center gap-2 bg-[rgb(var(--text))] text-[rgb(var(--bg))] rounded-full px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+            className="button-primary"
           >
             Let&apos;s talk
             <ArrowUpRight size={14} />
@@ -39,7 +39,7 @@ export default function Intro() {
 
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 bg-transparent text-[rgb(var(--text))] border border-[rgb(var(--ctrl-border))] rounded-full px-5 py-2 text-sm font-medium transition-opacity hover:opacity-70"
+            className="button-secondary"
           >
             View my work
             <ArrowRight size={14} />

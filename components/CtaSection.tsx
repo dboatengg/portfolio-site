@@ -10,7 +10,7 @@ export default function CtaSection() {
     <section className="mb-24">
       <div className="relative overflow-hidden rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-6 py-12 sm:px-10 sm:py-16">
         <div className="relative max-w-xl">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] leading-tight">
+          <h2 className="section-heading mb-0 leading-tight">
             Have a project in mind?
           </h2>
 
@@ -22,7 +22,7 @@ export default function CtaSection() {
           <button
             type="button"
             onClick={openModal}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[rgb(var(--text))] px-5 py-3 text-sm font-medium text-[rgb(var(--bg))] transition-opacity hover:opacity-80"
+            className="button-primary mt-8"
           >
             Let&apos;s talk
             <ArrowUpRight size={15} />
