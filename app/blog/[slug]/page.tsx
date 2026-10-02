@@ -6,6 +6,8 @@ import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import { ReadingProgress } from "@/components/ReadingProgress"
+import TableOfContents from "@/components/TableOfContents"
 
 // Blog components
 import RequestDemo from "@/components/mdx/demos/jwt-auth/RequestDemo"
@@ -26,7 +28,73 @@ export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
 }
 
-// SEO Metadata generation
+// ---------- Helpers ----------
+
+function slugifyHeading(text: string) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+}
+
+type Heading = {
+  level: 2 | 3
+  text: string
+  id: string
+}
+
+function extractHeadings(source: string): Heading[] {
+  const matches = [...source.matchAll(/^(#{2,3})\s+(.+?)\s*$/gm)]
+  return matches.map(([, hashes, rawText]) => {
+    // Strip common inline markdown so "**Bold heading**" becomes "Bold heading"
+    const text = rawText
+      .replace(/\*\*(.+?)\*\*/g, "$1")
+      .replace(/\*(.+?)\*/g, "$1")
+      .replace(/`(.+?)`/g, "$1")
+      .replace(/\[(.+?)\]\(.+?\)/g, "$1")
+      .trim()
+    return {
+      level: hashes.length as 2 | 3,
+      text,
+      id: slugifyHeading(text),
+    }
+  })
+}
+
+// ---------- TOC component (server-rendered) ----------
+
+
+
+// ---------- Custom heading renderers (inject IDs) ----------
+
+function MdxH2({ children }: { children?: React.ReactNode }) {
+  const text = String(children)
+  return <h2 id={slugifyHeading(text)}>{children}</h2>
+}
+
+function MdxH3({ children }: { children?: React.ReactNode }) {
+  const text = String(children)
+  return <h3 id={slugifyHeading(text)}>{children}</h3>
+}
+
+// ---------- Shared MDX component map ----------
+
+const mdxComponents = {
+  RequestDemo,
+  StatelessDiagram,
+  StatelessJWTDiagram,
+  TakeNote,
+  RequestVerifyDiagram,
+  TokenTimelineDiagram,
+  pre: Pre,
+  img: WideImage,
+  h2: MdxH2,
+  h3: MdxH3,
+}
+
+// ---------- SEO Metadata generation ----------
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
@@ -43,16 +111,7 @@ export async function generateMetadata(
   }>({
     source,
     options: mdxCompileOptions,
-    components: {
-      RequestDemo,
-      StatelessDiagram,
-      StatelessJWTDiagram,
-      TakeNote,
-      RequestVerifyDiagram,
-      TokenTimelineDiagram,
-      pre: Pre,
-      img: WideImage,
-    },
+    components: mdxComponents,
   })
 
   const title = frontmatter.title || "Untitled Post"
@@ -75,12 +134,14 @@ export async function generateMetadata(
       description,
       type: "article",
       url,
-      images: [{
-        url: image,
-        width: 1200,
-        height: 630,
-        alt: `${title} social preview`,
-      }],
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: `${title} social preview`,
+        },
+      ],
       publishedTime,
       modifiedTime: getPostLastModified(slug).toISOString(),
       authors: [siteUrl],
@@ -91,15 +152,18 @@ export async function generateMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: [{
-        url: image,
-        alt: `${title} social preview`,
-      }],
+      images: [
+        {
+          url: image,
+          alt: `${title} social preview`,
+        },
+      ],
     },
   }
 }
 
-// Blog content renderer
+// ---------- Blog content renderer ----------
+
 export default async function BlogPost({
   params,
 }: {
@@ -118,16 +182,7 @@ export default async function BlogPost({
   }>({
     source,
     options: mdxCompileOptions,
-    components: {
-      RequestDemo,
-      StatelessDiagram,
-      StatelessJWTDiagram,
-      TakeNote,
-      RequestVerifyDiagram,
-      TokenTimelineDiagram,
-      pre: Pre,
-      img: WideImage,
-    },
+    components: mdxComponents,
   })
 
   // Reading time (excluding frontmatter)
@@ -143,6 +198,9 @@ export default async function BlogPost({
   const lastModified = getPostLastModified(slug)
   const lastModifiedDate = lastModified.toISOString().split("T")[0]
   const currentTags = new Set(frontmatter.tags ?? [])
+
+  // Table of contents headings
+  const headings = extractHeadings(withoutFrontmatter)
 
   // Simple related posts: same tag match, newest first, max 2
   const relatedPosts = [...allBlogs]
@@ -190,6 +248,8 @@ export default async function BlogPost({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
+      <ReadingProgress />
+
       <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight">
         <Link
           href="/blog"
@@ -217,6 +277,8 @@ export default async function BlogPost({
           )}
         </header>
 
+        <TableOfContents headings={headings} />
+
         {content}
 
         {relatedPosts.length > 0 && (
@@ -225,11 +287,11 @@ export default async function BlogPost({
             aria-labelledby="related-posts-heading"
           >
             <h2
-            id="related-posts-heading"
-            className="!text-xl !mt-0 !mb-8 !font-semibold !text-[rgb(var(--text))] !no-underline !border-0 !pb-0"
-          >
-            Related posts
-          </h2>
+              id="related-posts-heading"
+              className="!text-xl !mt-0 !mb-8 !font-semibold !text-[rgb(var(--text))] !no-underline !border-0 !pb-0"
+            >
+              Related posts
+            </h2>
 
             <ul className="!not-prose space-y-5 !p-0 !m-0">
               {relatedPosts.map((post) => {

@@ -1,18 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
-  const [tappedPrivate, setTappedPrivate] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!tappedPrivate) return;
-    const timer = setTimeout(() => setTappedPrivate(null), 2000);
-    return () => clearTimeout(timer);
-  }, [tappedPrivate]);
-
   return (
     <section id="projects" className="mb-16">
       <h2 className="section-heading">Recent Projects</h2>

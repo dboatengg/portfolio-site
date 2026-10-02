@@ -1,11 +1,7 @@
-"use client";
-
 import { ArrowUpRight } from "lucide-react";
-import { useContactModal } from "@/contexts/ContactModalContext";
+import ContactModalButton from "@/components/ContactModalButton";
 
 export default function CtaSection() {
-  const { openModal } = useContactModal();
-
   return (
     <section className="mb-24">
       <div className="relative overflow-hidden rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-6 py-12 sm:px-10 sm:py-16">
@@ -19,14 +15,10 @@ export default function CtaSection() {
             that&apos;s you, let&apos;s talk.
           </p>
 
-          <button
-            type="button"
-            onClick={openModal}
-            className="button-primary mt-8"
-          >
+          <ContactModalButton className="button-primary mt-8">
             Let&apos;s talk
             <ArrowUpRight size={15} />
-          </button>
+          </ContactModalButton>
         </div>
       </div>
     </section>

@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ArrowUpRight,
   Globe,
@@ -7,7 +5,7 @@ import {
   LayoutDashboard,
   Wrench,
 } from "lucide-react";
-import { useContactModal } from "@/contexts/ContactModalContext";
+import ContactModalButton from "@/components/ContactModalButton";
 
 const services = [
   {
@@ -45,8 +43,6 @@ const services = [
 ];
 
 export default function Services() {
-  const { openModal } = useContactModal();
-
   return (
     <section id="services" className="mb-16">
       <h2 className="section-heading">What I can build for you</h2>
@@ -98,14 +94,10 @@ export default function Services() {
           </p>
         </div>
 
-        <button
-          type="button"
-          onClick={openModal}
-          className="button-primary shrink-0"
-        >
+        <ContactModalButton className="button-primary shrink-0">
           Let&apos;s talk
           <ArrowUpRight size={15} />
-        </button>
+        </ContactModalButton>
       </div>
     </section>
   );

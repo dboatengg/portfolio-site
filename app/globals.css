@@ -1042,3 +1042,20 @@ pre [data-highlighted-line] {
     animation: reveal-image-fade 1ms linear both;
   }
 }
+
+
+/* Anchor links on headings */
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 80px;
+}
+
+.prose h2:hover::before,
+.prose h3:hover::before {
+  content: "#";
+  position: absolute;
+  margin-left: -1.25rem;
+  color: rgb(var(--muted-text));
+  font-weight: 400;
+  opacity: 0.6;
+}

@@ -1,12 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useContactModal } from "@/contexts/ContactModalContext";
+import ContactModalButton from "@/components/ContactModalButton";
 
 export default function Intro() {
-  const { openModal } = useContactModal();
-
   return (
     <section className="animate-intro-in mb-16 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10 md:gap-16 lg:gap-20">
       <div className="flex-1 min-w-0">
@@ -28,14 +24,10 @@ export default function Intro() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
-          <button
-            type="button"
-            onClick={openModal}
-            className="button-primary"
-          >
+          <ContactModalButton className="button-primary">
             Let&apos;s talk
             <ArrowUpRight size={14} />
-          </button>
+          </ContactModalButton>
 
           <a
             href="#projects"
