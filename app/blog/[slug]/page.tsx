@@ -259,6 +259,7 @@ export default async function BlogPost({
           Back to blog
         </Link>
 
+        {/* <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-x-20 lg:gap-y-0 [&>*]:min-w-0"> */}
         <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-x-20 lg:gap-y-0">
           <header className="mb-0 lg:col-start-1 lg:row-start-1">
             <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">

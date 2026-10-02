@@ -482,7 +482,7 @@ export default async function PostsPage() {
 }
 ```
 
-### What This Code Does
+### How the fetch works
 
 - Defines a Post type so TypeScript knows the shape of the data you’re working with.
 - Fetches data on the server by calling `fetch` inside a Server Component.
@@ -940,7 +940,7 @@ export default function About() {
 }
 ```
 
-### What This Code Does
+### What the Image component gives you
 
 - The image file sits inside the `public/` folder.
 - You reference it with `src="/test-image.png"`
@@ -1085,7 +1085,7 @@ export default async function MoviesPage() {
 }
 ```
 
-### What This Does
+### What the movies page renders
 
 - Fetches the list of popular movies from TMDB
 - Displays movie posters, titles, and descriptions
@@ -1221,7 +1221,7 @@ export default async function MovieDetailsPage({
 }
 ```
 
-### What This Code Does
+### How the details page works
 
 - Fetches movie details from the TMDB API.
 - Checks whether the API request was successful, and if not, it displays an error message.
@@ -1485,7 +1485,7 @@ export default function LoadingMovies() {
 }
 ```
 
-### What This Does
+### How the loading state works
 
 - Next.js automatically shows this file anytime the `/movies` page is waiting for data.
 - The moment the movies are ready to display, this component disappears.
