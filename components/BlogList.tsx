@@ -10,7 +10,7 @@ export default function BlogList({ posts: allPosts }: { posts: typeof allBlogs }
   )
 
   return (
-    <section className="mb-16">
+    <section className="mb-16 rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--muted))] p-6 sm:p-8">
       <h2 className="text-3xl font-semibold mb-4">
         Recent Writing
       </h2>
