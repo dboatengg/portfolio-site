@@ -1,158 +1,181 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { Sun, Moon, Monitor, Check } from 'lucide-react';
 
-const THEME_TRANSITION_MS = 500;
+const themeOptions = [
+  { value: 'light', label: 'Light', Icon: Sun },
+  { value: 'dark', label: 'Dark', Icon: Moon },
+  { value: 'system', label: 'System', Icon: Monitor },
+] as const;
+
+const subscribeToNothing = () => () => {};
 
 export default function ThemeToggle() {
   const { theme, setTheme, systemTheme } = useTheme();
+  const mounted = useSyncExternalStore(subscribeToNothing, () => true, () => false);
+  const id = useId();
   const [open, setOpen] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLFieldSetElement>(null);
 
   const resolvedTheme = theme === 'system' ? systemTheme : theme;
+  const currentThemeLabel = theme === 'system'
+    ? `System · ${resolvedTheme === 'dark' ? 'Dark' : 'Light'}`
+    : theme === 'dark'
+      ? 'Dark'
+      : 'Light';
 
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
+    function handleClickOutside(e: PointerEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setOpen(false);
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('pointerdown', handleClickOutside);
+    return () => document.removeEventListener('pointerdown', handleClickOutside);
   }, []);
 
-  function applyTheme(newTheme: string) {
-    setTheme(newTheme);
-  }
+  useEffect(() => {
+    if (open) {
+      panelRef.current?.querySelector<HTMLInputElement>('input:checked')?.focus();
+    }
+  }, [open]);
 
   async function switchTheme(newTheme: string) {
-    setOpen(false);
-
-    const root = document.documentElement;
-    const btn = btnRef.current;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const compactViewport = window.matchMedia('(max-width: 640px)').matches;
-
-    root.classList.add('theme-transitioning');
-
-    const endTransition = () => root.classList.remove('theme-transitioning');
-
-    if (reducedMotion || compactViewport || !document.startViewTransition || !btn) {
-      applyTheme(newTheme);
-      requestAnimationFrame(() => requestAnimationFrame(endTransition));
+    if (isTransitioning || newTheme === theme) {
+      setOpen(false);
+      btnRef.current?.focus();
       return;
     }
 
-    const rect = btn.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const maxRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
+    setOpen(false);
+    btnRef.current?.focus();
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion || !document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+
+    setIsTransitioning(true);
     try {
       const transition = document.startViewTransition(() => {
-        applyTheme(newTheme);
+        setTheme(newTheme);
       });
-
-      await transition.ready;
-
-      const animation = root.animate(
-        {
-          clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${maxRadius}px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration: THEME_TRANSITION_MS,
-          easing: 'ease-in-out',
-          pseudoElement: '::view-transition-new(root)',
-        }
-      );
-
-      await Promise.all([
-        transition.finished,
-        animation.finished.catch(() => undefined),
-      ]);
+      await transition.finished;
     } catch {
-      applyTheme(newTheme);
+      setTheme(newTheme);
     } finally {
-      endTransition();
+      setIsTransitioning(false);
     }
   }
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  function handlePanelKeyDown(event: React.KeyboardEvent<HTMLFieldSetElement>) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setOpen(false);
+      btnRef.current?.focus();
+    }
+  }
 
-  if (!mounted) return (
-    <button className="p-1 rounded-md border border-[rgb(var(--border))] w-7 h-7" />
-  );
+  function handlePanelBlur(event: React.FocusEvent<HTMLDivElement>) {
+    const nextTarget = event.relatedTarget;
+    if (nextTarget instanceof Node && !event.currentTarget.contains(nextTarget)) {
+      setOpen(false);
+    }
+  }
+
+  function togglePopover() {
+    if (isTransitioning) return;
+    setOpen((wasOpen) => !wasOpen);
+  }
+
+  if (!mounted) {
+    return (
+      <button
+        type="button"
+        disabled
+        aria-label="Theme settings"
+        className="h-10 w-10 rounded-xl border border-[rgb(var(--border))]"
+      />
+    );
+  }
 
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="relative" ref={menuRef} onBlur={handlePanelBlur}>
       <button
         type="button"
         ref={btnRef}
-        onClick={() => setOpen(!open)}
-        aria-label="Theme settings"
-        aria-haspopup="menu"
+        onClick={togglePopover}
+        aria-label={`Theme settings, currently ${currentThemeLabel}`}
         aria-expanded={open}
-        aria-controls="theme-menu"
-        title="Theme settings"
-        className="p-1 rounded-md border border-[rgb(var(--border))] hover:bg-muted transition-colors"
+        aria-controls={`theme-options-${id}`}
+        aria-busy={isTransitioning}
+        title={`Theme: ${currentThemeLabel}`}
+        className="flex h-10 w-10 items-center justify-center rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] text-[rgb(var(--body-text))] shadow-sm transition-[background-color,border-color,color,box-shadow] hover:border-[rgb(var(--ctrl-border))] hover:bg-[rgb(var(--muted))] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--accent))]"
       >
-        {resolvedTheme === 'light' && <Sun className="w-5 h-5 text-[rgb(var(--body-text))]" />}
-        {resolvedTheme === 'dark' && <Moon className="w-5 h-5 text-[rgb(var(--body-text))]" />}
-        {resolvedTheme === 'system' && <Monitor className="w-5 h-5 text-[rgb(var(--body-text))]" />}
+        {resolvedTheme === 'light' ? (
+          <Sun className="h-5 w-5" aria-hidden="true" />
+        ) : (
+          <Moon className="h-5 w-5" aria-hidden="true" />
+        )}
       </button>
 
       {open && (
-        <div id="theme-menu" role="menu" className="absolute right-0 mt-2 w-36 rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--bg))] p-1 shadow-lg overflow-hidden z-50 animate-fadeIn">
-          <button
-            type="button"
-            onClick={() => switchTheme('light')}
-            role="menuitemradio"
-            aria-checked={theme === 'light'}
-            className={`flex items-center gap-2 w-full rounded-md px-2.5 py-1.5 text-left text-sm text-[rgb(var(--body-text))] hover:bg-muted transition
-              ${theme === 'light' ? 'bg-muted font-medium text-[rgb(var(--text))]' : ''}`}
-          >
-            <Sun className="h-4 w-4 shrink-0" />
-            <span className="flex-1">Light</span>
-            {theme === 'light' && <Check className="h-3.5 w-3.5 text-[rgb(var(--accent))]" />}
-          </button>
+        <div className="absolute right-0 z-[60] mt-2 w-52 origin-top-right rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg))] p-2 shadow-xl shadow-black/10 ring-1 ring-black/5 animate-fadeIn dark:shadow-black/30">
+          <div className="mb-2 border-b border-[rgb(var(--border))] px-3 pb-2.5 pt-1">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--muted-text))]">
+              Appearance
+            </p>
+            <p className="mt-1 text-sm font-medium text-[rgb(var(--text))]">
+              {currentThemeLabel}
+            </p>
+          </div>
 
-          <button
-            type="button"
-            onClick={() => switchTheme('dark')}
-            role="menuitemradio"
-            aria-checked={theme === 'dark'}
-            className={`flex items-center gap-2 w-full rounded-md px-2.5 py-1.5 text-left text-sm text-[rgb(var(--body-text))] hover:bg-muted transition
-              ${theme === 'dark' ? 'bg-muted font-medium text-[rgb(var(--text))]' : ''}`}
+          <fieldset
+            ref={panelRef}
+            id={`theme-options-${id}`}
+            onKeyDown={handlePanelKeyDown}
+            disabled={isTransitioning}
+            className="space-y-1"
           >
-            <Moon className="h-4 w-4 shrink-0" />
-            <span className="flex-1">Dark</span>
-            {theme === 'dark' && <Check className="h-3.5 w-3.5 text-[rgb(var(--accent))]" />}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => switchTheme('system')}
-            role="menuitemradio"
-            aria-checked={theme === 'system'}
-            className={`flex items-center gap-2 w-full rounded-md px-2.5 py-1.5 text-left text-sm text-[rgb(var(--body-text))] hover:bg-muted transition
-              ${theme === 'system' ? 'bg-muted font-medium text-[rgb(var(--text))]' : ''}`}
-          >
-            <Monitor className="h-4 w-4 shrink-0" />
-            <span className="flex-1">System</span>
-            {theme === 'system' && <Check className="h-3.5 w-3.5 text-[rgb(var(--accent))]" />}
-          </button>
+            <legend className="sr-only">Choose color theme</legend>
+            {themeOptions.map(({ value, label, Icon }) => {
+              const checked = theme === value;
+              return (
+                <label
+                  key={value}
+                  className={`flex min-h-10 cursor-pointer items-center gap-3 rounded-xl px-3 text-sm transition-colors hover:bg-[rgb(var(--muted))] focus-within:outline-2 focus-within:outline-offset-1 focus-within:outline-[rgb(var(--accent))] ${
+                    checked
+                      ? 'bg-[rgb(var(--muted))] font-medium text-[rgb(var(--text))]'
+                      : 'text-[rgb(var(--body-text))]'
+                  } ${isTransitioning ? 'cursor-wait opacity-60' : ''}`}
+                >
+                  <input
+                    type="radio"
+                    name={`site-theme-${id}`}
+                    value={value}
+                    checked={checked}
+                    onChange={() => switchTheme(value)}
+                    className="peer sr-only"
+                  />
+                  <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <span className="flex-1">{label}</span>
+                  {checked && (
+                    <Check
+                      className="h-4 w-4 shrink-0 text-[rgb(var(--accent))]"
+                      aria-hidden="true"
+                    />
+                  )}
+                </label>
+              );
+            })}
+          </fieldset>
         </div>
       )}
     </div>
