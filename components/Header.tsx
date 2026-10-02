@@ -1,13 +1,16 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { Menu, X, PenLine, User, BookOpen, ArrowUpRight, Home } from "lucide-react"
+import { useRef } from "react"
+import { Menu, X, PenLine, User, BookOpen, ArrowUpRight, Home, BriefcaseBusiness } from "lucide-react"
 import Logo from "./Logo"
 import ThemeToggle from "./ThemeToggle"
 import { useContactModal } from "@/contexts/ContactModalContext"
 
 const navLinks = [
+  { href: "/#projects", label: "Work", icon: BriefcaseBusiness },
   { href: "/blog", label: "Blog", icon: PenLine },
   { href: "/about", label: "About", icon: User },
   { href: "/guestbook", label: "Guestbook", icon: BookOpen },
@@ -15,20 +18,69 @@ const navLinks = [
 
 const mobileNavLinks = [
   { href: "/", label: "Home", icon: Home },
-  ...navLinks,
+  navLinks[0],
+  ...navLinks.slice(1),
 ]
 
 export default function Header() {
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const mobileNavigationRef = useRef<HTMLDivElement>(null)
   const { openModal } = useContactModal()
 
   const closeMenu = () => setIsMenuOpen(false)
+
+  const isLinkActive = (href: string) => {
+    if (href === "/#projects") return pathname.startsWith("/projects")
+    if (href === "/") return pathname === "/"
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
 
   const handleTalkClick = () => {
     closeMenu()
     openModal()
   }
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+
+    mobileNavigationRef.current?.querySelector<HTMLAnchorElement>("a")?.focus({
+      preventScroll: true,
+    })
+
+    const handleMenuKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault()
+        closeMenu()
+        menuButtonRef.current?.focus()
+        return
+      }
+
+      if (event.key === "Tab") {
+        const links = mobileNavigationRef.current?.querySelectorAll<HTMLAnchorElement>("a[href]")
+        if (!links?.length) return
+
+        const firstLink = links[0]
+        const lastLink = links[links.length - 1]
+        const activeElement = document.activeElement
+
+        if (event.shiftKey && activeElement === firstLink) {
+          event.preventDefault()
+          lastLink.focus()
+        } else if (!event.shiftKey && activeElement === lastLink) {
+          event.preventDefault()
+          firstLink.focus()
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleMenuKeyDown)
+    return () => {
+      document.removeEventListener("keydown", handleMenuKeyDown)
+    }
+  }, [isMenuOpen])
 
   // Hide on scroll down, show on scroll up
   useEffect(() => {
@@ -109,15 +161,24 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-text">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="hover:text-accent transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = isLinkActive(link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`relative py-2 transition-colors hover:text-[rgb(var(--accent))] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--accent))] ${
+                    active ? "text-[rgb(var(--accent))]" : "text-[rgb(var(--text))]"
+                  }`}
+                >
+                  {link.label}
+                  {active && (
+                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-[rgb(var(--accent))]" />
+                  )}
+                </Link>
+              )
+            })}
 
             <button
               type="button"
@@ -136,6 +197,7 @@ export default function Header() {
             <ThemeToggle />
             <button
               type="button"
+              ref={menuButtonRef}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="relative flex h-10 w-10 items-center justify-center rounded-md border border-[rgb(var(--border))] text-[rgb(var(--text))] transition-colors hover:bg-[rgb(var(--muted))]"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -164,12 +226,14 @@ export default function Header() {
       {/* Full-screen Mobile Menu Overlay */}
       <div
         id="mobile-navigation"
+        ref={mobileNavigationRef}
         className={`fixed inset-0 z-40 md:hidden bg-[rgb(var(--bg))] flex flex-col transition-opacity duration-300 ${
           isMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
       >
         <div className="h-[57px] shrink-0" />
 
@@ -179,13 +243,17 @@ export default function Header() {
         >
           {mobileNavLinks.map((link, i) => {
             const Icon = link.icon
+            const active = isLinkActive(link.href)
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
                 tabIndex={isMenuOpen ? 0 : -1}
-                className={`group flex items-center gap-4 border-b border-[rgb(var(--border))] py-5 text-4xl font-semibold text-[rgb(var(--text))] transition-all duration-300 hover:text-[rgb(var(--accent))] ${
+                aria-current={active ? "page" : undefined}
+                className={`group flex items-center gap-4 border-b border-[rgb(var(--border))] py-5 text-4xl font-semibold transition-all duration-300 hover:text-[rgb(var(--accent))] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--accent))] ${
+                  active ? "text-[rgb(var(--accent))]" : "text-[rgb(var(--text))]"
+                } ${
                   isMenuOpen
                     ? "translate-x-0 opacity-100"
                     : "translate-x-4 opacity-0"
@@ -194,7 +262,7 @@ export default function Header() {
               >
                 <Icon
                   size={28}
-                  className="text-[rgb(var(--muted-text))] transition-colors group-hover:text-[rgb(var(--accent))]"
+                  className={`transition-colors group-hover:text-[rgb(var(--accent))] ${active ? "text-[rgb(var(--accent))]" : "text-[rgb(var(--muted-text))]"}`}
                 />
                 <span>{link.label}</span>
               </Link>
