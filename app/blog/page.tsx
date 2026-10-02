@@ -1,6 +1,5 @@
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { formatShortDate } from "@/utils/formatShortDate";
 import { Metadata } from "next";
 
@@ -43,12 +42,13 @@ export default function BlogPage() {
   return (
     <section className="py-10">
       {/* Header */}
-      <header className="mb-12">
+      <header className="mb-16">
         <h1 className="text-3xl md:text-4xl font-semibold text-[rgb(var(--text))] mb-3">
           Blog
         </h1>
-        <p className="text-base text-[rgb(var(--muted-text))] max-w-2xl">
-          I write about web development in plain, easy-to-follow language.
+        <p className="text-base text-[rgb(var(--muted-text))] max-w-2xl leading-relaxed">
+          Notes on web development, backend engineering, and the things I learn
+          while building software.
         </p>
       </header>
 
@@ -60,47 +60,35 @@ export default function BlogPage() {
       )}
 
       {/* Blog List */}
-      <div className="space-y-12">
+      <div className="space-y-16">
         {years.map((year) => (
           <section key={year}>
-            <h2 className="text-sm font-medium uppercase tracking-wider text-[rgb(var(--muted-text))] mb-4">
-              {year}
-            </h2>
+            <div className="flex items-center gap-4 mb-6">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--muted-text))]">
+                {year}
+              </h2>
+              <div className="flex-1 h-px bg-[rgb(var(--divide))]" />
+            </div>
 
-            <ul className="space-y-5">
+            <ul className="space-y-6">
               {postsByYear[year].map((post, index) => (
-                <li
-                  key={post._id}
-                  className={`pb-3 ${
-                    index !== postsByYear[year].length - 1
-                      ? "border-b border-[rgb(var(--divide))]"
-                      : ""
-                  }`}
-                >
+                <li key={post._id}>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group flex flex-col gap-2 w-full"
+                    className="group block py-1"
                   >
-                    <div className="flex items-start justify-between gap-4 w-full">
-                      <h3 className="min-w-0 flex-1 text-base font-medium text-[rgb(var(--text))] group-hover:underline">
+                    <div className="flex flex-col gap-1.5 sm:grid sm:grid-cols-[1fr_auto] sm:gap-x-8 sm:items-baseline">
+                      <h3 className="text-lg font-medium text-[rgb(var(--text))] group-hover:underline underline-offset-4 decoration-1">
                         {post.title}
                       </h3>
 
-                      <div className="hidden sm:flex items-center gap-3 shrink-0 pt-0.5">
-                        <time className="text-xs text-[rgb(var(--muted-text))] whitespace-nowrap">
-                          {formatShortDate(post.date)}
-                        </time>
-
-                        <ArrowRight
-                          size={15}
-                          aria-hidden="true"
-                          className="text-[rgb(var(--muted-text))] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-[rgb(var(--text))]"
-                        />
-                      </div>
+                      <time className="text-xs sm:text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap">
+                        {formatShortDate(post.date)}
+                      </time>
                     </div>
 
                     {post.summary && (
-                      <p className="w-full text-sm text-[rgb(var(--muted-text))]">
+                      <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-[rgb(var(--muted-text))]">
                         {post.summary}
                       </p>
                     )}
