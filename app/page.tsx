@@ -74,16 +74,16 @@ const publishedBlogs = allBlogs.filter((post) => post.published !== false);
 
 export default function HomePage() {
   return (
-    <main>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Intro />
-      <BlogList posts={publishedBlogs} />
-      <Services/>
       <Projects />
-      <CtaSection/>
-    </main>
+      <BlogList posts={publishedBlogs} />
+      <Services />
+      <CtaSection />
+    </>
   );
 }

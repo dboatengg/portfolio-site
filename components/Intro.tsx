@@ -8,7 +8,7 @@ export default function Intro() {
   const { openModal } = useContactModal();
 
   return (
-    <section className="animate-intro-in mb-24 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10 md:gap-16 lg:gap-20">
+    <section className="animate-intro-in mb-16 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10 md:gap-16 lg:gap-20">
       <div className="flex-1 min-w-0">
         <h1 className="text-2xl md:text-3xl font-semibold text-[rgb(var(--text))] mb-2">
           Dickson Boateng

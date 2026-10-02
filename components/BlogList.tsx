@@ -10,7 +10,7 @@ export default function BlogList({ posts: allPosts }: { posts: typeof allBlogs }
   )
 
   return (
-    <section className="mb-24">
+    <section className="mb-16">
       <h2 className="text-3xl font-semibold mb-4">
         Recent Writing
       </h2>
