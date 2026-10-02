@@ -14,7 +14,7 @@ const services = [
     description:
       "I build clean, professional websites that clearly explain what you do and make it effortless for your customers to reach out to you.",
     icon: Globe,
-    gradient: "from-slate-700 to-blue-900",
+    gradient: "from-blue-500 to-purple-600",
   },
   {
     number: "02",
@@ -22,7 +22,7 @@ const services = [
     description:
       "I build e-commerce websites where your customers can pay with MoMo or card, and you also get a full dashboard to manage products, orders, etc. yourself.",
     icon: ShoppingBag,
-    gradient: "from-slate-600 to-emerald-900",
+    gradient: "from-emerald-500 to-teal-700",
   },
   {
     number: "03",
@@ -30,7 +30,7 @@ const services = [
     description:
       "Need more than a standard website? I build custom full-stack applications from the ground up to solve the specific, unique problems your business is facing.",
     icon: LayoutDashboard,
-    gradient: "from-slate-700 to-indigo-900",
+    gradient: "from-indigo-500 to-blue-700",
   },
   {
     number: "04",
@@ -38,7 +38,7 @@ const services = [
     description:
       "Already have a site that's slow, broken, or impossible to update? I step in to fix the mess and make sure you have a site you're actually proud of.",
     icon: Wrench,
-    gradient: "from-slate-700 to-amber-900",
+    gradient: "from-orange-500 to-red-600",
   },
 ];
 

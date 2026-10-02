@@ -303,15 +303,21 @@ export default async function BlogPost({
                   <li key={post.slug} className="!m-0">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="group flex flex-col gap-1 sm:grid sm:grid-cols-[auto_1fr] sm:gap-x-10 sm:items-baseline py-1"
+                      className="group flex flex-col gap-1.5 sm:grid sm:grid-cols-[1fr_auto] sm:gap-x-8 sm:items-baseline py-1"
                     >
-                      <time className="text-xs sm:text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap">
+                      <h3 className="text-base font-medium text-[rgb(var(--text))] sm:order-1">
+                        {post.title}
+                      </h3>
+
+                      {post.summary && (
+                        <p className="text-sm leading-relaxed text-[rgb(var(--muted-text))] sm:col-start-1 sm:order-2">
+                          {post.summary}
+                        </p>
+                      )}
+
+                      <time className="text-xs sm:text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap sm:order-3 sm:col-start-2 sm:row-start-1">
                         {postDate ? formatDate(postDate) : ""}
                       </time>
-
-                      <span className="text-base font-medium text-[rgb(var(--text))]">
-                        {post.title}
-                      </span>
                     </Link>
                   </li>
                 )

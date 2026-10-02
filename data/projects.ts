@@ -3,6 +3,7 @@ export type Project = {
   title: string;
   description: string;
   gradient: string;
+  cover?: string;
   live?: string;
   github?: string;          
   githubOnDetail?: string;  
@@ -37,6 +38,7 @@ export const projects: Project[] = [
   description:
     "A full-stack real estate platform that connects clients with property agents. Built with Next.js, Express, PostgreSQL, Prisma, etc.",
   gradient: "from-emerald-500 to-teal-700",
+  cover: "/cover/capstone-cover.webp",
   live: "https://capstone-frontend-rust.vercel.app/",
   githubOnDetail: "https://github.com/dboatengg/capstone",
   learnMore: true,
@@ -110,6 +112,7 @@ export const projects: Project[] = [
   description:
     "A full website for an auto electrical repair shop in Kumasi, with an online shop where customers can buy parts, and an admin panel the owner uses to manage everything.",
   gradient: "from-[#C81E1E] to-[#F2A900]",
+  cover: "/cover/spark-and-drive-cover.webp",
   live: "https://spark-and-drive-auto.vercel.app/",
   githubPrivate: true,
   learnMore: true,
@@ -201,6 +204,7 @@ export const projects: Project[] = [
   description:
     "A full-stack website for an Apple phone shop in Madina, Accra. Customers can browse iPhones, request a swap, sell their old phone, or apply for an installment plan.",
   gradient: "from-[#d81159] to-[#2451c4]",
+  cover: "/cover/icenter-ghana-cover.webp",
   live: "https://icenter-ghana.vercel.app/",
   githubPrivate: true,
   learnMore: true,

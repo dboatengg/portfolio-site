@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
@@ -13,23 +14,33 @@ export default function Projects() {
             className="animate-project-in group relative rounded-3xl overflow-hidden border border-[rgb(var(--border))] bg-[rgb(var(--card))] shadow-lg transition-all duration-500 hover:shadow-xl flex flex-col"
             style={{ "--project-delay": `${index * 0.15}s` } as React.CSSProperties}
           >
-            {/* TOP COLOR SECTION */}
+            {/* PROJECT PREVIEW */}
             <div
-              className={`relative h-40 w-full rounded-t-3xl bg-linear-to-br ${project.gradient} flex items-end px-6 pb-4 overflow-hidden`}
+              className={`relative h-48 w-full bg-linear-to-br ${project.gradient} flex items-end px-6 pb-5 overflow-hidden sm:h-56`}
             >
-              <div className="absolute inset-0 opacity-[0.07] bg-[url('/images/diagonal-lines.svg')] bg-cover" />
+              {project.cover && (
+                <Image
+                  src={project.cover}
+                  alt={`${project.title} website preview`}
+                  fill
+                  sizes="(min-width: 768px) 416px, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/5" />
 
-              <span className="relative text-5xl font-extrabold text-white/40 select-none">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <div className="relative flex w-full items-end justify-between gap-4">
+                <h3 className="text-xl font-semibold text-white drop-shadow sm:text-2xl">
+                  {project.title}
+                </h3>
+                <span className="text-sm font-semibold tracking-widest text-white/80 drop-shadow">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
             </div>
 
             {/* BOTTOM SECTION */}
             <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-lg font-semibold text-[rgb(var(--text))]">
-                {project.title}
-              </h3>
-
               <p className="text-[rgb(var(--muted-text))] text-sm leading-relaxed mt-2 mb-6">
                 {project.description}
               </p>

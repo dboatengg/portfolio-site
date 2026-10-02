@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Lock, Github } from "lucide-react";
 import { projects } from "@/data/projects";
 import ProjectScreenshots from "@/components/ProjectScreenshots";
@@ -51,10 +52,19 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       {/* Hero */}
       <div
-        className={`relative h-56 w-full rounded-3xl bg-linear-to-br ${project.gradient} flex items-end px-8 pb-6 overflow-hidden mb-8`}
+        className={`relative isolate aspect-video w-full rounded-3xl ${project.cover ? "" : `bg-linear-to-br ${project.gradient}`} flex items-end px-8 pb-6 overflow-hidden mb-8`}
       >
-        <div className="absolute inset-0 opacity-[0.07] bg-[url('/images/diagonal-lines.svg')] bg-cover" />
-        <h1 className="relative text-3xl md:text-4xl font-bold text-white">
+        {project.cover && (
+          <Image
+            src={project.cover}
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 896px) 832px, 100vw"
+            className="object-cover brightness-75"
+          />
+        )}
+        <h1 className="relative z-20 text-3xl md:text-4xl font-bold text-white drop-shadow-md">
           {project.title}
         </h1>
       </div>
