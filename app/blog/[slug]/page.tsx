@@ -250,7 +250,7 @@ export default async function BlogPost({
 
       <ReadingProgress />
 
-      <article className="prose dark:prose-invert max-w-3xl mx-auto pt-10 pb-20 prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight">
+      <article className="mx-auto max-w-5xl pt-10 pb-20">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm text-[rgb(var(--muted-text))] hover:text-[rgb(var(--text))] transition-colors mb-10"
@@ -259,85 +259,89 @@ export default async function BlogPost({
           Back to blog
         </Link>
 
-        <header className="mb-10">
-          <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">
-            {frontmatter.title}
-          </h1>
+        <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-x-20 lg:gap-y-0">
+          <header className="mb-0 lg:col-start-1 lg:row-start-1">
+            <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">
+              {frontmatter.title}
+            </h1>
 
-          <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
-            {date && <span>{formatDate(date)}</span>}
-            <span>•</span>
-            <span>{readingTime}</span>
-          </div>
-
-          {lastModifiedDate !== date && (
-            <p className="mt-3 text-sm text-[rgb(var(--muted-text))]">
-              Last updated {formatDate(lastModifiedDate)}
-            </p>
-          )}
-        </header>
-
-        <TableOfContents headings={headings} />
-
-        {content}
-
-        {relatedPosts.length > 0 && (
-          <section
-            className="mt-20 pt-10 border-t border-[rgb(var(--border))]"
-            aria-labelledby="related-posts-heading"
-          >
-            <h2
-              id="related-posts-heading"
-              className="!text-xl !mt-0 !mb-8 !font-semibold !text-[rgb(var(--text))] !no-underline !border-0 !pb-0"
-            >
-              Related posts
-            </h2>
-
-            <ul className="!not-prose space-y-5 !p-0 !m-0">
-              {relatedPosts.map((post) => {
-                const postDate = post.date
-                  ? new Date(post.date).toISOString().split("T")[0]
-                  : undefined
-
-                return (
-                  <li key={post.slug} className="!m-0">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="group flex flex-col gap-1.5 sm:grid sm:grid-cols-[1fr_auto] sm:gap-x-8 sm:items-baseline py-1"
-                    >
-                      <h3 className="text-base font-medium text-[rgb(var(--text))] sm:order-1">
-                        {post.title}
-                      </h3>
-
-                      {post.summary && (
-                        <p className="text-sm leading-relaxed text-[rgb(var(--muted-text))] sm:col-start-1 sm:order-2">
-                          {post.summary}
-                        </p>
-                      )}
-
-                      <time className="text-xs sm:text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap sm:order-3 sm:col-start-2 sm:row-start-1">
-                        {postDate ? formatDate(postDate) : ""}
-                      </time>
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-
-            <div className="mt-10">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-sm font-medium text-[rgb(var(--text))] hover:underline underline-offset-4"
-              >
-                <ArrowLeft size={15} />
-                All posts
-              </Link>
+            <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
+              {date && <span>{formatDate(date)}</span>}
+              <span>•</span>
+              <span>{readingTime}</span>
             </div>
-          </section>
-        )}
 
-        <div className="my-16" aria-hidden="true" />
-        <GiscusComments />
+            {lastModifiedDate !== date && (
+              <p className="mt-3 text-sm text-[rgb(var(--muted-text))]">
+                Last updated {formatDate(lastModifiedDate)}
+              </p>
+            )}
+          </header>
+
+          <TableOfContents headings={headings} />
+
+          <div className="order-3 min-w-0 prose dark:prose-invert max-w-none prose-p:leading-8 prose-p:mb-6 prose-headings:tracking-tight lg:order-none lg:col-start-1 lg:row-start-2">
+            {content}
+
+            {relatedPosts.length > 0 && (
+              <section
+                className="mt-20 pt-10 border-t border-[rgb(var(--border))]"
+                aria-labelledby="related-posts-heading"
+            >
+                <h2
+                  id="related-posts-heading"
+                  className="!text-xl !mt-0 !mb-8 !font-semibold !text-[rgb(var(--text))] !no-underline !border-0 !pb-0"
+                >
+                  Related posts
+                </h2>
+
+                <ul className="!not-prose space-y-5 !p-0 !m-0">
+                  {relatedPosts.map((post) => {
+                    const postDate = post.date
+                      ? new Date(post.date).toISOString().split("T")[0]
+                      : undefined
+
+                    return (
+                      <li key={post.slug} className="!m-0">
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="group flex flex-col gap-1.5 sm:grid sm:grid-cols-[1fr_auto] sm:gap-x-8 sm:items-baseline py-1"
+                        >
+                          <h3 className="text-base font-medium text-[rgb(var(--text))] sm:order-1">
+                            {post.title}
+                          </h3>
+
+                          {post.summary && (
+                            <p className="text-sm leading-relaxed text-[rgb(var(--muted-text))] sm:col-start-1 sm:order-2">
+                              {post.summary}
+                            </p>
+                          )}
+
+                          <time className="text-xs sm:text-sm text-[rgb(var(--muted-text))] tabular-nums whitespace-nowrap sm:order-3 sm:col-start-2 sm:row-start-1">
+                            {postDate ? formatDate(postDate) : ""}
+                          </time>
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+
+                <div className="mt-10">
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[rgb(var(--text))] hover:underline underline-offset-4"
+                  >
+                    <ArrowLeft size={15} />
+                    All posts
+                  </Link>
+                </div>
+              </section>
+            )}
+
+            <div className="my-16" aria-hidden="true" />
+            <GiscusComments />
+          </div>
+        </div>
       </article>
     </>
   )
