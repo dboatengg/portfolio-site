@@ -54,27 +54,27 @@ export default function ProjectScreenshots({
               {sectionName}
             </h3>
 
-            <div className="space-y-8">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-5">
               {items.map(({ shot, globalIndex }) => (
                 <figure key={globalIndex}>
                   <button
                     type="button"
                     onClick={() => setLightboxIndex(globalIndex)}
-                    className="group relative w-full aspect-video overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] cursor-zoom-in"
+                    className="group relative w-full aspect-video overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] shadow-sm cursor-zoom-in transition-[border-color,box-shadow] hover:border-[rgb(var(--ctrl-border))] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg))]"
                     aria-label={`View ${shot.alt} full size`}
                   >
                     <RevealImage
                       src={shot.src}
                       alt={shot.alt}
                       containerClassName="absolute inset-0"
-                      sizes="(min-width: 768px) 720px, 100vw"
-                      className="transition-transform duration-300 group-hover:scale-[1.02]"
-                      style={{ objectFit: "cover", objectPosition: "top" }}
+                      sizes="(min-width: 768px) 360px, 100vw"
+                      className="object-contain"
+                      style={{ objectFit: "contain", objectPosition: "center" }}
                     />
                   </button>
 
                   {shot.caption && (
-                    <figcaption className="mt-3 text-sm text-[rgb(var(--muted-text))] text-center">
+                    <figcaption className="mt-3 text-sm leading-relaxed text-[rgb(var(--muted-text))]">
                       {shot.caption}
                     </figcaption>
                   )}
