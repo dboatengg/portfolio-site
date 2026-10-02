@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import RevealImage from "@/components/RevealImage";
 import ImageLightbox, { LightboxImage } from "./ImageLightbox";
 
 export type Screenshot = {
@@ -63,10 +63,10 @@ export default function ProjectScreenshots({
                     className="group relative w-full aspect-video overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] cursor-zoom-in"
                     aria-label={`View ${shot.alt} full size`}
                   >
-                    <Image
+                    <RevealImage
                       src={shot.src}
                       alt={shot.alt}
-                      fill
+                      containerClassName="absolute inset-0"
                       sizes="(min-width: 768px) 720px, 100vw"
                       className="transition-transform duration-300 group-hover:scale-[1.02]"
                       style={{ objectFit: "cover", objectPosition: "top" }}

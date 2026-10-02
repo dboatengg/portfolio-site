@@ -65,7 +65,7 @@ export default function AboutPage() {
           About
         </h1>
         <p className="text-[rgb(var(--muted-text))]">
-          A short note on how I got into software and what I do now.
+          A short note about my background and interests.
         </p>
       </header>
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useCallback } from "react";
-import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import RevealImage from "@/components/RevealImage";
 
 export type LightboxImage = {
   src: string;
@@ -101,13 +101,13 @@ export default function ImageLightbox({
         )}
 
         <div className="relative w-full h-full">
-          <Image
+          <RevealImage
+            key={current.src}
             src={current.src}
             alt={current.alt}
-            fill
+            containerClassName="absolute inset-0"
             sizes="100vw"
             className="object-contain"
-            priority
           />
         </div>
 
