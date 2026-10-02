@@ -47,8 +47,8 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="text-base text-[rgb(var(--muted-text))] max-w-2xl leading-relaxed">
-          Notes on web development, backend engineering, and the things I learn
-          while building software.
+          The goal is to keep writing, then look back in five years and see how
+          much I&apos;ve improved at putting my thoughts into words.
         </p>
       </header>
 
@@ -71,7 +71,7 @@ export default function BlogPage() {
             </div>
 
             <ul className="space-y-6">
-              {postsByYear[year].map((post, index) => (
+              {postsByYear[year].map((post) => (
                 <li key={post._id}>
                   <Link
                     href={`/blog/${post.slug}`}
