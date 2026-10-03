@@ -456,7 +456,7 @@ textarea, input {
   font-family: var(--font-serif);
   line-height: 1.8;
   font-size: 1.0625rem;
-  max-width: min(70ch, 100%);
+  max-width: 100%;
   margin: 0 auto;
   --tw-prose-body: rgb(var(--body-text));
   --tw-prose-headings: rgb(var(--text));
@@ -691,4 +691,9 @@ pre [data-highlighted-line] {
   .prose pre code {
     font-size: 0.75rem;
   }
+}
+
+/* Allow the blog post layout to be wider than other pages */
+main:has(.blog-post-wide) {
+  max-width: 72rem; /* ~1152px */
 }

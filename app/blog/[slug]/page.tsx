@@ -249,8 +249,9 @@ export default async function BlogPost({
       />
 
       <ReadingProgress />
+      
 
-      <article className="mx-auto max-w-5xl pt-10 pb-20">
+        <article className="blog-post-wide mx-auto max-w-4xl pt-10 pb-20">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm text-[rgb(var(--muted-text))] hover:text-[rgb(var(--text))] transition-colors mb-10"
