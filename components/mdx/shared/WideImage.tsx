@@ -1,24 +1,31 @@
-// components/mdx/shared/WideImage.tsx
-import RevealImage from "@/components/RevealImage"
+import Image from "next/image"
 
 interface WideImageProps {
-  src?: string
-  alt?: string
+  src: string
+  alt: string
+  width?: number
+  height?: number
 }
 
-export default function WideImage({ src, alt }: WideImageProps) {
+export default function WideImage({
+  src,
+  alt,
+  width = 1200,
+  height = 800,
+}: WideImageProps) {
   if (!src) return null
   if (alt === undefined) {
     throw new Error(`Missing alt text for MDX image: ${src}`)
   }
 
   return (
-    <span className="block relative my-8 aspect-video shadow-lg overflow-hidden rounded-lg -mx-5 w-[calc(100%+2.5rem)] sm:-mx-6 sm:w-[calc(100%+3rem)] md:-mx-12 md:w-[calc(100%+6rem)]">
-      <RevealImage
+    <span className="block my-8 -mx-5 sm:-mx-6 md:-mx-12">
+      <Image
         src={src}
         alt={alt}
-        containerClassName="absolute inset-0"
-        className="object-cover"
+        width={width}
+        height={height}
+        className="w-full h-auto rounded-lg shadow-lg"
         sizes="(max-width: 768px) 100vw, 768px"
       />
     </span>
