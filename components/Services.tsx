@@ -4,6 +4,8 @@ import {
   ShoppingBag,
   LayoutDashboard,
   Wrench,
+  CreditCard,
+  Smartphone,
 } from "lucide-react";
 import ContactModalButton from "@/components/ContactModalButton";
 
@@ -12,7 +14,7 @@ const services = [
     number: "01",
     title: "Business websites",
     description:
-      "I build clean, professional websites that clearly explain what you do and make it effortless for your customers to reach out to you.",
+      "I build clean, professional websites that clearly explain what you do and make it easy for your customers to reach out to you.",
     icon: Globe,
     gradient: "from-blue-500 to-purple-600",
   },
@@ -20,7 +22,7 @@ const services = [
     number: "02",
     title: "Online shops",
     description:
-      "I build e-commerce websites where your customers can pay with MoMo or card, and you also get a full dashboard to manage products, orders, etc. yourself.",
+      "I build full e-commerce websites where your customers can pay with MoMo or bank, and you also get a full dashboard to manage products, orders, etc. yourself.",
     icon: ShoppingBag,
     gradient: "from-emerald-500 to-teal-700",
   },
@@ -34,6 +36,22 @@ const services = [
   },
   {
     number: "04",
+    title: "Payment integration",
+    description:
+      "I connect Paystack, Flutterwave, or MoMo to your site so your customers can pay you directly without any stress.",
+    icon: CreditCard,
+    gradient: "from-violet-500 to-fuchsia-600",
+  },
+  {
+    number: "05",
+    title: "Progressive web apps",
+    description:
+      "Your customers can install your website on their phone. It works exactly like a mobile app but no play store or app store is needed.",
+    icon: Smartphone,
+    gradient: "from-cyan-500 to-blue-600",
+  },
+  {
+    number: "06",
     title: "Fixes & upkeep",
     description:
       "Already have a site that's slow, broken, or impossible to update? I step in to fix the mess and make sure you have a site you're actually proud of.",
@@ -47,7 +65,7 @@ export default function Services() {
     <section id="services" className="mb-16">
       <h2 className="section-heading">What I can build for you</h2>
 
-      <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => {
           const Icon = service.icon;
 
