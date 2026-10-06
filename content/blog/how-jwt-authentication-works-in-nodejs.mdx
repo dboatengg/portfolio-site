@@ -161,19 +161,11 @@ The server's first job, before doing anything else with a request, is to check t
 
 That middleware pulls the token out of the request, signs the header and payload again using the server's secret key, then compares the result to the signature already on the token.
 
-<RequestVerifyDiagram />
+![RequestVerifyDiagram](/blog/jwt/request-flow.png)
 
 If they match, the server knows the token is genuine and hasn't been modified. It can now safely read the payload to find information about the user, such as their user ID or role, and use that information to decide what they are allowed to do.
 
 If they don't match, or the token is missing or expired, the request gets rejected immediately. Whatever you were trying to do, load a page, post something, doesn't happen.
-
-
-
-
-
-
-
-
 
 ## Access tokens vs refresh tokens
 
@@ -199,7 +191,7 @@ It’s usually stored more carefully than the access token too, often in a place
 
 So here’s how the two work together: when you first log in, the server hands you both an access token and a refresh token. 
 
-<TokenTimelineDiagram />
+![TokenTimelineDiagram](/blog/jwt/TokenTimelineDiagram.png)
 
 You use the access token as normal, on every request, until it eventually expires. When that happens, instead of logging in again, your browser quietly sends the refresh token to the server, which checks that refresh token to see if it’s valid and issue a brand-new access token.
 
