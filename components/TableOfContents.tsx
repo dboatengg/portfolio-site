@@ -60,7 +60,15 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
     const updateActiveHeading = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const activationLine = 140;
+        // Account for sticky navbar (56px) + optional sticky mobile TOC bar (48px)
+        // plus the scroll-margin-top (80px) applied to headings. Using a value
+        // slightly below the landing position ensures the just-clicked heading
+        // gets marked active, not the one above it.
+        const navbarHeight = 56;
+        const mobileTocHeight = window.innerWidth < 1024 ? 48 : 0;
+        const scrollMargin = 80;
+        const activationLine = navbarHeight + mobileTocHeight + scrollMargin + 20;
+
         let currentId = headings[0].id;
 
         for (const heading of headings) {
