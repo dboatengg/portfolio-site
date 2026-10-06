@@ -32,80 +32,80 @@ export const projects: Project[] = [
   //   gradient: "from-blue-500 to-purple-600",
   //   github: "https://github.com/dboatengg/portfolio-site",
   // },
-{
-  slug: "capstone",
-  title: "Capstone",
-  description:
-    "A full-stack real estate platform that connects clients with property agents. Built with Next.js, Express, PostgreSQL, Prisma, etc.",
-  gradient: "from-emerald-500 to-teal-700",
-  cover: "/cover/capstone-cover.webp",
-  live: "https://capstone-frontend-rust.vercel.app/",
-  githubOnDetail: "https://github.com/dboatengg/capstone",
-  learnMore: true,
-  detail: {
-    tagline: "Connecting clients with property agents in one place.",
-    overview: [
-      "Capstone is a full-stack real estate platform designed to make property discovery and agent communication easier.",
-      "Clients can browse listings, filter by location and price, and reach out to agents directly. Agents get a dashboard to manage listings, and admins can moderate the platform.",
-    ],
-    features: [
-      "Property listings with location and price filters",
-      "Agent profiles with contact and messaging",
-      "Saved properties and search history",
-      "Agent dashboard for managing listings",
-      "Admin moderation panel",
-    ],
-    tech: ["Next.js", "Express", "PostgreSQL", "Prisma", "Tailwind CSS"],
-    screenshots: [
-  // Customer-facing
-  {
-    src: "/projects/capstone/home.png",
-    alt: "Capstone homepage",
-    caption: "Landing page with featured listings",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/capstone/listings.png",
-    alt: "Property listings page",
-    caption: "Browse and filter properties by location and price",
-    section: "Customer-facing",
-  },
-  {
-    src: "/projects/capstone/detail.png",
-    alt: "Property detail page",
-    caption: "Property detail with agent contact",
-    section: "Customer-facing",
-  },
-  // Auth
-  {
-    src: "/projects/capstone/login.png",
-    alt: "Login page",
-    caption: "Sign in for agents and clients",
-    section: "Auth",
-  },
-  {
-    src: "/projects/capstone/signup.png",
-    alt: "Signup page",
-    caption: "Create an account as a client or agent",
-    section: "Auth",
-  },
+// {
+//   slug: "capstone",
+//   title: "Capstone",
+//   description:
+//     "A full-stack real estate platform that connects clients with property agents. Built with Next.js, Express, PostgreSQL, Prisma, etc.",
+//   gradient: "from-emerald-500 to-teal-700",
+//   cover: "/cover/capstone-cover.webp",
+//   live: "https://capstone-frontend-rust.vercel.app/",
+//   githubOnDetail: "https://github.com/dboatengg/capstone",
+//   learnMore: true,
+//   detail: {
+//     tagline: "Connecting clients with property agents in one place.",
+//     overview: [
+//       "Capstone is a full-stack real estate platform designed to make property discovery and agent communication easier.",
+//       "Clients can browse listings, filter by location and price, and reach out to agents directly. Agents get a dashboard to manage listings, and admins can moderate the platform.",
+//     ],
+//     features: [
+//       "Property listings with location and price filters",
+//       "Agent profiles with contact and messaging",
+//       "Saved properties and search history",
+//       "Agent dashboard for managing listings",
+//       "Admin moderation panel",
+//     ],
+//     tech: ["Next.js", "Express", "PostgreSQL", "Prisma", "Tailwind CSS"],
+//     screenshots: [
+//   // Customer-facing
+//   {
+//     src: "/projects/capstone/home.png",
+//     alt: "Capstone homepage",
+//     caption: "Landing page with featured listings",
+//     section: "Customer-facing",
+//   },
+//   {
+//     src: "/projects/capstone/listings.png",
+//     alt: "Property listings page",
+//     caption: "Browse and filter properties by location and price",
+//     section: "Customer-facing",
+//   },
+//   {
+//     src: "/projects/capstone/detail.png",
+//     alt: "Property detail page",
+//     caption: "Property detail with agent contact",
+//     section: "Customer-facing",
+//   },
+//   // Auth
+//   {
+//     src: "/projects/capstone/login.png",
+//     alt: "Login page",
+//     caption: "Sign in for agents and clients",
+//     section: "Auth",
+//   },
+//   {
+//     src: "/projects/capstone/signup.png",
+//     alt: "Signup page",
+//     caption: "Create an account as a client or agent",
+//     section: "Auth",
+//   },
 
-  // Admin
-  {
-    src: "/projects/capstone/admin-dashboard.png",
-    alt: "Admin dashboard",
-    caption: "Overview of listings, users, and activity",
-    section: "Admin",
-  },
-  {
-    src: "/projects/capstone/admin-listings.png",
-    alt: "Admin listings",
-    caption: "Manage and moderate property listings",
-    section: "Admin",
-  },
-],
-  },
-},
+//   // Admin
+//   {
+//     src: "/projects/capstone/admin-dashboard.png",
+//     alt: "Admin dashboard",
+//     caption: "Overview of listings, users, and activity",
+//     section: "Admin",
+//   },
+//   {
+//     src: "/projects/capstone/admin-listings.png",
+//     alt: "Admin listings",
+//     caption: "Manage and moderate property listings",
+//     section: "Admin",
+//   },
+// ],
+//   },
+// },
 {
   slug: "spark-and-drive",
   title: "Spark & Drive",
