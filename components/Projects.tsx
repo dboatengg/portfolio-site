@@ -24,7 +24,7 @@ export default function Projects() {
                   alt={`${project.title} website preview`}
                   fill
                   sizes="(min-width: 768px) 416px, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/5" />
