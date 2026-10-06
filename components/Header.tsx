@@ -44,6 +44,12 @@ export default function Header() {
   }
 
   useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("navbar-visibility", { detail: { hidden: isHidden } })
+    )
+  }, [isHidden])
+
+  useEffect(() => {
     if (!isMenuOpen) return
 
     mobileNavigationRef.current?.querySelector<HTMLAnchorElement>("a")?.focus({

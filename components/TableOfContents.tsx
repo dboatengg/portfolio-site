@@ -35,8 +35,22 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string | null>(
     headings[0]?.id ?? null
   );
+  const [navbarHidden, setNavbarHidden] = useState(false);
 
   const isOpen = desktop ? !desktopCollapsed : mobileExpanded;
+
+  // Listen for navbar visibility changes
+  useEffect(() => {
+    const handleNavbarVisibility = (e: Event) => {
+      const customEvent = e as CustomEvent<{ hidden: boolean }>;
+      setNavbarHidden(customEvent.detail.hidden);
+    };
+
+    window.addEventListener("navbar-visibility", handleNavbarVisibility);
+    return () => {
+      window.removeEventListener("navbar-visibility", handleNavbarVisibility);
+    };
+  }, []);
 
   // Scroll-spy
   useEffect(() => {
@@ -159,7 +173,11 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
 
   // -------- MOBILE: sticky full-width bar + overlay panel --------
   return (
-    <div className="not-prose sticky top-14 z-30 -mx-5 sm:-mx-6 md:-mx-8 lg:hidden">
+    <div
+      className={`not-prose sticky z-30 -mx-5 sm:-mx-6 md:-mx-8 lg:hidden transition-[top] duration-300 ease-out ${
+        navbarHidden ? "top-0" : "top-14"
+      }`}
+    >
       {/* Sticky trigger bar */}
       <button
         type="button"
