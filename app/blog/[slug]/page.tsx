@@ -262,23 +262,29 @@ export default async function BlogPost({
 
         {/* <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-x-20 lg:gap-y-0 [&>*]:min-w-0"> */}
         <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-x-20 lg:gap-y-0">
-          <header className="mb-0 lg:col-start-1 lg:row-start-1">
-            <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">
-              {frontmatter.title}
-            </h1>
+        <header className="mb-0 lg:col-start-1 lg:row-start-1">
+          <h1 className="!text-3xl sm:!text-4xl md:!text-[2.75rem] !leading-tight font-bold tracking-tight mb-5">
+            {frontmatter.title}
+          </h1>
 
-            <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
-              {date && <span>{formatDate(date)}</span>}
-              <span>•</span>
-              <span>{readingTime}</span>
-            </div>
+          <div className="flex items-center gap-2 text-sm text-[rgb(var(--muted-text))]">
+            {date && <span>{formatDate(date)}</span>}
+            <span>•</span>
+            <span>{readingTime}</span>
+          </div>
 
-            {lastModifiedDate !== date && (
-              <p className="mt-3 text-sm text-[rgb(var(--muted-text))]">
-                Last updated {formatDate(lastModifiedDate)}
-              </p>
-            )}
-          </header>
+          {lastModifiedDate !== date && (
+            <p className="mt-3 text-sm text-[rgb(var(--muted-text))]">
+              Last updated {formatDate(lastModifiedDate)}
+            </p>
+          )}
+
+          <div className="mt-10 flex items-center gap-3">
+            <span className="h-px flex-1 bg-[rgb(var(--border))]" />
+            <span className="h-1 w-1 rounded-full bg-[rgb(var(--muted-text))]" />
+            <span className="h-px flex-1 bg-[rgb(var(--border))]" />
+          </div>
+        </header>
 
           <TableOfContents headings={headings} />
 
