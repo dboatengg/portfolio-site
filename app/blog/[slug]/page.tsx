@@ -6,7 +6,6 @@ import type { Metadata } from "next"
 import { formatDate } from "@/utils/formatDate"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { ReadingProgress } from "@/components/ReadingProgress"
 import TableOfContents from "@/components/TableOfContents"
 
 // Blog components
@@ -248,7 +247,6 @@ export default async function BlogPost({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ReadingProgress />
       
 
         <article className="blog-post-wide mx-auto max-w-4xl pt-10 pb-20">
