@@ -1,7 +1,6 @@
 import { MetadataRoute } from "next";
 import { allBlogs } from "@/.contentlayer/generated";
 import { siteUrl } from "@/config/site";
-import { projects } from "@/data/projects";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Blog posts
@@ -10,14 +9,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
       lastModified: post.date,
-    }));
-
-  // Project detail pages (only those with detail content)
-  const projectPages = projects
-    .filter((project) => project.learnMore && project.detail)
-    .map((project) => ({
-      url: `${siteUrl}/projects/${project.slug}`,
-      lastModified: new Date(),
     }));
 
   // Static pages
@@ -30,6 +21,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: siteUrl, lastModified: new Date() },
     ...staticPages,
     ...posts,
-    ...projectPages,
   ];
 }
