@@ -133,14 +133,14 @@ export default function ProjectSheet({ project, onClose }: ProjectSheetProps) {
         aria-modal="true"
         aria-labelledby="project-sheet-title"
         style={{ height: `${heightVh}vh` }}
-        className={`fixed bottom-0 left-0 right-0 z-[70] mx-auto flex w-[90%] flex-col overflow-hidden rounded-t-3xl border border-b-0 border-[rgb(var(--border))] bg-[rgb(var(--card))] shadow-2xl ${
-          isVisible ? "animate-sheet-in" : "animate-sheet-out"
+        className={`fixed bottom-0 left-0 right-0 z-[70] mx-auto flex w-full flex-col overflow-hidden bg-[rgb(var(--card))] shadow-2xl sm:w-[90%] sm:rounded-t-3xl sm:border sm:border-b-0 sm:border-[rgb(var(--border))] ${
+            isVisible ? "animate-sheet-in" : "animate-sheet-out"
         } ${
-          isDragging
+            isDragging
             ? "transition-none"
             : "transition-[height,opacity] duration-300 ease-out"
         } ${isBeingDismissed ? "opacity-60" : "opacity-100"}`}
-      >
+        >
         {/* Drag handle */}
         <div
           className="group relative flex shrink-0 cursor-grab touch-none select-none flex-col items-center justify-center gap-1 pt-3 pb-3 active:cursor-grabbing"
