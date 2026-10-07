@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { X, ArrowUpRight, Lock, Github, ChevronUp, ChevronDown } from "lucide-react";
+import {
+  X,
+  ArrowUpRight,
+  Lock,
+  Github,
+  ChevronUp,
+  ChevronDown,
+} from "lucide-react";
 import ProjectScreenshots from "./ProjectScreenshots";
 import type { Project } from "@/data/projects";
 
@@ -76,7 +83,6 @@ export default function ProjectSheet({ project, onClose }: ProjectSheetProps) {
     if (!dragState.current) return;
     const deltaY = dragState.current.startY - e.clientY;
     const deltaVh = (deltaY / window.innerHeight) * 100;
-    // Allow the height to go all the way to 0 during drag
     const next = Math.min(
       SNAP_EXPANDED,
       Math.max(0, dragState.current.startHeight + deltaVh)
@@ -102,7 +108,6 @@ export default function ProjectSheet({ project, onClose }: ProjectSheetProps) {
       return;
     }
 
-    // Snap to nearest size
     const midpoint = (SNAP_COLLAPSED + SNAP_EXPANDED) / 2;
     setHeightVh(heightVh > midpoint ? SNAP_EXPANDED : SNAP_COLLAPSED);
   };
@@ -186,9 +191,9 @@ export default function ProjectSheet({ project, onClose }: ProjectSheetProps) {
 
         {/* Scrollable content */}
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-10">
-          {/* Cover */}
+          {/* Cover — full width, natural aspect */}
           <div
-            className={`relative mb-6 w-full overflow-hidden rounded-2xl bg-linear-to-br ${renderedProject.gradient}`}
+            className={`relative mb-5 w-full overflow-hidden rounded-2xl bg-linear-to-br ${renderedProject.gradient}`}
           >
             {renderedProject.cover ? (
               <>
@@ -208,21 +213,21 @@ export default function ProjectSheet({ project, onClose }: ProjectSheetProps) {
           </div>
 
           {/* Tagline */}
-          <p className="mb-6 text-base leading-relaxed text-[rgb(var(--text))]">
+          <p className="mb-5 text-sm leading-relaxed text-[rgb(var(--text))]">
             {renderedProject.detail.tagline}
           </p>
 
           {/* CTA buttons */}
-          <div className="mb-8 flex flex-wrap items-center gap-3">
+          <div className="mb-7 flex flex-wrap items-center gap-2">
             {renderedProject.live && (
               <a
                 href={renderedProject.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--text))] px-4 py-2 text-sm font-medium text-[rgb(var(--bg))] transition-opacity hover:opacity-80"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[rgb(var(--text))] px-3.5 py-1.5 text-xs font-medium text-[rgb(var(--bg))] transition-opacity hover:opacity-80"
               >
                 Visit live site
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={12} />
               </a>
             )}
 
@@ -231,27 +236,27 @@ export default function ProjectSheet({ project, onClose }: ProjectSheetProps) {
                 href={renderedProject.githubOnDetail}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--ctrl-border))] bg-transparent px-4 py-2 text-sm font-medium text-[rgb(var(--text))] transition-opacity hover:opacity-70"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[rgb(var(--ctrl-border))] bg-transparent px-3.5 py-1.5 text-xs font-medium text-[rgb(var(--text))] transition-opacity hover:opacity-70"
               >
-                <Github size={14} />
+                <Github size={12} />
                 View source
               </a>
             )}
 
             {renderedProject.githubPrivate && (
-              <span className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--ctrl-border))] bg-transparent px-4 py-2 text-sm font-medium text-[rgb(var(--muted-text))] opacity-70">
-                <Lock size={14} />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[rgb(var(--ctrl-border))] bg-transparent px-3.5 py-1.5 text-xs font-medium text-[rgb(var(--muted-text))] opacity-70">
+                <Lock size={12} />
                 Private repository
               </span>
             )}
           </div>
 
           {/* Overview */}
-          <section className="mb-10">
-            <h3 className="mb-3 text-base font-semibold text-[rgb(var(--text))]">
+          <section className="mb-7">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--muted-text))]">
               Overview
             </h3>
-            <div className="space-y-3 text-sm leading-relaxed text-[rgb(var(--muted-text))]">
+            <div className="space-y-2.5 text-sm leading-relaxed text-[rgb(var(--body-text))]">
               {renderedProject.detail.overview.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -259,42 +264,51 @@ export default function ProjectSheet({ project, onClose }: ProjectSheetProps) {
           </section>
 
           {/* Features */}
-          <section className="mb-10">
-            <h3 className="mb-3 text-base font-semibold text-[rgb(var(--text))]">
+          <section className="mb-7">
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--muted-text))]">
               Key features
             </h3>
-            <ul className="space-y-2 text-sm text-[rgb(var(--muted-text))]">
+            <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {renderedProject.detail.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[rgb(var(--accent))]" />
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-sm leading-snug text-[rgb(var(--body-text))]"
+                >
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[rgb(var(--accent))]" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
           </section>
 
-          {/* Screenshots */}
+          {/* Screenshots — horizontal carousel */}
           {renderedProject.detail.screenshots.length > 0 && (
-            <section className="mb-10">
-              <h3 className="mb-4 text-base font-semibold text-[rgb(var(--text))]">
-                Screenshots
-              </h3>
+            <section className="mb-7">
+              <div className="mb-3 flex items-baseline justify-between gap-2">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--muted-text))]">
+                  Screenshots
+                </h3>
+                <span className="text-[11px] text-[rgb(var(--muted-text))]">
+                  Swipe to view all →
+                </span>
+              </div>
               <ProjectScreenshots
                 screenshots={renderedProject.detail.screenshots}
+                variant="carousel"
               />
             </section>
           )}
 
           {/* Tech stack */}
           <section>
-            <h3 className="mb-3 text-base font-semibold text-[rgb(var(--text))]">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--muted-text))]">
               Tech stack
             </h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {renderedProject.detail.tech.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-[rgb(var(--ctrl-border))] px-3 py-1 text-xs font-medium text-[rgb(var(--muted-text))]"
+                  className="rounded-full border border-[rgb(var(--ctrl-border))] px-2.5 py-0.5 text-[11px] font-medium text-[rgb(var(--muted-text))]"
                 >
                   {t}
                 </span>
