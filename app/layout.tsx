@@ -115,10 +115,10 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans selection:bg-blue-600`}
       >
-        <Suspense fallback={null}>
+        {/* <Suspense fallback={null}>
           <NavigationOrbit />
-        </Suspense>
-        
+        </Suspense> */}
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
