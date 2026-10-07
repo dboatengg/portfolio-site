@@ -3,6 +3,7 @@ export type Project = {
   title: string;
   description: string;
   gradient: string;
+  // previewImage?: string;   
   cover?: string;
   live?: string;
   github?: string;          
