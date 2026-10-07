@@ -1,4 +1,4 @@
-import NextTopLoader from "nextjs-toploader";
+import { Suspense } from "react";
 import { ThemeProvider } from "next-themes";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -115,8 +115,10 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans selection:bg-blue-600`}
       >
-        {/* <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} /> */}
-        <NavigationOrbit />  
+        <Suspense fallback={null}>
+          <NavigationOrbit />
+        </Suspense>
+        
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
