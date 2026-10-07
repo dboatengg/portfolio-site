@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { ContactModalProvider } from "@/contexts/ContactModalContext";
 import GlobalContactModal from "@/components/GlobalContactModal";
 import "./globals.css";
+import { NavigationOrbit } from "@/components/NavigationOrbit";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -114,7 +115,8 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans selection:bg-blue-600`}
       >
-        <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} />
+        {/* <NextTopLoader height={2} color="rgb(37,99,235)" showSpinner={false} /> */}
+        <NavigationOrbit />  
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
