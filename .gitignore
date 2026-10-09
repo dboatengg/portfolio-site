@@ -39,3 +39,8 @@ yarn-error.log*
 next-env.d.ts
 
 
+# ==========================================
+# Email pitch preview output (regenerated from scripts)
+# ==========================================
+email-preview.html
+email-preview.txt
